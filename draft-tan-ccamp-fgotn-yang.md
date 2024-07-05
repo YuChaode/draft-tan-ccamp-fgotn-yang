@@ -19,11 +19,11 @@
 # Change the file extension to match the format (.xml for XML, etc...)
 #
 ###
-title: "TODO - Your title"
-abbrev: "TODO - Abbreviation"
-category: info
+title: "ANG Data Models for fine grain Optical Transport Network"
+abbrev: "Fine grain OTN YANG"
+category: std
 
-docname: draft-todo-yourname-protocol-latest
+docname: draft-tan-ccamp-fgotn-yang-latest
 submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
@@ -45,9 +45,9 @@ venue:
 
 author:
  -
-    fullname: Your Name Here
-    organization: Your Organization Here
-    email: your.email@example.com
+    fullname: Chaode Yu
+    organization: Huawei
+    email: yuchaode@huawei.com
 
 normative:
 
