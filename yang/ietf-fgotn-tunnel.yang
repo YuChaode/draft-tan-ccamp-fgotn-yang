@@ -1,20 +1,28 @@
- module ietf-fgotn-tunnel {
-   /* TODO: FIXME */
-     yang-version 1.1;
+module ietf-fgotn-tunnel {
+  /* TODO: FIXME */
+  yang-version 1.1;
 
-   namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel";
-   prefix "fgotn-tnl";
+  namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel";
+  prefix "fgotn-tnl";
 
   import ietf-te {
     prefix "te";
-    reference "RFC XXXX - A YANG Data Model for Traffic Engineering 
-               Tunnels, Label Switched Paths and Interfaces";
+    reference
+      "RFC KKKK: A YANG Data Model for Traffic Engineering Tunnels,
+                 Label Switched Paths and Interfaces";
   }
   
+  /* Note: The RFC Editor will replace KKKK with the number assigned
+     to the RFC once draft-ietf-teas-yang-te becomes an RFC.*/
+
   import ietf-otn-tunnel {
     prefix "otn-tnl";
-    reference  "RFC YYYY - OTN Tunnel YANG Model";
+    reference  "RFC JJJJ: OTN Tunnel YANG Model";
   }
+
+  /* Note: The RFC Editor will replace JJJJ with the number assigned
+     to the RFC once draft-ietf-ccamp-otn-tunnel-model becomes
+     an RFC.*/
 
   organization
     "Internet Engineering Task Force (IETF) CCAMP WG";
@@ -23,7 +31,6 @@
       ID-draft editor:
         Yanxia Tan (tanyx11@chinaunicom.cn);
         Yanlei Zheng (zhengyanlei@chinaunicom.cn);
-        YANG Zhao (zhaoyangyjy@chinamobile.com);
         Italo Busi (italo.busi@huawei.com);
         Chaode Yu (yuchaode@huawei.com);
     ";
@@ -34,23 +41,30 @@
      fully conforms to the Network Management Datastore Architecture
      (NMDA).
 
-     Copyright (c) 2021 IETF Trust and the persons
+     Copyright (c) 2024 IETF Trust and the persons
      identified as authors of the code.  All rights reserved.
 
      Redistribution and use in source and binary forms, with or
      without modification, is permitted pursuant to, and subject
-     to the license terms contained in, the Simplified BSD License
+     to the license terms contained in, the Revised BSD License
      set forth in Section 4.c of the IETF Trust's Legal Provisions
      Relating to IETF Documents
      (https://trustee.ietf.org/license-info).
+
      This version of this YANG module is part of RFC XXXX; see
      the RFC itself for full legal notices.";
 
-  revision 2024-06-17 {
-     description
-       "initial version";
-     reference
-       "draft-tan-ccamp-fgotn-yang";
+  // RFC Ed.: replace XXXX with actual RFC number and remove this
+  // note.
+  // RFC Ed.: update the date below with the date of RFC publication
+  // and remove this note.
+
+  revision 2024-07-07 {
+    description
+      "initial version";
+    reference
+      "RFC XXXX: YANG Data Models for fine grain Optical Transport
+                 Network";
   }
   
   /**
@@ -69,6 +83,8 @@
  //20240703增加fgOTN隧道带宽
   augment "/te:te/te:tunnels/te:tunnel/"
         + "te:te-bandwidth/te:technology/otn-tnl:otn" {
+    description
+      "TBD";
     leaf fgoduflex-bandwidth {
       type string;
       description 
@@ -83,6 +99,8 @@
         + "te:route-object-include-exclude/te:type/te:label/"
         + "te:label-hop/te:te-label/te:technology/otn-tnl:otn" + 
           "/otn-tnl:otn-label" {
+    description
+      "TBD";
     leaf fgts-numbers {
       type uint16;
       description 
@@ -96,6 +114,8 @@
           "/te:route-object-include-exclude/te:type/te:label" + 
           "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" + 
           "/otn-tnl:otn-label" {
+    description
+      "TBD";
     leaf fgts-numbers {
       type uint16;
       description 
@@ -108,6 +128,8 @@
           "/te:route-object-include-exclude/te:type/te:label" + 
           "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" + 
           "/otn-tnl:otn-label" {
+    description
+      "TBD";
     leaf fgts-numbers {
       type uint16;
       description 
@@ -120,6 +142,8 @@
           "/te:route-object-include-exclude/te:type/te:label" + 
           "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" + 
           "/otn-tnl:otn-label" {
+    description
+      "TBD";
     leaf fgts-numbers {
       type uint16;
       description 
@@ -131,11 +155,12 @@
           "/te:lsp-actual-route-information/te:type/te:label" +
           "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
           "/otn-tnl:otn-label" {
+    description
+      "TBD";
     leaf fgts-numbers {
       type uint16;
       description 
         "fgOTN timeslot information of this label hop";
     }
   }
-  
 }
