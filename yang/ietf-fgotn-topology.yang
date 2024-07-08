@@ -89,7 +89,7 @@
   augment "/nw:networks/nw:network/nw:node/nt:termination-point" +
           "/tet:te" {
     description
-      "TBD";
+      "specific augmentation of fgOTN termination point";
     leaf supported-fgotn-tp {
       type boolean;
       description
@@ -102,7 +102,8 @@
           "/tet:te-link-attributes/tet:max-link-bandwidth" + 
           "/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist" {
     description
-      "TBD";
+      "specific augmentation of fgOTN link on maximum link 
+      bandwidth";
     leaf fgotn-bandwidth {
       type string;
       description
@@ -115,7 +116,8 @@
           "/tet:te-link-attributes/tet:unreserved-bandwidth" +
           "/tet:te-bandwidth/otnt:otn-bandwidth" {
     description
-      "TBD";
+      "specific augmentation of fgOTN link on unreserved link 
+      bandwidth";
     list fgotnlist {
       key "odu-type odu-ts-number";
       description
@@ -147,7 +149,7 @@
           "/tet:te-link-attributes/tet:label-restrictions" +
           "/tet:label-restriction/otnt:otn-label-range" {
     description
-      "TBD";
+      "specific augmentation of fgOTN label";
     list fgts-range {
       key "odu-type odu-ts-number";
       description 
