@@ -77,22 +77,19 @@ module ietf-fgotn-tunnel {
         "The bandwidth of this fgOTN tunnel";
     }
   }
-  20240703讨论后建议删除
 **/
 
- //20240703增加fgOTN隧道带宽
   augment "/te:te/te:tunnels/te:tunnel/"
         + "te:te-bandwidth/te:technology/otn-tnl:otn" {
     description
-      "TBD";
+      "augmentation of fgOTN tunnel on bandwidth structure";
     leaf fgoduflex-bandwidth {
       type string;
       description 
         "Augment TE bandwidth of the fgOTN tunnel";
     }
   }
-  
-  //20240703增加在primary-path中指定跨域端口上的fgts-numbers
+
   augment "/te:te/te:tunnels/te:tunnel/"
         + "te:primary-paths/te:primary-path/"
         + "te:explicit-route-objects/"
@@ -100,7 +97,7 @@ module ietf-fgotn-tunnel {
         + "te:label-hop/te:te-label/te:technology/otn-tnl:otn" + 
           "/otn-tnl:otn-label" {
     description
-      "TBD";
+      "augmentation of fgOTN label";
     leaf fgts-numbers {
       type uint16;
       description 
@@ -115,7 +112,7 @@ module ietf-fgotn-tunnel {
           "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" + 
           "/otn-tnl:otn-label" {
     description
-      "TBD";
+      "augmentation of fgOTN label";
     leaf fgts-numbers {
       type uint16;
       description 
@@ -129,7 +126,7 @@ module ietf-fgotn-tunnel {
           "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" + 
           "/otn-tnl:otn-label" {
     description
-      "TBD";
+      "augmentation of fgOTN label";
     leaf fgts-numbers {
       type uint16;
       description 
@@ -143,7 +140,7 @@ module ietf-fgotn-tunnel {
           "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" + 
           "/otn-tnl:otn-label" {
     description
-      "TBD";
+      "augmentation of fgOTN label";
     leaf fgts-numbers {
       type uint16;
       description 
@@ -156,7 +153,7 @@ module ietf-fgotn-tunnel {
           "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
           "/otn-tnl:otn-label" {
     description
-      "TBD";
+      "augmentation of fgOTN label";
     leaf fgts-numbers {
       type uint16;
       description 
