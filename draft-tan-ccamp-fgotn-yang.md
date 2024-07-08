@@ -1,17 +1,27 @@
 ---
-title: "YANG Data Models for fine grain Optical Transport Network"
-abbrev: fgOTN YANG Data Models
-docname: draft-tan-ccamp-fgotn-yang-00
-obsoletes:
-updates:
-date:
+title: "ANG Data Models for fine grain Optical Transport Network"
+abbrev: "Fine grain OTN YANG"
 category: std
-submissionType: IETF
 
-ipr:
-area: Routing
-workgroup: ccamp
-keyword: Internet-Draft
+docname: draft-tan-ccamp-fgotn-yang-latest
+submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
+number:
+date:
+consensus: true
+v: 3
+area: "Routing"
+workgroup: "Common Control and Measurement Plane"
+keyword:
+ - next generation
+ - unicorn
+ - sparkling distributed ledger
+venue:
+  group: "Common Control and Measurement Plane"
+  type: "Working Group"
+  mail: "ccamp@ietf.org"
+  arch: "https://mailarchive.ietf.org/arch/browse/ccamp/"
+  github: "YuChaode/draft-tan-ccamp-fgotn-yang"
+  latest: "https://YuChaode.github.io/draft-tan-ccamp-fgotn-yang/draft-tan-ccamp-fgotn-yang.html"
 
 author:
  -
@@ -33,14 +43,11 @@ author:
   name: Italo Busi
   organization: Huawei Technologies
   email: italo.busi@huawei.com
-  city:
-  country:
  -
   ins: C. Yu
   name: Chaode Yu
   organization: Huawei Technologies
   email: yuchaode@huawei.com
-  city:
   country: China
 
 contributor:
@@ -50,6 +57,13 @@ contributor:
     email: lich@fiberhome.com
 
 normative:
+  ITU-T_G.709:
+    title: Interfaces for the optical transport network
+    author:
+      org: ITU-T Recommendation G.709
+    date: March 2024
+    seriesinfo: ITU-T Recommendation G.709, Amendment 3
+    target: https://www.itu.int/rec/T-REC-G.709/
   IANA_YANG:
     title: YANG Parameters
     author:
@@ -68,7 +82,7 @@ This document defines YANG data models to describe the topology and tunnel infor
 
 Optical Transport Networks (OTN) is a mainstream layer 1 technology for the transport network. Over the years, it has continued to evolve, to improve its transport functions for the emerging requirements. The topology and tunnel information in the OTN has already been defined by generic traffic-engineering models and technology-specific models, including {{?I-D.ietf-ccamp-otn-topo-yang}} and {{?I-D.ietf-ccamp-otn-tunnel-model}}.
 
-In the latest version of OTN, ITU-T G.709/Y.1331 Edition 6.5 [G709-E6.5], the fine grain OTN (fgOTN) is introduced for the efficient transmission of low rate client signals (e.g., sub-1G).
+In the latest version of OTN, ITU-T G.709/Y.1331 Edition 6.5 {{ITU-T_G.709}}, the fine grain OTN (fgOTN) is introduced for the efficient transmission of low rate client signals (e.g., sub-1G).
 
 This document presents the control interface requirements of fgOTN, and defines two YANG data models for fgOTN topology and fgOTN tunnel. The topology model can capture topological and resource-related information pertaining to fgOTN. This model also enables clients, which interact with a transport domain controller, for fgOTN topology related operations such as obtaining the relevant topology resource information. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels, Label Switched Paths (LSPs), and interfaces.
 
@@ -122,15 +136,20 @@ In this documents, names of data nodes and other data model objects are prefixed
 
 | Prefix     | Yang Module                     | Reference     |
 | ---------- | ------------------------------- | ------------- |
-| l1-types   | ietf-layer1-types               | {{RFC XXXX}}  |
-| otnt       | ietf-otn-topology               | {{RFC YYYY}}  |
-| otn-tnl    | ietf-otn-tunnel                 | {{RFC ZZZZ}}  |
-| fgotnt     | ietf-fgotn-topology             | {{RFC AAAA}}  |
-| fgotn-tnl  | ietf-fgotn-tunnel               | {{RFC AAAA}}  |
+| l1-types   | ietf-layer1-types               | \[RFC YYYY]   |
+| otnt       | ietf-otn-topology               | \[RFC ZZZZ]   |
+| te         | ietf-te                         | \[RFC KKKK]   |
+| otn-tnl    | ietf-otn-tunnel                 | \[RFC JJJJ]   |
+| fgotnt     | ietf-fgotn-topology             | RFC XXXX      |
+| fgotn-tnl  | ietf-fgotn-tunnel               | RFC XXXX      |
 {: #tab-prefixes title="Prefixes and corresponding YANG modules"}
 
 RFC Editor Note:
-Please replace XXXX etc. with the RFC number assigned to the corresponding documents.
+Please replace XXXX with the number assigned to the RFC once this draft becomes an RFC.
+Please replace YYYY with the RFC numbers assigned to {{!I-D.ietf-ccamp-layer1-types}}.
+Please replace ZZZZ with the RFC numbers assigned to {{!I-D.ietf-ccamp-otn-topo-yang}}.
+Please replace KKKK with the RFC numbers assigned to {{!I-D.ietf-teas-yang-te}}.
+Please replace JJJJ with the RFC numbers assigned to {{!I-D.ietf-ccamp-otn-tunnel-model}}.
 Please remove this note.
 
 ## Model Tree Diagrams
@@ -171,7 +190,6 @@ Common types, identities and groupings defined in {{?I-D.ietf-ccamp-layer1-types
             | ietf-fgotn-topology |
             +---------------------+
 ~~~~
-
 {: #fig-fgotn-topology-relationship title="Relationship between fgOTN topology and OTN topology model"}
 
 The entities, TE attributes and OTN attributes, such as node, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information. At the same time, it is necessary to extend the encoding and switching-capability enumeration values in {{?I-D.busi-teas-te-types-update}} to support fgOTN encapsulation and fgOTN switching.
@@ -227,6 +245,7 @@ The fgts-range list is used to describe the availability of fgOTN timeslot in th
 ## Fine Grain OTN Tunnel Data Model Overview
 
 This document aims to describe the data model for fgOTN tunnel. The fgOTN tunnel model augments to OTN tunnel {{?I-D.ietf-ccamp-otn-tunnel-model}} with fgOTN-specific parameters, including the bandwidth information and label information. {{fig-fgotn-tunnel-relationship}} shows the augmentation relationship.
+
 ~~~~ ascii-art
                 +------------------+
                 |      ietf-te     |
@@ -266,22 +285,22 @@ The module augments TE label-hop for the explicit route objects included or excl
 {:#fgotn-tree}
 
 # YANG Tree for fgOTN topology
+
 {{fig-fgotn-topo-tree}} below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-topology" ({{fgotn-topology-yang}}).
 
 ~~~~ ascii-art
-{::include ./ietf-fgotn-topology.tree}
+{::include ./yang/ietf-fgotn-topology.tree}
 ~~~~
 {: #fig-fgotn-topo-tree title=fgOTN topology YANG tree diagram"
 artwork-name="ietf-fgotn-topology.tree"}
 
-
 # YANG Data Model for fgOTN topology
 
 ~~~~ yang
-{::include ./ietf-fgotn-topology.yang}
+{::include ./yang/ietf-fgotn-topology.yang}
 ~~~~
 {: #fgotn-topology-yang title="fgOTN topology YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2024-07-01.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2024-07-07.yang"}
 
 
 # YANG Tree for fgOTN tunnel
@@ -289,18 +308,18 @@ sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2024-07-01.yang"}
 {{fig-fgotn-tunnel-tree}} below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" ({{fgotn-tunnel-yang}}).
 
 ~~~~ ascii-art
-{::include ./ietf-fgotn-tunnel.tree}
+{::include ./yang/ietf-fgotn-tunnel.tree}
 ~~~~
-{: #fig-fgotn-topo-tree title=fgOTN tunnel YANG tree diagram"
+{: #fig-fgotn-tunnel-tree title=fgOTN tunnel YANG tree diagram"
 artwork-name="ietf-fgotn-tunnel.tree"}
 
 # YANG Data Model for fgOTN tunnel
 
 ~~~~ yang
-{::include ./ietf-fgotn-tunnel.yang}
+{::include ./yang/ietf-fgotn-tunnel.yang}
 ~~~~
 {: #fgotn-tunnel-yang title="fgOTN tunnel YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2024-07-01.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2024-07-07.yang"}
 
 # Manageability Considerations
 
