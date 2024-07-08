@@ -1,0 +1,967 @@
+
+
+
+
+Common Control and Measurement Plane                              Y. Tan
+Internet-Draft                                                  Y. Zheng
+Intended status: Standards Track                            China Unicom
+Expires: 9 January 2025                                          I. Busi
+                                                                   C. Yu
+                                                     Huawei Technologies
+                                                             8 July 2024
+
+
+        ANG Data Models for fine grain Optical Transport Network
+                   draft-tan-ccamp-fgotn-yang-latest
+
+Abstract
+
+   This document defines YANG data models to describe the topology and
+   tunnel information of a fine grain Optical Transport Network.  The
+   YANG data models defined in this document are designed to meet the
+   requirements for efficient transmission of sub-1G client signals in
+   transport network.
+
+About This Document
+
+   This note is to be removed before publishing as an RFC.
+
+   The latest revision of this draft can be found at
+   https://YuChaode.github.io/draft-tan-ccamp-fgotn-yang/draft-tan-
+   ccamp-fgotn-yang.html.  Status information for this document may be
+   found at https://datatracker.ietf.org/doc/draft-tan-ccamp-fgotn-
+   yang/.
+
+   Discussion of this document takes place on the Common Control and
+   Measurement Plane Working Group mailing list (mailto:ccamp@ietf.org),
+   which is archived at https://mailarchive.ietf.org/arch/browse/ccamp/.
+   Subscribe at https://www.ietf.org/mailman/listinfo/ccamp/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 9 January 2025.
+
+Copyright Notice
+
+   Copyright (c) 2024 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+     1.1.  Terminology and Notations
+     1.2.  Requirements Notation
+     1.3.  Tree Diagram
+     1.4.  Requirements Language
+     1.5.  Prefixes in Model Names
+     1.6.  Model Tree Diagrams
+   2.  YANG Data Model for fine grain Optical Transport Network
+           Overview
+     2.1.  Fine Grain OTN Topology Data Model Overview
+     2.2.  Attributes Augmentation
+     2.3.  Bandwidth Augmentation
+     2.4.  Label Augmentation
+     2.5.  Fine Grain OTN Tunnel Data Model Overview
+     2.6.  Bandwidth Augmentation
+     2.7.  Label Augmentation
+   3.  YANG Tree for fgOTN topology
+   4.  YANG Data Model for fgOTN topology
+   5.  YANG Tree for fgOTN tunnel
+   6.  YANG Data Model for fgOTN tunnel
+   7.  Manageability Considerations
+   8.  Security Considerations
+   9.  IANA Considerations
+   10. References
+     10.1.  Normative References
+     10.2.  Informative References
+   Appendix A.  Acknowledgments
+   Contributors
+   Authors' Addresses
+
+1.  Introduction
+
+   Optical Transport Networks (OTN) is a mainstream layer 1 technology
+   for the transport network.  Over the years, it has continued to
+   evolve, to improve its transport functions for the emerging
+   requirements.  The topology and tunnel information in the OTN has
+   already been defined by generic traffic-engineering models and
+   technology-specific models, including [I-D.ietf-ccamp-otn-topo-yang]
+   and [I-D.ietf-ccamp-otn-tunnel-model].
+
+   In the latest version of OTN, ITU-T G.709/Y.1331 Edition 6.5
+   [ITU-T_G.709], the fine grain OTN (fgOTN) is introduced for the
+   efficient transmission of low rate client signals (e.g., sub-1G).
+
+   This document presents the control interface requirements of fgOTN,
+   and defines two YANG data models for fgOTN topology and fgOTN tunnel.
+   The topology model can capture topological and resource-related
+   information pertaining to fgOTN.  This model also enables clients,
+   which interact with a transport domain controller, for fgOTN topology
+   related operations such as obtaining the relevant topology resource
+   information.  The fgOTN tunnel YANG data model defined in this
+   document is used for the provisioning and management of fgOTN Traffic
+   Engineering (TE) tunnels, Label Switched Paths (LSPs), and
+   interfaces.
+
+   Furthermore, this document also imports the generic Layer 1 types
+   defined in [I-D.ietf-ccamp-layer1-types].
+
+   The YANG data models defined in this document conform to the Network
+   Management Datastore Architecture (NMDA) defined in [RFC8342].
+
+1.1.  Terminology and Notations
+
+   Some of the key terms used in this document are listed as follow.
+
+   *  fgTS: fine grain Tributary Slot.
+
+   *  fgODUflex: fine grain Optical channel Data Unit flex
+
+   The following terms are defined in [RFC7950] and are not redefined
+   here:
+
+   *  client
+
+   *  server
+
+   *  augment
+
+   *  data model
+
+   *  data node
+
+   The following terms are defined in [RFC6241] and are not redefined
+   here:
+
+   *  configuration data
+
+   *  state data
+
+   The terminology for describing YANG data models is found in
+   [RFC7950].
+
+1.2.  Requirements Notation
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+1.3.  Tree Diagram
+
+   A simplified graphical representation of the data model is used in
+   Section 3 of this document.  The meaning of the symbols in this
+   diagram is defined in [RFC8340].
+
+1.4.  Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in
+   BCP 14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+1.5.  Prefixes in Model Names
+
+   In this documents, names of data nodes and other data model objects
+   are prefixed using the standard prefix associated with the
+   corresponding YANG imported modules, as shown in the following table.
+
+             +===========+=====================+============+
+             | Prefix    | Yang Module         | Reference  |
+             +===========+=====================+============+
+             | l1-types  | ietf-layer1-types   | [RFC YYYY] |
+             +-----------+---------------------+------------+
+             | otnt      | ietf-otn-topology   | [RFC ZZZZ] |
+             +-----------+---------------------+------------+
+             | te        | ietf-te             | [RFC KKKK] |
+             +-----------+---------------------+------------+
+             | otn-tnl   | ietf-otn-tunnel     | [RFC JJJJ] |
+             +-----------+---------------------+------------+
+             | fgotnt    | ietf-fgotn-topology | RFC XXXX   |
+             +-----------+---------------------+------------+
+             | fgotn-tnl | ietf-fgotn-tunnel   | RFC XXXX   |
+             +-----------+---------------------+------------+
+
+             Table 1: Prefixes and corresponding YANG modules
+
+   RFC Editor Note: Please replace XXXX with the number assigned to the
+   RFC once this draft becomes an RFC.  Please replace YYYY with the RFC
+   numbers assigned to [I-D.ietf-ccamp-layer1-types].  Please replace
+   ZZZZ with the RFC numbers assigned to [I-D.ietf-ccamp-otn-topo-yang].
+   Please replace KKKK with the RFC numbers assigned to
+   [I-D.ietf-teas-yang-te].  Please replace JJJJ with the RFC numbers
+   assigned to [I-D.ietf-ccamp-otn-tunnel-model].  Please remove this
+   note.
+
+1.6.  Model Tree Diagrams
+
+   The tree diagrams extracted from the module(s) defined in this
+   document are given in subsequent sections as per the syntax defined
+   in [RFC8340].
+
+2.  YANG Data Model for fine grain Optical Transport Network Overview
+
+2.1.  Fine Grain OTN Topology Data Model Overview
+
+   This document aims to describe the data model for fine grain OTN
+   topology.  The YANG module presented in this document augments from
+   OTN topology data model, i.e., the ietf-otn-topology, as specified in
+   [I-D.ietf-ccamp-otn-topo-yang].  In section 6 of
+   [I-D.ietf-ccamp-otn-topo-yang], the guideline for augmenting OTN
+   topology model was provided, and in this draft, we augment the OTN
+   topology model to describe the topology characteristics of fgOTN.
+
+   Common types, identities and groupings defined in
+   [I-D.ietf-ccamp-layer1-types] is reused in this document.
+
+   [RFC8345] defines an abstract (generic, or base) YANG data model for
+   network/service topologies and inventories, and provides the
+   fundamental model for [RFC8795].  OTN topology module in
+   [I-D.ietf-ccamp-otn-topo-yang] augments from the TE topology YANG
+   model defined in [RFC8795].  This work is not directly augmenting
+   [RFC8345].  Figure 1 shows the augmentation relationship.
+
+       +--------------+      +-----------------------+
+       | ietf-network |      | ietf-network-topology |
+       +--------------+      +-----------------------+
+                   ^             ^
+                   |_____   _____|
+                         | |
+                         | | Augments
+                +-------------------+
+                | ietf-te-topology  |
+                +-------------------+
+                          ^
+                          | Augments
+                          |
+                +-------------------+
+                | ietf-otn-topology |
+                +-------------------+
+                          ^
+                          | Augments
+                          |
+               +----------+----------+
+               | ietf-fgotn-topology |
+               +---------------------+
+
+    Figure 1: Relationship between fgOTN topology and OTN topology model
+
+   The entities, TE attributes and OTN attributes, such as node,
+   termination points and links, are still applicable for describing an
+   fgOTN topology and the model presented in this document only
+   specifies technology-specific attributes/information.  The fgOTN-
+   specific attributes including the fgTS, can be used to represent the
+   bandwidth and label information.  At the same time, it is necessary
+   to extend the encoding and switching-capability enumeration values in
+   [I-D.busi-teas-te-types-update] to support fgOTN encapsulation and
+   fgOTN switching.
+
+2.2.  Attributes Augmentation
+
+   There are a few characteristics augmenting to the OTN topology.
+
+   The fine grain tributary slot granularity (FGTSG) attribute defines
+   the granularity, such as 10M, used by the TSs of a given OTN link.
+
+   A boolean value is specified to augment the generic TE link
+   termination point to describe whether the point can support fgOTN
+   switching capability.
+
+   augment /nw:networks/nw:network/nw:node/nt:termination-point/tet:te:
+      +--rw supported-fgotn-tp?   boolean
+
+   The boolean value supported-fgodu-tp is used to indicate whether the
+   termination point can support fgOTN switching capability.
+
+2.3.  Bandwidth Augmentation
+
+   Based on the OTN topology model, we augment the bandwidth information
+   of fgOTN, including the max-link-bandwidth and unreserved-bandwidth.
+   The augmented parameter fgotn-bandwidth is used to indicate how much
+   of the bandwidth has been allocated for the usage of fgOTN.
+
+augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes/tet:max-link-bandwidth/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist:
+   +--rw fgotn-bandwidth?   string
+
+   The augmented fgotnlist structure is used to describe the unreserved
+   TE bandwidth of fgOTN in the server ODUk.  The odu-ts-number is used
+   to indicate the index of server ODUk channel.
+
+augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes/tet:unreserved-bandwidth/tet:te-bandwidth/otnt:otn-bandwidth:
+   +--rw fgotnlist* [odu-type odu-ts-number]
+      +--rw odu-type           identityref
+      +--rw odu-ts-number?     uint16
+      +--rw fgotn-bandwidth?   string
+
+2.4.  Label Augmentation
+
+   The model augments the label-restriction list with fgOTN technology
+   specific attributes using the otn-label-range-info grouping defined
+   in [I-D.ietf-ccamp-layer1-types].
+
+augment /nw:networks/tet:te/tet:templates/tet:link-template/tet:te-link-attributes/tet:label-restrictions/tet:label-restriction/otnt:otn-label-range:
+   +--rw fgts-range* [odu-type odu-ts-number]
+      +--rw odu-type           identityref
+      +--rw odu-ts-number?     string
+      +--rw fgts-reserved?     string
+      +--rw fgts-unreserved?   string
+
+   The fgts-range list is used to describe the availability of fgOTN
+   timeslot in the server ODUk, including the fgts-reserved and fgts-
+   unreserved.  The odu-ts-number is used to indicate the index of
+   server ODUk channel.
+
+2.5.  Fine Grain OTN Tunnel Data Model Overview
+
+   This document aims to describe the data model for fgOTN tunnel.  The
+   fgOTN tunnel model augments to OTN tunnel
+   [I-D.ietf-ccamp-otn-tunnel-model] with fgOTN-specific parameters,
+   including the bandwidth information and label information.  Figure 2
+   shows the augmentation relationship.
+
+                   +------------------+
+                   |      ietf-te     |
+                   +------------------+
+                             ^
+                             | Augments
+                             |
+                   +-----------------+
+                   | ietf-otn-tunnel |
+                   +-----------------+
+                             ^
+                             | Augments
+                             |
+                  +----------+--------+
+                  | ietf-fgotn-tunnel |
+                  +-------------------+
+
+         Figure 2: Relationship between fgOTN and OTN tunnel model
+
+   It's also worth noting that the fgOTN tunnel provisioning is usually
+   based on the fgOTN topology.  Therefore the fgOTN tunnel model is
+   usually used together with fgOTN topology model specified in this
+   document.  The OTN tunnel model also imports a few type modules,
+   including ietf-te-types and ietf-otn-types.  A new enumeration value
+   prot-fgoduflex in ietf-otn-types should be defined to indicate the
+   fgotn tunnel.
+
+2.6.  Bandwidth Augmentation
+
+   The module augment TE bandwidth information of fgOTN tunnel.
+
+augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology/otn-tnl:otn:
+   +--rw fgoduflex-bandwidth?   string
+
+   The string value fgoduflex-bandwidth is used to indicate the
+   bandwidth of this fgOTN tunnel.
+
+2.7.  Label Augmentation
+
+   The module augments TE label-hop for the explicit route objects
+   included or excluded by the path computation of the primary paths and
+   secondary-paths using the fgts-numbers.  The fgts-numbers is used to
+   specify fgTS information on inter-domain ports of the routing path.
+   We also augment the TE label-hop for the record route of the LSP
+   using the fgts-numbers.
+
+3.  YANG Tree for fgOTN topology
+
+   Figure 3 below shows the tree diagram of the YANG data model defined
+   in module "ietf-fgotn-topology" (Figure 4).
+
+   module: ietf-fgotn-topology
+
+     augment /nw:networks/nw:network/nw:node/nt:termination-point
+               /tet:te:
+       +--rw supported-fgotn-tp?   boolean
+     augment /nw:networks/nw:network/nt:link/tet:te
+               /tet:te-link-attributes/tet:max-link-bandwidth
+               /tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist:
+       +--rw fgotn-bandwidth?   string
+     augment /nw:networks/nw:network/nt:link/tet:te
+               /tet:te-link-attributes/tet:unreserved-bandwidth
+               /tet:te-bandwidth/otnt:otn-bandwidth:
+       +--rw fgotnlist* [odu-type odu-ts-number]
+          +--rw odu-type           identityref
+          +--rw odu-ts-number      uint16
+          +--rw fgotn-bandwidth?   string
+     augment /nw:networks/tet:te/tet:templates/tet:link-template
+               /tet:te-link-attributes/tet:label-restrictions
+               /tet:label-restriction/otnt:otn-label-range:
+       +--rw fgts-range* [odu-type odu-ts-number]
+          +--rw odu-type           identityref
+          +--rw odu-ts-number      string
+          +--rw fgts-reserved?     string
+          +--rw fgts-unreserved?   string
+
+                                  Figure 3
+
+4.  YANG Data Model for fgOTN topology
+
+   <CODE BEGINS> file "ietf-fgotn-topology@2024-07-07.yang"
+    module ietf-fgotn-topology {
+      /* TODO: FIXME */
+     yang-version 1.1;
+
+     namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-topology";
+     prefix "fgotnt";
+
+     import ietf-network {
+       prefix "nw";
+       reference
+         "RFC8345: A YANG Data Model for Network Topologies";
+     }
+
+     import ietf-network-topology {
+       prefix "nt";
+       reference
+         "RFC8345: A YANG Data Model for Network Topologies";
+     }
+
+     import ietf-te-topology {
+       prefix "tet";
+       reference
+         "RFC 8795: YANG Data Model for Traffic Engineering (TE)
+                    Topologies";
+     }
+
+     import ietf-layer1-types {
+       prefix "l1-types";
+       reference
+         "RFC YYYY: A YANG Data Model for Layer 1 Types";
+     }
+
+     /* Note: The RFC Editor will replace YYYY with the number assigned
+        to the RFC once draft-ietf-ccamp-layer1-types becomes an RFC.*/
+
+     import ietf-otn-topology {
+       prefix "otnt";
+       reference
+         "RFC ZZZZ: A YANG Data Model for Optical Transport Network
+                    Topology";
+     }
+
+     /* Note: The RFC Editor will replace ZZZZ with the number assigned
+        to the RFC once draft-ietf-ccamp-otn-topo-yang becomes an RFC.*/
+
+     organization
+       "Internet Engineering Task Force (IETF) CCAMP WG";
+     contact
+       "
+         ID-draft editor:
+           Yanxia Tan (tanyx11@chinaunicom.cn);
+           Yanlei Zheng (zhengyanlei@chinaunicom.cn);
+           Italo Busi (italo.busi@huawei.com);
+           Chaode Yu (yuchaode@huawei.com);
+       ";
+
+     description
+       "This module defines a YANG data model for fgOTN-specific
+        extension based on existing network topology models. The model
+        fully conforms to the Network Management Datastore Architecture
+        (NMDA).
+
+        Copyright (c) 2024 IETF Trust and the persons
+        identified as authors of the code.  All rights reserved.
+
+        Redistribution and use in source and binary forms, with or
+        without modification, is permitted pursuant to, and subject
+        to the license terms contained in, the Revised BSD License
+        set forth in Section 4.c of the IETF Trust's Legal Provisions
+        Relating to IETF Documents
+        (https://trustee.ietf.org/license-info).
+
+        This version of this YANG module is part of RFC XXXX; see
+        the RFC itself for full legal notices.";
+
+     // RFC Ed.: replace XXXX with actual RFC number and remove this
+     // note.
+     // RFC Ed.: update the date below with the date of RFC publication
+     // and remove this note.
+
+     revision 2024-07-07 {
+       description
+         "initial version";
+       reference
+         "RFC XXXX: YANG Data Models for fine grain Optical Transport
+                    Network";
+     }
+
+     augment "/nw:networks/nw:network/nw:node/nt:termination-point" +
+             "/tet:te" {
+       description
+         "specific augmentation of fgOTN termination point";
+       leaf supported-fgotn-tp {
+         type boolean;
+         description
+           "It is used to indicate whether the TP can support fgOTN
+            switching capability.";
+       }
+     }
+
+     augment "/nw:networks/nw:network/nt:link/tet:te" +
+             "/tet:te-link-attributes/tet:max-link-bandwidth" +
+             "/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist" {
+       description
+         "specific augmentation of fgOTN link on maximum link
+         bandwidth";
+       leaf fgotn-bandwidth {
+         type string;
+         description
+           "It is used to indicate how much of the bandwidth has been
+            allocated for the usage of fgOTN.";
+       }
+     }
+
+     augment "/nw:networks/nw:network/nt:link/tet:te" +
+             "/tet:te-link-attributes/tet:unreserved-bandwidth" +
+             "/tet:te-bandwidth/otnt:otn-bandwidth" {
+       description
+         "specific augmentation of fgOTN link on unreserved link
+         bandwidth";
+       list fgotnlist {
+         key "odu-type odu-ts-number";
+         description
+           "This structure is used to describe the unsreserved
+            bandwidth of fgOTN in the server ODUk";
+         leaf odu-type {
+           type identityref {
+             base l1-types:odu-type;
+           }
+           description
+             "The granularity of server ODUk";
+         }
+
+         leaf odu-ts-number {
+           type uint16;
+           description
+             "The index of server ODUk channel";
+         }
+
+         leaf fgotn-bandwidth {
+           type string;
+           description
+             "The unsreserved bandwidth of fgOTN in this server ODUk";
+         }
+       }
+     }
+
+     augment "/nw:networks/tet:te/tet:templates/tet:link-template"+
+             "/tet:te-link-attributes/tet:label-restrictions" +
+             "/tet:label-restriction/otnt:otn-label-range" {
+       description
+         "specific augmentation of fgOTN label";
+       list fgts-range {
+         key "odu-type odu-ts-number";
+         description
+           "This structure is used to describe the availability of
+            fgOTN timeslot in the server ODUk";
+         leaf odu-type {
+           type identityref {
+             base l1-types:odu-type;
+           }
+           description
+             "The granularity of server ODUk";
+         }
+
+         leaf odu-ts-number {
+           type string;
+           description
+             "The index of server ODUk channel";
+         }
+
+         leaf fgts-reserved {
+           type string;
+           description
+             "The reserved fgOTN timeslot in this server ODUk";
+         }
+
+         leaf fgts-unreserved {
+           type string;
+           description
+             "The unreserved fgOTN timeslot in this server ODUk";
+         }
+       }
+     }
+   }
+   <CODE ENDS>
+
+                    Figure 4: fgOTN topology YANG module
+
+5.  YANG Tree for fgOTN tunnel
+
+   Figure 5 below shows the tree diagram of the YANG data model defined
+   in module "ietf-fgotn-tunnel" (Figure 6).
+
+   module: ietf-fgotn-tunnel
+
+     augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
+               /otn-tnl:otn:
+       +--rw fgoduflex-bandwidth?   string
+     augment /te:te/te:tunnels/te:tunnel/te:primary-paths
+               /te:primary-path/te:explicit-route-objects
+               /te:route-object-include-exclude/te:type/te:label
+               /te:label-hop/te:te-label/te:technology/otn-tnl:otn
+               /otn-tnl:otn-label:
+       +--rw fgts-numbers?   uint16
+     augment /te:te/te:tunnels/te:tunnel/te:primary-paths
+               /te:primary-path/te:primary-reverse-path
+               /te:explicit-route-objects
+               /te:route-object-include-exclude/te:type/te:label
+               /te:label-hop/te:te-label/te:technology/otn-tnl:otn
+               /otn-tnl:otn-label:
+       +--rw fgts-numbers?   uint16
+     augment /te:te/te:tunnels/te:tunnel/te:secondary-paths
+               /te:secondary-path/te:explicit-route-objects
+               /te:route-object-include-exclude/te:type/te:label
+               /te:label-hop/te:te-label/te:technology/otn-tnl:otn
+               /otn-tnl:otn-label:
+       +--rw fgts-numbers?   uint16
+     augment /te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths
+               /te:secondary-reverse-path/te:explicit-route-objects
+               /te:route-object-include-exclude/te:type/te:label
+               /te:label-hop/te:te-label/te:technology/otn-tnl:otn
+               /otn-tnl:otn-label:
+       +--rw fgts-numbers?   uint16
+     augment /te:te/te:lsps/te:lsp/te:lsp-actual-route-information
+               /te:lsp-actual-route-information/te:type/te:label
+               /te:label-hop/te:te-label/te:technology/otn-tnl:otn
+               /otn-tnl:otn-label:
+       +--ro fgts-numbers?   uint16
+
+                                  Figure 5
+
+6.  YANG Data Model for fgOTN tunnel
+
+   <CODE BEGINS> file "ietf-fgotn-tunnel@2024-07-07.yang"
+   module ietf-fgotn-tunnel {
+     /* TODO: FIXME */
+     yang-version 1.1;
+
+     namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-tunnel";
+     prefix "fgotn-tnl";
+
+     import ietf-te {
+       prefix "te";
+       reference
+         "RFC KKKK: A YANG Data Model for Traffic Engineering Tunnels,
+                    Label Switched Paths and Interfaces";
+     }
+
+     /* Note: The RFC Editor will replace KKKK with the number assigned
+        to the RFC once draft-ietf-teas-yang-te becomes an RFC.*/
+
+     import ietf-otn-tunnel {
+       prefix "otn-tnl";
+       reference  "RFC JJJJ: OTN Tunnel YANG Model";
+     }
+
+     /* Note: The RFC Editor will replace JJJJ with the number assigned
+        to the RFC once draft-ietf-ccamp-otn-tunnel-model becomes
+        an RFC.*/
+
+     organization
+       "Internet Engineering Task Force (IETF) CCAMP WG";
+     contact
+       "
+         ID-draft editor:
+           Yanxia Tan (tanyx11@chinaunicom.cn);
+           Yanlei Zheng (zhengyanlei@chinaunicom.cn);
+           Italo Busi (italo.busi@huawei.com);
+           Chaode Yu (yuchaode@huawei.com);
+       ";
+
+     description
+       "This module defines a YANG data model for fgOTN-specific
+        extension based on existing network topology models. The model
+        fully conforms to the Network Management Datastore Architecture
+        (NMDA).
+
+        Copyright (c) 2024 IETF Trust and the persons
+        identified as authors of the code.  All rights reserved.
+
+        Redistribution and use in source and binary forms, with or
+        without modification, is permitted pursuant to, and subject
+        to the license terms contained in, the Revised BSD License
+        set forth in Section 4.c of the IETF Trust's Legal Provisions
+        Relating to IETF Documents
+        (https://trustee.ietf.org/license-info).
+
+        This version of this YANG module is part of RFC XXXX; see
+        the RFC itself for full legal notices.";
+
+     // RFC Ed.: replace XXXX with actual RFC number and remove this
+     // note.
+     // RFC Ed.: update the date below with the date of RFC publication
+     // and remove this note.
+
+     revision 2024-07-07 {
+       description
+         "initial version";
+       reference
+         "RFC XXXX: YANG Data Models for fine grain Optical Transport
+                    Network";
+     }
+
+     /**
+     augment "/te:te/te:tunnels/te:tunnel/te:primary-paths" +
+             "/te:primary-path/te:te-bandwidth/te:technology" +
+             "/otn-tnl:otn/otn-tnl:otn-bandwidth" {
+       leaf fgoduflex-bandwidth {
+         type string;
+         description
+           "The bandwidth of this fgOTN tunnel";
+       }
+     }
+   **/
+
+     augment "/te:te/te:tunnels/te:tunnel/"
+           + "te:te-bandwidth/te:technology/otn-tnl:otn" {
+       description
+         "augmentation of fgOTN tunnel on bandwidth structure";
+       leaf fgoduflex-bandwidth {
+         type string;
+         description
+           "Augment TE bandwidth of the fgOTN tunnel";
+       }
+     }
+
+     augment "/te:te/te:tunnels/te:tunnel/"
+           + "te:primary-paths/te:primary-path/"
+           + "te:explicit-route-objects/"
+           + "te:route-object-include-exclude/te:type/te:label/"
+           + "te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
+             "/otn-tnl:otn-label" {
+       description
+         "augmentation of fgOTN label";
+       leaf fgts-numbers {
+         type uint16;
+         description
+           "Augment fgOTN timeslot information of this label hop";
+       }
+     }
+
+     augment "/te:te/te:tunnels/te:tunnel/te:primary-paths" +
+             "/te:primary-path/te:primary-reverse-path" +
+             "/te:explicit-route-objects" +
+             "/te:route-object-include-exclude/te:type/te:label" +
+             "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
+             "/otn-tnl:otn-label" {
+       description
+         "augmentation of fgOTN label";
+       leaf fgts-numbers {
+         type uint16;
+         description
+           "Augment fgOTN timeslot information of this label hop";
+       }
+     }
+
+     augment "/te:te/te:tunnels/te:tunnel/te:secondary-paths" +
+             "/te:secondary-path/te:explicit-route-objects" +
+             "/te:route-object-include-exclude/te:type/te:label" +
+             "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
+             "/otn-tnl:otn-label" {
+       description
+         "augmentation of fgOTN label";
+       leaf fgts-numbers {
+         type uint16;
+         description
+           "fgOTN timeslot information of this label hop";
+       }
+     }
+
+     augment "/te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths" +
+             "/te:secondary-reverse-path/te:explicit-route-objects" +
+             "/te:route-object-include-exclude/te:type/te:label" +
+             "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
+             "/otn-tnl:otn-label" {
+       description
+         "augmentation of fgOTN label";
+       leaf fgts-numbers {
+         type uint16;
+         description
+           "fgOTN timeslot information of this label hop";
+       }
+     }
+
+     augment "/te:te/te:lsps/te:lsp/te:lsp-actual-route-information" +
+             "/te:lsp-actual-route-information/te:type/te:label" +
+             "/te:label-hop/te:te-label/te:technology/otn-tnl:otn" +
+             "/otn-tnl:otn-label" {
+       description
+         "augmentation of fgOTN label";
+       leaf fgts-numbers {
+         type uint16;
+         description
+           "fgOTN timeslot information of this label hop";
+       }
+     }
+   }
+   <CODE ENDS>
+
+                     Figure 6: fgOTN tunnel YANG module
+
+7.  Manageability Considerations
+
+   <Add any manageability considerations>
+
+8.  Security Considerations
+
+   <Add any security considerations>
+
+9.  IANA Considerations
+
+   <Add any IANA considerations>
+
+10.  References
+
+10.1.  Normative References
+
+   [I-D.ietf-ccamp-layer1-types]
+              Zheng, H. and I. Busi, "Common YANG Data Types for Layer 1
+              Networks", Work in Progress, Internet-Draft, draft-ietf-
+              ccamp-layer1-types-18, 23 February 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-
+              layer1-types-18>.
+
+   [I-D.ietf-ccamp-otn-topo-yang]
+              Zheng, H., Busi, I., Liu, X., Belotti, S., and O. G. de
+              Dios, "A YANG Data Model for Optical Transport Network
+              Topology", Work in Progress, Internet-Draft, draft-ietf-
+              ccamp-otn-topo-yang-19, 25 June 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-
+              otn-topo-yang-19>.
+
+   [I-D.ietf-ccamp-otn-tunnel-model]
+              Zheng, H., Busi, I., Belotti, S., Lopez, V., and Y. Xu,
+              "OTN Tunnel YANG Model", Work in Progress, Internet-Draft,
+              draft-ietf-ccamp-otn-tunnel-model-21, 6 June 2024,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-
+              otn-tunnel-model-21>.
+
+   [I-D.ietf-teas-yang-te]
+              Saad, T., Gandhi, R., Liu, X., Beeram, V. P., and I.
+              Bryskin, "A YANG Data Model for Traffic Engineering
+              Tunnels, Label Switched Paths and Interfaces", Work in
+              Progress, Internet-Draft, draft-ietf-teas-yang-te-36, 2
+              February 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-teas-yang-te-36>.
+
+   [IANA_YANG]
+              IANA, "YANG Parameters", n.d.,
+              <https://www.iana.org/assignments/yang-parameters>.
+
+   [ITU-T_G.709]
+              ITU-T Recommendation G.709, "Interfaces for the optical
+              transport network", ITU-T Recommendation G.709, Amendment
+              3 , March 2024, <https://www.itu.int/rec/T-REC-G.709/>.
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/rfc/rfc2119>.
+
+   [RFC6241]  Enns, R., Ed., Bjorklund, M., Ed., Schoenwaelder, J., Ed.,
+              and A. Bierman, Ed., "Network Configuration Protocol
+              (NETCONF)", RFC 6241, DOI 10.17487/RFC6241, June 2011,
+              <https://www.rfc-editor.org/rfc/rfc6241>.
+
+   [RFC7950]  Bjorklund, M., Ed., "The YANG 1.1 Data Modeling Language",
+              RFC 7950, DOI 10.17487/RFC7950, August 2016,
+              <https://www.rfc-editor.org/rfc/rfc7950>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/rfc/rfc8174>.
+
+   [RFC8340]  Bjorklund, M. and L. Berger, Ed., "YANG Tree Diagrams",
+              BCP 215, RFC 8340, DOI 10.17487/RFC8340, March 2018,
+              <https://www.rfc-editor.org/rfc/rfc8340>.
+
+   [RFC8342]  Bjorklund, M., Schoenwaelder, J., Shafer, P., Watsen, K.,
+              and R. Wilton, "Network Management Datastore Architecture
+              (NMDA)", RFC 8342, DOI 10.17487/RFC8342, March 2018,
+              <https://www.rfc-editor.org/rfc/rfc8342>.
+
+10.2.  Informative References
+
+   [I-D.busi-teas-te-types-update]
+              Busi, I., Guo, A., Liu, X., Saad, T., Gandhi, R., Beeram,
+              V. P., and I. Bryskin, "Updated Common YANG Data Types for
+              Traffic Engineering", Work in Progress, Internet-Draft,
+              draft-busi-teas-te-types-update-02, 4 April 2022,
+              <https://datatracker.ietf.org/doc/html/draft-busi-teas-te-
+              types-update-02>.
+
+   [RFC8345]  Clemm, A., Medved, J., Varga, R., Bahadur, N.,
+              Ananthakrishnan, H., and X. Liu, "A YANG Data Model for
+              Network Topologies", RFC 8345, DOI 10.17487/RFC8345, March
+              2018, <https://www.rfc-editor.org/rfc/rfc8345>.
+
+   [RFC8795]  Liu, X., Bryskin, I., Beeram, V., Saad, T., Shah, H., and
+              O. Gonzalez de Dios, "YANG Data Model for Traffic
+              Engineering (TE) Topologies", RFC 8795,
+              DOI 10.17487/RFC8795, August 2020,
+              <https://www.rfc-editor.org/rfc/rfc8795>.
+
+Appendix A.  Acknowledgments
+
+Contributors
+
+   Chen Li
+   Fiberhome Telecommunication Technologies Co.,LTD
+   Email: lich@fiberhome.com
+
+
+Authors' Addresses
+
+   Yanxia Tan
+   China Unicom
+   Beijing
+   China
+   Email: tanyx11@chinaunicom.cn
+
+
+   Yanlei Zheng
+   China Unicom
+   Beijing
+   China
+   Email: zhengyanlei@chinaunicom.cn
+
+
+   Italo Busi
+   Huawei Technologies
+   Email: italo.busi@huawei.com
+
+
+   Chaode Yu
+   Huawei Technologies
+   China
+   Email: yuchaode@huawei.com
