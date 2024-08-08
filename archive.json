@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-06T00:37:23.438185+00:00",
+  "timestamp": "2024-08-08T00:37:34.026365+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -49,6 +49,23 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOMSanvs6SNH-B",
+      "title": "Typo of the draf title ",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/1",
+      "state": "OPEN",
+      "author": "YuChaode",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The title of current 00 version missed a 'Y' at the beginning.",
+      "createdAt": "2024-08-07T08:41:01Z",
+      "updatedAt": "2024-08-07T08:41:01Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
