@@ -5,13 +5,15 @@
 Common Control and Measurement Plane                              Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 8 February 2025                                         I. Busi
+Expires: 24 April 2025                                           I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
-                                                           7 August 2024
+                                                                 X. Zhao
+                                                                   CAICT
+                                                         21 October 2024
 
 
-        ANG Data Models for fine grain Optical Transport Network
+       YANG Data Models for fine grain Optical Transport Network
                    draft-tan-ccamp-fgotn-yang-latest
 
 Abstract
@@ -55,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 February 2025.
+   This Internet-Draft will expire on 24 April 2025.
 
 Copyright Notice
 
@@ -80,25 +82,29 @@ Table of Contents
      1.4.  Requirements Language
      1.5.  Prefixes in Model Names
      1.6.  Model Tree Diagrams
-   2.  YANG Data Model for fine grain Optical Transport Network
+   2.  Fine grain Optical Transport Network Scenarios Overview
+     2.1.  Private Line Service Provisioning Scenario of fgOTN
+     2.2.  Service Protection Scenario of fgOTN
+     2.3.  Hitless Resizing Scenario of fgOTN
+   3.  YANG Data Model for fine grain Optical Transport Network
            Overview
-     2.1.  Fine Grain OTN Topology Data Model Overview
-     2.2.  Attributes Augmentation
-     2.3.  Bandwidth Augmentation
-     2.4.  Label Augmentation
-     2.5.  Fine Grain OTN Tunnel Data Model Overview
-     2.6.  Bandwidth Augmentation
-     2.7.  Label Augmentation
-   3.  YANG Tree for fgOTN topology
-   4.  YANG Data Model for fgOTN topology
-   5.  YANG Tree for fgOTN tunnel
-   6.  YANG Data Model for fgOTN tunnel
-   7.  Manageability Considerations
-   8.  Security Considerations
-   9.  IANA Considerations
-   10. References
-     10.1.  Normative References
-     10.2.  Informative References
+   4.  Fine Grain OTN Topology Data Model Overview
+     4.1.  Attributes Augmentation
+     4.2.  Bandwidth Augmentation
+     4.3.  Label Augmentation
+   5.  Fine Grain OTN Tunnel Data Model Overview
+     5.1.  Bandwidth Augmentation
+     5.2.  Label Augmentation
+   6.  YANG Tree for fgOTN topology
+   7.  YANG Data Model for fgOTN topology
+   8.  YANG Tree for fgOTN tunnel
+   9.  YANG Data Model for fgOTN tunnel
+   10. Manageability Considerations
+   11. Security Considerations
+   12. IANA Considerations
+   13. References
+     13.1.  Normative References
+     13.2.  Informative References
    Appendix A.  Acknowledgments
    Contributors
    Authors' Addresses
@@ -176,7 +182,7 @@ Table of Contents
 1.3.  Tree Diagram
 
    A simplified graphical representation of the data model is used in
-   Section 3 of this document.  The meaning of the symbols in this
+   Section 6 of this document.  The meaning of the symbols in this
    diagram is defined in [RFC8340].
 
 1.4.  Requirements Language
@@ -226,9 +232,114 @@ Table of Contents
    document are given in subsequent sections as per the syntax defined
    in [RFC8340].
 
-2.  YANG Data Model for fine grain Optical Transport Network Overview
+2.  Fine grain Optical Transport Network Scenarios Overview
 
-2.1.  Fine Grain OTN Topology Data Model Overview
+   FgOTN layer network is a service layer network of the OTN ODU layer
+   network.  In order to provide fgOTN capabilities, this document
+   defines two extension YANG data models augmenting to TE topology and
+   TE tunnel YANG model.  The attributes related to fgOTN are augments
+   from OTN topology data model, and fgOTN topology is not treated as a
+   separate hierarchy.  The fgOTN tunnel is defined as a separate tunnel
+   hierarchy, and new fgOTN tunnels need to be pre-set and created
+   during the service provisioning process.
+
+   The typical scenarios for fgOTN is to provide low bit rate private
+   line or private network services for customers.  Three scenarios that
+   require special consideration are listed based on the characteristics
+   of the fgOTN.
+
+2.1.  Private Line Service Provisioning Scenario of fgOTN
+
+   OTN network will cover a larger scope of networks, it may include the
+   backbone network, metro core, metro aggregation, metro access, and
+   even the OTN CPE in the customers' networks.
+
+   Figure 1 below shows an example of scenario to retrieve server
+   tunnels.  In this example, some small bandwidth fgOTN service are
+   aggregated by the access ring (10G), and then aggregated into a
+   bigger bandwidth in metro ring (100G).  The allocation of TS maybe
+   different in access ring and metro ring.  E.g. there could be 3
+   timeslots allocated in the access ring while there could be 3 ODU2
+   are allocated in the metro ring.
+
+        +-----+
+        |     | \                                 |
+        +-----+  \            Domain 1            |      Domain 2
+           |      \                               |
+           |  10G  \                              |
+           |        \                             |
+        +-----+       +-----+         +-----+     |     +-----+
+        |     | \     |     |---------|     |-----------|     |---------
+        +-----+  \  / +-----+         +-----+           +-----+
+                  \/    |      100G      |                 |    100G
+                  /\    |                |                 |
+        +-----+  /  \ +-----+         +-----+           +-----+
+        |     | /     |     |---------|     |-----------|     |---------
+        +-----+       +-----+         +-----+           +-----+
+           |         /
+           |  10G   /
+           |       /
+        +-----+   /
+        |     |  /
+        +-----+
+
+            Figure 1: The Scenario to Retrieve Server Tunnels
+
+2.2.  Service Protection Scenario of fgOTN
+
+   As described in [ITU-T_G.709], the functional requirements of fgOTN
+   include Support fgODUflex SNCP 1+1 protection.  The protection of
+   fgOTN service should rely on the protection of fgOTN tunnel.  The
+   server should provide all the hops of fgOTN tunnel, if the nodes
+   cannot support fgOTN switching, the fg-ts in the LSP can be empty.
+
+                      +-----+            +-----+
+                 -----|  f  |------------| N-f |-----
+                 |    +-----+            +-----+    |
+                 |                                  |
+              +-----+                            +-----+
+              |  f  |                            |  f  |
+              +-----+                            +-----+
+                 |                                  |
+                 |    +-----+            +-----+    |
+                 -----| N-f |------------|  f  |-----
+                      +-----+            +-----+
+
+                Figure 2: A New Protection Scenario of fgOTN
+
+2.3.  Hitless Resizing Scenario of fgOTN
+
+   [ITU-T_G.709] defines the data plane procedure to support fgODUflex
+   hitless resizing.  The support of management of hitless resizing of
+   fgODUflex needs to be further considered.  Firstly, the range of
+   fgOTN service's Bandwidth on Demand (BoD) cannot exceed its server
+   layer's bandwidth.  Secondly, the client needs to know how many
+   bandwidth of a link is allocated for fgOTN.  From a management point
+   of view, we only need to plan a portion of resources to support
+   fgOTN, without having to allocate all resources for fgOTN to use.  As
+   shown in Figure 3, only resource 1 is planned for fgOTN.
+
+      +--------+                           +-------------+
+      |        |---------------------------|             |
+      |        |  Resource 1               |             |
+      | Source |---------------------------| destination |
+      |  node  |  Resource 2               |    node     |
+      |        |---------------------------|             |
+      +--------+                           +-------------+
+       | | |                                  | | |
+       | | |            +----------+          | | |
+       | | +------------|          |----------+ | |
+       | |   Resource 1 |  Interm  |            | |
+       | +--------------|  ediate  |------------+ |
+       |     Resource 2 |   node   |              |
+       +----------------|          |--------------+
+                        +----------+
+
+                 Figure 3: The Range of fgOTN service's BOD
+
+3.  YANG Data Model for fine grain Optical Transport Network Overview
+
+4.  Fine Grain OTN Topology Data Model Overview
 
    This document aims to describe the data model for fine grain OTN
    topology.  The YANG module presented in this document augments from
@@ -246,7 +357,7 @@ Table of Contents
    fundamental model for [RFC8795].  OTN topology module in
    [I-D.ietf-ccamp-otn-topo-yang] augments from the TE topology YANG
    model defined in [RFC8795].  This work is not directly augmenting
-   [RFC8345].  Figure 1 shows the augmentation relationship.
+   [RFC8345].  Figure 4 shows the augmentation relationship.
 
        +--------------+      +-----------------------+
        | ietf-network |      | ietf-network-topology |
@@ -271,7 +382,7 @@ Table of Contents
                | ietf-fgotn-topology |
                +---------------------+
 
-    Figure 1: Relationship between fgOTN topology and OTN topology model
+    Figure 4: Relationship between fgOTN topology and OTN topology model
 
    The entities, TE attributes and OTN attributes, such as node,
    termination points and links, are still applicable for describing an
@@ -283,7 +394,7 @@ Table of Contents
    [I-D.busi-teas-te-types-update] to support fgOTN encapsulation and
    fgOTN switching.
 
-2.2.  Attributes Augmentation
+4.1.  Attributes Augmentation
 
    There are a few characteristics augmenting to the OTN topology.
 
@@ -300,50 +411,56 @@ Table of Contents
    The boolean value supported-fgodu-tp is used to indicate whether the
    termination point can support fgOTN switching capability.
 
-2.3.  Bandwidth Augmentation
+4.2.  Bandwidth Augmentation
 
    Based on the OTN topology model, we augment the bandwidth information
    of fgOTN, including the max-link-bandwidth and unreserved-bandwidth.
    The augmented parameter fgotn-bandwidth is used to indicate how much
    of the bandwidth has been allocated for the usage of fgOTN.
 
-augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes/tet:max-link-bandwidth/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist:
-   +--rw fgotn-bandwidth?   string
+   augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
+             /tet:max-link-bandwidth/tet:te-bandwidth/otnt:otn-bandwidth
+             /otnt:odulist:
+      +--rw fgotn-bandwidth?   string
 
    The augmented fgotnlist structure is used to describe the unreserved
    TE bandwidth of fgOTN in the server ODUk.  The odu-ts-number is used
    to indicate the index of server ODUk channel.
 
-augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes/tet:unreserved-bandwidth/tet:te-bandwidth/otnt:otn-bandwidth:
-   +--rw fgotnlist* [odu-type odu-ts-number]
-      +--rw odu-type           identityref
-      +--rw odu-ts-number?     uint16
-      +--rw fgotn-bandwidth?   string
+   augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
+             /tet:unreserved-bandwidth/tet:te-bandwidth
+             /otnt:otn-bandwidth:
+      +--rw fgotnlist* [odu-type odu-ts-number]
+         +--rw odu-type           identityref
+         +--rw odu-ts-number?     uint16
+         +--rw fgotn-bandwidth?   string
 
-2.4.  Label Augmentation
+4.3.  Label Augmentation
 
    The model augments the label-restriction list with fgOTN technology
    specific attributes using the otn-label-range-info grouping defined
    in [I-D.ietf-ccamp-layer1-types].
 
-augment /nw:networks/tet:te/tet:templates/tet:link-template/tet:te-link-attributes/tet:label-restrictions/tet:label-restriction/otnt:otn-label-range:
-   +--rw fgts-range* [odu-type odu-ts-number]
-      +--rw odu-type           identityref
-      +--rw odu-ts-number?     string
-      +--rw fgts-reserved?     string
-      +--rw fgts-unreserved?   string
+   augment /nw:networks/tet:te/tet:templates/tet:link-template
+           /tet:te-link-attributes/tet:label-restrictions
+           /tet:label-restriction/otnt:otn-label-range:
+      +--rw fgts-range* [odu-type odu-ts-number]
+         +--rw odu-type           identityref
+         +--rw odu-ts-number?     string
+         +--rw fgts-reserved?     string
+         +--rw fgts-unreserved?   string
 
    The fgts-range list is used to describe the availability of fgOTN
    timeslot in the server ODUk, including the fgts-reserved and fgts-
    unreserved.  The odu-ts-number is used to indicate the index of
    server ODUk channel.
 
-2.5.  Fine Grain OTN Tunnel Data Model Overview
+5.  Fine Grain OTN Tunnel Data Model Overview
 
    This document aims to describe the data model for fgOTN tunnel.  The
    fgOTN tunnel model augments to OTN tunnel
    [I-D.ietf-ccamp-otn-tunnel-model] with fgOTN-specific parameters,
-   including the bandwidth information and label information.  Figure 2
+   including the bandwidth information and label information.  Figure 5
    shows the augmentation relationship.
 
                    +------------------+
@@ -362,7 +479,7 @@ augment /nw:networks/tet:te/tet:templates/tet:link-template/tet:te-link-attribut
                   | ietf-fgotn-tunnel |
                   +-------------------+
 
-         Figure 2: Relationship between fgOTN and OTN tunnel model
+         Figure 5: Relationship between fgOTN and OTN tunnel model
 
    It's also worth noting that the fgOTN tunnel provisioning is usually
    based on the fgOTN topology.  Therefore the fgOTN tunnel model is
@@ -372,17 +489,18 @@ augment /nw:networks/tet:te/tet:templates/tet:link-template/tet:te-link-attribut
    prot-fgoduflex in ietf-otn-types should be defined to indicate the
    fgotn tunnel.
 
-2.6.  Bandwidth Augmentation
+5.1.  Bandwidth Augmentation
 
-   The module augment TE bandwidth information of fgOTN tunnel.
+   The model augment TE bandwidth information of fgOTN tunnel.
 
-augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology/otn-tnl:otn:
-   +--rw fgoduflex-bandwidth?   string
+   augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
+           /otn-tnl:otn:
+      +--rw fgoduflex-bandwidth?   string
 
    The string value fgoduflex-bandwidth is used to indicate the
    bandwidth of this fgOTN tunnel.
 
-2.7.  Label Augmentation
+5.2.  Label Augmentation
 
    The module augments TE label-hop for the explicit route objects
    included or excluded by the path computation of the primary paths and
@@ -391,10 +509,10 @@ augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology/otn-tnl:otn:
    We also augment the TE label-hop for the record route of the LSP
    using the fgts-numbers.
 
-3.  YANG Tree for fgOTN topology
+6.  YANG Tree for fgOTN topology
 
-   Figure 3 below shows the tree diagram of the YANG data model defined
-   in module "ietf-fgotn-topology" (Figure 4).
+   Figure 6 below shows the tree diagram of the YANG data model defined
+   in module "ietf-fgotn-topology" (Figure 7).
 
    module: ietf-fgotn-topology
 
@@ -421,9 +539,9 @@ augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology/otn-tnl:otn:
           +--rw fgts-reserved?     string
           +--rw fgts-unreserved?   string
 
-                                  Figure 3
+                                  Figure 6
 
-4.  YANG Data Model for fgOTN topology
+7.  YANG Data Model for fgOTN topology
 
    <CODE BEGINS> file "ietf-fgotn-topology@2024-07-07.yang"
     module ietf-fgotn-topology {
@@ -613,12 +731,12 @@ augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology/otn-tnl:otn:
    }
    <CODE ENDS>
 
-                    Figure 4: fgOTN topology YANG module
+                    Figure 7: fgOTN topology YANG module
 
-5.  YANG Tree for fgOTN tunnel
+8.  YANG Tree for fgOTN tunnel
 
-   Figure 5 below shows the tree diagram of the YANG data model defined
-   in module "ietf-fgotn-tunnel" (Figure 6).
+   Figure 8 below shows the tree diagram of the YANG data model defined
+   in module "ietf-fgotn-tunnel" (Figure 9).
 
    module: ietf-fgotn-tunnel
 
@@ -656,9 +774,9 @@ augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology/otn-tnl:otn:
                /otn-tnl:otn-label:
        +--ro fgts-numbers?   uint16
 
-                                  Figure 5
+                                  Figure 8
 
-6.  YANG Data Model for fgOTN tunnel
+9.  YANG Data Model for fgOTN tunnel
 
    <CODE BEGINS> file "ietf-fgotn-tunnel@2024-07-07.yang"
    module ietf-fgotn-tunnel {
@@ -826,23 +944,23 @@ augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology/otn-tnl:otn:
    }
    <CODE ENDS>
 
-                     Figure 6: fgOTN tunnel YANG module
+                     Figure 9: fgOTN tunnel YANG module
 
-7.  Manageability Considerations
+10.  Manageability Considerations
 
    <Add any manageability considerations>
 
-8.  Security Considerations
+11.  Security Considerations
 
    <Add any security considerations>
 
-9.  IANA Considerations
+12.  IANA Considerations
 
    <Add any IANA considerations>
 
-10.  References
+13.  References
 
-10.1.  Normative References
+13.1.  Normative References
 
    [I-D.ietf-ccamp-layer1-types]
               Zheng, H. and I. Busi, "Common YANG Data Types for Layer 1
@@ -870,9 +988,9 @@ augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology/otn-tnl:otn:
               Saad, T., Gandhi, R., Liu, X., Beeram, V. P., and I.
               Bryskin, "A YANG Data Model for Traffic Engineering
               Tunnels, Label Switched Paths and Interfaces", Work in
-              Progress, Internet-Draft, draft-ietf-teas-yang-te-36, 2
-              February 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-teas-yang-te-36>.
+              Progress, Internet-Draft, draft-ietf-teas-yang-te-37, 9
+              October 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-teas-yang-te-37>.
 
    [IANA_YANG]
               IANA, "YANG Parameters", n.d.,
@@ -910,7 +1028,7 @@ augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology/otn-tnl:otn:
               (NMDA)", RFC 8342, DOI 10.17487/RFC8342, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8342>.
 
-10.2.  Informative References
+13.2.  Informative References
 
    [I-D.busi-teas-te-types-update]
               Busi, I., Guo, A., Liu, X., Saad, T., Gandhi, R., Beeram,
@@ -965,3 +1083,9 @@ Authors' Addresses
    Huawei Technologies
    China
    Email: yuchaode@huawei.com
+
+
+   Xing Zhao
+   CAICT
+   China
+   Email: zhaoxing@caict.ac.cn
