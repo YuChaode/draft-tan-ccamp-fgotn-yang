@@ -1,5 +1,5 @@
 ---
-title: "ANG Data Models for fine grain Optical Transport Network"
+title: "YANG Data Models for fine grain Optical Transport Network"
 abbrev: "Fine grain OTN YANG"
 category: std
 
@@ -48,6 +48,12 @@ author:
   name: Chaode Yu
   organization: Huawei Technologies
   email: yuchaode@huawei.com
+  country: China
+ -
+  ins: X. Zhao
+  name: Xing Zhao
+  organization: CAICT
+  email: zhaoxing@caict.ac.cn
   country: China
 
 contributor:
@@ -156,9 +162,89 @@ Please remove this note.
 
 The tree diagrams extracted from the module(s) defined in this document are given in subsequent sections as per the syntax defined in {{!RFC8340}}.
 
+# Fine grain Optical Transport Network Scenarios Overview
+
+FgOTN layer network is a service layer network of the OTN ODU layer network. In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to TE topology and TE tunnel YANG model. The attributes related to fgOTN are augments from OTN topology data model, and fgOTN topology is not treated as a separate hierarchy. The fgOTN tunnel is defined as a separate tunnel hierarchy, and new fgOTN tunnels need to be pre-set and created during the service provisioning process.
+
+The typical scenarios for fgOTN is to provide low bit rate private line or private network services for customers. Three scenarios that require special consideration are listed based on the characteristics of the fgOTN.
+
+## Private Line Service Provisioning Scenario of fgOTN
+
+OTN network will cover a larger scope of networks, it may include the backbone network, metro core, metro aggregation, metro access, and even the OTN CPE in the customers' networks.
+
+Figure 1 below shows an example of scenario to retrieve server tunnels. In this example, some small bandwidth fgOTN service are aggregated by the access ring (10G), and then aggregated into a bigger bandwidth in metro ring (100G). The allocation of TS maybe different in access ring and metro ring. E.g. there could be 3 timeslots allocated in the access ring while there could be 3 ODU2 are allocated in the metro ring.
+
+~~~~ ascii-art
+
+      +-----+
+      |     | \                                 |
+      +-----+  \            Domain 1            |      Domain 2
+         |      \                               |
+         |  10G  \                              |
+         |        \                             |
+      +-----+       +-----+         +-----+     |     +-----+
+      |     | \     |     |---------|     |-----------|     |---------
+      +-----+  \  / +-----+         +-----+           +-----+
+                \/    |      100G      |                 |    100G
+                /\    |                |                 |
+      +-----+  /  \ +-----+         +-----+           +-----+
+      |     | /     |     |---------|     |-----------|     |---------
+      +-----+       +-----+         +-----+           +-----+
+         |         /
+         |  10G   /
+         |       /
+      +-----+   /
+      |     |  /
+      +-----+
+
+~~~~
+{: #fig-multiplexing scenario title="The Scenario to Retrieve Server Tunnels"}
+
+## Service Protection Scenario of fgOTN
+
+As described in {{ITU-T_G.709}}, the functional requirements of fgOTN include Support fgODUflex SNCP 1+1 protection. The protection of fgOTN service should rely on the protection of fgOTN tunnel. The server should provide all the hops of fgOTN tunnel, if the nodes cannot support fgOTN switching, the fg-ts in the LSP can be empty.
+
+~~~~ ascii-art
+                   +-----+            +-----+
+              -----|  f  |------------| N-f |-----
+              |    +-----+            +-----+    |
+              |                                  |
+           +-----+                            +-----+
+           |  f  |                            |  f  |
+           +-----+                            +-----+
+              |                                  |
+              |    +-----+            +-----+    |
+              -----| N-f |------------|  f  |-----
+                   +-----+            +-----+
+~~~~
+{: #fig-service protection scenario title="A New Protection Scenario of fgOTN"}
+
+## Hitless Resizing Scenario of fgOTN
+
+{{ITU-T_G.709}} defines the data plane procedure to support fgODUflex hitless resizing. The support of management of hitless resizing of fgODUflex needs to be further considered. Firstly, the range of fgOTN service's Bandwidth on Demand (BoD) cannot exceed its server layer's bandwidth. Secondly, the client needs to know how many bandwidth of a link is allocated for fgOTN. From a management point of view, we only need to plan a portion of resources to support fgOTN, without having to allocate all resources for fgOTN to use. As shown in Figure 3, only resource 1 is planned for fgOTN.
+
+~~~~ ascii-art
+   +--------+                           +-------------+
+   |        |---------------------------|             |
+   |        |  Resource 1               |             |
+   | Source |---------------------------| destination |
+   |  node  |  Resource 2               |    node     |
+   |        |---------------------------|             |
+   +--------+                           +-------------+
+    | | |                                  | | |
+    | | |            +----------+          | | |
+    | | +------------|          |----------+ | |
+    | |   Resource 1 |  Interm  |            | |
+    | +--------------|  ediate  |------------+ |
+    |     Resource 2 |   node   |              |
+    +----------------|          |--------------+
+                     +----------+
+~~~~
+{: #fig-hitless resizing scenario title="The Range of fgOTN service's BOD"}
+
 # YANG Data Model for fine grain Optical Transport Network Overview
 
-## Fine Grain OTN Topology Data Model Overview
+# Fine Grain OTN Topology Data Model Overview
 
 This document aims to describe the data model for fine grain OTN topology. The YANG module presented in this document augments from OTN topology data model, i.e., the ietf-otn-topology, as specified in {{?I-D.ietf-ccamp-otn-topo-yang}}. In section 6 of {{?I-D.ietf-ccamp-otn-topo-yang}}, the guideline for augmenting OTN topology model was provided, and in this draft, we augment the OTN topology model to describe the topology characteristics of fgOTN.
 
@@ -214,14 +300,18 @@ The boolean value supported-fgodu-tp is used to indicate whether the termination
 Based on the OTN topology model, we augment the bandwidth information of fgOTN, including the max-link-bandwidth and unreserved-bandwidth. The augmented parameter fgotn-bandwidth is used to indicate how much of the bandwidth has been allocated for the usage of fgOTN.
 
 ~~~~ ascii-art
-augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes/tet:max-link-bandwidth/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist:
+augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
+          /tet:max-link-bandwidth/tet:te-bandwidth/otnt:otn-bandwidth
+          /otnt:odulist:
    +--rw fgotn-bandwidth?   string
 ~~~~
 
 The augmented fgotnlist structure is used to describe the unreserved TE bandwidth of fgOTN in the server ODUk. The odu-ts-number is used to indicate the index of server ODUk channel.
 
 ~~~~ ascii-art
-augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes/tet:unreserved-bandwidth/tet:te-bandwidth/otnt:otn-bandwidth:
+augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
+          /tet:unreserved-bandwidth/tet:te-bandwidth
+          /otnt:otn-bandwidth:
    +--rw fgotnlist* [odu-type odu-ts-number]
       +--rw odu-type           identityref
       +--rw odu-ts-number?     uint16
@@ -232,7 +322,9 @@ augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes/tet:unrese
 The model augments the label-restriction list with fgOTN technology specific attributes using the otn-label-range-info grouping defined in {{?I-D.ietf-ccamp-layer1-types}}.
 
 ~~~~ ascii-art
-augment /nw:networks/tet:te/tet:templates/tet:link-template/tet:te-link-attributes/tet:label-restrictions/tet:label-restriction/otnt:otn-label-range:
+augment /nw:networks/tet:te/tet:templates/tet:link-template
+        /tet:te-link-attributes/tet:label-restrictions
+        /tet:label-restriction/otnt:otn-label-range:
    +--rw fgts-range* [odu-type odu-ts-number]
       +--rw odu-type           identityref
       +--rw odu-ts-number?     string
@@ -242,7 +334,7 @@ augment /nw:networks/tet:te/tet:templates/tet:link-template/tet:te-link-attribut
 
 The fgts-range list is used to describe the availability of fgOTN timeslot in the server ODUk, including the fgts-reserved and fgts-unreserved. The odu-ts-number is used to indicate the index of server ODUk channel.
 
-## Fine Grain OTN Tunnel Data Model Overview
+# Fine Grain OTN Tunnel Data Model Overview
 
 This document aims to describe the data model for fgOTN tunnel. The fgOTN tunnel model augments to OTN tunnel {{?I-D.ietf-ccamp-otn-tunnel-model}} with fgOTN-specific parameters, including the bandwidth information and label information. {{fig-fgotn-tunnel-relationship}} shows the augmentation relationship.
 
@@ -269,10 +361,11 @@ It's also worth noting that the fgOTN tunnel provisioning is usually based on th
 
 ## Bandwidth Augmentation
 
-The module augment TE bandwidth information of fgOTN tunnel.
+The model augment TE bandwidth information of fgOTN tunnel.
 
 ~~~~ ascii-art
-augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology/otn-tnl:otn:
+augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
+        /otn-tnl:otn:
    +--rw fgoduflex-bandwidth?   string
 ~~~~
 
