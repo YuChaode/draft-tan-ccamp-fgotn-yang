@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-20T00:46:52.183302+00:00",
+  "timestamp": "2024-10-22T00:43:03.161839+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -67,5 +67,34 @@
       "comments": []
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 2,
+      "id": "PR_kwDOMSanvs5_UQUY",
+      "title": "Changes provided by China Unicom for IETF 121",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/2",
+      "state": "MERGED",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-21T12:52:51Z",
+      "updatedAt": "2024-10-21T12:53:20Z",
+      "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "0df7db446507b51dfa165b7dbebb75a84336bf37",
+      "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "ietf-121",
+      "headRefOid": "90cb3903b1392542c8674f9bde3e61e4708ce852",
+      "closedAt": "2024-10-21T12:53:20Z",
+      "mergedAt": "2024-10-21T12:53:20Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "ad55dcc60ed861f7279dfa5b199a90468da00524"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
