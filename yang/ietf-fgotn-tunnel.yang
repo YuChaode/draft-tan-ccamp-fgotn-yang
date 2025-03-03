@@ -59,7 +59,7 @@ module ietf-fgotn-tunnel {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2024-07-07 {
+  revision 2025-02-08 {
     description
       "initial version";
     reference
