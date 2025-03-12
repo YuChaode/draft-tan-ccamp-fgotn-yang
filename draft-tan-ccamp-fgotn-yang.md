@@ -75,7 +75,7 @@ normative:
     author:
       org: ITU-T Recommendation G.709.20
     date: April 2024
-    seriesinfo: ITU-T Recommendation G.709-20, Amendment 3
+    seriesinfo: ITU-T Recommendation G.709.20
     target: https://www.itu.int/rec/T-REC-G.709.20/
   IANA_YANG:
     title: YANG Parameters
