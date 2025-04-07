@@ -97,7 +97,7 @@ Optical Transport Networks (OTN) is a mainstream layer 1 technology for the tran
 
 In the latest version of OTN, ITU-T G.709/Y.1331 Edition 6.5 {{ITU-T_G.709}}, the fine grain OTN (fgOTN) is introduced for the efficient transmission of low rate client signals (e.g., sub-1G).
 
-This document presents the control interface requirements of fgOTN, and defines two YANG data models for fgOTN topology and fgOTN tunnel. The topology model can capture topological and resource-related information pertaining to fgOTN. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels and Label Switched Paths (LSPs).
+This document presents the control interface requirements of fgOTN, and defines two YANG data models for fgOTN topology and fgOTN tunnel. The topology model can capture topological and resource-related information pertaining to fgOTN. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels, Label Switched Paths (LSPs) and interfaces.
 
 Furthermore, this document also imports the generic Layer 1 types defined in {{?I-D.ietf-ccamp-layer1-types}}.
 
@@ -178,37 +178,37 @@ The typical scenarios for fgOTN is to provide low bit rate private line or priva
 ## Retrieve Server Tunnels Scenario of fgOTN
 
 
-Figure 1 below shows an example of scenario to retrieve server tunnels for multi-domain fgOTN service. In this example, some small bandwidth fgOTN service are aggregated by the access ring (10G), and then aggregated into a bigger bandwidth in metro ring (100G). The allocation of TS to support fgOTN switching maybe different in access ring and metro ring. E.g. there could be three ODU0 allocated in the access ring while there could be two ODU2 are allocated in the metro ring to support fgOTN switching. In this example, the server layer ODUk tunnel for fgOTN tunnel is different in access ring and metro ring. The server layer dependency tunnel for fgOTN tunnel will include one ODU0 tunnel and one ODU2 tunnel.
+Figure 1 below shows an example of scenario to retrieve server tunnels for multi-domain fgOTN service. In this example, some small bandwidth fgOTN service are aggregated by the access ring (10G), and then aggregated into a bigger bandwidth in metro ring (100G). The allocation of TS to support fgOTN switching maybe different in access ring and metro ring. E.g. there could be three ODU0 allocated in the access ring while there could be two ODU2 are allocated in the metro ring to support fgOTN switching. In this example, the server layer ODUk tunnel for fgOTN tunnel from node A to node E is ODU0, and the server layer tunnel from node E to node G is ODU2. The server layer tunnel for fgOTN tunnel will include one ODU0 tunnel and one ODU2 tunnel.
 
 ~~~~ ascii-art
 
       +-----+
-      |     | \                                 |
+      |  A  | \                                 |
       +-----+  \            Domain 1            |      Domain 2
          |      \                               |
          |  10G  \                              |
          |        \                             |
       +-----+       +-----+         +-----+     |     +-----+
-      |     | \     |     |---------|     |-----------|     |---------
+      |  B  | \     |  E  |---------|  G  |-----------|  I  |---------
       +-----+  \  / +-----+         +-----+           +-----+
                 \/    |      100G      |                 |    100G
                 /\    |                |                 |
       +-----+  /  \ +-----+         +-----+           +-----+
-      |     | /     |     |---------|     |-----------|     |---------
+      |  C  | /     |  F  |---------|  H  |-----------|  J  |---------
       +-----+       +-----+         +-----+           +-----+
          |         /
          |  10G   /
          |       /
       +-----+   /
-      |     |  /
+      |  D  |  /
       +-----+
 
 ~~~~
 {: #fig-multiplexing scenario title="The Scenario to Retrieve Server Tunnels"}
 
-## Service Protection Scenario of fgOTN
+## Multi-layer Path Splicing Scenario of fgOTN
 
-As described in {{ITU-T_G.709}}, the functional requirements of fgOTN include support fgODUflex SNCP 1+1 protection. The protection of fgOTN service should rely on the protection of fgOTN tunnel. Not all nodes in the operator network support fgOTN, as shown in figure 2, node 5 and node 6 do not support fgOTN. To present the end-to-end primary-path and secondary-path of the services on the client side, it is necessary to complete the end-to-end path splicing based on the the ODU tunnel information associated with the fgotn tunnel.
+Not all nodes in the operator network support fgOTN, as shown in figure 2, node 5 and node 6 do not support fgOTN. To present the end-to-end primary-path and secondary-path of the services on the client side, it is necessary to complete the end-to-end path splicing based on the the ODU tunnel information associated with the fgotn tunnel.
 
 ~~~~ ascii-art
                    +-----+            +-----+
@@ -229,7 +229,13 @@ As described in {{ITU-T_G.709}}, the functional requirements of fgOTN include su
 
 ## Hitless Resizing Scenario of fgOTN
 
-{{ITU-T_G.709}} defines the data plane procedure to support fgODUflex hitless resizing. The support of management of hitless resizing of fgODUflex needs to be carefully considered. Firstly, the range of fgOTN service's Bandwidth on Demand (BoD) cannot exceed its server layer's bandwidth. Secondly, the client needs to know how many bandwidth of a link is allocated for fgOTN. During the hitless resizing process, it is necessary to reserve or mark the corresponding bandwidth resources first, and then trigger the the resizing actions. Thirdly, cross domain hitless resizing should be supported. In the case of hitless resizing within a single domain, the "explicit route object" structure is not required. However, for cross domain hitless resizing scenario, it is necessary to specify the ODUk TS and fgts numbers information on the ports of cross domain nodes in "explicit route objects" structure. For example, node 2 and node 3 in Figure 3. When there are multiple cross domain fgOTN service hitless resizing, the MDSC coordinator needs to issue the service resizing instructions to the domain controllers where the service source and destination are located separately.
+{{ITU-T_G.709}} defines the data plane procedure to support fgODUflex hitless resizing. The support of management of hitless resizing of fgODUflex needs to be carefully considered.
+
+The range of fgOTN service's Bandwidth on Demand (BoD) cannot exceed its server layer's bandwidth.
+
+The client needs to know how many bandwidth of a link is allocated for fgOTN. During the hitless resizing process, it is necessary to reserve or mark the corresponding bandwidth resources first, and then trigger the the resizing actions.
+
+Multi-domain hitless resizing should be supported. In the case of hitless resizing within a single domain, the "explicit route object" structure is not required. However, for multi-domain hitless resizing scenario, it is necessary to specify the ODUk TS and fgts numbers information on the ports of cross domain nodes in "explicit route objects" structure. For example, node 2 and node 3 in Figure 3. When there are multiple cross domain fgOTN service hitless resizing, the MDSC coordinator needs to issue the service resizing instructions to the domain controllers where the service source and destination are located separately.
 
 ~~~~ ascii-art
 
@@ -295,7 +301,7 @@ Common types, identities and groupings defined in {{?I-D.ietf-ccamp-layer1-types
 
 The entities, TE attributes and OTN attributes, such as nodes, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information. At the same time, it is necessary to extend the encoding and switching-capability enumeration values in {{?I-D.busi-teas-te-types-update}} to identify that the current Tunnel Termination Point (TTP) is a termination point of an fgOTN tunnel.
 
-## Node Augmentation
+## Termination Point Augmentation
 
 There are a few characteristics augmenting to the OTN topology.
 
@@ -410,7 +416,7 @@ artwork-name="ietf-fgotn-topology.tree"}
 {::include ./yang/ietf-fgotn-topology.yang}
 ~~~~
 {: #fgotn-topology-yang title="fgOTN topology YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2025-02-08.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2025-04-08.yang"}
 
 
 # YANG Tree for fgOTN tunnel
@@ -429,7 +435,7 @@ artwork-name="ietf-fgotn-tunnel.tree"}
 {::include ./yang/ietf-fgotn-tunnel.yang}
 ~~~~
 {: #fgotn-tunnel-yang title="fgOTN tunnel YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2024-07-07.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2025-04-08.yang"}
 
 # Manageability Considerations
 
