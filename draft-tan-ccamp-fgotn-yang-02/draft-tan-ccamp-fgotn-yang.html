@@ -11,24 +11,24 @@
 <meta content="Chaode Yu" name="author">
 <meta content="Xing Zhao" name="author">
 <meta content="
-       This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1G client signals in transport network. 
+       This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1Gbit/s client signals in transport network. 
     " name="description">
-<meta content="xml2rfc 3.23.2" name="generator">
+<meta content="xml2rfc 3.28.1" name="generator">
 <meta content="next generation" name="keyword">
 <meta content="unicorn" name="keyword">
 <meta content="sparkling distributed ledger" name="keyword">
 <meta content="draft-tan-ccamp-fgotn-yang-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.23.2
-    Python 3.12.7
+  xml2rfc 3.28.1
+    Python 3.12.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
-    Jinja2 3.1.4
-    lxml 4.9.4
-    platformdirs 4.3.6
-    pycountry 22.3.5
-    PyYAML 6.0.1
+    Jinja2 3.1.6
+    lxml 5.3.0
+    platformdirs 4.3.7
+    pycountry 24.6.1
+    PyYAML 6.0.2
     requests 2.32.3
     setuptools 70.3.0
     wcwidth 0.2.13
@@ -167,31 +167,6 @@
 }
 
 @font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-vietnamese.woff2') format('woff2');
-  unicode-range: U+0102-0103, U+0110-0111, U+1EA0-1EF9, U+20AB;
-}
-@font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-@font-face {
-  font-family: 'Cabin Condensed';
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: local('Cabin Condensed SemiBold'), local('CabinCondensed-SemiBold'), url('https://martinthomson.github.io/rfc-css/fonts/cabincondensed-semibold-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-
-@font-face {
   font-family: 'Oxygen Mono';
   font-style: normal;
   font-weight: 400;
@@ -208,6 +183,77 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: italic;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-italic-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic-ext.woff2') format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-cyrillic.woff2') format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin-ext.woff2') format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: 'Sofia Sans Semi Condensed';
+  font-style: normal;
+  font-weight: 1 1000;
+  src: url('https://martinthomson.github.io/rfc-css/fonts/sofiasanssemicondensed-regular-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
 :root {
   color-scheme: light dark;
   --background-color: #fff;
@@ -220,6 +266,7 @@
   --pilcrow-strong: #bbb;
   --small-font-size: 14.5px;
   --font-mono: 'Oxygen Mono', monospace;
+  --font-title: "Sofia Sans Semi Condensed", sans-serif;
   scrollbar-color: #bbb #eee;
 }
 body {
@@ -237,9 +284,15 @@ body {
 }
 
 /* headings */
+section {
+  clear: both;
+}
+.section-number {
+  padding-right: 0.5em;
+}
 h1, h2, h3, h4, h5, h6 {
-  font-family: "Cabin Condensed", sans-serif;
-  font-weight: 600;
+  font-family: var(--font-title);
+  font-weight: 680;
   margin: 0.8em 0 0.3em;
   font-size-adjust: 0.5;
   color: var(--title-color);
@@ -268,6 +321,7 @@ h4, h5, h6 {
 /* general structure */
 .author {
   padding-bottom: 0.3em;
+  vertical-align: top;
 }
 #abstract+p {
   font-size: 18px;
@@ -345,25 +399,26 @@ svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
 ol, ul {
   padding: 0;
   margin: 0 0 0.5em 2em;
-}
-:is(ol, ul) :is(ol, ul) {
-  margin-left: 1em;
+  & :is(ol, ul) {
+    margin-left: 1em;
+  }
 }
 li {
   margin: 0 0 0.25em 0;
 }
-.ulCompact li {
-  margin: 0;
-}
 ul.empty, .ulEmpty {
   list-style-type: none;
-}
-ul.empty li, .ulEmpty li {
-  margin-top: 0.5em;
+  & li {
+    margin-top: 0.5em;
+  }
 }
 :is(ul, ol).compact, .ulCompact, .olCompact {
-  line-height: 1;
   margin: 0 0 0 2em;
+  & li {
+    margin: 0;
+    & :first-child { margin-top: 0; }
+    & :last-child { margin-bottom: 0; }
+  }
 }
 
 /* definition lists */
@@ -371,38 +426,39 @@ dl {
   clear: left;
   --indent: 3ch;
   /* --indent: attr(indent ch); not supported in any browser, but we can dream */
+  &.olPercent {
+    --indent: 5ch;
+    & > dt {
+      min-width: calc(var(--indent) - 2ch);
+    }
+  }
+  &.olPercent > dt {
+    float: none;
+  }
+
+  dl > dd > & {
+    margin-top: 0.5em;
+    margin-bottom: 0;
+  }
 }
-dl.olPercent {
-  --indent: 5ch;
-}
-dl > dt {
+dl:not(.dlNewline) > dt {
   float: left;
   margin-right: 2ch;
   min-width: 8ch;
-}
-dl.dlNewline > dt {
-  float: none;
 }
 dl > dd {
   margin-bottom: .8em;
   margin-left: var(--indent) !important; /* stupid element overrides */
   min-height: 2ex;
 }
-dl.olPercent > dt {
-  min-width: calc(var(--indent) - 2ch);
-}
 :is(dl.compact, .dlCompact) > dd {
   margin-bottom: 0;
-}
-:is(dl.compact, .dlCompact) > dd > :is(:first-child, .break:first-child + *) {
-  margin-top: 0;
-}
-:is(dl.compact, .dlCompact) > dd > :is(:last-child) {
-  margin-bottom: 0;
-}
-dl > dd > dl {
-  margin-top: 0.5em;
-  margin-bottom: 0;
+  & > :is(:first-child, .break:first-child + *) {
+    margin-top: 0;
+  }
+  & > :is(:last-child) {
+    margin-bottom: 0;
+  }
 }
 :is(dd, span).break {
   display: none;
@@ -466,6 +522,7 @@ figcaption, caption {
   font-style: italic;
   margin: 0.5em 1.5em;
   text-align: left;
+  caption-side: bottom;
 }
 @media screen {
   /* Auto-collapse boilerplate. */
@@ -483,7 +540,11 @@ figcaption, caption {
   }
   pre, svg {
     display: inline-block;
-    overflow-x: auto;
+    /* In the horizontal direction, sometimes people make over-sized figures.
+       Scrollbars for those is therefore necessary: auto adds them as necessary..
+       In the vertical direction, the line-height can combine with the font
+       asender/descender height to produce scrollbars: hidden avoids that. */
+    overflow: auto hidden;
   }
   pre {
     max-width: 100%;
@@ -520,6 +581,7 @@ cite {
 
 /* tables */
 table {
+  width: auto;
   max-width: 100%;
   margin: 0 0 1em;
   border-collapse: collapse;
@@ -534,6 +596,16 @@ table.center {
 table.left {
   margin-right: auto;
 }
+table .text-left {
+  text-align: left;
+}
+table .text-center {
+  text-align: center;
+}
+table .text-right {
+  text-align: right;
+}
+
 thead, tbody {
   border: 1px solid var(--line-color);
 }
@@ -564,9 +636,11 @@ a.pilcrow {
   margin-left: 3px;
   opacity: 0.2;
   user-select: none;
+  &[href] {
+    color: var(--pilcrow-weak);
+    &:hover { text-decoration: none; }
+  }
 }
-a.pilcrow[href] { color: var(--pilcrow-weak); }
-a.pilcrow[href]:hover { text-decoration: none; }
 @media not print {
   :hover > a.pilcrow {
     opacity: 1;
@@ -606,26 +680,28 @@ sub, sup {
   font-size: var(--small-font-size);
   line-height: 18px;
   --identifier-width: 15ch;
-}
-#identifiers dt {
-  width: var(--identifier-width);
-  min-width: var(--identifier-width);
-  clear: left;
-  float: left;
-  text-align: right;
-  margin-right: 1ch;
-}
-#identifiers dd {
-  margin: 0;
-  margin-left: calc(1em + var(--identifier-width)) !important;
-  min-width: 5em;
-}
-#identifiers .authors .author {
-  display: inline-block;
-  margin-right: 1.5em;
-}
-#identifiers .authors .org {
-  font-style: italic;
+  & dt {
+    width: var(--identifier-width);
+    min-width: var(--identifier-width);
+    clear: left;
+    float: left;
+    text-align: right;
+    margin-right: 1ch;
+  }
+  & dd {
+    margin: 0;
+    margin-left: calc(1em + var(--identifier-width)) !important;
+    min-width: 5em;
+  }
+  & .authors {
+    & .author {
+      display: inline-block;
+      margin-right: 1.5em;
+    }
+    & .org {
+      font-style: italic;
+    }
+  }
 }
 
 /* The prepared/rendered info at the very bottom of the page */
@@ -636,9 +712,6 @@ sub, sup {
   margin-top: 2em;
 }
 .docInfo .prepared {
-  float: left;
-}
-.docInfo .prepared {
   float: right;
 }
 
@@ -646,47 +719,48 @@ sub, sup {
 #toc {
   padding: 0.75em 0 2em 0;
   margin-bottom: 1em;
-}
-#toc nav ul {
-  margin: 0 0.5em 0 0;
-  padding: 0;
-  list-style: none;
-}
-#toc nav li {
-  line-height: 1.3em;
-  margin: 2px 0;
-  padding-left: 1.2em;
-  text-indent: -1.2em;
-}
-#toc a.xref {
-  white-space: normal;
-}
-/* references */
-.references dt {
-  text-align: right;
-  font-weight: bold;
-  min-width: 10ch;
-  margin-right: 1.5ch;
-}
-.references dt:target::before {
-  content: "⇒";
-  width: 15px;
-  margin: 0 10px 0 -25px;
-}
-.references dd {
-  margin-left: 12ch !important;
-  overflow: auto;
+
+  & nav {
+    & ul {
+      margin: 0 0.5em 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    & li {
+      line-height: 1.3em;
+      margin: 2px 0;
+      padding-left: 1.2em;
+      text-indent: -1.2em;
+    }
+  }
+  & a.xref {
+    white-space: normal;
+  }
 }
 
-.refInstance {
-  margin-bottom: 1.25em;
+.references {
+  & > dt {
+    text-align: right;
+    font-weight: bold;
+    min-width: 10ch;
+    margin-right: 1.5ch;
+    &:target::before {
+      content: "⇒";
+      margin: 0 10px 0 -25px;
+    }
+  }
+  & > dd {
+    margin-left: 12ch !important;
+    overflow: visible;
+    & .refInstance {
+      margin-bottom: 0.8em;
+    }
+    & .ascii {
+      margin-bottom: 0.25em;
+    }
+  }
 }
 
-.references .ascii {
-  margin-bottom: 0.25em;
-}
-
-/* index */
 #rfc\.index\.index + ul {
   margin-left: 0;
 }
@@ -694,21 +768,33 @@ sub, sup {
 /* authors */
 address.vcard {
   font-style: normal;
-  margin: 1em 0;
+  max-width: 20em;
+  margin: 1em auto 1em 0;
+
+  & .nameRole {
+    font-weight: 700;
+    margin-left: 0;
+  }
+  & .label {
+    margin: 0.5em 0;
+  }
+  & .type {
+    display: none;
+  }
+  & .alternative-contact {
+    margin: 0.5em 0 0.25em 0;
+  }
+  & .non-ascii {
+    margin: 0 0 0 2em;
+  }
+  & div.left {
+    text-align: left;
+  }
+  & div.right {
+    text-align: right;
+  }
 }
-address.vcard .nameRole {
-  font-weight: 700;
-  margin-left: 0;
-}
-address.vcard .label {
-  margin: 0.5em 0;
-}
-address.vcard .type {
-  display: none;
-}
-.alternative-contact {
-  margin: 1.5em 0 1em;
-}
+
 hr.addr {
   border-top: 1px dashed;
   margin: 0;
@@ -730,6 +816,7 @@ hr.addr {
   }
 }
 
+/* Comments */
 .rfcEditorRemove p:first-of-type {
   font-style: italic;
 }
@@ -740,7 +827,31 @@ hr.addr {
 .crefSource {
   font-style: italic;
 }
-/* alternative layout for smaller screens */
+
+@media screen {
+  #toc nav {
+    font-family: var(--font-title);
+    font-weight: 360;
+    & > ul { margin-bottom: 2em; }
+    & ul {
+      margin: 0 0 0 4px;
+      & :is(p, li) {
+        margin: 2px 0;
+      }
+    }
+  }
+  #toc a.toplink {
+    float: right;
+  }
+}
+@media not screen {
+  #toc a.toplink {
+    display: none;
+  }
+}
+
+
+/* TOC layout for smaller screens */
 @media screen and (max-width: 929px) {
   #toc {
     position: fixed;
@@ -751,9 +862,6 @@ hr.addr {
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
-  }
-  #toc.active {
-      opacity: 1;
   }
   #toc h2 {
     margin: 0;
@@ -766,17 +874,17 @@ hr.addr {
     background-color: #444;
     color: white;
     cursor: pointer;
-  }
-  #toc h2::before { /* css hamburger */
-    float: right;
-    position: relative;
-    width: 1em;
-    height: 1px;
-    left: -164px;
-    margin: 8px 0 0 0;
-    background: white none repeat scroll 0 0;
-    box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
-    content: "";
+    &::before { /* css hamburger */
+      float: right;
+      position: relative;
+      width: 1em;
+      height: 1px;
+      left: -164px;
+      margin: 8px 0 0 0;
+      background: white none repeat scroll 0 0;
+      box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+      content: "";
+    }
   }
   #toc nav {
     display: none;
@@ -787,14 +895,13 @@ hr.addr {
     height: calc(100vh - 48px);
     border-left: 1px solid #ddd;
   }
-  #toc.active nav {
-    display: block;
+  #toc.active {
+    opacity: 1;
+    & nav { display: block; }
   }
   /* Make the collapsed ToC header render white on gray also when it's a link */
   #toc h2 a,
-  #toc h2 a:link,
-  #toc h2 a:focus,
-  #toc h2 a:hover,
+  #toc h2 a:is(:link, :focus, :hover),
   #toc a.toplink,
   #toc a.toplink:hover {
     color: white;
@@ -802,11 +909,11 @@ hr.addr {
     text-decoration: none;
   }
   #toc a.toplink {
-    margin-top: 2px;
+    margin: 2px 0.5em 0;
   }
 }
 
-/* alternative layout for wide screens */
+/* TOC layout for wide screens */
 @media screen and (min-width: 930px) {
   body {
     padding-right: 360px;
@@ -835,20 +942,12 @@ hr.addr {
     overscroll-behavior: contain;
     scrollbar-width: thin;
   }
-  #toc nav > ul  {
-    margin-bottom: 2em;
-  }
-  #toc ul {
-    margin: 0 0 0 4px;
-    font-size: var(--small-font-size);
-  }
-  #toc ul :is(p, li) {
-    margin: 2px 0;
-    line-height: 22px;
-  }
   img { /* future proofing */
     max-width: 100%;
     height: auto;
+  }
+  #toc a.toplink {
+    margin: 8px 0.5em 0;
   }
 }
 
@@ -891,9 +990,6 @@ hr.addr {
   td {
     border-top: 1px solid #ddd;
   }
-  .toplink {
-    display: none;
-  }
 }
 
 @page :first {
@@ -916,82 +1012,6 @@ hr.addr {
   size: A4;
   margin-bottom: 45mm;
   padding-top: 20px;
-}
-
-/* Changes introduced to fix issues found during implementation */
-
-/* Separate body from document info even without intervening H1 */
-section {
-  clear: both;
-}
-
-/* Top align author divs, to avoid names without organization dropping level with org names */
-.author {
-  vertical-align: top;
-}
-
-/* Style section numbers with more space between number and title */
-.section-number {
-  padding-right: 0.5em;
-}
-
-/* Add styling for a link in the ToC that points to the top of the document */
-a.toplink {
-  float: right;
-  margin: 8px 0.5em 0;
-}
-
-/* Provide styling for table cell text alignment */
-table .text-left {
-  text-align: left;
-}
-table .text-center {
-  text-align: center;
-}
-table .text-right {
-  text-align: right;
-}
-
-/* Make the alternative author contact information look less like just another
-   author, and group it closer with the primary author contact information */
-.alternative-contact {
-  margin: 0.5em 0 0.25em 0;
-}
-address .non-ascii {
-  margin: 0 0 0 2em;
-}
-
-/* With it being possible to set tables with alignment
-  left, center, and right, { width: 100%; } does not make sense */
-table {
-  width: auto;
-}
-
-/* Avoid reference text that sits in a block with very wide left margin,
-   because of a long floating dt label.*/
-.references dd {
-  overflow: visible;
-}
-
-/* Control caption placement */
-caption {
-  caption-side: bottom;
-}
-
-/* Limit the width of the author address vcard, so names in right-to-left
-   script don't end up on the other side of the page. */
-
-address.vcard {
-  max-width: 20em;
-  margin-right: auto;
-}
-
-/* For address alignment dependent on LTR or RTL scripts */
-address div.left {
-  text-align: left;
-}
-address div.right {
-  text-align: right;
 }
 
 /* Dark mode. */
@@ -1030,11 +1050,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Fine grain OTN YANG</td>
-<td class="right">October 2024</td>
+<td class="right">April 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tan, et al.</td>
-<td class="center">Expires 24 April 2025</td>
+<td class="center">Expires 9 October 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1047,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tan-ccamp-fgotn-yang-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-10-21" class="published">21 October 2024</time>
+<time datetime="2025-04-07" class="published">7 April 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-04-24">24 April 2025</time></dd>
+<dd class="expires"><time datetime="2025-10-09">9 October 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1081,7 +1101,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <h1 id="title">YANG Data Models for fine grain Optical Transport Network</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1G client signals in transport network.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1Gbit/s client signals in transport network.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1118,7 +1138,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 April 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 9 October 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1127,7 +1147,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2024 IETF Trust and the persons identified as the
+            Copyright (c) 2025 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1174,10 +1194,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-fine-grain-optical-transpor" class="internal xref">Fine grain Optical Transport Network Scenarios Overview</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.1">
-                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-private-line-service-provis" class="internal xref">Private Line Service Provisioning Scenario of fgOTN</a></p>
+                <p id="section-toc.1-1.2.2.1.1"><a href="#section-2.1" class="auto internal xref">2.1</a>.  <a href="#name-retrieve-server-tunnels-sce" class="internal xref">Retrieve Server Tunnels Scenario of fgOTN</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.2">
-                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-service-protection-scenario" class="internal xref">Service Protection Scenario of fgOTN</a></p>
+                <p id="section-toc.1-1.2.2.2.1"><a href="#section-2.2" class="auto internal xref">2.2</a>.  <a href="#name-multi-layer-path-splicing-s" class="internal xref">Multi-layer Path Splicing Scenario of fgOTN</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.2.2.3">
                 <p id="section-toc.1-1.2.2.3.1"><a href="#section-2.3" class="auto internal xref">2.3</a>.  <a href="#name-hitless-resizing-scenario-o" class="internal xref">Hitless Resizing Scenario of fgOTN</a></p>
@@ -1186,72 +1206,69 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
             <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-yang-data-model-for-fine-gr" class="internal xref">YANG Data Model for fine grain Optical Transport Network Overview</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
+                <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-termination-point-augmentat" class="internal xref">Termination Point Augmentation</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.2">
+                <p id="section-toc.1-1.3.2.2.1"><a href="#section-3.2" class="auto internal xref">3.2</a>.  <a href="#name-bandwidth-augmentation" class="internal xref">Bandwidth Augmentation</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.3">
+                <p id="section-toc.1-1.3.2.3.1"><a href="#section-3.3" class="auto internal xref">3.3</a>.  <a href="#name-label-augmentation" class="internal xref">Label Augmentation</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-fine-grain-otn-topology-dat" class="internal xref">Fine Grain OTN Topology Data Model Overview</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-yang-data-model-for-fgotn-t" class="internal xref">YANG Data Model for fgOTN Tunnel</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-attributes-augmentation" class="internal xref">Attributes Augmentation</a></p>
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-bandwidth-augmentation-2" class="internal xref">Bandwidth Augmentation</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
-                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-bandwidth-augmentation" class="internal xref">Bandwidth Augmentation</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
-                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-label-augmentation" class="internal xref">Label Augmentation</a></p>
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-label-augmentation-2" class="internal xref">Label Augmentation</a></p>
 </li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5">
-            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-fine-grain-otn-tunnel-data-" class="internal xref">Fine Grain OTN Tunnel Data Model Overview</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.1">
-                <p id="section-toc.1-1.5.2.1.1"><a href="#section-5.1" class="auto internal xref">5.1</a>.  <a href="#name-bandwidth-augmentation-2" class="internal xref">Bandwidth Augmentation</a></p>
-</li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.5.2.2">
-                <p id="section-toc.1-1.5.2.2.1"><a href="#section-5.2" class="auto internal xref">5.2</a>.  <a href="#name-label-augmentation-2" class="internal xref">Label Augmentation</a></p>
-</li>
-            </ul>
+            <p id="section-toc.1-1.5.1"><a href="#section-5" class="auto internal xref">5</a>.  <a href="#name-yang-tree-for-fgotn-topolog" class="internal xref">YANG Tree for fgOTN topology</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6">
-            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-yang-tree-for-fgotn-topolog" class="internal xref">YANG Tree for fgOTN topology</a></p>
+            <p id="section-toc.1-1.6.1"><a href="#section-6" class="auto internal xref">6</a>.  <a href="#name-yang-data-model-for-fgotn-to" class="internal xref">YANG Data Model for fgOTN topology</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
-            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-yang-data-model-for-fgotn-t" class="internal xref">YANG Data Model for fgOTN topology</a></p>
+            <p id="section-toc.1-1.7.1"><a href="#section-7" class="auto internal xref">7</a>.  <a href="#name-yang-tree-for-fgotn-tunnel" class="internal xref">YANG Tree for fgOTN tunnel</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8">
-            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-yang-tree-for-fgotn-tunnel" class="internal xref">YANG Tree for fgOTN tunnel</a></p>
+            <p id="section-toc.1-1.8.1"><a href="#section-8" class="auto internal xref">8</a>.  <a href="#name-yang-data-model-for-fgotn-tu" class="internal xref">YANG Data Model for fgOTN tunnel</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
-            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-yang-data-model-for-fgotn-tu" class="internal xref">YANG Data Model for fgOTN tunnel</a></p>
+            <p id="section-toc.1-1.9.1"><a href="#section-9" class="auto internal xref">9</a>.  <a href="#name-manageability-consideration" class="internal xref">Manageability Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
-            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-manageability-consideration" class="internal xref">Manageability Considerations</a></p>
+            <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
-            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-security-considerations" class="internal xref">Security Considerations</a></p>
+            <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12">
-            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
-            <p id="section-toc.1-1.13.1"><a href="#section-13" class="auto internal xref">13</a>. <a href="#name-references" class="internal xref">References</a></p>
+            <p id="section-toc.1-1.12.1"><a href="#section-12" class="auto internal xref">12</a>. <a href="#name-references" class="internal xref">References</a></p>
 <ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.1">
-                <p id="section-toc.1-1.13.2.1.1"><a href="#section-13.1" class="auto internal xref">13.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.1">
+                <p id="section-toc.1-1.12.2.1.1"><a href="#section-12.1" class="auto internal xref">12.1</a>.  <a href="#name-normative-references" class="internal xref">Normative References</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13.2.2">
-                <p id="section-toc.1-1.13.2.2.1"><a href="#section-13.2" class="auto internal xref">13.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.12.2.2">
+                <p id="section-toc.1-1.12.2.2.1"><a href="#section-12.2" class="auto internal xref">12.2</a>.  <a href="#name-informative-references" class="internal xref">Informative References</a></p>
 </li>
             </ul>
 </li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.13">
+            <p id="section-toc.1-1.13.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+</li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.14.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
-</li>
-          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
-            <p id="section-toc.1-1.16.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1264,7 +1281,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-1-1">Optical Transport Networks (OTN) is a mainstream layer 1 technology for the transport network. Over the years, it has continued to evolve, to improve its transport functions for the emerging requirements. The topology and tunnel information in the OTN has already been defined by generic traffic-engineering models and technology-specific models, including <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span> and <span>[<a href="#I-D.ietf-ccamp-otn-tunnel-model" class="cite xref">I-D.ietf-ccamp-otn-tunnel-model</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">In the latest version of OTN, ITU-T G.709/Y.1331 Edition 6.5 <span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span>, the fine grain OTN (fgOTN) is introduced for the efficient transmission of low rate client signals (e.g., sub-1G).<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This document presents the control interface requirements of fgOTN, and defines two YANG data models for fgOTN topology and fgOTN tunnel. The topology model can capture topological and resource-related information pertaining to fgOTN. This model also enables clients, which interact with a transport domain controller, for fgOTN topology related operations such as obtaining the relevant topology resource information. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels, Label Switched Paths (LSPs), and interfaces.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-3">This document presents the control interface requirements of fgOTN, and defines two YANG data models for fgOTN topology and fgOTN tunnel. The topology model can capture topological and resource-related information pertaining to fgOTN. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels, Label Switched Paths (LSPs) and interfaces.<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">Furthermore, this document also imports the generic Layer 1 types defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">The YANG data models defined in this document conform to the Network Management Datastore Architecture (NMDA) defined in <span>[<a href="#RFC8342" class="cite xref">RFC8342</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <div id="terminology-and-notations">
@@ -1278,7 +1295,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
             <p id="section-1.1-2.1.1">fgTS: fine grain Tributary Slot.<a href="#section-1.1-2.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-1.1-2.2">
-            <p id="section-1.1-2.2.1">fgODUflex: fine grain Optical channel Data Unit flex<a href="#section-1.1-2.2.1" class="pilcrow">¶</a></p>
+            <p id="section-1.1-2.2.1">fgODUflex: fine grain Optical channel Data Unit flex.<a href="#section-1.1-2.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-1.1-3">The following terms are defined in <span>[<a href="#RFC7950" class="cite xref">RFC7950</a>]</span> and are not redefined here:<a href="#section-1.1-3" class="pilcrow">¶</a></p>
@@ -1327,7 +1344,7 @@ appear in all capitals, as shown here.<a href="#section-1.2-1" class="pilcrow">�
         <h3 id="name-tree-diagram">
 <a href="#section-1.3" class="section-number selfRef">1.3. </a><a href="#name-tree-diagram" class="section-name selfRef">Tree Diagram</a>
         </h3>
-<p id="section-1.3-1">A simplified graphical representation of the data model is used in <a href="#fgotn-tree" class="auto internal xref">Section 6</a> of this document. The meaning of the symbols in this diagram is defined in <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
+<p id="section-1.3-1">A simplified graphical representation of the data model is used in <a href="#fgotn-tree" class="auto internal xref">Section 5</a> of this document. The meaning of the symbols in this diagram is defined in <span>[<a href="#RFC8340" class="cite xref">RFC8340</a>]</span>.<a href="#section-1.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="requirements-language">
@@ -1418,38 +1435,37 @@ Please remove this note.<a href="#section-1.5-3" class="pilcrow">¶</a></p>
       <h2 id="name-fine-grain-optical-transpor">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-fine-grain-optical-transpor" class="section-name selfRef">Fine grain Optical Transport Network Scenarios Overview</a>
       </h2>
-<p id="section-2-1">FgOTN layer network is a service layer network of the OTN ODU layer network. In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to TE topology and TE tunnel YANG model. The attributes related to fgOTN are augments from OTN topology data model, and fgOTN topology is not treated as a separate hierarchy. The fgOTN tunnel is defined as a separate tunnel hierarchy, and new fgOTN tunnels need to be pre-set and created during the service provisioning process.<a href="#section-2-1" class="pilcrow">¶</a></p>
-<p id="section-2-2">The typical scenarios for fgOTN is to provide low bit rate private line or private network services for customers. Three scenarios that require special consideration are listed based on the characteristics of the fgOTN.<a href="#section-2-2" class="pilcrow">¶</a></p>
-<div id="private-line-service-provisioning-scenario-of-fgotn">
+<p id="section-2-1">OTN network will cover a larger scope of networks, it may include the backbone network, metro core, metro aggregation, metro access, and even the OTN CPE in the customers' networks <span>[<a href="#ITU-T_G.709.20" class="cite xref">ITU-T_G.709.20</a>]</span>. In general, the metro OTN networks support both fgODUflex and ODUk switching.  At the boundary nodes (e.g., metro-core nodes) of the metro OTN networks, the fgODUflexes to other metro OTN networks are multiplexed into ODUk of backbone networks. Therefore, the backbone OTN network could only support ODUk switching.<a href="#section-2-1" class="pilcrow">¶</a></p>
+<p id="section-2-2">The typical scenarios for fgOTN is to provide low bit rate private line or private network services for customers. The interface function requirements of fgOTN mainly include resource allocation and service provisioning. Three scenarios that require special consideration are listed based on the characteristics of fgOTN.<a href="#section-2-2" class="pilcrow">¶</a></p>
+<div id="retrieve-server-tunnels-scenario-of-fgotn">
 <section id="section-2.1">
-        <h3 id="name-private-line-service-provis">
-<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-private-line-service-provis" class="section-name selfRef">Private Line Service Provisioning Scenario of fgOTN</a>
+        <h3 id="name-retrieve-server-tunnels-sce">
+<a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-retrieve-server-tunnels-sce" class="section-name selfRef">Retrieve Server Tunnels Scenario of fgOTN</a>
         </h3>
-<p id="section-2.1-1">OTN network will cover a larger scope of networks, it may include the backbone network, metro core, metro aggregation, metro access, and even the OTN CPE in the customers' networks.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
-<p id="section-2.1-2">Figure 1 below shows an example of scenario to retrieve server tunnels. In this example, some small bandwidth fgOTN service are aggregated by the access ring (10G), and then aggregated into a bigger bandwidth in metro ring (100G). The allocation of TS maybe different in access ring and metro ring. E.g. there could be 3 timeslots allocated in the access ring while there could be 3 ODU2 are allocated in the metro ring.<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">Figure 1 below shows an example of scenario to retrieve server tunnels for multi-domain fgOTN service. In this example, some small bandwidth fgOTN service are aggregated by the access ring (10G), and then aggregated into a bigger bandwidth in metro ring (100G). The allocation of TS to support fgOTN switching maybe different in access ring and metro ring. E.g. there could be three ODU0 allocated in the access ring while there could be two ODU2 are allocated in the metro ring to support fgOTN switching. In this example, the server layer ODUk tunnel for fgOTN tunnel from node A to node E is ODU0, and the server layer tunnel from node E to node G is ODU2. The server layer tunnel for fgOTN tunnel will include one ODU0 tunnel and one ODU2 tunnel.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <span id="name-the-scenario-to-retrieve-se"></span><div id="fig-multiplexing">
 <figure id="figure-1">
-          <div class="alignLeft art-ascii-art art-text artwork" id="section-2.1-3.1">
+          <div class="alignLeft art-ascii-art art-text artwork" id="section-2.1-2.1">
 <pre>
       +-----+
-      |     | \                                 |
+      |  A  | \                                 |
       +-----+  \            Domain 1            |      Domain 2
          |      \                               |
          |  10G  \                              |
          |        \                             |
       +-----+       +-----+         +-----+     |     +-----+
-      |     | \     |     |---------|     |-----------|     |---------
+      |  B  | \     |  E  |---------|  G  |-----------|  I  |---------
       +-----+  \  / +-----+         +-----+           +-----+
                 \/    |      100G      |                 |    100G
                 /\    |                |                 |
       +-----+  /  \ +-----+         +-----+           +-----+
-      |     | /     |     |---------|     |-----------|     |---------
+      |  C  | /     |  F  |---------|  H  |-----------|  J  |---------
       +-----+       +-----+         +-----+           +-----+
          |         /
          |  10G   /
          |       /
       +-----+   /
-      |     |  /
+      |  D  |  /
       +-----+
 
 </pre>
@@ -1460,31 +1476,33 @@ Please remove this note.<a href="#section-1.5-3" class="pilcrow">¶</a></p>
 </div>
 </section>
 </div>
-<div id="service-protection-scenario-of-fgotn">
+<div id="multi-layer-path-splicing-scenario-of-fgotn">
 <section id="section-2.2">
-        <h3 id="name-service-protection-scenario">
-<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-service-protection-scenario" class="section-name selfRef">Service Protection Scenario of fgOTN</a>
+        <h3 id="name-multi-layer-path-splicing-s">
+<a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-multi-layer-path-splicing-s" class="section-name selfRef">Multi-layer Path Splicing Scenario of fgOTN</a>
         </h3>
-<p id="section-2.2-1">As described in <span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span>, the functional requirements of fgOTN include Support fgODUflex SNCP 1+1 protection. The protection of fgOTN service should rely on the protection of fgOTN tunnel. The server should provide all the hops of fgOTN tunnel, if the nodes cannot support fgOTN switching, the fg-ts in the LSP can be empty.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<span id="name-a-new-protection-scenario-o"></span><div id="fig-service">
+<p id="section-2.2-1">Not all nodes in the operator network support fgOTN, as shown in figure 2, node 5 and node 6 do not support fgOTN. To present the end-to-end primary-path and secondary-path of the services on the client side, it is necessary to complete the end-to-end path splicing based on the the ODU tunnel information associated with the fgotn tunnel.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<span id="name-protection-scenario-of-fgot"></span><div id="fig-service">
 <figure id="figure-2">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-2.2-2.1">
 <pre>
                    +-----+            +-----+
-              -----|  f  |------------| N-f |-----
-              |    +-----+            +-----+    |
-              |                                  |
+               ----|  f2 |------------|  f3 |----
+              /    +-----+            +-----+    \
+             / ----------primary-path------------ \
+            / /                                  \ \
            +-----+                            +-----+
-           |  f  |                            |  f  |
+         |  f1 |                                |  f4 |
            +-----+                            +-----+
-              |                                  |
-              |    +-----+            +-----+    |
-              -----| N-f |------------|  f  |-----
-                   +-----+            +-----+
+            \ \                                  / /
+             \ ---------secondary-path----------- /
+              \    +------+          +------+    /
+               ----| N-f5 |----------| N-f6 |----
+                   +------+          +------+
 </pre>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
-<a href="#name-a-new-protection-scenario-o" class="selfRef">A New Protection Scenario of fgOTN</a>
+<a href="#name-protection-scenario-of-fgot" class="selfRef">Protection Scenario of fgOTN</a>
           </figcaption></figure>
 </div>
 </section>
@@ -1494,30 +1512,37 @@ Please remove this note.<a href="#section-1.5-3" class="pilcrow">¶</a></p>
         <h3 id="name-hitless-resizing-scenario-o">
 <a href="#section-2.3" class="section-number selfRef">2.3. </a><a href="#name-hitless-resizing-scenario-o" class="section-name selfRef">Hitless Resizing Scenario of fgOTN</a>
         </h3>
-<p id="section-2.3-1"><span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span> defines the data plane procedure to support fgODUflex hitless resizing. The support of management of hitless resizing of fgODUflex needs to be further considered. Firstly, the range of fgOTN service's Bandwidth on Demand (BoD) cannot exceed its server layer's bandwidth. Secondly, the client needs to know how many bandwidth of a link is allocated for fgOTN. From a management point of view, we only need to plan a portion of resources to support fgOTN, without having to allocate all resources for fgOTN to use. As shown in Figure 3, only resource 1 is planned for fgOTN.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
-<span id="name-the-range-of-fgotn-services"></span><div id="fig-hitless">
+<p id="section-2.3-1"><span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span> defines the data plane procedure to support fgODUflex hitless resizing. The support of management of hitless resizing of fgODUflex needs to be carefully considered.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
+<p id="section-2.3-2">The range of fgOTN service's Bandwidth on Demand (BoD) cannot exceed its server layer's bandwidth.<a href="#section-2.3-2" class="pilcrow">¶</a></p>
+<p id="section-2.3-3">The client needs to know how many bandwidth of a link is allocated for fgOTN. During the hitless resizing process, it is necessary to reserve or mark the corresponding bandwidth resources first, and then trigger the the resizing actions.<a href="#section-2.3-3" class="pilcrow">¶</a></p>
+<p id="section-2.3-4">Multi-domain hitless resizing should be supported. In the case of hitless resizing within a single domain, the "explicit route object" structure is not required. However, for multi-domain hitless resizing scenario, it is necessary to specify the ODUk TS and fgts numbers information on the ports of cross domain nodes in "explicit route objects" structure. For example, node 2 and node 3 in Figure 3. When there are multiple cross domain fgOTN service hitless resizing, the MDSC coordinator needs to issue the service resizing instructions to the domain controllers where the service source and destination are located separately.<a href="#section-2.3-4" class="pilcrow">¶</a></p>
+<span id="name-hitless-resizing-scenario-of"></span><div id="fig-hitless">
 <figure id="figure-3">
-          <div class="alignLeft art-ascii-art art-text artwork" id="section-2.3-2.1">
+          <div class="alignLeft art-ascii-art art-text artwork" id="section-2.3-5.1">
 <pre>
-   +--------+                           +-------------+
-   |        |---------------------------|             |
-   |        |  Resource 1               |             |
-   | Source |---------------------------| destination |
-   |  node  |  Resource 2               |    node     |
-   |        |---------------------------|             |
-   +--------+                           +-------------+
-    | | |                                  | | |
-    | | |            +----------+          | | |
-    | | +------------|          |----------+ | |
-    | |   Resource 1 |  Interm  |            | |
-    | +--------------|  ediate  |------------+ |
-    |     Resource 2 |   node   |              |
-    +----------------|          |--------------+
                      +----------+
+                  ----------------------|   MDSC   |---------------------
+                 /                      |          |                     \
+                /                       +----------+                      \
+               /                             |                             \
+              /                              |                              \
+        +------------+                 +------------+               +------------+
+        | Controller |                 | Controller |               | Controller |
+        |     1      |                 |     2      |               |     3      |
+        +------------+                 +------------+               +------------+
+                                    End-to-end fgOTN service
+   &lt;---------------------------------------------------------------------------------&gt;
+   +------+       +------+       +------+       +------+       +------+       +------+
+   | node |-------| node |-------| node |-------| node |-------| node |-------| node |
+   |  1   |-------|  2   |-------|  3   |-------|  4   |-------|  5   |-------|  6   |
+   +------+       +------+   |   +------+       +------+   |   +------+       +------+
+    source                   |                             |                 destination
+          Domain 1           |          Domain 2           |           Domain 3
+                             |                             |
 </pre>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
-<a href="#name-the-range-of-fgotn-services" class="selfRef">The Range of fgOTN service's BOD</a>
+<a href="#name-hitless-resizing-scenario-of" class="selfRef">Hitless Resizing Scenario of fgOTN</a>
           </figcaption></figure>
 </div>
 </section>
@@ -1528,20 +1553,16 @@ Please remove this note.<a href="#section-1.5-3" class="pilcrow">¶</a></p>
 <section id="section-3">
       <h2 id="name-yang-data-model-for-fine-gr">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-yang-data-model-for-fine-gr" class="section-name selfRef">YANG Data Model for fine grain Optical Transport Network Overview</a>
-    </h2>
-</section>
-</div>
-<div id="fine-grain-otn-topology-data-model-overview">
-<section id="section-4">
-      <h2 id="name-fine-grain-otn-topology-dat">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-fine-grain-otn-topology-dat" class="section-name selfRef">Fine Grain OTN Topology Data Model Overview</a>
       </h2>
-<p id="section-4-1">This document aims to describe the data model for fine grain OTN topology. The YANG module presented in this document augments from OTN topology data model, i.e., the ietf-otn-topology, as specified in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span>. In section 6 of <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span>, the guideline for augmenting OTN topology model was provided, and in this draft, we augment the OTN topology model to describe the topology characteristics of fgOTN.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<p id="section-4-2">Common types, identities and groupings defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span> is reused in this document.<a href="#section-4-2" class="pilcrow">¶</a></p>
-<p id="section-4-3"><span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> defines an abstract (generic, or base) YANG data model for network/service topologies and inventories, and provides the fundamental model for <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. OTN topology module in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span> augments from the TE topology YANG model defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. This work is not directly augmenting <span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span>. <a href="#fig-fgotn-topology-relationship" class="auto internal xref">Figure 4</a> shows the augmentation relationship.<a href="#section-4-3" class="pilcrow">¶</a></p>
+<p id="section-3-1">In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to OTN topology and OTN tunnel YANG model. The attributes related to fgOTN are augments from OTN topology data model, and fgOTN topology is not treated as a separate hierarchy. The fgOTN tunnel is defined as a separate tunnel hierarchy, and the fgOTN tunnels need to be pre-set and created before the service provisioning process.
+# YANG Data Model for fgOTN Topology
+## Fine Grain OTN Topology Data Model Overview<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">This document aims to describe the data model for fine grain OTN topology. The YANG module presented in this document augments from OTN topology data model, i.e., the ietf-otn-topology, as specified in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span>. In section 6 of <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span>, the guideline for augmenting OTN topology model was provided, and in this draft, we augment the OTN topology model to describe the topology characteristics of fgOTN.<a href="#section-3-2" class="pilcrow">¶</a></p>
+<p id="section-3-3">Common types, identities and groupings defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span> is reused in this document.<a href="#section-3-3" class="pilcrow">¶</a></p>
+<p id="section-3-4"><span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> defines an abstract (generic, or base) YANG data model for network/service topologies and inventories, and provides the fundamental model for <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. OTN topology module in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span> augments from the TE topology YANG model defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. <a href="#fig-fgotn-topology-relationship" class="auto internal xref">Figure 4</a> shows the augmentation relationship.<a href="#section-3-4" class="pilcrow">¶</a></p>
 <span id="name-relationship-between-fgotn-"></span><div id="fig-fgotn-topology-relationship">
 <figure id="figure-4">
-        <div class="alignLeft art-ascii-art art-text artwork" id="section-4-4.1">
+        <div class="alignLeft art-ascii-art art-text artwork" id="section-3-5.1">
 <pre>
     +--------------+      +-----------------------+
     | ietf-network |      | ietf-network-topology |
@@ -1571,59 +1592,59 @@ Please remove this note.<a href="#section-1.5-3" class="pilcrow">¶</a></p>
 <a href="#name-relationship-between-fgotn-" class="selfRef">Relationship between fgOTN topology and OTN topology model</a>
         </figcaption></figure>
 </div>
-<p id="section-4-5">The entities, TE attributes and OTN attributes, such as node, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information. At the same time, it is necessary to extend the encoding and switching-capability enumeration values in <span>[<a href="#I-D.busi-teas-te-types-update" class="cite xref">I-D.busi-teas-te-types-update</a>]</span> to support fgOTN encapsulation and fgOTN switching.<a href="#section-4-5" class="pilcrow">¶</a></p>
-<div id="attributes-augmentation">
-<section id="section-4.1">
-        <h3 id="name-attributes-augmentation">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-attributes-augmentation" class="section-name selfRef">Attributes Augmentation</a>
+<p id="section-3-6">The entities, TE attributes and OTN attributes, such as nodes, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information. At the same time, it is necessary to extend the encoding and switching-capability enumeration values in <span>[<a href="#I-D.busi-teas-te-types-update" class="cite xref">I-D.busi-teas-te-types-update</a>]</span> to identify that the current Tunnel Termination Point (TTP) is a termination point of an fgOTN tunnel.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<div id="termination-point-augmentation">
+<section id="section-3.1">
+        <h3 id="name-termination-point-augmentat">
+<a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-termination-point-augmentat" class="section-name selfRef">Termination Point Augmentation</a>
         </h3>
-<p id="section-4.1-1">There are a few characteristics augmenting to the OTN topology.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">The fine grain tributary slot granularity (FGTSG) attribute defines the granularity, such as 10M, used by the TSs of a given OTN link.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
-<p id="section-4.1-3">A boolean value is specified to augment the generic TE link termination point to describe whether the point can support fgOTN switching capability.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="section-4.1-4">
+<p id="section-3.1-1">There are a few characteristics augmenting to the OTN topology.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">The fine grain tributary slot granularity (FGTSG) attribute defines the granularity, such as 10M, used by the TSs of a given OTN link.<a href="#section-3.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.1-3">A boolean value is specified to augment the generic TE link termination point to describe whether the point can support fgOTN switching capability.<a href="#section-3.1-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-ascii-art art-text artwork" id="section-3.1-4">
 <pre>
 augment /nw:networks/nw:network/nw:node/nt:termination-point/tet:te:
    +--rw supported-fgotn-tp?   boolean
-</pre><a href="#section-4.1-4" class="pilcrow">¶</a>
+</pre><a href="#section-3.1-4" class="pilcrow">¶</a>
 </div>
-<p id="section-4.1-5">The boolean value supported-fgodu-tp is used to indicate whether the termination point can support fgOTN switching capability.<a href="#section-4.1-5" class="pilcrow">¶</a></p>
+<p id="section-3.1-5">The boolean value supported-fgotn-tp is used to indicate whether the termination point can support fgOTN switching capability.<a href="#section-3.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="bandwidth-augmentation">
-<section id="section-4.2">
+<section id="section-3.2">
         <h3 id="name-bandwidth-augmentation">
-<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-bandwidth-augmentation" class="section-name selfRef">Bandwidth Augmentation</a>
+<a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-bandwidth-augmentation" class="section-name selfRef">Bandwidth Augmentation</a>
         </h3>
-<p id="section-4.2-1">Based on the OTN topology model, we augment the bandwidth information of fgOTN, including the max-link-bandwidth and unreserved-bandwidth. The augmented parameter fgotn-bandwidth is used to indicate how much of the bandwidth has been allocated for the usage of fgOTN.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="section-4.2-2">
+<p id="section-3.2-1">Based on the OTN topology model, we augment the bandwidth information of fgOTN, including the max-link-bandwidth and unreserved-bandwidth. The augmented parameter fgotn-bandwidth is used to indicate how much of the bandwidth has been allocated for the usage of fgOTN. For example, if 2 ODU0s are allocated to support fgOTN switching switching, the fgotn-bandwidth is 2500, and the unit is Mbps.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-ascii-art art-text artwork" id="section-3.2-2">
 <pre>
 augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
           /tet:max-link-bandwidth/tet:te-bandwidth/otnt:otn-bandwidth
           /otnt:odulist:
    +--rw fgotn-bandwidth?   string
-</pre><a href="#section-4.2-2" class="pilcrow">¶</a>
+</pre><a href="#section-3.2-2" class="pilcrow">¶</a>
 </div>
-<p id="section-4.2-3">The augmented fgotnlist structure is used to describe the unreserved TE bandwidth of fgOTN in the server ODUk. The odu-ts-number is used to indicate the index of server ODUk channel.<a href="#section-4.2-3" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="section-4.2-4">
+<p id="section-3.2-3">The augmented fgotnlist structure is used to describe the unreserved TE bandwidth of fgOTN in the server ODUk. The odu-ts-number is used to indicate the index of server ODUk channel.<a href="#section-3.2-3" class="pilcrow">¶</a></p>
+<div class="alignLeft art-ascii-art art-text artwork" id="section-3.2-4">
 <pre>
 augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
           /tet:unreserved-bandwidth/tet:te-bandwidth
           /otnt:otn-bandwidth:
    +--rw fgotnlist* [odu-type odu-ts-number]
       +--rw odu-type           identityref
-      +--rw odu-ts-number?     uint16
+      +--rw odu-ts-number?     string
       +--rw fgotn-bandwidth?   string
-</pre><a href="#section-4.2-4" class="pilcrow">¶</a>
+</pre><a href="#section-3.2-4" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
 <div id="label-augmentation">
-<section id="section-4.3">
+<section id="section-3.3">
         <h3 id="name-label-augmentation">
-<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-label-augmentation" class="section-name selfRef">Label Augmentation</a>
+<a href="#section-3.3" class="section-number selfRef">3.3. </a><a href="#name-label-augmentation" class="section-name selfRef">Label Augmentation</a>
         </h3>
-<p id="section-4.3-1">The model augments the label-restriction list with fgOTN technology specific attributes using the otn-label-range-info grouping defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="section-4.3-2">
+<p id="section-3.3-1">The model augments the label-restriction list with fgOTN technology-specific label information using the otn-label-range-info grouping defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span>.<a href="#section-3.3-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-ascii-art art-text artwork" id="section-3.3-2">
 <pre>
 augment /nw:networks/tet:te/tet:templates/tet:link-template
         /tet:te-link-attributes/tet:label-restrictions
@@ -1633,22 +1654,23 @@ augment /nw:networks/tet:te/tet:templates/tet:link-template
       +--rw odu-ts-number?     string
       +--rw fgts-reserved?     string
       +--rw fgts-unreserved?   string
-</pre><a href="#section-4.3-2" class="pilcrow">¶</a>
+</pre><a href="#section-3.3-2" class="pilcrow">¶</a>
 </div>
-<p id="section-4.3-3">The fgts-range list is used to describe the availability of fgOTN timeslot in the server ODUk, including the fgts-reserved and fgts-unreserved. The odu-ts-number is used to indicate the index of server ODUk channel.<a href="#section-4.3-3" class="pilcrow">¶</a></p>
+<p id="section-3.3-3">The fgts-range list is used to describe the availability of fgOTN timeslot in the server ODUk, including the fgts-reserved and fgts-unreserved. The odu-ts-number is used to indicate the index of server ODUk channel.<a href="#section-3.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
-<div id="fine-grain-otn-tunnel-data-model-overview">
-<section id="section-5">
-      <h2 id="name-fine-grain-otn-tunnel-data-">
-<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-fine-grain-otn-tunnel-data-" class="section-name selfRef">Fine Grain OTN Tunnel Data Model Overview</a>
+<div id="yang-data-model-for-fgotn-tunnel">
+<section id="section-4">
+      <h2 id="name-yang-data-model-for-fgotn-t">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-yang-data-model-for-fgotn-t" class="section-name selfRef">YANG Data Model for fgOTN Tunnel</a>
       </h2>
-<p id="section-5-1">This document aims to describe the data model for fgOTN tunnel. The fgOTN tunnel model augments to OTN tunnel <span>[<a href="#I-D.ietf-ccamp-otn-tunnel-model" class="cite xref">I-D.ietf-ccamp-otn-tunnel-model</a>]</span> with fgOTN-specific parameters, including the bandwidth information and label information. <a href="#fig-fgotn-tunnel-relationship" class="auto internal xref">Figure 5</a> shows the augmentation relationship.<a href="#section-5-1" class="pilcrow">¶</a></p>
+<p id="section-4-1">## Fine Grain OTN Tunnel Data Model Overview<a href="#section-4-1" class="pilcrow">¶</a></p>
+<p id="section-4-2">This document aims to describe the data model for fgOTN tunnel. The fgOTN tunnel model augments to OTN tunnel <span>[<a href="#I-D.ietf-ccamp-otn-tunnel-model" class="cite xref">I-D.ietf-ccamp-otn-tunnel-model</a>]</span> with fgOTN-specific parameters, including the bandwidth information and label information. <a href="#fig-fgotn-tunnel-relationship" class="auto internal xref">Figure 5</a> shows the augmentation relationship.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <span id="name-relationship-between-fgotn-a"></span><div id="fig-fgotn-tunnel-relationship">
 <figure id="figure-5">
-        <div class="alignLeft art-ascii-art art-text artwork" id="section-5-2.1">
+        <div class="alignLeft art-ascii-art art-text artwork" id="section-4-3.1">
 <pre>
                 +------------------+
                 |      ietf-te     |
@@ -1671,42 +1693,43 @@ augment /nw:networks/tet:te/tet:templates/tet:link-template
 <a href="#name-relationship-between-fgotn-a" class="selfRef">Relationship between fgOTN and OTN tunnel model</a>
         </figcaption></figure>
 </div>
-<p id="section-5-3">It's also worth noting that the fgOTN tunnel provisioning is usually based on the fgOTN topology. Therefore the fgOTN tunnel model is usually used together with fgOTN topology model specified in this document. The OTN tunnel model also imports a few type modules, including ietf-te-types and ietf-otn-types. A new enumeration value prot-fgoduflex in ietf-otn-types should be defined to indicate the fgotn tunnel.<a href="#section-5-3" class="pilcrow">¶</a></p>
+<p id="section-4-4">It's also worth noting that the fgOTN tunnel provisioning is usually based on the fgOTN topology. Therefore the fgOTN tunnel model is usually used together with fgOTN topology model specified in this document. The OTN tunnel model also imports a few type modules, including ietf-layer1-types and ietf-te-types.
+A new identity based on odu-type should be defined for fgODUflex in an updated version of <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span> to indicate the bandwidth of fgotn tunnel.<a href="#section-4-4" class="pilcrow">¶</a></p>
 <div id="bandwidth-augmentation-1">
-<section id="section-5.1">
+<section id="section-4.1">
         <h3 id="name-bandwidth-augmentation-2">
-<a href="#section-5.1" class="section-number selfRef">5.1. </a><a href="#name-bandwidth-augmentation-2" class="section-name selfRef">Bandwidth Augmentation</a>
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-bandwidth-augmentation-2" class="section-name selfRef">Bandwidth Augmentation</a>
         </h3>
-<p id="section-5.1-1">The model augment TE bandwidth information of fgOTN tunnel.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="section-5.1-2">
+<p id="section-4.1-1">The model augment TE bandwidth information of fgOTN tunnel.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<div class="alignLeft art-ascii-art art-text artwork" id="section-4.1-2">
 <pre>
 augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
         /otn-tnl:otn:
    +--rw fgoduflex-bandwidth?   string
-</pre><a href="#section-5.1-2" class="pilcrow">¶</a>
+</pre><a href="#section-4.1-2" class="pilcrow">¶</a>
 </div>
-<p id="section-5.1-3">The string value fgoduflex-bandwidth is used to indicate the bandwidth of this fgOTN tunnel.<a href="#section-5.1-3" class="pilcrow">¶</a></p>
+<p id="section-4.1-3">The string value fgoduflex-bandwidth is used to indicate the bandwidth of this fgOTN tunnel.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="label-augmentation-1">
-<section id="section-5.2">
+<section id="section-4.2">
         <h3 id="name-label-augmentation-2">
-<a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-label-augmentation-2" class="section-name selfRef">Label Augmentation</a>
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-label-augmentation-2" class="section-name selfRef">Label Augmentation</a>
         </h3>
-<p id="section-5.2-1">The module augments TE label-hop for the explicit route objects included or excluded by the path computation of the primary paths and secondary-paths using the fgts-numbers. The fgts-numbers is used to specify fgTS information on inter-domain ports of the routing path. We also augment the TE label-hop for the record route of the LSP using the fgts-numbers.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">The module augments TE label-hop for the explicit route objects included or excluded by the path computation of the primary-paths and secondary-paths using the fgts-numbers. The fgts-numbers is used to specify fgTS information on inter-domain ports of the routing path. When specifying the fgotn time slot in the routing constraint information, the ODU time slot must also be specified. We also augment the TE label-hop for the record route of the LSP using the fgts-numbers.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
 <div id="fgotn-tree">
-<section id="section-6">
+<section id="section-5">
       <h2 id="name-yang-tree-for-fgotn-topolog">
-<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-yang-tree-for-fgotn-topolog" class="section-name selfRef">YANG Tree for fgOTN topology</a>
+<a href="#section-5" class="section-number selfRef">5. </a><a href="#name-yang-tree-for-fgotn-topolog" class="section-name selfRef">YANG Tree for fgOTN topology</a>
       </h2>
-<p id="section-6-1"><a href="#fig-fgotn-topo-tree" class="auto internal xref">Figure 6</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-topology" (<a href="#fgotn-topology-yang" class="auto internal xref">Figure 7</a>).<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-5-1"><a href="#fig-fgotn-topo-tree" class="auto internal xref">Figure 6</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-topology" (<a href="#fgotn-topology-yang" class="auto internal xref">Figure 7</a>).<a href="#section-5-1" class="pilcrow">¶</a></p>
 <div id="fig-fgotn-topo-tree">
 <figure id="figure-6">
-        <div class="alignLeft art-ascii-art art-text artwork" id="section-6-2.1">
+        <div class="alignLeft art-ascii-art art-text artwork" id="section-5-2.1">
 <pre>
 module: ietf-fgotn-topology
 
@@ -1722,7 +1745,7 @@ module: ietf-fgotn-topology
             /tet:te-bandwidth/otnt:otn-bandwidth:
     +--rw fgotnlist* [odu-type odu-ts-number]
        +--rw odu-type           identityref
-       +--rw odu-ts-number      uint16
+       +--rw odu-ts-number      string
        +--rw fgotn-bandwidth?   string
   augment /nw:networks/tet:te/tet:templates/tet:link-template
             /tet:te-link-attributes/tet:label-restrictions
@@ -1739,14 +1762,14 @@ module: ietf-fgotn-topology
 </section>
 </div>
 <div id="yang-data-model-for-fgotn-topology">
-<section id="section-7">
-      <h2 id="name-yang-data-model-for-fgotn-t">
-<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-yang-data-model-for-fgotn-t" class="section-name selfRef">YANG Data Model for fgOTN topology</a>
+<section id="section-6">
+      <h2 id="name-yang-data-model-for-fgotn-to">
+<a href="#section-6" class="section-number selfRef">6. </a><a href="#name-yang-data-model-for-fgotn-to" class="section-name selfRef">YANG Data Model for fgOTN topology</a>
       </h2>
 <span id="name-fgotn-topology-yang-module"></span><div id="fgotn-topology-yang">
 <figure id="figure-7">
-        <div class="breakable lang-yang sourcecode" id="section-7-1.1">
-<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-topology@2024-07-07.yang"
+        <div class="breakable lang-yang sourcecode" id="section-6-1.1">
+<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-topology@2025-04-08.yang"
 
  module ietf-fgotn-topology {
    /* TODO: FIXME */
@@ -1802,6 +1825,7 @@ module: ietf-fgotn-topology
         Yanlei Zheng (zhengyanlei@chinaunicom.cn);
         Italo Busi (italo.busi@huawei.com);
         Chaode Yu (yuchaode@huawei.com);
+        Xing Zhao (zhaoxing@caict.ac.cn);
     ";
 
   description
@@ -1828,7 +1852,7 @@ module: ietf-fgotn-topology
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2024-07-07 {
+  revision 2025-04-08 {
     description
       "initial version";
     reference
@@ -1882,7 +1906,7 @@ module: ietf-fgotn-topology
       }
 
       leaf odu-ts-number {
-        type uint16;
+        type string;
         description
           "The index of server ODUk channel";
       }
@@ -1943,14 +1967,14 @@ module: ietf-fgotn-topology
 </section>
 </div>
 <div id="yang-tree-for-fgotn-tunnel">
-<section id="section-8">
+<section id="section-7">
       <h2 id="name-yang-tree-for-fgotn-tunnel">
-<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-yang-tree-for-fgotn-tunnel" class="section-name selfRef">YANG Tree for fgOTN tunnel</a>
+<a href="#section-7" class="section-number selfRef">7. </a><a href="#name-yang-tree-for-fgotn-tunnel" class="section-name selfRef">YANG Tree for fgOTN tunnel</a>
       </h2>
-<p id="section-8-1"><a href="#fig-fgotn-tunnel-tree" class="auto internal xref">Figure 8</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" (<a href="#fgotn-tunnel-yang" class="auto internal xref">Figure 9</a>).<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-7-1"><a href="#fig-fgotn-tunnel-tree" class="auto internal xref">Figure 8</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" (<a href="#fgotn-tunnel-yang" class="auto internal xref">Figure 9</a>).<a href="#section-7-1" class="pilcrow">¶</a></p>
 <div id="fig-fgotn-tunnel-tree">
 <figure id="figure-8">
-        <div class="alignLeft art-ascii-art art-text artwork" id="section-8-2.1">
+        <div class="alignLeft art-ascii-art art-text artwork" id="section-7-2.1">
 <pre>
 module: ietf-fgotn-tunnel
 
@@ -1993,15 +2017,15 @@ module: ietf-fgotn-tunnel
 </div>
 </section>
 </div>
-<div id="yang-data-model-for-fgotn-tunnel">
-<section id="section-9">
+<div id="yang-data-model-for-fgotn-tunnel-1">
+<section id="section-8">
       <h2 id="name-yang-data-model-for-fgotn-tu">
-<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-yang-data-model-for-fgotn-tu" class="section-name selfRef">YANG Data Model for fgOTN tunnel</a>
+<a href="#section-8" class="section-number selfRef">8. </a><a href="#name-yang-data-model-for-fgotn-tu" class="section-name selfRef">YANG Data Model for fgOTN tunnel</a>
       </h2>
 <span id="name-fgotn-tunnel-yang-module"></span><div id="fgotn-tunnel-yang">
 <figure id="figure-9">
-        <div class="breakable lang-yang sourcecode" id="section-9-1.1">
-<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-tunnel@2024-07-07.yang"
+        <div class="breakable lang-yang sourcecode" id="section-8-1.1">
+<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-tunnel@2025-04-08.yang"
 
 module ietf-fgotn-tunnel {
   /* TODO: FIXME */
@@ -2038,6 +2062,7 @@ module ietf-fgotn-tunnel {
         Yanlei Zheng (zhengyanlei@chinaunicom.cn);
         Italo Busi (italo.busi@huawei.com);
         Chaode Yu (yuchaode@huawei.com);
+        Xing Zhao (zhaoxing@caict.ac.cn);
     ";
 
   description
@@ -2064,7 +2089,7 @@ module ietf-fgotn-tunnel {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2024-07-07 {
+  revision 2025-04-08 {
     description
       "initial version";
     reference
@@ -2176,38 +2201,38 @@ module ietf-fgotn-tunnel {
 </section>
 </div>
 <div id="manageability-considerations">
-<section id="section-10">
+<section id="section-9">
       <h2 id="name-manageability-consideration">
-<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-manageability-consideration" class="section-name selfRef">Manageability Considerations</a>
+<a href="#section-9" class="section-number selfRef">9. </a><a href="#name-manageability-consideration" class="section-name selfRef">Manageability Considerations</a>
       </h2>
-<p id="section-10-1">&lt;Add any manageability considerations&gt;<a href="#section-10-1" class="pilcrow">¶</a></p>
+<p id="section-9-1">&lt;Add any manageability considerations&gt;<a href="#section-9-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="security-considerations">
-<section id="section-11">
+<section id="section-10">
       <h2 id="name-security-considerations">
-<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
+<a href="#section-10" class="section-number selfRef">10. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
-<p id="section-11-1">&lt;Add any security considerations&gt;<a href="#section-11-1" class="pilcrow">¶</a></p>
+<p id="section-10-1">&lt;Add any security considerations&gt;<a href="#section-10-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="iana-considerations">
-<section id="section-12">
+<section id="section-11">
       <h2 id="name-iana-considerations">
-<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
+<a href="#section-11" class="section-number selfRef">11. </a><a href="#name-iana-considerations" class="section-name selfRef">IANA Considerations</a>
       </h2>
-<p id="section-12-1">&lt;Add any IANA considerations&gt;<a href="#section-12-1" class="pilcrow">¶</a></p>
+<p id="section-11-1">&lt;Add any IANA considerations&gt;<a href="#section-11-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sec-combined-references">
-<section id="section-13">
+<section id="section-12">
       <h2 id="name-references">
-<a href="#section-13" class="section-number selfRef">13. </a><a href="#name-references" class="section-name selfRef">References</a>
+<a href="#section-12" class="section-number selfRef">12. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
 <div id="sec-normative-references">
-<section id="section-13.1">
+<section id="section-12.1">
         <h3 id="name-normative-references">
-<a href="#section-13.1" class="section-number selfRef">13.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
+<a href="#section-12.1" class="section-number selfRef">12.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
 <dt id="I-D.ietf-ccamp-layer1-types">[I-D.ietf-ccamp-layer1-types]</dt>
@@ -2216,11 +2241,11 @@ module ietf-fgotn-tunnel {
 <dd class="break"></dd>
 <dt id="I-D.ietf-ccamp-otn-topo-yang">[I-D.ietf-ccamp-otn-topo-yang]</dt>
         <dd>
-<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Belotti, S.</span>, and <span class="refAuthor">O. G. de Dios</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network Topology"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-topo-yang-19</span>, <time datetime="2024-06-25" class="refDate">25 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-topo-yang-19">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-topo-yang-19</a>&gt;</span>. </dd>
+<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Belotti, S.</span>, and <span class="refAuthor">O. G. de Dios</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network Topology"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-topo-yang-20</span>, <time datetime="2024-11-07" class="refDate">7 November 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-topo-yang-20">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-topo-yang-20</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-ccamp-otn-tunnel-model">[I-D.ietf-ccamp-otn-tunnel-model]</dt>
         <dd>
-<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">Y. Xu</span>, <span class="refTitle">"OTN Tunnel YANG Model"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-21</span>, <time datetime="2024-06-06" class="refDate">6 June 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-21">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-21</a>&gt;</span>. </dd>
+<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">Y. Xu</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network (OTN) Tunnels and Label Switched Paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-22</span>, <time datetime="2024-12-03" class="refDate">3 December 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-22">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-22</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-yang-te">[I-D.ietf-teas-yang-te]</dt>
         <dd>
@@ -2233,6 +2258,10 @@ module ietf-fgotn-tunnel {
 <dt id="ITU-T_G.709">[ITU-T_G.709]</dt>
         <dd>
 <span class="refAuthor">ITU-T Recommendation G.709</span>, <span class="refTitle">"Interfaces for the optical transport network"</span>, <span class="seriesInfo">ITU-T Recommendation G.709, Amendment 3 </span>, <time datetime="2024-03" class="refDate">March 2024</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-G.709/">https://www.itu.int/rec/T-REC-G.709/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="ITU-T_G.709.20">[ITU-T_G.709.20]</dt>
+        <dd>
+<span class="refAuthor">ITU-T Recommendation G.709.20</span>, <span class="refTitle">"Overview of fine grain OTN"</span>, <span class="seriesInfo">ITU-T Recommendation G.709.20 </span>, <time datetime="2024-04" class="refDate">April 2024</time>, <span>&lt;<a href="https://www.itu.int/rec/T-REC-G.709.20/">https://www.itu.int/rec/T-REC-G.709.20/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -2262,9 +2291,9 @@ module ietf-fgotn-tunnel {
 </section>
 </div>
 <div id="sec-informative-references">
-<section id="section-13.2">
+<section id="section-12.2">
         <h3 id="name-informative-references">
-<a href="#section-13.2" class="section-number selfRef">13.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
+<a href="#section-12.2" class="section-number selfRef">12.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
         </h3>
 <dl class="references">
 <dt id="I-D.busi-teas-te-types-update">[I-D.busi-teas-te-types-update]</dt>
