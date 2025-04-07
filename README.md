@@ -1,6 +1,8 @@
-# ANG Data Models for fine grain Optical Transport Network
+<!-- regenerate: on (set to off if you edit this file) -->
 
-This is the working area for the individual Internet-Draft, "ANG Data Models for fine grain Optical Transport Network".
+# YANG Data Models for fine grain Optical Transport Network
+
+This is the working area for the individual Internet-Draft, "YANG Data Models for fine grain Optical Transport Network".
 
 * [Editor's Copy](https://YuChaode.github.io/draft-tan-ccamp-fgotn-yang/#go.draft-tan-ccamp-fgotn-yang.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-tan-ccamp-fgotn-yang)

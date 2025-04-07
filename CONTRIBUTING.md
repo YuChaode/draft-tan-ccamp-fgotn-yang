@@ -15,17 +15,3 @@ repository constitutes Contributions to the IETF Standards Process
 You agree to comply with all applicable IETF policies and procedures, including,
 BCP 78, 79, the TLP, and the TLP rules regarding code components (e.g. being
 subject to a Simplified BSD License) in Contributions.
-## Working Group Information
-
-Discussion of this work occurs on the [Common Control and Measurement Plane
-Working Group mailing list](mailto:ccamp@ietf.org)
-([archive](https://mailarchive.ietf.org/arch/browse/ccamp/),
-[subscribe](https://www.ietf.org/mailman/listinfo/ccamp)).
-In addition to contributions in GitHub, you are encouraged to participate in
-discussions there.
-
-**Note**: Some working groups adopt a policy whereby substantive discussion of
-technical issues needs to occur on the mailing list.
-
-You might also like to familiarize yourself with other
-[Working Group documents](https://datatracker.ietf.org/wg/ccamp/documents/).
