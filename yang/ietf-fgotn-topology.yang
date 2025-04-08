@@ -52,6 +52,7 @@
         Yanlei Zheng (zhengyanlei@chinaunicom.cn);
         Italo Busi (italo.busi@huawei.com);
         Chaode Yu (yuchaode@huawei.com);
+        Xing Zhao (zhaoxing@caict.ac.cn);
     ";
 
   description
@@ -78,7 +79,7 @@
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2024-07-07 {
+  revision 2025-04-08 {
     description
       "initial version";
     reference
@@ -132,7 +133,7 @@
       }
       
       leaf odu-ts-number {
-        type uint16;
+        type string;
         description 
           "The index of server ODUk channel";
       }
