@@ -178,7 +178,7 @@ The typical scenarios for fgOTN is to provide low bit rate private line or priva
 ## Retrieve Server Tunnels Scenario of fgOTN
 
 
-{{fig-multiplexing scenario}} below shows an example of scenario to retrieve server tunnels for multi-domain fgOTN service. In this example, some small bandwidth fgOTN service are aggregated by the access ring (10G), and then aggregated into a bigger bandwidth in metro ring (100G). The allocation of TS to support fgOTN switching maybe different in access ring and metro ring. E.g. there could be three ODU0 allocated in the access ring while there could be two ODU2 are allocated in the metro ring to support fgOTN switching. In this example, the server layer ODUk tunnel for fgOTN tunnel from node A to node E is ODU0, and the server layer tunnel from node E to node G is ODU2. The server layer tunnel for fgOTN tunnel will include one ODU0 tunnel and one ODU2 tunnel.
+{{fig-multiplexing}} below shows an example of scenario to retrieve server tunnels for multi-domain fgOTN service. In this example, some small bandwidth fgOTN service are aggregated by the access ring (10G), and then aggregated into a bigger bandwidth in metro ring (100G). The allocation of TS to support fgOTN switching maybe different in access ring and metro ring. E.g. there could be three ODU0 allocated in the access ring while there could be two ODU2 are allocated in the metro ring to support fgOTN switching. In this example, the server layer ODUk tunnel for fgOTN tunnel from node A to node E is ODU0, and the server layer tunnel from node E to node G is ODU2. The server layer tunnel for fgOTN tunnel will include one ODU0 tunnel and one ODU2 tunnel.
 
 ~~~~ ascii-art
 
@@ -204,11 +204,11 @@ The typical scenarios for fgOTN is to provide low bit rate private line or priva
       +-----+
 
 ~~~~
-{: #fig-multiplexing scenario title="The Scenario to Retrieve Server Tunnels"}
+{:#fig-multiplexing title="The Scenario to Retrieve Server Tunnels"}
 
 ## Multi-layer Path Splicing Scenario of fgOTN
 
-Not all nodes in the operator network support fgOTN, as shown in {{fig-service protection}}, node N-f5 and node N-f6 do not support fgOTN. To present the end-to-end primary-path and secondary-path of the services on the client side, it is necessary to complete the end-to-end path splicing based on the the ODU tunnel information associated with the fgotn tunnel.
+Not all nodes in the operator network support fgOTN, as shown in {{fig-service-protection}}, node N-f5 and node N-f6 do not support fgOTN. To present the end-to-end primary-path and secondary-path of the services on the client side, it is necessary to complete the end-to-end path splicing based on the the ODU tunnel information associated with the fgotn tunnel.
 
 ~~~~ ascii-art
                    +-----+            +-----+
@@ -225,7 +225,7 @@ Not all nodes in the operator network support fgOTN, as shown in {{fig-service p
                ----| N-f5 |----------| N-f6 |----
                    +------+          +------+
 ~~~~
-{: #fig-service protection scenario title="Protection Scenario of fgOTN"}
+{:#fig-service-protection title="Protection Scenario of fgOTN"}
 
 ## Hitless Resizing Scenario of fgOTN
 
@@ -235,7 +235,7 @@ The range of fgOTN service's Bandwidth on Demand (BoD) cannot exceed its server 
 
 The client needs to know how many bandwidth of a link is allocated for fgOTN. During the hitless resizing process, it is necessary to reserve or mark the corresponding bandwidth resources first, and then trigger the the resizing actions.
 
-Multi-domain hitless resizing should be supported. In the case of hitless resizing within a single domain, the "explicit route object" structure is not required. However, for multi-domain hitless resizing scenario, it is necessary to specify the ODUk TS and fgts numbers information on the ports of cross domain nodes in "explicit route objects" structure. For example, node 2 and node 3 in {{fig-hitless resizing}}. When there are multiple cross domain fgOTN service hitless resizing, the MDSC coordinator needs to issue the service resizing instructions to the domain controllers where the service source and destination are located separately.
+Multi-domain hitless resizing should be supported. In the case of hitless resizing within a single domain, the "explicit route object" structure is not required. However, for multi-domain hitless resizing scenario, it is necessary to specify the ODUk TS and fgts numbers information on the ports of cross domain nodes in "explicit route objects" structure. For example, node 2 and node 3 in {{fig-hitless-resizing}}. When there are multiple cross domain fgOTN service hitless resizing, the MDSC coordinator needs to issue the service resizing instructions to the domain controllers where the service source and destination are located separately.
 
 ~~~~ ascii-art
 
@@ -259,7 +259,7 @@ Multi-domain hitless resizing should be supported. In the case of hitless resizi
           Domain 1           |          Domain 2           |           Domain 3
                              |                             |
 ~~~~
-{: #fig-hitless resizing scenario title="Hitless Resizing Scenario of fgOTN"}
+{:#fig-hitless-resizing title="Hitless Resizing Scenario of fgOTN"}
 
 # YANG Data Model for fine grain Optical Transport Network Overview
 
