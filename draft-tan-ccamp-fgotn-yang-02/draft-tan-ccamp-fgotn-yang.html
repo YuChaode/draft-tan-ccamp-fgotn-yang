@@ -1054,7 +1054,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tan, et al.</td>
-<td class="center">Expires 9 October 2025</td>
+<td class="center">Expires 10 October 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tan-ccamp-fgotn-yang-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-04-07" class="published">7 April 2025</time>
+<time datetime="2025-04-08" class="published">8 April 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-10-09">9 October 2025</time></dd>
+<dd class="expires"><time datetime="2025-10-10">10 October 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1138,7 +1138,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 October 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 10 October 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1281,7 +1281,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
       </h2>
 <p id="section-1-1">Optical Transport Networks (OTN) is a mainstream layer 1 technology for the transport network. Over the years, it has continued to evolve, to improve its transport functions for the emerging requirements. The topology and tunnel information in the OTN has already been defined by generic traffic-engineering models and technology-specific models, including <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span> and <span>[<a href="#I-D.ietf-ccamp-otn-tunnel-model" class="cite xref">I-D.ietf-ccamp-otn-tunnel-model</a>]</span>.<a href="#section-1-1" class="pilcrow">¶</a></p>
 <p id="section-1-2">In the latest version of OTN, ITU-T G.709/Y.1331 Edition 6.5 <span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span>, the fine grain OTN (fgOTN) is introduced for the efficient transmission of low rate client signals (e.g., sub-1G).<a href="#section-1-2" class="pilcrow">¶</a></p>
-<p id="section-1-3">This document presents the control interface requirements of fgOTN, and defines two YANG data models for fgOTN topology and fgOTN tunnel. The topology model can capture topological and resource-related information pertaining to fgOTN. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels, Label Switched Paths (LSPs) and interfaces.<a href="#section-1-3" class="pilcrow">¶</a></p>
+<p id="section-1-3">This document presents the control interface requirements of fgOTN, and defines two YANG data models for fgOTN topology and fgOTN tunnel. The topology model can capture topological and resource-related information pertaining to fgOTN. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels and Label Switched Paths (LSPs).<a href="#section-1-3" class="pilcrow">¶</a></p>
 <p id="section-1-4">Furthermore, this document also imports the generic Layer 1 types defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span>.<a href="#section-1-4" class="pilcrow">¶</a></p>
 <p id="section-1-5">The YANG data models defined in this document conform to the Network Management Datastore Architecture (NMDA) defined in <span>[<a href="#RFC8342" class="cite xref">RFC8342</a>]</span>.<a href="#section-1-5" class="pilcrow">¶</a></p>
 <div id="terminology-and-notations">
@@ -1442,7 +1442,7 @@ Please remove this note.<a href="#section-1.5-3" class="pilcrow">¶</a></p>
         <h3 id="name-retrieve-server-tunnels-sce">
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-retrieve-server-tunnels-sce" class="section-name selfRef">Retrieve Server Tunnels Scenario of fgOTN</a>
         </h3>
-<p id="section-2.1-1">Figure 1 below shows an example of scenario to retrieve server tunnels for multi-domain fgOTN service. In this example, some small bandwidth fgOTN service are aggregated by the access ring (10G), and then aggregated into a bigger bandwidth in metro ring (100G). The allocation of TS to support fgOTN switching maybe different in access ring and metro ring. E.g. there could be three ODU0 allocated in the access ring while there could be two ODU2 are allocated in the metro ring to support fgOTN switching. In this example, the server layer ODUk tunnel for fgOTN tunnel from node A to node E is ODU0, and the server layer tunnel from node E to node G is ODU2. The server layer tunnel for fgOTN tunnel will include one ODU0 tunnel and one ODU2 tunnel.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-1"><a href="#fig-multiplexing" class="auto internal xref">Figure 1</a> below shows an example of scenario to retrieve server tunnels for multi-domain fgOTN service. In this example, some small bandwidth fgOTN service are aggregated by the access ring (10G), and then aggregated into a bigger bandwidth in metro ring (100G). The allocation of TS to support fgOTN switching maybe different in access ring and metro ring. E.g. there could be three ODU0 allocated in the access ring while there could be two ODU2 are allocated in the metro ring to support fgOTN switching. In this example, the server layer ODUk tunnel for fgOTN tunnel from node A to node E is ODU0, and the server layer tunnel from node E to node G is ODU2. The server layer tunnel for fgOTN tunnel will include one ODU0 tunnel and one ODU2 tunnel.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <span id="name-the-scenario-to-retrieve-se"></span><div id="fig-multiplexing">
 <figure id="figure-1">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-2.1-2.1">
@@ -1481,8 +1481,8 @@ Please remove this note.<a href="#section-1.5-3" class="pilcrow">¶</a></p>
         <h3 id="name-multi-layer-path-splicing-s">
 <a href="#section-2.2" class="section-number selfRef">2.2. </a><a href="#name-multi-layer-path-splicing-s" class="section-name selfRef">Multi-layer Path Splicing Scenario of fgOTN</a>
         </h3>
-<p id="section-2.2-1">Not all nodes in the operator network support fgOTN, as shown in figure 2, node 5 and node 6 do not support fgOTN. To present the end-to-end primary-path and secondary-path of the services on the client side, it is necessary to complete the end-to-end path splicing based on the the ODU tunnel information associated with the fgotn tunnel.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<span id="name-protection-scenario-of-fgot"></span><div id="fig-service">
+<p id="section-2.2-1">Not all nodes in the operator network support fgOTN, as shown in <a href="#fig-service-protection" class="auto internal xref">Figure 2</a>, node N-f5 and node N-f6 do not support fgOTN. To present the end-to-end primary-path and secondary-path of the services on the client side, it is necessary to complete the end-to-end path splicing based on the the ODU tunnel information associated with the fgotn tunnel.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
+<span id="name-protection-scenario-of-fgot"></span><div id="fig-service-protection">
 <figure id="figure-2">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-2.2-2.1">
 <pre>
@@ -1515,8 +1515,8 @@ Please remove this note.<a href="#section-1.5-3" class="pilcrow">¶</a></p>
 <p id="section-2.3-1"><span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span> defines the data plane procedure to support fgODUflex hitless resizing. The support of management of hitless resizing of fgODUflex needs to be carefully considered.<a href="#section-2.3-1" class="pilcrow">¶</a></p>
 <p id="section-2.3-2">The range of fgOTN service's Bandwidth on Demand (BoD) cannot exceed its server layer's bandwidth.<a href="#section-2.3-2" class="pilcrow">¶</a></p>
 <p id="section-2.3-3">The client needs to know how many bandwidth of a link is allocated for fgOTN. During the hitless resizing process, it is necessary to reserve or mark the corresponding bandwidth resources first, and then trigger the the resizing actions.<a href="#section-2.3-3" class="pilcrow">¶</a></p>
-<p id="section-2.3-4">Multi-domain hitless resizing should be supported. In the case of hitless resizing within a single domain, the "explicit route object" structure is not required. However, for multi-domain hitless resizing scenario, it is necessary to specify the ODUk TS and fgts numbers information on the ports of cross domain nodes in "explicit route objects" structure. For example, node 2 and node 3 in Figure 3. When there are multiple cross domain fgOTN service hitless resizing, the MDSC coordinator needs to issue the service resizing instructions to the domain controllers where the service source and destination are located separately.<a href="#section-2.3-4" class="pilcrow">¶</a></p>
-<span id="name-hitless-resizing-scenario-of"></span><div id="fig-hitless">
+<p id="section-2.3-4">Multi-domain hitless resizing should be supported. In the case of hitless resizing within a single domain, the "explicit route object" structure is not required. However, for multi-domain hitless resizing scenario, it is necessary to specify the ODUk TS and fgts numbers information on the ports of cross domain nodes in "explicit route objects" structure. For example, node 2 and node 3 in <a href="#fig-hitless-resizing" class="auto internal xref">Figure 3</a>. When there are multiple cross domain fgOTN service hitless resizing, the MDSC coordinator needs to issue the service resizing instructions to the domain controllers where the service source and destination are located separately.<a href="#section-2.3-4" class="pilcrow">¶</a></p>
+<span id="name-hitless-resizing-scenario-of"></span><div id="fig-hitless-resizing">
 <figure id="figure-3">
           <div class="alignLeft art-ascii-art art-text artwork" id="section-2.3-5.1">
 <pre>
@@ -1554,15 +1554,24 @@ Please remove this note.<a href="#section-1.5-3" class="pilcrow">¶</a></p>
       <h2 id="name-yang-data-model-for-fine-gr">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-yang-data-model-for-fine-gr" class="section-name selfRef">YANG Data Model for fine grain Optical Transport Network Overview</a>
       </h2>
-<p id="section-3-1">In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to OTN topology and OTN tunnel YANG model. The attributes related to fgOTN are augments from OTN topology data model, and fgOTN topology is not treated as a separate hierarchy. The fgOTN tunnel is defined as a separate tunnel hierarchy, and the fgOTN tunnels need to be pre-set and created before the service provisioning process.
+<p id="section-3-1">In order to provide fgOTN capabilities, this document defines two YANG data models augmenting the OTN topology and the OTN tunnel YANG data models, as defined in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span> and <span>[<a href="#I-D.ietf-ccamp-otn-tunnel-model" class="cite xref">I-D.ietf-ccamp-otn-tunnel-model</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">As defined in Annex M of <span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span>, fgOTN is defining a new path layer network which complements the existing OTN. Therefore:<a href="#section-3-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-3.1">
+          <p id="section-3-3.1.1">A single network topology instance is used to report both OTN and fgOTN topology information: fgOTN technology-specific attributes are therefore defined in the fgOTN topology model as augmentations of the OTN topology model, but without defining a new network type for fgOTN.<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-3.2">
+          <p id="section-3-3.2.1">The OTN tunnel model can be used to setup either an OTN or an fgOTN tunnel: fgOTN technology-specific attributes are therefore defined in the fgOTN tunnel model as augmentations of the OTN tunnel model, which are applicable only when the OTN tunnel is an fgOTN tunnel.
 # YANG Data Model for fgOTN Topology
-## Fine Grain OTN Topology Data Model Overview<a href="#section-3-1" class="pilcrow">¶</a></p>
-<p id="section-3-2">This document aims to describe the data model for fine grain OTN topology. The YANG module presented in this document augments from OTN topology data model, i.e., the ietf-otn-topology, as specified in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span>. In section 6 of <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span>, the guideline for augmenting OTN topology model was provided, and in this draft, we augment the OTN topology model to describe the topology characteristics of fgOTN.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">Common types, identities and groupings defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span> is reused in this document.<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4"><span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> defines an abstract (generic, or base) YANG data model for network/service topologies and inventories, and provides the fundamental model for <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. OTN topology module in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span> augments from the TE topology YANG model defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. <a href="#fig-fgotn-topology-relationship" class="auto internal xref">Figure 4</a> shows the augmentation relationship.<a href="#section-3-4" class="pilcrow">¶</a></p>
+## Fine Grain OTN Topology Data Model Overview<a href="#section-3-3.2.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="section-3-4">This document aims to describe the data model for fine grain OTN topology. The YANG module presented in this document augments from OTN topology data model, i.e., the ietf-otn-topology, as specified in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span>. In section 6 of <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span>, the guideline for augmenting OTN topology model was provided, and in this draft, we augment the OTN topology model to describe the topology characteristics of fgOTN.<a href="#section-3-4" class="pilcrow">¶</a></p>
+<p id="section-3-5">Common types, identities and groupings defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span> is reused in this document.<a href="#section-3-5" class="pilcrow">¶</a></p>
+<p id="section-3-6"><span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> defines an abstract (generic, or base) YANG data model for network/service topologies and inventories, and provides the fundamental model for <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. OTN topology module in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span> augments from the TE topology YANG model defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. <a href="#fig-fgotn-topology-relationship" class="auto internal xref">Figure 4</a> shows the augmentation relationship.<a href="#section-3-6" class="pilcrow">¶</a></p>
 <span id="name-relationship-between-fgotn-"></span><div id="fig-fgotn-topology-relationship">
 <figure id="figure-4">
-        <div class="alignLeft art-ascii-art art-text artwork" id="section-3-5.1">
+        <div class="alignLeft art-ascii-art art-text artwork" id="section-3-7.1">
 <pre>
     +--------------+      +-----------------------+
     | ietf-network |      | ietf-network-topology |
@@ -1592,7 +1601,7 @@ Please remove this note.<a href="#section-1.5-3" class="pilcrow">¶</a></p>
 <a href="#name-relationship-between-fgotn-" class="selfRef">Relationship between fgOTN topology and OTN topology model</a>
         </figcaption></figure>
 </div>
-<p id="section-3-6">The entities, TE attributes and OTN attributes, such as nodes, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information. At the same time, it is necessary to extend the encoding and switching-capability enumeration values in <span>[<a href="#I-D.busi-teas-te-types-update" class="cite xref">I-D.busi-teas-te-types-update</a>]</span> to identify that the current Tunnel Termination Point (TTP) is a termination point of an fgOTN tunnel.<a href="#section-3-6" class="pilcrow">¶</a></p>
+<p id="section-3-8">The entities, TE attributes and OTN attributes, such as nodes, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information. At the same time, it is necessary to extend the encoding and switching-capability enumeration values in <span>[<a href="#I-D.busi-teas-te-types-update" class="cite xref">I-D.busi-teas-te-types-update</a>]</span> to identify that the current Tunnel Termination Point (TTP) is a termination point of an fgOTN tunnel.<a href="#section-3-8" class="pilcrow">¶</a></p>
 <div id="termination-point-augmentation">
 <section id="section-3.1">
         <h3 id="name-termination-point-augmentat">
