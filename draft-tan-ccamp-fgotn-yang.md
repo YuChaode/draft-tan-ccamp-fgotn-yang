@@ -270,7 +270,9 @@ As defined in Annex M of {{ITU-T_G.709}}, fgOTN is defining a new path layer net
 - A single network topology instance is used to report both OTN and fgOTN topology information: fgOTN technology-specific attributes are therefore defined in the fgOTN topology model as augmentations of the OTN topology model, but without defining a new network type for fgOTN.
 
 - The OTN tunnel model can be used to setup either an OTN or an fgOTN tunnel: fgOTN technology-specific attributes are therefore defined in the fgOTN tunnel model as augmentations of the OTN tunnel model, which are applicable only when the OTN tunnel is an fgOTN tunnel.
+
 # YANG Data Model for fgOTN Topology
+
 ## Fine Grain OTN Topology Data Model Overview
 
 This document aims to describe the data model for fine grain OTN topology. The YANG module presented in this document augments from OTN topology data model, i.e., the ietf-otn-topology, as specified in {{?I-D.ietf-ccamp-otn-topo-yang}}. In section 6 of {{?I-D.ietf-ccamp-otn-topo-yang}}, the guideline for augmenting OTN topology model was provided, and in this draft, we augment the OTN topology model to describe the topology characteristics of fgOTN.
@@ -362,6 +364,7 @@ augment /nw:networks/tet:te/tet:templates/tet:link-template
 The fgts-range list is used to describe the availability of fgOTN timeslot in the server ODUk, including the fgts-reserved and fgts-unreserved. The odu-ts-number is used to indicate the index of server ODUk channel.
 
 # YANG Data Model for fgOTN Tunnel
+
 ## Fine Grain OTN Tunnel Data Model Overview
 
 This document aims to describe the data model for fgOTN tunnel. The fgOTN tunnel model augments to OTN tunnel {{?I-D.ietf-ccamp-otn-tunnel-model}} with fgOTN-specific parameters, including the bandwidth information and label information. {{fig-fgotn-tunnel-relationship}} shows the augmentation relationship.
