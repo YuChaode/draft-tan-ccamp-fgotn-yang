@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-30T00:41:15.392836+00:00",
+  "timestamp": "2025-04-10T00:47:02.879256+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -55,14 +55,153 @@
       "id": "I_kwDOMSanvs6SNH-B",
       "title": "Typo of the draf title ",
       "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/1",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "YuChaode",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "The title of current 00 version missed a 'Y' at the beginning.",
       "createdAt": "2024-08-07T08:41:01Z",
-      "updatedAt": "2024-08-07T08:41:01Z",
+      "updatedAt": "2025-03-03T11:46:40Z",
+      "closedAt": "2025-03-03T11:46:38Z",
+      "comments": [
+        {
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This issue has been resolved.",
+          "createdAt": "2025-02-25T09:37:31Z",
+          "updatedAt": "2025-02-25T09:37:31Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Solved in [draft-tan-ccamp-fgotn-yang-01](https://datatracker.ietf.org/doc/html/draft-tan-ccamp-fgotn-yang-01)",
+          "createdAt": "2025-03-03T11:46:38Z",
+          "updatedAt": "2025-03-03T11:46:38Z"
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "I_kwDOMSanvs6spLDz",
+      "title": "How to filter the termination points which can support fgOTN?",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/4",
+      "state": "OPEN",
+      "author": "YuChaode",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "italobusi",
+        "YuChaode"
+      ],
+      "labels": [],
+      "body": "The orginal design was to define a supported-fgotn-tp attribute which is used to indicate whether this termination point can support fgOTN or not. In the meeting 20250305, people agree to make some extension on encoding and switching-capability instead.\nThe problem is which attribute shall we choose, and how to make this extension and align with gmpls protocol.",
+      "createdAt": "2025-03-05T07:24:14Z",
+      "updatedAt": "2025-03-12T08:22:50Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "body": "we suggest to have one more expert from gmpls protocol to join this discussion.",
+          "createdAt": "2025-03-05T07:36:22Z",
+          "updatedAt": "2025-03-05T07:36:22Z"
+        },
+        {
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "body": "the extension should be defined in our fgOTN draft instead to define it in TE type or layer1 types draft.",
+          "createdAt": "2025-03-05T07:42:11Z",
+          "updatedAt": "2025-03-05T07:42:11Z"
+        },
+        {
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "body": "2025-03-12: the question we found on today's meeting is why we need to provide this filtering functionality on TP instead of TTP. \nDr.Tan will summarize the workflow between MDSC and PNC to make us clear what the requirement is.",
+          "createdAt": "2025-03-12T08:22:49Z",
+          "updatedAt": "2025-03-12T08:22:49Z"
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOMSanvs6to-sn",
+      "title": "A deep analysis for hitless resizing",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/5",
+      "state": "OPEN",
+      "author": "YuChaode",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "It is suggested to have a deep analysis on the scenarios on hitless resizing, taking account of the interactions between data plane and control plane protocols.\nFor single domain service, the solution seems simpler, but it is worthwhile having some description.\nFor inter-domain service, it is worthwhile to investigate in detail.",
+      "createdAt": "2025-03-12T08:49:21Z",
+      "updatedAt": "2025-03-12T08:49:21Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 6,
+      "id": "I_kwDOMSanvs6wvzKu",
+      "title": "a summary of presentation slide of April interim meeting",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/6",
+      "state": "OPEN",
+      "author": "YuChaode",
+      "authorAssociation": "OWNER",
+      "assignees": [
+        "italobusi",
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "After IETF121, we have discussed the following iterms:\n1. summary of the changes: some small changes on the model and draft.\n2. open discussion:\n1). we discussed how to define a generic structure to support multi-layers path; (conclusion has not been reached. We found it is a generic requirement, not only for fgOTN, but also for the other layers. we can describe the current standard solution and our concerns, and provide two options: extension on the dependancy tunnel, and extension on the path element. )\n2). we have discussed how to filer the TP which can support fgOTN. The current solution in our draft is one extension attribute under the termination poin.(fgOTN-supported?) We didn't make agreement on this solution. And one possible solution is to make some extension on switching-capability and encoding. But there could be some impact on PCEP and GMPLS protocol, we would like to seek some helps from the experts on this domain. Maybe we need to have some collaboration with Lin Yi's draft and it seems that we need a new signal type.\n3). We have discussed the link's bandwidth which can support fgOTN. (picture and example are needed.)\nraised WG adoption request in this meeting.",
+      "createdAt": "2025-04-02T06:29:39Z",
+      "updatedAt": "2025-04-02T06:38:25Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 7,
+      "id": "I_kwDOMSanvs6xi9Gh",
+      "title": "Switching and LSP encoding types for fgOTN",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/7",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Need to discuss whether the same switching and LSP encoding types can be used for ODUk and fgODUflex and therefore only a new odu-type value shall be defined for fgODUflex.\n\nThe text describing the fgOTN topology and tunnel models can be updated accordingly.\n\n_Originally posted by @italobusi in https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3#discussion_r2025703759_\n            ",
+      "createdAt": "2025-04-08T06:26:55Z",
+      "updatedAt": "2025-04-08T06:28:48Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 8,
+      "id": "I_kwDOMSanvs6xjFBW",
+      "title": "The format of bandwidth odu-ts-number and fgOTN-bandwidth",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/8",
+      "state": "OPEN",
+      "author": "YuChaode",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently, these two attributes are defined as string format. But there are some suggestions to use integer or decimal to represent.",
+      "createdAt": "2025-04-08T06:41:25Z",
+      "updatedAt": "2025-04-08T06:41:25Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 9,
+      "id": "I_kwDOMSanvs6xjJ5L",
+      "title": "Clean up the content of path splicing scenario's description",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/9",
+      "state": "OPEN",
+      "author": "YuChaode",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "The original motivation is to describe the requirement of multi-layers path, but it is coupled with protection scenario. Some cleanup is needed for the \"Multi-layer Path Splicing Scenario of fgOTN\" section.",
+      "createdAt": "2025-04-08T06:51:00Z",
+      "updatedAt": "2025-04-08T06:51:00Z",
       "closedAt": null,
       "comments": []
     }
@@ -95,6 +234,413 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 3,
+      "id": "PR_kwDOMSanvs6NFpqc",
+      "title": "update the draft and models for 02 version",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3",
+      "state": "MERGED",
+      "author": "YuChaode",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-03-03T03:09:30Z",
+      "updatedAt": "2025-04-08T06:52:26Z",
+      "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "ad55dcc60ed861f7279dfa5b199a90468da00524",
+      "headRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "draft-tan-ccamp-fgotn-yang-02",
+      "headRefOid": "3d3d693ac19760021578eaf030c1a45f6bec6a06",
+      "closedAt": "2025-04-08T06:52:26Z",
+      "mergedAt": "2025-04-08T06:52:26Z",
+      "mergedBy": "YuChaode",
+      "mergeCommit": {
+        "oid": "55fd14ae3a6f264287540fc9ba91cd15446bdd34"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs6ed1Py",
+          "commit": {
+            "abbreviatedOid": "dfb3f99"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Initial set of comments",
+          "createdAt": "2025-03-04T18:40:07Z",
+          "updatedAt": "2025-03-04T23:41:07Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\n    seriesinfo: ITU-T Recommendation G.709.20\r\n```",
+              "createdAt": "2025-03-04T18:40:08Z",
+              "updatedAt": "2025-03-04T23:41:07Z"
+            },
+            {
+              "originalPosition": 28,
+              "body": "The management of TE interfaces is outside the scope of a network model (see also the text in OTN tunnel model):\r\n\r\n```suggestion\r\nThis document presents the control interface requirements of fgOTN, and defines two YANG data models for fgOTN topology and fgOTN tunnel. The topology model can capture topological and resource-related information pertaining to fgOTN. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels and Label Switched Paths (LSPs).\r\n```",
+              "createdAt": "2025-03-04T18:46:16Z",
+              "updatedAt": "2025-03-04T23:41:07Z"
+            },
+            {
+              "originalPosition": 57,
+              "body": "I would remove the term 'dependency' at least for the time being. I would also add some node names and show, as an example, and ODU0 server layer tunnel from node X to node Y, fgOTN switching in node Y and another ODU2 server layer tunnel in node Z",
+              "createdAt": "2025-03-04T18:51:50Z",
+              "updatedAt": "2025-03-04T23:41:07Z"
+            },
+            {
+              "originalPosition": 66,
+              "body": "I do not understand why the requirement to represent the ODU server layer tunnel is coupled with the protection.\r\n\r\nWhy this is not required for unprotected services/fgODUflex connections?",
+              "createdAt": "2025-03-04T18:53:57Z",
+              "updatedAt": "2025-03-04T23:41:07Z"
+            },
+            {
+              "originalPosition": 97,
+              "body": "The sentence is too long and hard to read. I would suggest to split (also considering some bullets)\r\n\r\nThe support of hitless resizing, especially in multi-domain scenarios, requires some deep investigation on how control plane and data plane protocol interacts each other.",
+              "createdAt": "2025-03-04T18:58:39Z",
+              "updatedAt": "2025-03-04T23:41:07Z"
+            },
+            {
+              "originalPosition": 141,
+              "body": "The sentence is not fully clear to me. Let's discuss how to rephrase it.",
+              "createdAt": "2025-03-04T19:00:50Z",
+              "updatedAt": "2025-03-04T23:41:07Z"
+            },
+            {
+              "originalPosition": 162,
+              "body": "why \"Node Augmentation\" and not \"Termination Point Augmentation\"?",
+              "createdAt": "2025-03-04T19:05:04Z",
+              "updatedAt": "2025-03-04T23:41:07Z"
+            },
+            {
+              "originalPosition": 171,
+              "body": "I think we need to describe the relationship between this attribute and the interface-switching-capability of this TP and of the Links terminated on this TP. ",
+              "createdAt": "2025-03-04T19:09:45Z",
+              "updatedAt": "2025-03-04T23:41:07Z"
+            },
+            {
+              "originalPosition": 176,
+              "body": "Why it is a string and not a integer or decimal type? It can be an integer/decimal with Mbps unit (e.g., 2500) or also an integer representing the number of ODU0s (e.g., 2)",
+              "createdAt": "2025-03-04T19:10:36Z",
+              "updatedAt": "2025-03-12T09:07:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6fmEYl",
+          "commit": {
+            "abbreviatedOid": "2d4ef46"
+          },
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-12T08:39:06Z",
+          "updatedAt": "2025-03-12T08:39:06Z",
+          "comments": [
+            {
+              "originalPosition": 66,
+              "body": "Dr.Tan will modify the description. The requirement is to provide multi-layer path object in the LSP, there is no relationship with protection.\r\nThere could be two examples attached in the appendix for 1+1 protection and unprotected service.",
+              "createdAt": "2025-03-12T08:39:06Z",
+              "updatedAt": "2025-03-12T08:40:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6fmN6b",
+          "commit": {
+            "abbreviatedOid": "2d4ef46"
+          },
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-12T08:52:29Z",
+          "updatedAt": "2025-03-12T08:52:29Z",
+          "comments": [
+            {
+              "originalPosition": 97,
+              "body": "Dr.Tan will help to simplify this paragraph. And for the hitless resizing comment, we have create an issue to trace.",
+              "createdAt": "2025-03-12T08:52:29Z",
+              "updatedAt": "2025-03-12T08:52:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6fmSW6",
+          "commit": {
+            "abbreviatedOid": "2d4ef46"
+          },
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-12T08:58:57Z",
+          "updatedAt": "2025-03-12T08:58:57Z",
+          "comments": [
+            {
+              "originalPosition": 141,
+              "body": "TODO: Italo will help to rephrase this sentence. \r\nThe meaning of this sentence is to illustrate the usage of YANG data model. The fgOTN topology should not be a seperated network topology while fgOTN tunnel could be a new of ODU layer.",
+              "createdAt": "2025-03-12T08:58:57Z",
+              "updatedAt": "2025-03-12T08:59:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6fmUzf",
+          "commit": {
+            "abbreviatedOid": "2d4ef46"
+          },
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-12T09:02:37Z",
+          "updatedAt": "2025-03-12T09:02:37Z",
+          "comments": [
+            {
+              "originalPosition": 162,
+              "body": "We still need to have a discussion on Issue #4 to identify what we need to make this augmentation, after that we can update the title.",
+              "createdAt": "2025-03-12T09:02:37Z",
+              "updatedAt": "2025-03-12T09:02:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6fmVH4",
+          "commit": {
+            "abbreviatedOid": "2d4ef46"
+          },
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-12T09:03:05Z",
+          "updatedAt": "2025-03-12T09:03:06Z",
+          "comments": [
+            {
+              "originalPosition": 171,
+              "body": "See issue #4 .",
+              "createdAt": "2025-03-12T09:03:05Z",
+              "updatedAt": "2025-03-12T09:03:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6fmXaQ",
+          "commit": {
+            "abbreviatedOid": "2d4ef46"
+          },
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-12T09:06:41Z",
+          "updatedAt": "2025-03-12T09:06:41Z",
+          "comments": [
+            {
+              "originalPosition": 176,
+              "body": "Dr.Zheng and Dr.Tan will have a discussion after the meeting and make a decision. We can discuss it in the next meeting.",
+              "createdAt": "2025-03-12T09:06:41Z",
+              "updatedAt": "2025-03-12T09:06:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6jLvCu",
+          "commit": {
+            "abbreviatedOid": "2d4ef46"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-02T22:48:26Z",
+          "updatedAt": "2025-04-02T22:48:26Z",
+          "comments": [
+            {
+              "originalPosition": 141,
+              "body": "@tanyanxia @YuChaode : what about the following rephrasing?\r\n\r\n```suggestion\r\nIn order to provide fgOTN capabilities, this document defines two YANG data models augmenting the OTN topology and the OTN tunnel YANG data models, as defined in {{!I-D.ietf-ccamp-otn-topo-yang}} and {{!I-D.ietf-ccamp-otn-tunnel-model}}.\r\n\r\nAs defined in Annex M of {{ITU-T_G.709}}, fgOTN is defining a new path layer network which complements the existing OTN. Therefore:\r\n\r\n- A single network topology instance is used to report both OTN and fgOTN topology information: fgOTN technology-specific attributes are therefore defined in the fgOTN topology model as augmentations of the OTN topology model, but without defining a new network type for fgOTN.\r\n\r\n- The OTN tunnel model can be used to setup either an OTN or an fgOTN tunnel: fgOTN technology-specific attributes are therefore defined in the fgOTN tunnel model as augmentations of the OTN tunnel model, which are applicable only when the OTN tunnel is an fgOTN tunnel.\r\n```\r\n\r\nI would like to describe that the same switching-type and encoding types can be used for ODUk and fgODUflex and therefore that a new odu-type value shall be defined by I think it is too early. We can update this text when we have agreed on this point",
+              "createdAt": "2025-04-02T22:48:26Z",
+              "updatedAt": "2025-04-02T22:48:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6js3WB",
+          "commit": {
+            "abbreviatedOid": "5eac5b8"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-04-07T11:13:05Z",
+          "updatedAt": "2025-04-07T11:24:48Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "The change agreed in https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3#discussion_r1980034578 has been lost:\r\n\r\n```suggestion\r\nThis document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1G client signals in transport network.\r\n```",
+              "createdAt": "2025-04-07T11:13:06Z",
+              "updatedAt": "2025-04-07T11:24:48Z"
+            },
+            {
+              "originalPosition": 57,
+              "body": "Resolved with https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3/commits/5c385ec3f312ea76c8186e3dbc9c9592ee72cac1",
+              "createdAt": "2025-04-07T11:15:29Z",
+              "updatedAt": "2025-04-07T11:24:48Z"
+            },
+            {
+              "originalPosition": 66,
+              "body": "The section title has been properly updated but the description and figure is still bound to the protection configuration.\r\n\r\nI would suggest to keep the text as it is for the v02 update to present at the April 10, 2025 interim meeting and create a new issue to track the need improve this description",
+              "createdAt": "2025-04-07T11:19:36Z",
+              "updatedAt": "2025-04-07T11:24:48Z"
+            },
+            {
+              "originalPosition": 97,
+              "body": "Resolved with https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3/commits/5c385ec3f312ea76c8186e3dbc9c9592ee72cac1",
+              "createdAt": "2025-04-07T11:21:03Z",
+              "updatedAt": "2025-04-07T11:24:48Z"
+            },
+            {
+              "originalPosition": 162,
+              "body": "Resolved with https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3/commits/5c385ec3f312ea76c8186e3dbc9c9592ee72cac1",
+              "createdAt": "2025-04-07T11:21:42Z",
+              "updatedAt": "2025-04-07T11:24:48Z"
+            },
+            {
+              "originalPosition": 176,
+              "body": "I would suggest to keep the string type in the v02 update to present at the April 10, 2025 interim meeting and create a new issue to track the need to further discuss this data type.\r\n",
+              "createdAt": "2025-04-07T11:23:59Z",
+              "updatedAt": "2025-04-07T11:24:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6jtE0u",
+          "commit": {
+            "abbreviatedOid": "ad29fe3"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-07T11:35:21Z",
+          "updatedAt": "2025-04-07T11:35:21Z",
+          "comments": [
+            {
+              "originalPosition": 57,
+              "body": "Kramdown syntax:\r\n\r\n```suggestion\r\n{{fig-multiplexing scenario}} below shows an example of scenario to retrieve server tunnels for multi-domain fgOTN service. In this example, some small bandwidth fgOTN service are aggregated by the access ring (10G), and then aggregated into a bigger bandwidth in metro ring (100G). The allocation of TS to support fgOTN switching maybe different in access ring and metro ring. E.g. there could be three ODU0 allocated in the access ring while there could be two ODU2 are allocated in the metro ring to support fgOTN switching. In this example, the server layer ODUk tunnel for fgOTN tunnel from node A to node E is ODU0, and the server layer tunnel from node E to node G is ODU2. The server layer tunnel for fgOTN tunnel will include one ODU0 tunnel and one ODU2 tunnel.\r\n```",
+              "createdAt": "2025-04-07T11:35:21Z",
+              "updatedAt": "2025-04-07T11:35:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6jtFbV",
+          "commit": {
+            "abbreviatedOid": "ad29fe3"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-07T11:36:24Z",
+          "updatedAt": "2025-04-07T11:36:24Z",
+          "comments": [
+            {
+              "originalPosition": 93,
+              "body": "Kramdown syntax and alignment of the names of the nodes:\r\n\r\n```suggestion\r\nNot all nodes in the operator network support fgOTN, as shown in {{fig-service protection}}, node N-f5 and node N-f6 do not support fgOTN. To present the end-to-end primary-path and secondary-path of the services on the client side, it is necessary to complete the end-to-end path splicing based on the the ODU tunnel information associated with the fgotn tunnel.\r\n```",
+              "createdAt": "2025-04-07T11:36:24Z",
+              "updatedAt": "2025-04-07T11:36:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6jtGIF",
+          "commit": {
+            "abbreviatedOid": "ad29fe3"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-07T11:37:37Z",
+          "updatedAt": "2025-04-07T11:37:37Z",
+          "comments": [
+            {
+              "originalPosition": 130,
+              "body": "Kramdown syntax:\r\n\r\n```suggestion\r\nMulti-domain hitless resizing should be supported. In the case of hitless resizing within a single domain, the \"explicit route object\" structure is not required. However, for multi-domain hitless resizing scenario, it is necessary to specify the ODUk TS and fgts numbers information on the ports of cross domain nodes in \"explicit route objects\" structure. For example, node 2 and node 3 in {{fig-hitless resizing}}. When there are multiple cross domain fgOTN service hitless resizing, the MDSC coordinator needs to issue the service resizing instructions to the domain controllers where the service source and destination are located separately.\r\n```",
+              "createdAt": "2025-04-07T11:37:37Z",
+              "updatedAt": "2025-04-07T11:37:37Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6j1wML",
+          "commit": {
+            "abbreviatedOid": "ad29fe3"
+          },
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-08T06:14:23Z",
+          "updatedAt": "2025-04-08T06:14:23Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "```suggestion\r\nThis document presents the control interface requirements of fgOTN, and defines two YANG data models for fgOTN topology and fgOTN tunnel. The topology model can capture topological and resource-related information pertaining to fgOTN. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels and Label Switched Paths (LSPs).\r\n```",
+              "createdAt": "2025-04-08T06:14:23Z",
+              "updatedAt": "2025-04-08T06:14:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6j1-aZ",
+          "commit": {
+            "abbreviatedOid": "ad29fe3"
+          },
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-08T06:41:47Z",
+          "updatedAt": "2025-04-08T06:41:47Z",
+          "comments": [
+            {
+              "originalPosition": 176,
+              "body": "To be discussed later",
+              "createdAt": "2025-04-08T06:41:47Z",
+              "updatedAt": "2025-04-08T06:41:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs6j2Dmw",
+          "commit": {
+            "abbreviatedOid": "dfb3f99"
+          },
+          "author": "YuChaode",
+          "authorAssociation": "OWNER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-04-08T06:51:38Z",
+          "updatedAt": "2025-04-08T06:51:38Z",
+          "comments": [
+            {
+              "originalPosition": 66,
+              "body": "The comment is tracked by the issue #9 ",
+              "createdAt": "2025-04-08T06:51:38Z",
+              "updatedAt": "2025-04-08T06:51:38Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
