@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-10T00:47:02.879256+00:00",
+  "timestamp": "2025-04-17T00:47:43.263174+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -143,7 +143,7 @@
       "id": "I_kwDOMSanvs6wvzKu",
       "title": "a summary of presentation slide of April interim meeting",
       "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/6",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "YuChaode",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -153,9 +153,17 @@
       "labels": [],
       "body": "After IETF121, we have discussed the following iterms:\n1. summary of the changes: some small changes on the model and draft.\n2. open discussion:\n1). we discussed how to define a generic structure to support multi-layers path; (conclusion has not been reached. We found it is a generic requirement, not only for fgOTN, but also for the other layers. we can describe the current standard solution and our concerns, and provide two options: extension on the dependancy tunnel, and extension on the path element. )\n2). we have discussed how to filer the TP which can support fgOTN. The current solution in our draft is one extension attribute under the termination poin.(fgOTN-supported?) We didn't make agreement on this solution. And one possible solution is to make some extension on switching-capability and encoding. But there could be some impact on PCEP and GMPLS protocol, we would like to seek some helps from the experts on this domain. Maybe we need to have some collaboration with Lin Yi's draft and it seems that we need a new signal type.\n3). We have discussed the link's bandwidth which can support fgOTN. (picture and example are needed.)\nraised WG adoption request in this meeting.",
       "createdAt": "2025-04-02T06:29:39Z",
-      "updatedAt": "2025-04-02T06:38:25Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-04-16T06:11:37Z",
+      "closedAt": "2025-04-16T06:11:36Z",
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closed with: https://datatracker.ietf.org/doc/slides-interim-2025-ccamp-03-sessa-5-yang-data-models-for-fine-grain-optical-transport-network/",
+          "createdAt": "2025-04-16T06:11:36Z",
+          "updatedAt": "2025-04-16T06:11:36Z"
+        }
+      ]
     },
     {
       "number": 7,
@@ -169,9 +177,17 @@
       "labels": [],
       "body": "Need to discuss whether the same switching and LSP encoding types can be used for ODUk and fgODUflex and therefore only a new odu-type value shall be defined for fgODUflex.\n\nThe text describing the fgOTN topology and tunnel models can be updated accordingly.\n\n_Originally posted by @italobusi in https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3#discussion_r2025703759_\n            ",
       "createdAt": "2025-04-08T06:26:55Z",
-      "updatedAt": "2025-04-08T06:28:48Z",
+      "updatedAt": "2025-04-16T06:30:24Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The offline suggestion from GMPLS/PCEP experts is to use the existing switching and LSP encoding types and to define a new switching type (in GMPLS/PCEP) or odu-type (in YANG) for fgODUflex\n\nTo further investigate where this new odu-type can be defined:\n1. In a new `fgotn-types` YANG module within this draft\n2. In an RFC-bis for layer1-types \n\nNote that https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-layer1-types is in the RFC Editors Queue so it it too late to update it before it is published as an RFC\n\nNext steps:\n1. Investigate the impact of defining a new odu-type with the existing OTN topology and OTN tunnel model\n1. Check with CCAMP and PCEP mailing lists that the proposed approach is agreed for GMPLS, PCEP and YANG\n1. Decide where to define the new odu-type identity\n",
+          "createdAt": "2025-04-16T06:30:23Z",
+          "updatedAt": "2025-04-16T06:30:23Z"
+        }
+      ]
     },
     {
       "number": 8,
