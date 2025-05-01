@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-17T00:47:43.263174+00:00",
+  "timestamp": "2025-05-01T00:55:22.223112+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -218,6 +218,22 @@
       "body": "The original motivation is to describe the requirement of multi-layers path, but it is coupled with protection scenario. Some cleanup is needed for the \"Multi-layer Path Splicing Scenario of fgOTN\" section.",
       "createdAt": "2025-04-08T06:51:00Z",
       "updatedAt": "2025-04-08T06:51:00Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 10,
+      "id": "I_kwDOMSanvs60oL-_",
+      "title": "Discuss with ITU-T on the inter-domain fgOTN tunnel bandwidth modification",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/10",
+      "state": "OPEN",
+      "author": "YuChaode",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "On the meeting 20250430, we discussed the scenario of inter-domain fgOTN service bandwidth modification. We have a concern on the scenario that there could be a failure on the single direction while it is successful on the other direction. There should be some rollback on the device perspective and the orchestrator needs to send a bandiwidth modification to change it back.\nwe suggested to solidate it at first on our draft, and write a contribution to ITU-T SG15 Q11 & Q14, to check whether our solution is acceptable in ITU-T. So that we can have a same understanding on this scenario.",
+      "createdAt": "2025-04-30T07:45:02Z",
+      "updatedAt": "2025-04-30T07:45:02Z",
       "closedAt": null,
       "comments": []
     }
