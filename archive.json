@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-01T00:55:22.223112+00:00",
+  "timestamp": "2025-05-25T00:56:15.948978+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -90,13 +90,12 @@
       "author": "YuChaode",
       "authorAssociation": "OWNER",
       "assignees": [
-        "italobusi",
-        "YuChaode"
+        "tanyanxia"
       ],
       "labels": [],
       "body": "The orginal design was to define a supported-fgotn-tp attribute which is used to indicate whether this termination point can support fgOTN or not. In the meeting 20250305, people agree to make some extension on encoding and switching-capability instead.\nThe problem is which attribute shall we choose, and how to make this extension and align with gmpls protocol.",
       "createdAt": "2025-03-05T07:24:14Z",
-      "updatedAt": "2025-03-12T08:22:50Z",
+      "updatedAt": "2025-05-23T09:18:50Z",
       "closedAt": null,
       "comments": [
         {
@@ -173,11 +172,13 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "italobusi"
+      ],
       "labels": [],
       "body": "Need to discuss whether the same switching and LSP encoding types can be used for ODUk and fgODUflex and therefore only a new odu-type value shall be defined for fgODUflex.\n\nThe text describing the fgOTN topology and tunnel models can be updated accordingly.\n\n_Originally posted by @italobusi in https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3#discussion_r2025703759_\n            ",
       "createdAt": "2025-04-08T06:26:55Z",
-      "updatedAt": "2025-04-16T06:30:24Z",
+      "updatedAt": "2025-05-23T09:09:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -186,6 +187,13 @@
           "body": "The offline suggestion from GMPLS/PCEP experts is to use the existing switching and LSP encoding types and to define a new switching type (in GMPLS/PCEP) or odu-type (in YANG) for fgODUflex\n\nTo further investigate where this new odu-type can be defined:\n1. In a new `fgotn-types` YANG module within this draft\n2. In an RFC-bis for layer1-types \n\nNote that https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-layer1-types is in the RFC Editors Queue so it it too late to update it before it is published as an RFC\n\nNext steps:\n1. Investigate the impact of defining a new odu-type with the existing OTN topology and OTN tunnel model\n1. Check with CCAMP and PCEP mailing lists that the proposed approach is agreed for GMPLS, PCEP and YANG\n1. Decide where to define the new odu-type identity\n",
           "createdAt": "2025-04-16T06:30:23Z",
           "updatedAt": "2025-04-16T06:30:23Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "- [ ] Invite Lin Yi and evaluate the impact of defining a new odu-type with the existing OTN topology and OTN tunnel model",
+          "createdAt": "2025-05-23T09:09:37Z",
+          "updatedAt": "2025-05-23T09:09:37Z"
         }
       ]
     },
@@ -197,13 +205,23 @@
       "state": "OPEN",
       "author": "YuChaode",
       "authorAssociation": "OWNER",
-      "assignees": [],
+      "assignees": [
+        "tanyanxia"
+      ],
       "labels": [],
       "body": "Currently, these two attributes are defined as string format. But there are some suggestions to use integer or decimal to represent.",
       "createdAt": "2025-04-08T06:41:25Z",
-      "updatedAt": "2025-04-08T06:41:25Z",
+      "updatedAt": "2025-05-23T09:02:35Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Call on 2025-05-23\n\nAgreed to change these attributes to integer\n",
+          "createdAt": "2025-05-23T09:02:29Z",
+          "updatedAt": "2025-05-23T09:02:29Z"
+        }
+      ]
     },
     {
       "number": 9,
@@ -213,11 +231,13 @@
       "state": "OPEN",
       "author": "YuChaode",
       "authorAssociation": "OWNER",
-      "assignees": [],
+      "assignees": [
+        "tanyanxia"
+      ],
       "labels": [],
       "body": "The original motivation is to describe the requirement of multi-layers path, but it is coupled with protection scenario. Some cleanup is needed for the \"Multi-layer Path Splicing Scenario of fgOTN\" section.",
       "createdAt": "2025-04-08T06:51:00Z",
-      "updatedAt": "2025-04-08T06:51:00Z",
+      "updatedAt": "2025-05-23T08:55:22Z",
       "closedAt": null,
       "comments": []
     },
