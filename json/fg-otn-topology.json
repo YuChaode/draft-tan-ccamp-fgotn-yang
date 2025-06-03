@@ -1,0 +1,1047 @@
+{
+  "network-id": "providerId-1-clientId-2-topologyId-2",
+  "network-types": {
+    "ietf-te-topology:te-topology": {
+      "ietf-otn-topology:otn-topology": {}
+    }
+  },
+  "ietf-te-topology:client-id": "2",
+  "ietf-te-topology:provider-id": "1",
+  "ietf-te-topology:te-topology-id": "2",
+  "ietf-te-topology:te": {
+    "name": "providerId-1-clientId-2-topologyId-2",
+    "optimization-criterion": "ietf-te-types:not-optimized"
+  },
+  "ietf-network-topology:link": [
+    {
+      "link-id": "teNodeId-0.9.9.1-teTpId-83820595",
+      "source": {
+        "source-node": "0.9.9.1",
+        "source-tp": "83820595"
+      },
+      "destination": {
+        "dest-node": "0.9.9.2",
+        "dest-tp": "65401893"
+      },
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-link-attributes": {
+          "admin-status": "up",
+          "interface-switching-capability": [
+            {
+              "encoding": "ietf-te-types:lsp-encoding-oduk",
+              "switching-capability": "ietf-te-types:switching-otn"
+            }
+          ],
+          "label-restriction": [
+            {
+              "inclusive-exclusive": "inclusive",
+              "index": 1,
+              "label-end": {
+                "te-label": {
+                  "ietf-otn-topology:transmit-ts": 8,
+                  "ietf-otn-topology:receive-ts": 8
+                }
+              },
+              "label-start": {
+                "te-label": {
+                  "ietf-otn-topology:receive-ts": 1,
+                  "ietf-otn-topology:transmit-ts": 1
+                }
+              },
+              "label-step": 1,
+              "range-bitmap": "M2Y=",
+              "ietf-fgotn-topology:fgts-range": [
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 1,
+                  "fgts-reserved": "1-20",
+                  "fgts-unreserved": "21-119"
+                },
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 2,
+                  "fgts-reserved": null,
+                  "fgts-unreserved": "1-119"
+                }
+              ]
+            }
+          ],
+          "max-link-bandwidth": {
+            "te-bandwidth": {
+              "ietf-otn-topology:odulist": {
+                "odu-type": "ietf-otn-types:prot-ODU0",
+                "number": 8,
+                "ietf-fgotn-topology:fgotn-bandwidth": 2500
+              }
+            }
+          },
+          "unreserved-bandwidth": [
+            {
+              "priority": 7,
+              "te-bandwidth": {
+                "ietf-otn-topology:odulist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "number": 6
+                  }
+                ],
+                "ietf-fgotn-topology:fgotnlist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 1,
+                    "fgotn-bandwidth": "1050"
+                  },
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 2,
+                    "fgotn-bandwidth": "1250"
+                  }
+                ]
+              }
+            }
+          ],
+          "name": "teNodeId-0.9.9.1-teTpId-83820595",
+          "te-delay-metric": 1155,
+          "ietf-otn-topology:distance": "0"
+        }
+      }
+    },
+    {
+      "link-id": "teNodeId-0.9.9.2-teTpId-65401893",
+      "source": {
+        "source-node": "0.9.9.2",
+        "source-tp": "65401893"
+      },
+      "destination": {
+        "dest-node": "0.9.9.1",
+        "dest-tp": "83820595"
+      },
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-link-attributes": {
+          "admin-status": "up",
+          "interface-switching-capability": [
+            {
+              "encoding": "ietf-te-types:lsp-encoding-oduk",
+              "switching-capability": "ietf-te-types:switching-otn"
+            }
+          ],
+          "label-restriction": [
+            {
+              "inclusive-exclusive": "inclusive",
+              "index": 1,
+              "label-end": {
+                "te-label": {
+                  "ietf-otn-topology:transmit-ts": 8,
+                  "ietf-otn-topology:receive-ts": 8
+                }
+              },
+              "label-start": {
+                "te-label": {
+                  "ietf-otn-topology:receive-ts": 1,
+                  "ietf-otn-topology:transmit-ts": 1
+                }
+              },
+              "label-step": 1,
+              "range-bitmap": "M2Y=",
+              "ietf-fgotn-topology:fgts-range": [
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 1,
+                  "fgts-reserved": "1-20",
+                  "fgts-unreserved": "21-119"
+                },
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 2,
+                  "fgts-reserved": null,
+                  "fgts-unreserved": "1-119"
+                }
+              ]
+            }
+          ],
+          "max-link-bandwidth": {
+            "te-bandwidth": {
+              "ietf-otn-topology:odulist": {
+                "odu-type": "ietf-otn-types:prot-ODU0",
+                "number": 8,
+                "ietf-fgotn-topology:fgotn-bandwidth": 2500
+              }
+            }
+          },
+          "unreserved-bandwidth": [
+            {
+              "priority": 7,
+              "te-bandwidth": {
+                "ietf-otn-topology:odulist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "number": 6
+                  }
+                ],
+                "ietf-fgotn-topology:fgotnlist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 1,
+                    "fgotn-bandwidth": "1050"
+                  },
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 2,
+                    "fgotn-bandwidth": "1250"
+                  }
+                ]
+              }
+            }
+          ],
+          "name": "teNodeId-0.9.9.2-teTpId-65401893",
+          "te-delay-metric": 1155,
+          "ietf-otn-topology:distance": "0"
+        }
+      }
+    },
+    {
+      "link-id": "teNodeId-0.9.9.1-teTpId-80091455",
+      "source": {
+        "source-node": "0.9.9.1",
+        "source-tp": "80091455"
+      },
+      "destination": {
+        "dest-node": "0.9.9.3",
+        "dest-tp": "82827165"
+      },
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-link-attributes": {
+          "admin-status": "up",
+          "interface-switching-capability": [
+            {
+              "encoding": "ietf-te-types:lsp-encoding-oduk",
+              "switching-capability": "ietf-te-types:switching-otn"
+            }
+          ],
+          "label-restriction": [
+            {
+              "inclusive-exclusive": "inclusive",
+              "index": 1,
+              "label-end": {
+                "te-label": {
+                  "ietf-otn-topology:transmit-ts": 8,
+                  "ietf-otn-topology:receive-ts": 8
+                }
+              },
+              "label-start": {
+                "te-label": {
+                  "ietf-otn-topology:receive-ts": 1,
+                  "ietf-otn-topology:transmit-ts": 1
+                }
+              },
+              "label-step": 1,
+              "range-bitmap": "MUY=",
+              "ietf-fgotn-topology:fgts-range": [
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 1,
+                  "fgts-reserved": null,
+                  "fgts-unreserved": "1-119"
+                },
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 2,
+                  "fgts-reserved": null,
+                  "fgts-unreserved": "1-119"
+                }
+              ]
+            }
+          ],
+          "max-link-bandwidth": {
+            "te-bandwidth": {
+              "ietf-otn-topology:odulist": {
+                "odu-type": "ietf-otn-types:prot-ODU0",
+                "number": 8,
+                "ietf-fgotn-topology:fgotn-bandwidth": 2500
+              }
+            }
+          },
+          "unreserved-bandwidth": [
+            {
+              "priority": 7,
+              "te-bandwidth": {
+                "ietf-otn-topology:odulist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "number": 5
+                  }
+                ],
+                "ietf-fgotn-topology:fgotnlist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 1,
+                    "fgotn-bandwidth": "1250"
+                  },
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 2,
+                    "fgotn-bandwidth": "1250"
+                  }
+                ]
+              }
+            }
+          ],
+          "name": "teNodeId-0.9.9.1-teTpId-80091455",
+          "te-delay-metric": 1155,
+          "ietf-otn-topology:distance": "0"
+        }
+      }
+    },
+    {
+      "link-id": "teNodeId-0.9.9.3-teTpId-82827165",
+      "source": {
+        "source-node": "0.9.9.3",
+        "source-tp": "82827165"
+      },
+      "destination": {
+        "dest-node": "0.9.9.1",
+        "dest-tp": "80091455"
+      },
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-link-attributes": {
+          "admin-status": "up",
+          "interface-switching-capability": [
+            {
+              "encoding": "ietf-te-types:lsp-encoding-oduk",
+              "switching-capability": "ietf-te-types:switching-otn"
+            }
+          ],
+          "label-restriction": [
+            {
+              "inclusive-exclusive": "inclusive",
+              "index": 1,
+              "label-end": {
+                "te-label": {
+                  "ietf-otn-topology:transmit-ts": 8,
+                  "ietf-otn-topology:receive-ts": 8
+                }
+              },
+              "label-start": {
+                "te-label": {
+                  "ietf-otn-topology:receive-ts": 1,
+                  "ietf-otn-topology:transmit-ts": 1
+                }
+              },
+              "label-step": 1,
+              "range-bitmap": "MUY=",
+              "ietf-fgotn-topology:fgts-range": [
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 1,
+                  "fgts-reserved": null,
+                  "fgts-unreserved": "1-119"
+                },
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 2,
+                  "fgts-reserved": null,
+                  "fgts-unreserved": "1-119"
+                }
+              ]
+            }
+          ],
+          "max-link-bandwidth": {
+            "te-bandwidth": {
+              "ietf-otn-topology:odulist": {
+                "odu-type": "ietf-otn-types:prot-ODU0",
+                "number": 8,
+                "ietf-fgotn-topology:fgotn-bandwidth": 2500
+              }
+            }
+          },
+          "unreserved-bandwidth": [
+            {
+              "priority": 7,
+              "te-bandwidth": {
+                "ietf-otn-topology:odulist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "number": 5
+                  }
+                ],
+                "ietf-fgotn-topology:fgotnlist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 1,
+                    "fgotn-bandwidth": "1250"
+                  },
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 2,
+                    "fgotn-bandwidth": "1250"
+                  }
+                ]
+              }
+            }
+          ],
+          "name": "teNodeId-0.9.9.3-teTpId-82827165",
+          "te-delay-metric": 1155,
+          "ietf-otn-topology:distance": "0"
+        }
+      }
+    },
+    {
+      "link-id": "teNodeId-0.9.9.4-teTpId-62163451",
+      "source": {
+        "source-node": "0.9.9.4",
+        "source-tp": "62163451"
+      },
+      "destination": {
+        "dest-node": "0.9.9.2",
+        "dest-tp": "66811395"
+      },
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-link-attributes": {
+          "admin-status": "up",
+          "interface-switching-capability": [
+            {
+              "encoding": "ietf-te-types:lsp-encoding-oduk",
+              "switching-capability": "ietf-te-types:switching-otn"
+            }
+          ],
+          "label-restriction": [
+            {
+              "inclusive-exclusive": "inclusive",
+              "index": 1,
+              "label-end": {
+                "te-label": {
+                  "ietf-otn-topology:transmit-ts": 8,
+                  "ietf-otn-topology:receive-ts": 8
+                }
+              },
+              "label-start": {
+                "te-label": {
+                  "ietf-otn-topology:receive-ts": 1,
+                  "ietf-otn-topology:transmit-ts": 1
+                }
+              },
+              "label-step": 1,
+              "range-bitmap": "M2Y=",
+              "ietf-fgotn-topology:fgts-range": [
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 1,
+                  "fgts-reserved": "1,2",
+                  "fgts-unreserved": "3-119"
+                },
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 2,
+                  "fgts-reserved": "1",
+                  "fgts-unreserved": "2-119"
+                }
+              ]
+            }
+          ],
+          "max-link-bandwidth": {
+            "te-bandwidth": {
+              "ietf-otn-topology:odulist": {
+                "odu-type": "ietf-otn-types:prot-ODU0",
+                "number": 8,
+                "ietf-fgotn-topology:fgotn-bandwidth": 2500
+              }
+            }
+          },
+          "unreserved-bandwidth": [
+            {
+              "priority": 7,
+              "te-bandwidth": {
+                "ietf-otn-topology:odulist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "number": 6
+                  }
+                ],
+                "ietf-fgotn-topology:fgotnlist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 1,
+                    "fgotn-bandwidth": "1230"
+                  },
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 2,
+                    "fgotn-bandwidth": "1240"
+                  }
+                ]
+              }
+            }
+          ],
+          "name": "teNodeId-0.9.9.4-teTpId-62163451",
+          "te-delay-metric": 1155,
+          "ietf-otn-topology:distance": "0"
+        }
+      }
+    },
+    {
+      "link-id": "teNodeId-0.9.9.2-teTpId-66811395",
+      "source": {
+        "source-node": "0.9.9.2",
+        "source-tp": "66811395"
+      },
+      "destination": {
+        "dest-node": "0.9.9.4",
+        "dest-tp": "62163451"
+      },
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-link-attributes": {
+          "admin-status": "up",
+          "interface-switching-capability": [
+            {
+              "encoding": "ietf-te-types:lsp-encoding-oduk",
+              "switching-capability": "ietf-te-types:switching-otn"
+            }
+          ],
+          "label-restriction": [
+            {
+              "inclusive-exclusive": "inclusive",
+              "index": 1,
+              "label-end": {
+                "te-label": {
+                  "ietf-otn-topology:transmit-ts": 8,
+                  "ietf-otn-topology:receive-ts": 8
+                }
+              },
+              "label-start": {
+                "te-label": {
+                  "ietf-otn-topology:receive-ts": 1,
+                  "ietf-otn-topology:transmit-ts": 1
+                }
+              },
+              "label-step": 1,
+              "range-bitmap": "M2Y=",
+              "ietf-fgotn-topology:fgts-range": [
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 1,
+                  "fgts-reserved": "1,2",
+                  "fgts-unreserved": "3-119"
+                },
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 2,
+                  "fgts-reserved": "1",
+                  "fgts-unreserved": "2-119"
+                }
+              ]
+            }
+          ],
+          "max-link-bandwidth": {
+            "te-bandwidth": {
+              "ietf-otn-topology:odulist": {
+                "odu-type": "ietf-otn-types:prot-ODU0",
+                "number": 8,
+                "ietf-fgotn-topology:fgotn-bandwidth": 2500
+              }
+            }
+          },
+          "unreserved-bandwidth": [
+            {
+              "priority": 7,
+              "te-bandwidth": {
+                "ietf-otn-topology:odulist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "number": 6
+                  }
+                ],
+                "ietf-fgotn-topology:fgotnlist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 1,
+                    "fgotn-bandwidth": "1230"
+                  },
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 2,
+                    "fgotn-bandwidth": "1240"
+                  }
+                ]
+              }
+            }
+          ],
+          "name": "teNodeId-0.9.9.2-teTpId-66811395",
+          "te-delay-metric": 1155,
+          "ietf-otn-topology:distance": "0"
+        }
+      }
+    },
+    {
+      "link-id": "teNodeId-0.9.9.4-teTpId-67302998",
+      "source": {
+        "source-node": "0.9.9.4",
+        "source-tp": "67302998"
+      },
+      "destination": {
+        "dest-node": "0.9.9.3",
+        "dest-tp": "87955172"
+      },
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-link-attributes": {
+          "admin-status": "up",
+          "interface-switching-capability": [
+            {
+              "encoding": "ietf-te-types:lsp-encoding-oduk",
+              "switching-capability": "ietf-te-types:switching-otn"
+            }
+          ],
+          "label-restriction": [
+            {
+              "inclusive-exclusive": "inclusive",
+              "index": 1,
+              "label-end": {
+                "te-label": {
+                  "ietf-otn-topology:transmit-ts": 8,
+                  "ietf-otn-topology:receive-ts": 8
+                }
+              },
+              "label-start": {
+                "te-label": {
+                  "ietf-otn-topology:receive-ts": 1,
+                  "ietf-otn-topology:transmit-ts": 1
+                }
+              },
+              "label-step": 1,
+              "range-bitmap": "MUY=",
+              "ietf-fgotn-topology:fgts-range": [
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 1,
+                  "fgts-reserved": null,
+                  "fgts-unreserved": "1-119"
+                },
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 2,
+                  "fgts-reserved": null,
+                  "fgts-unreserved": "1-119"
+                }
+              ]
+            }
+          ],
+          "max-link-bandwidth": {
+            "te-bandwidth": {
+              "ietf-otn-topology:odulist": {
+                "odu-type": "ietf-otn-types:prot-ODU0",
+                "number": 8,
+                "ietf-fgotn-topology:fgotn-bandwidth": 2500
+              }
+            }
+          },
+          "unreserved-bandwidth": [
+            {
+              "priority": 7,
+              "te-bandwidth": {
+                "ietf-otn-topology:odulist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "number": 5
+                  }
+                ],
+                "ietf-fgotn-topology:fgotnlist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 1,
+                    "fgotn-bandwidth": "1250"
+                  },
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 2,
+                    "fgotn-bandwidth": "1250"
+                  }
+                ]
+              }
+            }
+          ],
+          "name": "teNodeId-0.9.9.4-teTpId-67302998",
+          "te-delay-metric": 1155,
+          "ietf-otn-topology:distance": "0"
+        }
+      }
+    },
+    {
+      "link-id": "teNodeId-0.9.9.3-teTpId-87955172",
+      "source": {
+        "source-node": "0.9.9.3",
+        "source-tp": "87955172"
+      },
+      "destination": {
+        "dest-node": "0.9.9.4",
+        "dest-tp": "67302998"
+      },
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-link-attributes": {
+          "admin-status": "up",
+          "interface-switching-capability": [
+            {
+              "encoding": "ietf-te-types:lsp-encoding-oduk",
+              "switching-capability": "ietf-te-types:switching-otn"
+            }
+          ],
+          "label-restriction": [
+            {
+              "inclusive-exclusive": "inclusive",
+              "index": 1,
+              "label-end": {
+                "te-label": {
+                  "ietf-otn-topology:transmit-ts": 8,
+                  "ietf-otn-topology:receive-ts": 8
+                }
+              },
+              "label-start": {
+                "te-label": {
+                  "ietf-otn-topology:receive-ts": 1,
+                  "ietf-otn-topology:transmit-ts": 1
+                }
+              },
+              "label-step": 1,
+              "range-bitmap": "MUY=",
+              "ietf-fgotn-topology:fgts-range": [
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 1,
+                  "fgts-reserved": null,
+                  "fgts-unreserved": "1-119"
+                },
+                {
+                  "odu-type": "ietf-otn-types:prot-ODU0",
+                  "odu-ts-number": 2,
+                  "fgts-reserved": null,
+                  "fgts-unreserved": "1-119"
+                }
+              ]
+            }
+          ],
+          "max-link-bandwidth": {
+            "te-bandwidth": {
+              "ietf-otn-topology:odulist": {
+                "odu-type": "ietf-otn-types:prot-ODU0",
+                "number": 8,
+                "ietf-fgotn-topology:fgotn-bandwidth": 2500
+              }
+            }
+          },
+          "unreserved-bandwidth": [
+            {
+              "priority": 7,
+              "te-bandwidth": {
+                "ietf-otn-topology:odulist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "number": 5
+                  }
+                ],
+                "ietf-fgotn-topology:fgotnlist": [
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 1,
+                    "fgotn-bandwidth": "1250"
+                  },
+                  {
+                    "odu-type": "ietf-otn-types:prot-ODU0",
+                    "odu-ts-number": 2,
+                    "fgotn-bandwidth": "1250"
+                  }
+                ]
+              }
+            }
+          ],
+          "name": "teNodeId-0.9.9.3-teTpId-87955172",
+          "te-delay-metric": 1155,
+          "ietf-otn-topology:distance": "0"
+        }
+      }
+    }
+  ],
+  "node": [
+    {
+      "node-id": "0.9.9.1",
+      "ietf-te-topology:extend-id": "b7d4fbd0-3a2d-11eb-aa05-286ed48d2577",
+      "ietf-te-topology:te-node-id": "0.9.9.1",
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-node-attributes": {
+          "admin-status": "up",
+          "name": "XXX",
+          "node-ip": "0.9.9.1",
+          "version": "XXX"
+        },
+        "node-type": "XXX"
+      },
+      "ietf-network-topology:termination-point": [
+        {
+          "tp-id": "83820595",
+          "ietf-te-topology:te-tp-id": 83820595,
+          "ietf-te-topology:extend-id": "1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed9",
+          "ietf-te-topology:te": {
+            "admin-status": "up",
+            "ietf-otn-topology:client-facing": false,
+            "oper-status": "up",
+            "interface-switching-capability": [
+              {
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-capability": "ietf-te-types:switching-otn"
+              }
+            ],
+            "ietf-fgotn-topology:supported-fgotn-tp": "true",
+            "name": "TP{0-0-4-255-TNU5U402-51}",
+            "physical-info": {
+              "rack-id": 0,
+              "shelf-id": 0,
+              "slot-id": 4,
+              "subcard-id": 255,
+              "port-id": 51,
+              "board-type": "TNU5U402"
+            }
+          }
+        },
+        {
+          "tp-id": "80091455",
+          "ietf-te-topology:te-tp-id": 80091455,
+          "ietf-te-topology:extend-id": "30339b5b-407d-11eb-81f9-286ed48d25df",
+          "ietf-te-topology:te": {
+            "admin-status": "up",
+            "ietf-otn-topology:client-facing": false,
+            "oper-status": "up",
+            "interface-switching-capability": [
+              {
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-capability": "ietf-te-types:switching-otn"
+              }
+            ],
+            "ietf-fgotn-topology:supported-fgotn-tp": "true",
+            "name": "TP{0-0-4-255-TNU5U402-52}",
+            "physical-info": {
+              "rack-id": 0,
+              "shelf-id": 0,
+              "slot-id": 4,
+              "subcard-id": 255,
+              "port-id": 52,
+              "board-type": "TNU5U402"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "node-id": "0.9.9.2",
+      "ietf-te-topology:extend-id": "fdcd3b40-407c-11eb-b710-286ed48d26a9",
+      "ietf-te-topology:te-node-id": "0.9.9.2",
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-node-attributes": {
+          "admin-status": "up",
+          "name": "XXX)",
+          "node-ip": "0.9.9.2",
+          "version": "XXX"
+        },
+        "node-type": "XXX"
+      },
+      "ietf-network-topology:termination-point": [
+        {
+          "tp-id": "65401893",
+          "ietf-te-topology:te-tp-id": 65401893,
+          "ietf-te-topology:extend-id": "3c5a8f2a-8e4f-4d3b-9c6a-2f5e7c8d3a1b",
+          "ietf-te-topology:te": {
+            "admin-status": "up",
+            "ietf-otn-topology:client-facing": false,
+            "oper-status": "up",
+            "interface-switching-capability": [
+              {
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-capability": "ietf-te-types:switching-otn"
+              }
+            ],
+            "ietf-fgotn-topology:supported-fgotn-tp": "true",
+            "name": "TP{0-0-4-255-TNU5U402-51}",
+            "physical-info": {
+              "rack-id": 0,
+              "shelf-id": 0,
+              "slot-id": 4,
+              "subcard-id": 255,
+              "port-id": 51,
+              "board-type": "TNU5U402"
+            }
+          }
+        },
+        {
+          "tp-id": "66811395",
+          "ietf-te-topology:te-tp-id": 66811395,
+          "ietf-te-topology:extend-id": "5f4dcc3b-5aa7-439b-a0e9-8f01a6d9b3dc",
+          "ietf-te-topology:te": {
+            "admin-status": "up",
+            "ietf-otn-topology:client-facing": false,
+            "oper-status": "up",
+            "interface-switching-capability": [
+              {
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-capability": "ietf-te-types:switching-otn"
+              }
+            ],
+            "ietf-fgotn-topology:supported-fgotn-tp": "true",
+            "name": "TP{0-0-4-255-TNU5U402-52}",
+            "physical-info": {
+              "rack-id": 0,
+              "shelf-id": 0,
+              "slot-id": 4,
+              "subcard-id": 255,
+              "port-id": 52,
+              "board-type": "TNU5U402"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "node-id": "0.9.9.3",
+      "ietf-te-topology:extend-id": "5e1d9c9c-1f5c-473f-a7a0-149a61ac95da",
+      "ietf-te-topology:te-node-id": "0.9.9.3",
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-node-attributes": {
+          "admin-status": "up",
+          "name": "XXX",
+          "node-ip": "0.9.9.3",
+          "version": "XXX"
+        },
+        "node-type": "XXX"
+      },
+      "ietf-network-topology:termination-point": [
+        {
+          "tp-id": "82827165",
+          "ietf-te-topology:te-tp-id": 82827165,
+          "ietf-te-topology:extend-id": "7e2b4a1c-2d5b-4f6c-8a7d-3e4c5f6a7b8c",
+          "ietf-te-topology:te": {
+            "admin-status": "up",
+            "ietf-otn-topology:client-facing": false,
+            "oper-status": "up",
+            "interface-switching-capability": [
+              {
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-capability": "ietf-te-types:switching-otn"
+              }
+            ],
+            "ietf-fgotn-topology:supported-fgotn-tp": "true",
+            "name": "TP{0-0-4-255-TNU5U402-51}",
+            "physical-info": {
+              "rack-id": 0,
+              "shelf-id": 0,
+              "slot-id": 4,
+              "subcard-id": 255,
+              "port-id": 51,
+              "board-type": "TNU5U402"
+            }
+          }
+        },
+        {
+          "tp-id": "87955517",
+          "ietf-te-topology:te-tp-id": 87955517,
+          "ietf-te-topology:extend-id": "9a3c5b2d-4e6c-417d-8b8e-4f5a6b7c8d9e",
+          "ietf-te-topology:te": {
+            "admin-status": "up",
+            "ietf-otn-topology:client-facing": false,
+            "oper-status": "up",
+            "interface-switching-capability": [
+              {
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-capability": "ietf-te-types:switching-otn"
+              }
+            ],
+            "ietf-fgotn-topology:supported-fgotn-tp": "true",
+            "name": "TP{0-0-4-255-TNU5U402-52}",
+            "physical-info": {
+              "rack-id": 0,
+              "shelf-id": 0,
+              "slot-id": 4,
+              "subcard-id": 255,
+              "port-id": 52,
+              "board-type": "TNU5U402"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "node-id": "0.9.9.4",
+      "ietf-te-topology:extend-id": "b0eb47be-1aac-45be-93f8-ea63a83cd2c7",
+      "ietf-te-topology:te-node-id": "0.9.9.4",
+      "ietf-te-topology:te": {
+        "oper-status": "up",
+        "te-node-attributes": {
+          "admin-status": "up",
+          "name": "XXX",
+          "node-ip": "0.9.9.4",
+          "version": "XXX"
+        },
+        "node-type": "XXX"
+      },
+      "ietf-network-topology:termination-point": [
+        {
+          "tp-id": "62163451",
+          "ietf-te-topology:te-tp-id": 62163451,
+          "ietf-te-topology:extend-id": "ba5d6c3e-5f7d-428e-9c9f-5a6b7c8d9e0f",
+          "ietf-te-topology:te": {
+            "admin-status": "up",
+            "ietf-otn-topology:client-facing": false,
+            "oper-status": "up",
+            "interface-switching-capability": [
+              {
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-capability": "ietf-te-types:switching-otn"
+              }
+            ],
+            "ietf-fgotn-topology:supported-fgotn-tp": "true",
+            "name": "TP{0-0-4-255-TNU5U402-51}",
+            "physical-info": {
+              "rack-id": 0,
+              "shelf-id": 0,
+              "slot-id": 4,
+              "subcard-id": 255,
+              "port-id": 51,
+              "board-type": "TNU5U402"
+            }
+          }
+        },
+        {
+          "tp-id": "67302998",
+          "ietf-te-topology:te-tp-id": 67302998,
+          "ietf-te-topology:extend-id": "fda78e50-719f-44a0-b1b1-7c8d9e0f1a2b",
+          "ietf-te-topology:te": {
+            "admin-status": "up",
+            "ietf-otn-topology:client-facing": false,
+            "oper-status": "up",
+            "interface-switching-capability": [
+              {
+                "encoding": "ietf-te-types:lsp-encoding-oduk",
+                "switching-capability": "ietf-te-types:switching-otn"
+              }
+            ],
+            "ietf-fgotn-topology:supported-fgotn-tp": "true",
+            "name": "TP{0-0-4-255-TNU5U402-52}",
+            "physical-info": {
+              "rack-id": 0,
+              "shelf-id": 0,
+              "slot-id": 4,
+              "subcard-id": 255,
+              "port-id": 52,
+              "board-type": "TNU5U402"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
