@@ -5,12 +5,12 @@
 Common Control and Measurement Plane                              Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 10 October 2025                                         I. Busi
+Expires: 21 December 2025                                        I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                            8 April 2025
+                                                            19 June 2025
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 October 2025.
+   This Internet-Draft will expire on 21 December 2025.
 
 Copyright Notice
 
@@ -88,22 +88,25 @@ Table of Contents
      2.3.  Hitless Resizing Scenario of fgOTN
    3.  YANG Data Model for fine grain Optical Transport Network
            Overview
-     3.1.  Termination Point Augmentation
-     3.2.  Bandwidth Augmentation
-     3.3.  Label Augmentation
-   4.  YANG Data Model for fgOTN Tunnel
-     4.1.  Bandwidth Augmentation
-     4.2.  Label Augmentation
-   5.  YANG Tree for fgOTN topology
-   6.  YANG Data Model for fgOTN topology
-   7.  YANG Tree for fgOTN tunnel
-   8.  YANG Data Model for fgOTN tunnel
-   9.  Manageability Considerations
-   10. Security Considerations
-   11. IANA Considerations
-   12. References
-     12.1.  Normative References
-     12.2.  Informative References
+   4.  YANG Data Model for fgOTN Topology
+     4.1.  Fine Grain OTN Topology Data Model Overview
+     4.2.  Termination Point Augmentation
+     4.3.  Bandwidth Augmentation
+     4.4.  Label Augmentation
+   5.  YANG Data Model for fgOTN Tunnel
+     5.1.  Fine Grain OTN Tunnel Data Model Overview
+     5.2.  Bandwidth Augmentation
+     5.3.  Label Augmentation
+   6.  YANG Tree for fgOTN topology
+   7.  YANG Data Model for fgOTN topology
+   8.  YANG Tree for fgOTN tunnel
+   9.  YANG Data Model for fgOTN tunnel
+   10. Manageability Considerations
+   11. Security Considerations
+   12. IANA Considerations
+   13. References
+     13.1.  Normative References
+     13.2.  Informative References
    Appendix A.  Acknowledgments
    Contributors
    Authors' Addresses
@@ -178,7 +181,7 @@ Table of Contents
 1.3.  Tree Diagram
 
    A simplified graphical representation of the data model is used in
-   Section 5 of this document.  The meaning of the symbols in this
+   Section 6 of this document.  The meaning of the symbols in this
    diagram is defined in [RFC8340].
 
 1.4.  Requirements Language
@@ -375,8 +378,11 @@ Table of Contents
       fgOTN tunnel: fgOTN technology-specific attributes are therefore
       defined in the fgOTN tunnel model as augmentations of the OTN
       tunnel model, which are applicable only when the OTN tunnel is an
-      fgOTN tunnel. # YANG Data Model for fgOTN Topology ## Fine Grain
-      OTN Topology Data Model Overview
+      fgOTN tunnel.
+
+4.  YANG Data Model for fgOTN Topology
+
+4.1.  Fine Grain OTN Topology Data Model Overview
 
    This document aims to describe the data model for fine grain OTN
    topology.  The YANG module presented in this document augments from
@@ -431,7 +437,7 @@ Table of Contents
    [I-D.busi-teas-te-types-update] to identify that the current Tunnel
    Termination Point (TTP) is a termination point of an fgOTN tunnel.
 
-3.1.  Termination Point Augmentation
+4.2.  Termination Point Augmentation
 
    There are a few characteristics augmenting to the OTN topology.
 
@@ -448,7 +454,7 @@ Table of Contents
    The boolean value supported-fgotn-tp is used to indicate whether the
    termination point can support fgOTN switching capability.
 
-3.2.  Bandwidth Augmentation
+4.3.  Bandwidth Augmentation
 
    Based on the OTN topology model, we augment the bandwidth information
    of fgOTN, including the max-link-bandwidth and unreserved-bandwidth.
@@ -474,7 +480,7 @@ Table of Contents
          +--rw odu-ts-number?     string
          +--rw fgotn-bandwidth?   string
 
-3.3.  Label Augmentation
+4.4.  Label Augmentation
 
    The model augments the label-restriction list with fgOTN technology-
    specific label information using the otn-label-range-info grouping
@@ -494,9 +500,9 @@ Table of Contents
    unreserved.  The odu-ts-number is used to indicate the index of
    server ODUk channel.
 
-4.  YANG Data Model for fgOTN Tunnel
+5.  YANG Data Model for fgOTN Tunnel
 
-   ## Fine Grain OTN Tunnel Data Model Overview
+5.1.  Fine Grain OTN Tunnel Data Model Overview
 
    This document aims to describe the data model for fgOTN tunnel.  The
    fgOTN tunnel model augments to OTN tunnel
@@ -531,7 +537,7 @@ Table of Contents
    [I-D.ietf-ccamp-layer1-types] to indicate the bandwidth of fgotn
    tunnel.
 
-4.1.  Bandwidth Augmentation
+5.2.  Bandwidth Augmentation
 
    The model augment TE bandwidth information of fgOTN tunnel.
 
@@ -542,7 +548,7 @@ Table of Contents
    The string value fgoduflex-bandwidth is used to indicate the
    bandwidth of this fgOTN tunnel.
 
-4.2.  Label Augmentation
+5.3.  Label Augmentation
 
    The module augments TE label-hop for the explicit route objects
    included or excluded by the path computation of the primary-paths and
@@ -553,7 +559,7 @@ Table of Contents
    augment the TE label-hop for the record route of the LSP using the
    fgts-numbers.
 
-5.  YANG Tree for fgOTN topology
+6.  YANG Tree for fgOTN topology
 
    Figure 6 below shows the tree diagram of the YANG data model defined
    in module "ietf-fgotn-topology" (Figure 7).
@@ -585,7 +591,7 @@ Table of Contents
 
                                   Figure 6
 
-6.  YANG Data Model for fgOTN topology
+7.  YANG Data Model for fgOTN topology
 
    <CODE BEGINS> file "ietf-fgotn-topology@2025-04-08.yang"
     module ietf-fgotn-topology {
@@ -778,7 +784,7 @@ Table of Contents
 
                     Figure 7: fgOTN topology YANG module
 
-7.  YANG Tree for fgOTN tunnel
+8.  YANG Tree for fgOTN tunnel
 
    Figure 8 below shows the tree diagram of the YANG data model defined
    in module "ietf-fgotn-tunnel" (Figure 9).
@@ -821,7 +827,7 @@ Table of Contents
 
                                   Figure 8
 
-8.  YANG Data Model for fgOTN tunnel
+9.  YANG Data Model for fgOTN tunnel
 
    <CODE BEGINS> file "ietf-fgotn-tunnel@2025-04-08.yang"
    module ietf-fgotn-tunnel {
@@ -992,21 +998,21 @@ Table of Contents
 
                      Figure 9: fgOTN tunnel YANG module
 
-9.  Manageability Considerations
+10.  Manageability Considerations
 
    <Add any manageability considerations>
 
-10.  Security Considerations
+11.  Security Considerations
 
    <Add any security considerations>
 
-11.  IANA Considerations
+12.  IANA Considerations
 
    <Add any IANA considerations>
 
-12.  References
+13.  References
 
-12.1.  Normative References
+13.1.  Normative References
 
    [I-D.ietf-ccamp-layer1-types]
               Zheng, H. and I. Busi, "Common YANG Data Types for Layer 1
@@ -1027,17 +1033,17 @@ Table of Contents
               Zheng, H., Busi, I., Belotti, S., Lopez, V., and Y. Xu, "A
               YANG Data Model for Optical Transport Network (OTN)
               Tunnels and Label Switched Paths", Work in Progress,
-              Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-22, 3
-              December 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-ccamp-otn-tunnel-model-22>.
+              Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-23, 4
+              June 2025, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-ccamp-otn-tunnel-model-23>.
 
    [I-D.ietf-teas-yang-te]
               Saad, T., Gandhi, R., Liu, X., Beeram, V. P., and I.
               Bryskin, "A YANG Data Model for Traffic Engineering
               Tunnels, Label Switched Paths and Interfaces", Work in
-              Progress, Internet-Draft, draft-ietf-teas-yang-te-37, 9
-              October 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-teas-yang-te-37>.
+              Progress, Internet-Draft, draft-ietf-teas-yang-te-38, 29
+              May 2025, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-teas-yang-te-38>.
 
    [IANA_YANG]
               IANA, "YANG Parameters", n.d.,
@@ -1080,7 +1086,7 @@ Table of Contents
               (NMDA)", RFC 8342, DOI 10.17487/RFC8342, March 2018,
               <https://www.rfc-editor.org/rfc/rfc8342>.
 
-12.2.  Informative References
+13.2.  Informative References
 
    [I-D.busi-teas-te-types-update]
               Busi, I., Guo, A., Liu, X., Saad, T., Gandhi, R., Beeram,
