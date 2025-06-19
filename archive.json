@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-25T00:56:15.948978+00:00",
+  "timestamp": "2025-06-19T00:52:42.253418+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -178,15 +178,15 @@
       "labels": [],
       "body": "Need to discuss whether the same switching and LSP encoding types can be used for ODUk and fgODUflex and therefore only a new odu-type value shall be defined for fgODUflex.\n\nThe text describing the fgOTN topology and tunnel models can be updated accordingly.\n\n_Originally posted by @italobusi in https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3#discussion_r2025703759_\n            ",
       "createdAt": "2025-04-08T06:26:55Z",
-      "updatedAt": "2025-05-23T09:09:41Z",
+      "updatedAt": "2025-06-18T07:34:16Z",
       "closedAt": null,
       "comments": [
         {
           "author": "italobusi",
           "authorAssociation": "COLLABORATOR",
-          "body": "The offline suggestion from GMPLS/PCEP experts is to use the existing switching and LSP encoding types and to define a new switching type (in GMPLS/PCEP) or odu-type (in YANG) for fgODUflex\n\nTo further investigate where this new odu-type can be defined:\n1. In a new `fgotn-types` YANG module within this draft\n2. In an RFC-bis for layer1-types \n\nNote that https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-layer1-types is in the RFC Editors Queue so it it too late to update it before it is published as an RFC\n\nNext steps:\n1. Investigate the impact of defining a new odu-type with the existing OTN topology and OTN tunnel model\n1. Check with CCAMP and PCEP mailing lists that the proposed approach is agreed for GMPLS, PCEP and YANG\n1. Decide where to define the new odu-type identity\n",
+          "body": "The offline suggestion from GMPLS/PCEP experts is to use the existing switching and LSP encoding types and to define a new signal type (in GMPLS/PCEP) or odu-type (in YANG) for fgODUflex\n\nTo further investigate where this new odu-type can be defined:\n1. In a new `fgotn-types` YANG module within this draft\n2. In an RFC-bis for layer1-types \n\nNote that https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-layer1-types is in the RFC Editors Queue so it it too late to update it before it is published as an RFC\n\nNext steps:\n1. Investigate the impact of defining a new odu-type with the existing OTN topology and OTN tunnel model\n1. Check with CCAMP and PCEP mailing lists that the proposed approach is agreed for GMPLS, PCEP and YANG\n1. Decide where to define the new odu-type identity\n",
           "createdAt": "2025-04-16T06:30:23Z",
-          "updatedAt": "2025-04-16T06:30:23Z"
+          "updatedAt": "2025-06-18T07:02:06Z"
         },
         {
           "author": "italobusi",
@@ -194,6 +194,13 @@
           "body": "- [ ] Invite Lin Yi and evaluate the impact of defining a new odu-type with the existing OTN topology and OTN tunnel model",
           "createdAt": "2025-05-23T09:09:37Z",
           "updatedAt": "2025-05-23T09:09:37Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The signal type (in GMPLS/PCEP) or odu-type (in YANG) have been defined to distinguish between different types of ODUk (e.g., ODU0, ODU2, ODU4) which are using the same switching and LSP encoding types (ODUk)\n\nIf new (fgODUflex) switching and LSP encoding types are defined for fgODUflex, there is no need to define a new odu-type. The fgODUflex are uniquely identified using the new (fgODUflex) switching and LSP encoding types\n\nIf, instead, the existing (ODUk) switching and LSP encoding types are re-used for fgODUflex, then there is a need to define a new odu-type to distinguish fgODUflex from other types of ODUk (e.g., ODU0, ODU2, ODU4)\n\nI am also wondering whether there are some implications on the choice, especially when considering multi-layer relationship between fgOTN and OTN\n\nIf new (fgODUflex) switching and LSP encoding types, the multi-layer relationship between fgOTN and OTN would be the same as the multi-layer relationship between OTN and WDM\n\nI am not sure this solution would not conflict with the current fgOTN topology YANG model extensions **(I can investigate further)**\n\nIf a new fgODUflex odu-type is defined, the multi-layer relationship between fgODUflex and ODUk would be the same as the multi-layer relationship between LO-ODU and HO-ODU\n\nI am not sure this solution would not conflict with the current fgOTN topology YANG model extensions **(I can investigate further)**\n\nConsidering the current fgOTN topology YANG model, I am wondering whether it is better not to define neither new (fgODUflex) switching and LSP encoding types nor a new fgODUflex odu-type.\n\nThe only doubt I have in this case is about how to setup an fgODUflex tunnel.\n\nOne option is to define a new choice can be defined for fgODUflex tunnels:\n\n```\n  augment /te:te/te:globals/te:named-path-constraints/te:named-path-constraint/te:te-bandwidth/te:technology:\n    +--:(fgotn)\n       +--rw fgoduflex-bandwidth?       string\n```\n\nWith this approach and the supported-fgotn-tp, there is no need to define new (fgODUflex) switching and LSP encoding types nor new fgODUflex odu-type (on both TP and TTP objects), avoiding any impact on existing TE and OTN topology models\n",
+          "createdAt": "2025-06-18T07:34:16Z",
+          "updatedAt": "2025-06-18T07:34:16Z"
         }
       ]
     },
@@ -237,9 +244,17 @@
       "labels": [],
       "body": "The original motivation is to describe the requirement of multi-layers path, but it is coupled with protection scenario. Some cleanup is needed for the \"Multi-layer Path Splicing Scenario of fgOTN\" section.",
       "createdAt": "2025-04-08T06:51:00Z",
-      "updatedAt": "2025-05-23T08:55:22Z",
+      "updatedAt": "2025-06-18T06:43:26Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "**2025-06-18 Call**\n\nThere is some overlapping between the content of section 2.1 (Retrieve Server Tunnels Scenario of fgOTN) and the content of section 2.2 (Multi-layer Path Splicing Scenario of fgOTN)\n\nNeed to consider some restructuring of the content between these two sections (e.g., merging the two scenarios)\n\nSection 2.1 is describing the need to setup one or more sever layer ODUk tunnels before setting up an fgODUflex tunnel. This requirements is applicable to any type of fgODUflex tunnel (protected or unprotected)\n\nSection 2.2 is focusing on the need to setup an fgODUflex tunnel with a primary path and a secondary path to provide protection\n\nThe need to setup one or more sever layer ODUk tunnels before setting up an fgODUflex tunnel is independent from the need to provide protection",
+          "createdAt": "2025-06-18T06:43:26Z",
+          "updatedAt": "2025-06-18T06:43:26Z"
+        }
+      ]
     },
     {
       "number": 10,
@@ -254,6 +269,91 @@
       "body": "On the meeting 20250430, we discussed the scenario of inter-domain fgOTN service bandwidth modification. We have a concern on the scenario that there could be a failure on the single direction while it is successful on the other direction. There should be some rollback on the device perspective and the orchestrator needs to send a bandiwidth modification to change it back.\nwe suggested to solidate it at first on our draft, and write a contribution to ITU-T SG15 Q11 & Q14, to check whether our solution is acceptable in ITU-T. So that we can have a same understanding on this scenario.",
       "createdAt": "2025-04-30T07:45:02Z",
       "updatedAt": "2025-04-30T07:45:02Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 11,
+      "id": "I_kwDOMSanvs68Funj",
+      "title": "Overlapping between section 2.1 and section 2.2",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/11",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "There is some overlapping between the content of section 2.1 (Retrieve Server Tunnels Scenario of fgOTN) and the content of section 2.2 (Multi-layer Path Splicing Scenario of fgOTN)\n\nNeed to consider some restructuring of the content between these two sections (e.g., merging the two scenarios)\n",
+      "createdAt": "2025-06-18T06:20:37Z",
+      "updatedAt": "2025-06-18T06:43:41Z",
+      "closedAt": "2025-06-18T06:43:41Z",
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Section 2.1 is describing the need to setup one or more sever layer ODUk tunnels before setting up an fgODUflex tunnel. This requirements is applicable to any type of fgODUflex tunnel (protected or unprotected)\n\nSection 2.2 is focusing on the need to setup an fgODUflex tunnel with a primary path and a secondary path to provide protection\n\nThe need to setup one or more sever layer ODUk tunnels before setting up an fgODUflex tunnel is independent from the need to provide protection\n",
+          "createdAt": "2025-06-18T06:34:20Z",
+          "updatedAt": "2025-06-18T06:34:20Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Duplicated with #9 ",
+          "createdAt": "2025-06-18T06:43:41Z",
+          "updatedAt": "2025-06-18T06:43:41Z"
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "I_kwDOMSanvs68GdG-",
+      "title": "Implications for defining new switching and LSP encoding types for fgOTN",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/12",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "Check the impacts on existing TE and OTN topology and tunnel models if new switching and LSP encoding types for fgOTN are defined instead of re-using the existing ODUk switching and LSP encoding types\n",
+      "createdAt": "2025-06-18T07:35:33Z",
+      "updatedAt": "2025-06-18T07:47:08Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 13,
+      "id": "I_kwDOMSanvs68GeBP",
+      "title": "Implications for defining new ODU type for fgOTN",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/13",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "Check the impacts on existing OTN topology and tunnel models if a new ODU type for fgOTN is defined, re-using the existing ODUk switching and LSP encoding types\n",
+      "createdAt": "2025-06-18T07:36:50Z",
+      "updatedAt": "2025-06-18T07:47:08Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 14,
+      "id": "I_kwDOMSanvs68Gfe1",
+      "title": "Implications for not defining new ODU, switching and LSP encoding types for fgOTN",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/14",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "Check how the fgOTN topology and tunnel models can work re-using the existing ODUk switching and LSP encoding types for fgOTN and without defining new ODU type for fgODUflex\n",
+      "createdAt": "2025-06-18T07:38:28Z",
+      "updatedAt": "2025-06-18T07:47:08Z",
       "closedAt": null,
       "comments": []
     }
