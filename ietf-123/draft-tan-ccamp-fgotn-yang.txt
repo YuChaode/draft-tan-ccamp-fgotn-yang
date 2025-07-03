@@ -5,12 +5,12 @@
 Common Control and Measurement Plane                              Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 3 January 2026                                          I. Busi
+Expires: 4 January 2026                                          I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                             2 July 2025
+                                                             3 July 2025
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2026.
+   This Internet-Draft will expire on 4 January 2026.
 
 Copyright Notice
 
@@ -1015,19 +1015,16 @@ Table of Contents
               May 2025, <https://datatracker.ietf.org/doc/html/draft-
               ietf-teas-yang-te-38>.
 
-   [IANA_YANG]
-              IANA, "YANG Parameters", n.d.,
-              <https://www.iana.org/assignments/yang-parameters>.
-
    [ITU-T_G.709]
-              ITU-T Recommendation G.709, "Interfaces for the optical
-              transport network", ITU-T Recommendation G.709, Amendment
-              3 , March 2024, <https://www.itu.int/rec/T-REC-G.709/>.
+              International Telecommunication Union, "Interfaces for the
+              optical transport network", ITU-T Recommendation G.709,
+              Amendment 3 , March 2024,
+              <https://www.itu.int/rec/T-REC-G.709/>.
 
    [ITU-T_G.709.20]
-              ITU-T Recommendation G.709.20, "Overview of fine grain
-              OTN", ITU-T Recommendation G.709.20 , April 2024,
-              <https://www.itu.int/rec/T-REC-G.709.20/>.
+              International Telecommunication Union, "Overview of fine
+              grain OTN", ITU-T Recommendation G.709.20, Amendment 1 ,
+              May 2025, <https://www.itu.int/rec/T-REC-G.709.20/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
