@@ -8,28 +8,28 @@ module: ietf-fgotn-tunnel
             /te:route-object-include-exclude/te:type/te:label
             /te:label-hop/te:te-label/te:technology/otn-tnl:otn
             /otn-tnl:otn-label:
-    +--rw fgts-numbers?   uint16
+    +--rw fgts-numbers?   string
   augment /te:te/te:tunnels/te:tunnel/te:primary-paths
             /te:primary-path/te:primary-reverse-path
             /te:explicit-route-objects
             /te:route-object-include-exclude/te:type/te:label
             /te:label-hop/te:te-label/te:technology/otn-tnl:otn
             /otn-tnl:otn-label:
-    +--rw fgts-numbers?   uint16
+    +--rw fgts-numbers?   string
   augment /te:te/te:tunnels/te:tunnel/te:secondary-paths
             /te:secondary-path/te:explicit-route-objects
             /te:route-object-include-exclude/te:type/te:label
             /te:label-hop/te:te-label/te:technology/otn-tnl:otn
             /otn-tnl:otn-label:
-    +--rw fgts-numbers?   uint16
+    +--rw fgts-numbers?   string
   augment /te:te/te:tunnels/te:tunnel/te:secondary-reverse-paths
             /te:secondary-reverse-path/te:explicit-route-objects
             /te:route-object-include-exclude/te:type/te:label
             /te:label-hop/te:te-label/te:technology/otn-tnl:otn
             /otn-tnl:otn-label:
-    +--rw fgts-numbers?   uint16
+    +--rw fgts-numbers?   string
   augment /te:te/te:lsps/te:lsp/te:lsp-actual-route-information
             /te:lsp-actual-route-information/te:type/te:label
             /te:label-hop/te:te-label/te:technology/otn-tnl:otn
             /otn-tnl:otn-label:
-    +--ro fgts-numbers?   uint16
+    +--ro fgts-numbers?   string
