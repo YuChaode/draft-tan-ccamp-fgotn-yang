@@ -66,22 +66,17 @@ normative:
   ITU-T_G.709:
     title: Interfaces for the optical transport network
     author:
-      org: ITU-T Recommendation G.709
+      org: International Telecommunication Union
     date: March 2024
     seriesinfo: ITU-T Recommendation G.709, Amendment 3
     target: https://www.itu.int/rec/T-REC-G.709/
   ITU-T_G.709.20:
     title: Overview of fine grain OTN
     author:
-      org: ITU-T Recommendation G.709.20
-    date: April 2024
-    seriesinfo: ITU-T Recommendation G.709.20
+      org: International Telecommunication Union
+    date: May 2025
+    seriesinfo: ITU-T Recommendation G.709.20, Amendment 1
     target: https://www.itu.int/rec/T-REC-G.709.20/
-  IANA_YANG:
-    title: YANG Parameters
-    author:
-      org: IANA
-    target: https://www.iana.org/assignments/yang-parameters
 
 informative:
 
