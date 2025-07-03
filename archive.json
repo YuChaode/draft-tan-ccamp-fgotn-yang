@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-19T00:52:42.253418+00:00",
+  "timestamp": "2025-07-03T00:52:58.928250+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -317,9 +317,17 @@
       "labels": [],
       "body": "Check the impacts on existing TE and OTN topology and tunnel models if new switching and LSP encoding types for fgOTN are defined instead of re-using the existing ODUk switching and LSP encoding types\n",
       "createdAt": "2025-06-18T07:35:33Z",
-      "updatedAt": "2025-06-18T07:47:08Z",
+      "updatedAt": "2025-07-01T14:14:43Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The existing ODU encoding and switching-type provides sufficient information to identify OTN links and LTPs:\n- the bandwidth of an OTN link provides sufficient information to identify whether the OTN link supports or not fgOTN\n- the `supported-fgotn-tp` or, alternatively, the type of terminated OTN link provides sufficient information to identify whether the OTN TP supports or not fgOTN\n\nAs a consequence, defining a new fgODU encoding and switching-type would create a potential conflict with the existing use of encoding and switching-type for links and TPs.\n\nMore discussion is needed on the identification of fgOTN TTPs and tunnels.",
+          "createdAt": "2025-07-01T14:14:43Z",
+          "updatedAt": "2025-07-01T14:14:43Z"
+        }
+      ]
     },
     {
       "number": 13,
@@ -793,6 +801,61 @@
           ]
         }
       ]
+    },
+    {
+      "number": 15,
+      "id": "PR_kwDOMSanvs6dD40X",
+      "title": "Preparation for IETF 123",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/15",
+      "state": "CLOSED",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Proposed updates from Yanxia\r\n\r\n---\r\n\r\nCo-Authored-By: tanyanxia <tanyanxia@users.noreply.github.com>",
+      "createdAt": "2025-07-02T10:39:42Z",
+      "updatedAt": "2025-07-02T10:43:11Z",
+      "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "73234b27589deb8ef982772be13f8203edb452b1",
+      "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "upstream/ietf-123",
+      "headRefOid": "2539a71a26d5afd591381eb3283479021a4b9848",
+      "closedAt": "2025-07-02T10:41:15Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 16,
+      "id": "PR_kwDOMSanvs6dD6ma",
+      "title": "Preparation for IETF 123",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/16",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "italobusi",
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "Proposed updates from Yanxia\r\n\r\n---\r\n\r\nCo-Authored-By: tanyanxia <tanyanxia@users.noreply.github.com>",
+      "createdAt": "2025-07-02T10:42:45Z",
+      "updatedAt": "2025-07-02T10:43:54Z",
+      "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "73234b27589deb8ef982772be13f8203edb452b1",
+      "headRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "ietf-123",
+      "headRefOid": "2539a71a26d5afd591381eb3283479021a4b9848",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
