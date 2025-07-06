@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-03T00:52:58.928250+00:00",
+  "timestamp": "2025-07-06T00:58:09.093014+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -86,7 +86,7 @@
       "id": "I_kwDOMSanvs6spLDz",
       "title": "How to filter the termination points which can support fgOTN?",
       "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/4",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "YuChaode",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -95,8 +95,8 @@
       "labels": [],
       "body": "The orginal design was to define a supported-fgotn-tp attribute which is used to indicate whether this termination point can support fgOTN or not. In the meeting 20250305, people agree to make some extension on encoding and switching-capability instead.\nThe problem is which attribute shall we choose, and how to make this extension and align with gmpls protocol.",
       "createdAt": "2025-03-05T07:24:14Z",
-      "updatedAt": "2025-05-23T09:18:50Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-03T21:45:23Z",
+      "closedAt": "2025-07-03T21:45:23Z",
       "comments": [
         {
           "author": "YuChaode",
@@ -209,7 +209,7 @@
       "id": "I_kwDOMSanvs6xjFBW",
       "title": "The format of bandwidth odu-ts-number and fgOTN-bandwidth",
       "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/8",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "YuChaode",
       "authorAssociation": "OWNER",
       "assignees": [
@@ -218,8 +218,8 @@
       "labels": [],
       "body": "Currently, these two attributes are defined as string format. But there are some suggestions to use integer or decimal to represent.",
       "createdAt": "2025-04-08T06:41:25Z",
-      "updatedAt": "2025-05-23T09:02:35Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-03T21:45:23Z",
+      "closedAt": "2025-07-03T21:45:23Z",
       "comments": [
         {
           "author": "italobusi",
@@ -239,12 +239,12 @@
       "author": "YuChaode",
       "authorAssociation": "OWNER",
       "assignees": [
-        "tanyanxia"
+        "italobusi"
       ],
       "labels": [],
       "body": "The original motivation is to describe the requirement of multi-layers path, but it is coupled with protection scenario. Some cleanup is needed for the \"Multi-layer Path Splicing Scenario of fgOTN\" section.",
       "createdAt": "2025-04-08T06:51:00Z",
-      "updatedAt": "2025-06-18T06:43:26Z",
+      "updatedAt": "2025-07-03T21:52:42Z",
       "closedAt": null,
       "comments": [
         {
@@ -253,6 +253,13 @@
           "body": "**2025-06-18 Call**\n\nThere is some overlapping between the content of section 2.1 (Retrieve Server Tunnels Scenario of fgOTN) and the content of section 2.2 (Multi-layer Path Splicing Scenario of fgOTN)\n\nNeed to consider some restructuring of the content between these two sections (e.g., merging the two scenarios)\n\nSection 2.1 is describing the need to setup one or more sever layer ODUk tunnels before setting up an fgODUflex tunnel. This requirements is applicable to any type of fgODUflex tunnel (protected or unprotected)\n\nSection 2.2 is focusing on the need to setup an fgODUflex tunnel with a primary path and a secondary path to provide protection\n\nThe need to setup one or more sever layer ODUk tunnels before setting up an fgODUflex tunnel is independent from the need to provide protection",
           "createdAt": "2025-06-18T06:43:26Z",
           "updatedAt": "2025-06-18T06:43:26Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "- [ ] Review the text in section 2.1 and section 2.2 of draft-tan-ccamp-fgotn-yang-04",
+          "createdAt": "2025-07-03T21:52:42Z",
+          "updatedAt": "2025-07-03T21:52:42Z"
         }
       ]
     },
@@ -833,7 +840,7 @@
       "id": "PR_kwDOMSanvs6dD6ma",
       "title": "Preparation for IETF 123",
       "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/16",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -841,19 +848,21 @@
         "tanyanxia"
       ],
       "labels": [],
-      "body": "Proposed updates from Yanxia\r\n\r\n---\r\n\r\nCo-Authored-By: tanyanxia <tanyanxia@users.noreply.github.com>",
+      "body": "Proposed updates from Yanxia and some editorial clean-up\r\n\r\n---\r\n\r\nCo-Authored-By: tanyanxia <tanyanxia@users.noreply.github.com>",
       "createdAt": "2025-07-02T10:42:45Z",
-      "updatedAt": "2025-07-02T10:43:54Z",
+      "updatedAt": "2025-07-03T21:45:22Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "73234b27589deb8ef982772be13f8203edb452b1",
       "headRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "headRefName": "ietf-123",
-      "headRefOid": "2539a71a26d5afd591381eb3283479021a4b9848",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "08d2b18a100b5b612fe3b3d4d3aafeb87bd4a967",
+      "closedAt": "2025-07-03T21:45:22Z",
+      "mergedAt": "2025-07-03T21:45:22Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "63d31a59563ac0f27de85fb95a74672a82ffb424"
+      },
       "comments": [],
       "reviews": []
     }
