@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-06T00:58:09.093014+00:00",
+  "timestamp": "2025-07-20T01:01:12.807653+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -369,6 +369,22 @@
       "body": "Check how the fgOTN topology and tunnel models can work re-using the existing ODUk switching and LSP encoding types for fgOTN and without defining new ODU type for fgODUflex\n",
       "createdAt": "2025-06-18T07:38:28Z",
       "updatedAt": "2025-06-18T07:47:08Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 17,
+      "id": "I_kwDOMSanvs7BCiVl",
+      "title": "Measurement unit for fgotn-bandwidth",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/17",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The I-D text mentions that the fgotn-bandwidth is expressed in Mbps but there is no units statement in YANG\n\nMoreover, Mbps is sometimes ambiguous (megabits or megabytes), so it is better to expand. Following RFC8776-bis convention, we can add the following statement in YANG:\n\n```\n   units \"megabits per second\";\n```\n\nIn alternative, we can use the bandwidth-mbps data type defined in RFC8776-bis\n",
+      "createdAt": "2025-07-17T08:35:17Z",
+      "updatedAt": "2025-07-17T08:36:11Z",
       "closedAt": null,
       "comments": []
     }
