@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-20T01:01:12.807653+00:00",
+  "timestamp": "2025-09-04T00:45:02.517493+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -380,11 +380,112 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "tanyanxia"
+      ],
       "labels": [],
       "body": "The I-D text mentions that the fgotn-bandwidth is expressed in Mbps but there is no units statement in YANG\n\nMoreover, Mbps is sometimes ambiguous (megabits or megabytes), so it is better to expand. Following RFC8776-bis convention, we can add the following statement in YANG:\n\n```\n   units \"megabits per second\";\n```\n\nIn alternative, we can use the bandwidth-mbps data type defined in RFC8776-bis\n",
       "createdAt": "2025-07-17T08:35:17Z",
-      "updatedAt": "2025-07-17T08:36:11Z",
+      "updatedAt": "2025-09-03T07:16:22Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "**2025-09-03**\n\nAgreed to add the units as \"megabits per second\"",
+          "createdAt": "2025-09-03T07:16:22Z",
+          "updatedAt": "2025-09-03T07:16:22Z"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "id": "I_kwDOMSanvs7JXuh5",
+      "title": "Revert changes in section 3",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/18",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "The text of section 3 in the -04 version needs to be changed back to the text in the -03 version",
+      "createdAt": "2025-09-03T06:10:28Z",
+      "updatedAt": "2025-09-03T06:12:06Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 19,
+      "id": "I_kwDOMSanvs7JXxvR",
+      "title": "Check the LSP state to be reported during the bandwidth resizing",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/19",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "italobusi"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-09-03T06:16:54Z",
+      "updatedAt": "2025-09-03T06:16:54Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 20,
+      "id": "I_kwDOMSanvs7JYYHx",
+      "title": "Which controller shall report the completion of resizing procedure",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/20",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "italobusi",
+        "YuChaode"
+      ],
+      "labels": [],
+      "body": "The current text assumes that controller 1 reports when the resizing procedure in the forward direction is completed and controller 3 reports when the resizing procedure in the reverse direction is completed\n\nNeed to check whether it is possible for controller 1 to report when the resizing procedure in both directions is completed",
+      "createdAt": "2025-09-03T07:11:31Z",
+      "updatedAt": "2025-09-03T07:11:33Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 21,
+      "id": "I_kwDOMSanvs7JYZJn",
+      "title": "Failure scenarios during hitless resizing",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/21",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "Needs to analyze failure scenarios during hitless resizing: how they are detected and reported to the MDSC?",
+      "createdAt": "2025-09-03T07:12:40Z",
+      "updatedAt": "2025-09-03T07:12:47Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 22,
+      "id": "I_kwDOMSanvs7JYnqc",
+      "title": "fgOTN with ODUCn",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/22",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "Describe the issue when running fgOTN over ODUCn Links",
+      "createdAt": "2025-09-03T07:29:24Z",
+      "updatedAt": "2025-09-03T07:29:24Z",
       "closedAt": null,
       "comments": []
     }
