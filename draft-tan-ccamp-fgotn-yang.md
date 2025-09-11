@@ -165,9 +165,12 @@ The tree diagrams extracted from the module(s) defined in this document are give
 
 # Fine grain Optical Transport Network Scenarios Overview
 
-OTN network will cover a larger scope of networks, it may include the backbone network, metro core, metro aggregation, metro access, and even the OTN CPE in the customers' networks {{ITU-T_G.709.20}}. In general, the metro OTN networks support both fgODUflex and ODUk switching.  At the boundary nodes (e.g., metro-core nodes) of the metro OTN networks, the fgODUflexes to other metro OTN networks are multiplexed into ODUk of backbone networks. Therefore, the backbone OTN network could only support ODUk switching.
+OTN networks cover a large scope of networks, including backbone, metro core, metro aggregation, metro access, and even the OTN CPE in the customers' networks.
+The typical scenarios for fgOTN is to provide low bit rate private line or private network services to customers over OTN networks, as described in {{ITU-T_G.709.20}}.
 
-The typical scenarios for fgOTN is to provide low bit rate private line or private network services for customers. The interface function requirements of fgOTN mainly include topology resource reporting and service provisioning. Three scenarios that require special consideration are listed based on the characteristics of fgOTN.
+In general, the metro OTN networks support both fgODUflex and ODUk switching. At the boundary between metro and backbone OTN networks, the fgODUflex connections setup between different metro OTN networks are multiplexed into server-layer ODUk connections to be carried through the backbone OTN networks. Therefore, the backbone OTN network could only support ODUk switching.
+
+The interface function requirements of fgOTN mainly include topology resource reporting and service provisioning. This section is describing some scenarios that require special consideration based on the characteristics of fgOTN.
 
 ## Retrieve Server Tunnels Scenario of fgOTN
 
@@ -204,9 +207,21 @@ All link bandwidth information that supports fgOTN should be reported to MDSC by
 
 ## Multi-layer Path Splicing Scenario of fgOTN
 
-Some operators that would like to provide the paths when there could be different switching capabilities of nodes in their LSP, so that the MDSC coordinator can clearly display multi-layer paths and the relationship between primary-path and secondary-path. In the current network, not all nodes in the operator network support fgOTN, as shown in figure 2, node f1, f2, f3 and f4 support fgOTN, node N-f5 and node N-f6 do not support fgOTN. To present the end-to-end multi-layer primary-path and secondary-path of the services on the client side, it is necessary to complete the end-to-end path splicing based on the the ODU tunnel information associated with the fgotn tunnel.
+As defined in {{ITU-T_G.709}}, fgODUflex are not directly mapped over an OTN link but first multiplexed into a server-layer ODUk. Therefore one or more server-layer ODUk tunnel needs to be setup between two fgOTN switching nodes to carry fgODUflex traffic and the type of server-layer ODUk tunnel can be different on different hops along the fgOTN path.
 
-In {{fig-service}}, assuming that the server layer ODUk tunnel for the fgOTN primary tunnel from node f1 to node f2 is ODU0, the server layer tunnel from node f2 to node f3 is ODU2, and the server layer tunnel from node f3 to node f4 is ODU1. Assuming the server layer ODUk tunnel for the fgOTN secondary tunnel from node f1 to node f2 is ODU2. We need to setup four server layer ODUk tunnels before setting up an fgODUflex tunnel with a primary path and a secondary path to provide protection. To support multi-layer path splicing, we should make some extension on the dependency tunnel structure or on the path element, such as extending the working roles and index of the tunnels.
+In the current network, not all nodes in the operator network support fgOTN switching: for example, in {{fig-multi-layer}}, nodes f1, f2, f3, and f4 support fgOTN while nodes N-f5 and  N-f6 do not support fgOTN. Therefore, server-layer ODUk tunnels can be switched on transit nodes.
+
+Some operators would like to clearly display these multi-layer paths and, in case of protection configuration, also the relationship between the primary and secondary paths used to support an fgOTN service.
+
+To report the end-to-end multi-layer primary and secondary paths of an fgOTN services, it is necessary to complete the end-to-end fgOTN path information with the information of the server-layer ODUk tunnels of fgOTN tunnels.
+
+For example, in {{fig-multi-layer}} the primary path of the protected fgOTN service can use the following server-layer ODUk tunnels:
+
+1. An ODU0 server-layer tunnel from node f1 to node f2
+1. An ODU2 server-layer tunnel from node f2 to node f3
+1. An ODU1 server-layer tunnel from node f3 to node f4
+
+The secondary path is using an ODU2 server-layer tunnel from node f1 to node f4 (switched on transit nodes N-f5 and N-f6).
 
 ~~~~ ascii-art
                    +-----+            +-----+
@@ -223,7 +238,9 @@ In {{fig-service}}, assuming that the server layer ODUk tunnel for the fgOTN pri
                ----| N-f5 |----------| N-f6 |----
                    +------+          +------+
 ~~~~
-{: #fig-service multi-layer path splicing scenario title="Multi-layer Path Splicing Scenario of fgOTN"}
+{: #fig-multi-layer title="Multi-layer Path Splicing Scenario of fgOTN"}
+
+To support reporting multi-layer path information, some extensions either to the dependency tunnel structure (such as reporting the working roles and index of the tunnels) or to the path element structure (such us reporting the server-layer tunnel supporting each hop).
 
 ## Hitless Bandwidth Adjustment Scenario of fgOTN
 
