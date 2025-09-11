@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-04T00:45:02.517493+00:00",
+  "timestamp": "2025-09-11T00:46:43.906227+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -430,9 +430,17 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-09-03T06:16:54Z",
-      "updatedAt": "2025-09-03T06:16:54Z",
+      "updatedAt": "2025-09-09T11:48:16Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "You are correct, there is no LSP state defined in RFC8776-bis to report that bandwidth resizing is in-progress, so we need to define new LSP states.\n\nI have only one doubt: do we need to define a new 'ietf-te-types:lsp-path-modified' LSP state or could we re-use the exiting 'ietf-te-types:lsp-state-up'?\n\nFew questions:\n1. Should we rename the `ietf-te-types:lsp-path-modifying` to something different (e.g., `ietf-te-types:lsp-state-modifying`) since we are not modifying the LSP path but only its bandwidth?\n1. Should we rename the `ietf-te-types:lsp-path-modified` to something different (e.g., `ietf-te-types:lsp-state-modified-ok`) since we are not modifying the LSP path but only its bandwidth and we might need also an LSP state to report the modification failure?",
+          "createdAt": "2025-09-09T11:48:16Z",
+          "updatedAt": "2025-09-09T11:48:16Z"
+        }
+      ]
     },
     {
       "number": 20,
