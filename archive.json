@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-11T00:46:43.906227+00:00",
+  "timestamp": "2025-09-14T00:51:02.233057+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -989,6 +989,40 @@
         "oid": "63d31a59563ac0f27de85fb95a74672a82ffb424"
       },
       "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 23,
+      "id": "PR_kwDOMSanvs6oFNdQ",
+      "title": "Proposed text changes to section 2",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/23",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Proposed text changes to section 2: see #9 ",
+      "createdAt": "2025-09-11T16:55:47Z",
+      "updatedAt": "2025-09-11T16:56:26Z",
+      "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "63d31a59563ac0f27de85fb95a74672a82ffb424",
+      "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "ml-scenarios",
+      "headRefOid": "09f9fab2b51554349a4acb6fd3c2a6076d3655f4",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Need more discussion for section 2.1",
+          "createdAt": "2025-09-11T16:56:02Z",
+          "updatedAt": "2025-09-11T16:56:02Z"
+        }
+      ],
       "reviews": []
     }
   ]
