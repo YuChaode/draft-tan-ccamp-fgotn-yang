@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-14T00:51:02.233057+00:00",
+  "timestamp": "2025-09-18T00:45:04.794811+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -457,9 +457,17 @@
       "labels": [],
       "body": "The current text assumes that controller 1 reports when the resizing procedure in the forward direction is completed and controller 3 reports when the resizing procedure in the reverse direction is completed\n\nNeed to check whether it is possible for controller 1 to report when the resizing procedure in both directions is completed",
       "createdAt": "2025-09-03T07:11:31Z",
-      "updatedAt": "2025-09-03T07:11:33Z",
+      "updatedAt": "2025-09-17T09:33:24Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It is worth being more clear and explicit about what conditions are reported by the controllers\n\nThe conditions when the source or sink node starts and exits the unidirectional resizing protocol are defined in annex O of ITU-T G.709 (see for example Figure O.2 and Figure O.2)\n\nIn case of bidirectional connections, two independent resizing protocols need to run in the forward and reverse direction.\n\nNode 1 is the source node for the resizing protocol in the forward direction and the sink node for the resizing protocol in the reverse direction. After it exits both resizing protocols in the forward and in the reverse direction, it can report to controller 1 that the bidirectional resizing procedure has been terminated.\n",
+          "createdAt": "2025-09-17T09:33:24Z",
+          "updatedAt": "2025-09-17T09:33:24Z"
+        }
+      ]
     },
     {
       "number": 21,
