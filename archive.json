@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-18T00:45:04.794811+00:00",
+  "timestamp": "2025-09-21T00:52:03.140860+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -284,15 +284,15 @@
       "id": "I_kwDOMSanvs68Funj",
       "title": "Overlapping between section 2.1 and section 2.2",
       "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/11",
-      "state": "CLOSED",
+      "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "There is some overlapping between the content of section 2.1 (Retrieve Server Tunnels Scenario of fgOTN) and the content of section 2.2 (Multi-layer Path Splicing Scenario of fgOTN)\n\nNeed to consider some restructuring of the content between these two sections (e.g., merging the two scenarios)\n",
       "createdAt": "2025-06-18T06:20:37Z",
-      "updatedAt": "2025-06-18T06:43:41Z",
-      "closedAt": "2025-06-18T06:43:41Z",
+      "updatedAt": "2025-09-18T08:02:44Z",
+      "closedAt": null,
       "comments": [
         {
           "author": "italobusi",
@@ -307,6 +307,13 @@
           "body": "Duplicated with #9 ",
           "createdAt": "2025-06-18T06:43:41Z",
           "updatedAt": "2025-06-18T06:43:41Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Section 2.2 is describing the multi-layer path setup and should be finalized with PR #23 \n\nSection 2.1 should focus on the multi-layer topology discovering and should be finalized after completing the discussion on fgOTN topology",
+          "createdAt": "2025-09-18T08:02:44Z",
+          "updatedAt": "2025-09-18T08:02:44Z"
         }
       ]
     },
@@ -430,7 +437,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-09-03T06:16:54Z",
-      "updatedAt": "2025-09-09T11:48:16Z",
+      "updatedAt": "2025-09-19T08:40:40Z",
       "closedAt": null,
       "comments": [
         {
@@ -439,6 +446,27 @@
           "body": "You are correct, there is no LSP state defined in RFC8776-bis to report that bandwidth resizing is in-progress, so we need to define new LSP states.\n\nI have only one doubt: do we need to define a new 'ietf-te-types:lsp-path-modified' LSP state or could we re-use the exiting 'ietf-te-types:lsp-state-up'?\n\nFew questions:\n1. Should we rename the `ietf-te-types:lsp-path-modifying` to something different (e.g., `ietf-te-types:lsp-state-modifying`) since we are not modifying the LSP path but only its bandwidth?\n1. Should we rename the `ietf-te-types:lsp-path-modified` to something different (e.g., `ietf-te-types:lsp-state-modified-ok`) since we are not modifying the LSP path but only its bandwidth and we might need also an LSP state to report the modification failure?",
           "createdAt": "2025-09-09T11:48:16Z",
           "updatedAt": "2025-09-09T11:48:16Z"
+        },
+        {
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We should define ietf-te-types:lsp-bandwidth-modified-ok and ietf-te-types:lsp-bandwidth-modify-failed in the RFC 8776.",
+          "createdAt": "2025-09-18T06:57:53Z",
+          "updatedAt": "2025-09-18T06:57:53Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looking at RFC 8776, I am still having a doubt about the need to add also the ietf-te-types:lsp-bandwidth-modifying state\n\nFor LSP path setup, the following three states are defined in RFC 8776:\n- lsp-state-setting-up\n- lsp-state-setup-ok\n- lsp-state-setup-failed\n\nIt is not fully clear to me when the LSP state can/should transition to lsp-state-up: I will check with the co-authors of RFC 8776\n\nSimilar states are defined for the path computation phase:\n- lsp-path-computing\n- lsp-path-computation-ok\n- lsp-path-computation-failed\n\nConsistently, I think the following states can be defined for LSP bandwidth modification:\n- lsp-bandwidth-modifying\n- lsp-bandwidth-modify-failed\n- lsp-bandwidth-modified-ok\n\nFor the time being, we can be silent about the transition from lsp-bandwidth-modified-ok to lsp-state-up until we have clarified what happens during LSP setup\n",
+          "createdAt": "2025-09-18T12:25:03Z",
+          "updatedAt": "2025-09-18T12:25:03Z"
+        },
+        {
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I agree to add the \"lsp-bandwidth-modifying\" state, ensuring it aligns with LSP path setup and LSP path computation.\n",
+          "createdAt": "2025-09-19T08:40:40Z",
+          "updatedAt": "2025-09-19T08:40:40Z"
         }
       ]
     },
@@ -1009,9 +1037,9 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "Proposed text changes to section 2: see #9 ",
+      "body": "Proposed text changes to section 2: fix #9 ",
       "createdAt": "2025-09-11T16:55:47Z",
-      "updatedAt": "2025-09-11T16:56:26Z",
+      "updatedAt": "2025-09-18T08:03:12Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "63d31a59563ac0f27de85fb95a74672a82ffb424",
