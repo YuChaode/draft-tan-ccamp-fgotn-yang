@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-21T00:52:03.140860+00:00",
+  "timestamp": "2025-10-02T00:45:13.960220+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -331,7 +331,7 @@
       "labels": [],
       "body": "Check the impacts on existing TE and OTN topology and tunnel models if new switching and LSP encoding types for fgOTN are defined instead of re-using the existing ODUk switching and LSP encoding types\n",
       "createdAt": "2025-06-18T07:35:33Z",
-      "updatedAt": "2025-07-01T14:14:43Z",
+      "updatedAt": "2025-09-30T09:55:20Z",
       "closedAt": null,
       "comments": [
         {
@@ -340,6 +340,13 @@
           "body": "The existing ODU encoding and switching-type provides sufficient information to identify OTN links and LTPs:\n- the bandwidth of an OTN link provides sufficient information to identify whether the OTN link supports or not fgOTN\n- the `supported-fgotn-tp` or, alternatively, the type of terminated OTN link provides sufficient information to identify whether the OTN TP supports or not fgOTN\n\nAs a consequence, defining a new fgODU encoding and switching-type would create a potential conflict with the existing use of encoding and switching-type for links and TPs.\n\nMore discussion is needed on the identification of fgOTN TTPs and tunnels.",
           "createdAt": "2025-07-01T14:14:43Z",
           "updatedAt": "2025-07-01T14:14:43Z"
+        },
+        {
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Since the MDSC coordinator does not maintain TTP information and src-ttp-id and dst-ttp-id are also not need to send to the controller when building tunnels in our current network.  When querying tunnels, the controller needs to support returning TTP.\n\nMoreover, it has been confirmed in the fgOTN draft that we will not define a new network type for fgOTN.\n\nBased on previous discussions, adding new switching and LSP encoding types for fgOTN may affect the existing TE and OTN topology and tunnel models.\n\nFor these reasons, we think there is no need to adding new switching and LSP encoding types for fgOTN to confirm that the current TTP is a termination point of an fgOTN tunnel.\n\nI think we only need to define a new fgODUflex odu-type to identify whether it is a fgOTN tunnel.\n@italobusi ",
+          "createdAt": "2025-09-30T09:55:19Z",
+          "updatedAt": "2025-09-30T09:55:19Z"
         }
       ]
     },
