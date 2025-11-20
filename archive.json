@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-02T00:45:13.960220+00:00",
+  "timestamp": "2025-11-20T00:50:13.191216+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -47,6 +47,26 @@
       "name": "wontfix",
       "description": "This will not be worked on",
       "color": "ffffff"
+    },
+    {
+      "name": "wait-sub-issues",
+      "description": "Wait for the resolution of sub-issues",
+      "color": "fef2c0"
+    },
+    {
+      "name": "need-discussion",
+      "description": "Need more discussion",
+      "color": "fbca04"
+    },
+    {
+      "name": "agreed",
+      "description": "Resolution agreed: pending PR to update the draft or the model",
+      "color": "0e8a16"
+    },
+    {
+      "name": "wait",
+      "description": "Wait for other issues to be resolved",
+      "color": "fbca04"
     }
   ],
   "issues": [
@@ -172,13 +192,13 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [
-        "italobusi"
+      "assignees": [],
+      "labels": [
+        "wait-sub-issues"
       ],
-      "labels": [],
       "body": "Need to discuss whether the same switching and LSP encoding types can be used for ODUk and fgODUflex and therefore only a new odu-type value shall be defined for fgODUflex.\n\nThe text describing the fgOTN topology and tunnel models can be updated accordingly.\n\n_Originally posted by @italobusi in https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3#discussion_r2025703759_\n            ",
       "createdAt": "2025-04-08T06:26:55Z",
-      "updatedAt": "2025-06-18T07:34:16Z",
+      "updatedAt": "2025-11-19T14:26:54Z",
       "closedAt": null,
       "comments": [
         {
@@ -322,7 +342,7 @@
       "id": "I_kwDOMSanvs68GdG-",
       "title": "Implications for defining new switching and LSP encoding types for fgOTN",
       "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/12",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -331,8 +351,8 @@
       "labels": [],
       "body": "Check the impacts on existing TE and OTN topology and tunnel models if new switching and LSP encoding types for fgOTN are defined instead of re-using the existing ODUk switching and LSP encoding types\n",
       "createdAt": "2025-06-18T07:35:33Z",
-      "updatedAt": "2025-09-30T09:55:20Z",
-      "closedAt": null,
+      "updatedAt": "2025-11-19T14:26:38Z",
+      "closedAt": "2025-11-19T14:26:38Z",
       "comments": [
         {
           "author": "italobusi",
@@ -347,6 +367,13 @@
           "body": "Since the MDSC coordinator does not maintain TTP information and src-ttp-id and dst-ttp-id are also not need to send to the controller when building tunnels in our current network.  When querying tunnels, the controller needs to support returning TTP.\n\nMoreover, it has been confirmed in the fgOTN draft that we will not define a new network type for fgOTN.\n\nBased on previous discussions, adding new switching and LSP encoding types for fgOTN may affect the existing TE and OTN topology and tunnel models.\n\nFor these reasons, we think there is no need to adding new switching and LSP encoding types for fgOTN to confirm that the current TTP is a termination point of an fgOTN tunnel.\n\nI think we only need to define a new fgODUflex odu-type to identify whether it is a fgOTN tunnel.\n@italobusi ",
           "createdAt": "2025-09-30T09:55:19Z",
           "updatedAt": "2025-09-30T09:55:19Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "**2025-11-19 Call**\n\nAgreed not to define a new switching and LSP encoding types for fgOTN\n\nRegarding the need to define a new odu-type for fgOTN, see: https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/13#issuecomment-3552982291",
+          "createdAt": "2025-11-19T14:26:38Z",
+          "updatedAt": "2025-11-19T14:26:38Z"
         }
       ]
     },
@@ -358,15 +385,23 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [
-        "tanyanxia"
+      "assignees": [],
+      "labels": [
+        "wait"
       ],
-      "labels": [],
       "body": "Check the impacts on existing OTN topology and tunnel models if a new ODU type for fgOTN is defined, re-using the existing ODUk switching and LSP encoding types\n",
       "createdAt": "2025-06-18T07:36:50Z",
-      "updatedAt": "2025-06-18T07:47:08Z",
+      "updatedAt": "2025-11-19T14:43:31Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "**2025-11-19 Call**\n\nDefining a new odu-type for fgOTN would have an impact on the definition of OTN bandwidth in the topology model\n\nFor example, the fgOTN odu-type shall not be used in the odutlist defined under the max-link-bandwidth:\n\n```\n  augment /nw:networks/nw:network/nt:link/tet:te\n            /tet:te-link-attributes/tet:max-link-bandwidth\n            /tet:te-bandwidth:\n    +--rw otn-bandwidth\n       +--rw odulist* [odu-type]\n       |  +--rw odu-type     identityref\n       |  +--rw number?      uint16\n       |  +--rw ts-number?   uint16\n       +--rw fgotn-bandwidth?   uint16\n```\n\nNote: wait for resolution of issue #14",
+          "createdAt": "2025-11-19T14:24:30Z",
+          "updatedAt": "2025-11-19T14:43:31Z"
+        }
+      ]
     },
     {
       "number": 14,
@@ -379,12 +414,22 @@
       "assignees": [
         "tanyanxia"
       ],
-      "labels": [],
+      "labels": [
+        "need-discussion"
+      ],
       "body": "Check how the fgOTN topology and tunnel models can work re-using the existing ODUk switching and LSP encoding types for fgOTN and without defining new ODU type for fgODUflex\n",
       "createdAt": "2025-06-18T07:38:28Z",
-      "updatedAt": "2025-06-18T07:47:08Z",
+      "updatedAt": "2025-11-19T14:44:37Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "**2025-11-19 Call**\n\nWithout defining new ODU, switching and LSP encoding types for fgOTN, there is a need to define something else to identify fgOTN tunnels.\n\nSince the OTN tunnel is still work-in-progress, one solution could be to define a new odu-tunnel-type base (with ODUflex, ODU0, ODU1, ODU2, ODU2e, ODU3, ODU4) to be used only in the OTN tunnel model (instead of the odu-type as currently defined), to identify whether the OTN tunnel is an e.g., ODU0, ODU1 tunnel.\n\nNote: for the issues of re-suing the odu-type for fgOTN, see: https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/13#issuecomment-3552982291\n\nA new odu-tunnel-type can then be defined to identify whether the OTN tunnel is an fgOTN tunnels\n\nOLD\n\n```\n  augment /te:te/te:globals/te:named-path-constraints\n            /te:named-path-constraint/te:te-bandwidth/te:technology:\n    +--:(otn)\n       +--rw otn-bandwidth\n          +--rw odu-type?                     identityref    // base odu-type (ODUflex, ODU0, ODU1, ..., ODU4)\n          +--rw (oduflex-type)?\n             ...\n\n```\n\nNEW\n\n```\n  augment /te:te/te:globals/te:named-path-constraints\n            /te:named-path-constraint/te:te-bandwidth/te:technology:\n    +--:(otn)\n       +--rw otn-bandwidth\n          +--rw odu-type?                     identityref    // base odu-tunnel-type (ODUflex, ODU0, ODU1, ..., ODU4, fgODUflex)\n          +--rw (oduflex-type)?\n             ...\n```\n\n- [ ] @tanyanxia check whether this approach is ok for supporting fgOTN tunnels",
+          "createdAt": "2025-11-19T14:36:37Z",
+          "updatedAt": "2025-11-19T14:44:37Z"
+        }
+      ]
     },
     {
       "number": 17,
@@ -530,13 +575,182 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "wait-sub-issues"
+      ],
+      "body": "Describe the issue when running fgOTN over ODUCn Links",
+      "createdAt": "2025-09-03T07:29:24Z",
+      "updatedAt": "2025-11-19T13:43:56Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 24,
+      "id": "I_kwDOMSanvs7ZH965",
+      "title": "Update max-link-bandiwdth",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/24",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [
         "tanyanxia"
       ],
+      "labels": [
+        "agreed"
+      ],
+      "body": "**2025-11-19 Call**\n\nUpdate the definition of the unreserved-bandwidth in the YANG data model as follow:\n\n```\n  augment /nw:networks/nw:network/nt:link/tet:te\n            /tet:te-link-attributes/tet:max-link-bandwidth\n            /tet:te-bandwidth/otnt:otn-bandwidth:\n    +--rw fgotn-bandwidth?   uint16\n```\n",
+      "createdAt": "2025-11-19T13:27:58Z",
+      "updatedAt": "2025-11-19T13:46:18Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 25,
+      "id": "I_kwDOMSanvs7ZIDbd",
+      "title": "Update unreserved-bandwidth",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/25",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [
+        "agreed"
+      ],
+      "body": "**2025-11-29 Call**\n\nUpdate the definition of the unreserved-bandwidth in the YANG data model as follow:\n\n```\n  augment /nw:networks/nw:network/nt:link/tet:te\n            /tet:te-link-attributes/tet:unreserved-bandwidth\n            /tet:te-bandwidth/otnt:otn-bandwidth:\n    +--rw fgotn-bandwidth?   uint16\n    +--rw fgotnlist* [odu-type odu-ts-number]\n       +--rw odu-type           identityref\n       +--rw odu-ts-number      string\n       +--rw fgotn-bandwidth?   uint16\n\n```\n",
+      "createdAt": "2025-11-19T13:33:52Z",
+      "updatedAt": "2025-11-19T13:46:18Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 26,
+      "id": "I_kwDOMSanvs7ZIHcD",
+      "title": "Update otn-label-range",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/26",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [
+        "agreed"
+      ],
+      "body": "**2025-11-29 Call**\n\nUpdate the definition of the otn-label-range in the YANG data model as follow:\n\n```\n  augment /nw:networks/tet:te/tet:templates/tet:link-template\n            /tet:te-link-attributes/tet:label-restrictions\n            /tet:label-restriction/otnt:otn-label-range:\n    +--rw fgts-range* [odu-type odu-ts-number]\n       +--rw odu-type           identityref\n       +--rw odu-ts-number      string\n       +--rw fgts-reserved?     string\n       +--rw fgts-unreserved?   string\n\n```\n",
+      "createdAt": "2025-11-19T13:38:24Z",
+      "updatedAt": "2025-11-19T13:46:19Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 27,
+      "id": "I_kwDOMSanvs7ZIJsO",
+      "title": "Update unreserved-bandwidth for fgOTN over ODUCn",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/27",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "wait"
+      ],
+      "body": "Check how the definition of the unreserved-bandwidth can be updated for fgOTN over ODUCn links.\n\nNote: pending resolution of how the unreserved-bandwidth is defined for ODUCn links.\n",
+      "createdAt": "2025-11-19T13:40:30Z",
+      "updatedAt": "2025-11-19T14:01:07Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 28,
+      "id": "I_kwDOMSanvs7ZIK_v",
+      "title": "Update otn-label-range for fgOTN over ODUCn",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/28",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "wait"
+      ],
+      "body": "Check how the definition of the otn-label-range can be updated for fgOTN over ODUCn links.\n\nNote: pending resolution of how the otn-label-range is defined for ODUCn links.\n",
+      "createdAt": "2025-11-19T13:41:45Z",
+      "updatedAt": "2025-11-19T14:01:07Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 29,
+      "id": "I_kwDOMSanvs7ZIQoZ",
+      "title": "JSON examples for fgOTN topology",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/29",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "wait-sub-issues"
+      ],
+      "body": "Prepare some JSON examples of the fgOTN topology model\n\nReference network:\n\n<img width=\"554\" height=\"282\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6b85ced4-62d7-4525-b822-538cf774f438\" />\n\nWhere:\n- node NE1, NE2, and NE4 support fgOTN switching, node NE3 does not support fgOTN\n- all the links are OTU4 links\n- on the link between NE1 and NE2 there is only one ODU1 server layer tunnel\n- on the link between NE2 and NE4 there are two ODU0 server layer tunnels\n- between NE1 and NE4 an ODU1 server layer tunnel is setup (through the NE1-NE3-NE4)\n",
+      "createdAt": "2025-11-19T13:47:48Z",
+      "updatedAt": "2025-11-19T13:54:50Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 30,
+      "id": "I_kwDOMSanvs7ZIYpg",
+      "title": "JSON examples for fgOTN topology: step 1",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/30",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "italobusi",
+        "tanyanxia"
+      ],
+      "labels": [
+        "agreed"
+      ],
+      "body": "Prepare a JSON topology example for step 1: no server layer ODU tunnel is setup to carry fgOTN\n\nSee reference network in issue #29 \n",
+      "createdAt": "2025-11-19T13:56:00Z",
+      "updatedAt": "2025-11-19T14:00:30Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 31,
+      "id": "I_kwDOMSanvs7ZIaZU",
+      "title": "JSON examples for fgOTN topology: step 2",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/31",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "wait"
+      ],
+      "body": "Prepare a JSON topology example for step 2: all the server layer ODU tunnels are setup to carry fgOTN but no fgOTN tunnel is setup\n\nSee reference network in issue #29 \n\nNote: wait for resolution of issue #30 \n",
+      "createdAt": "2025-11-19T13:57:43Z",
+      "updatedAt": "2025-11-19T14:00:44Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 32,
+      "id": "I_kwDOMSanvs7ZIcer",
+      "title": "JSON examples for fgOTN topology: step 3",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/32",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
       "labels": [],
-      "body": "Describe the issue when running fgOTN over ODUCn Links",
-      "createdAt": "2025-09-03T07:29:24Z",
-      "updatedAt": "2025-09-03T07:29:24Z",
+      "body": "Prepare a JSON topology example for step 3: an fgOTN tunnel is setup\n\nSee reference network in issue #29 \n\nNote: wait for resolution of issue #31 ",
+      "createdAt": "2025-11-19T14:00:03Z",
+      "updatedAt": "2025-11-19T14:00:03Z",
       "closedAt": null,
       "comments": []
     }
