@@ -52,7 +52,7 @@
         Yanlei Zheng (zhengyanlei@chinaunicom.cn);
         Italo Busi (italo.busi@huawei.com);
         Chaode Yu (yuchaode@huawei.com);
-        Xing Zhao (zhaoxing@caict.ac.cn);
+		Xing Zhao (zhaoxing@caict.ac.cn);
     ";
 
   description
@@ -79,7 +79,7 @@
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2025-06-18 {
+  revision 2025-11-26 {
     description
       "initial version";
     reference
@@ -89,7 +89,7 @@
   
   augment "/nw:networks/nw:network/nt:link/tet:te" + 
           "/tet:te-link-attributes/tet:max-link-bandwidth" + 
-          "/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist" {
+          "/tet:te-bandwidth/otnt:otn-bandwidth" {
     description
       "specific augmentation of fgOTN link on maximum link 
       bandwidth";
@@ -107,6 +107,11 @@
     description
       "specific augmentation of fgOTN link on unreserved link 
       bandwidth";
+    leaf fgotn-bandwidth {
+      type uint16;
+      description 
+        "The unsreserved bandwidth of fgOTN before the server ODUk is set up";
+    }
     list fgotnlist {
       key "odu-type odu-ts-number";
       description
@@ -121,7 +126,7 @@
       }
       
       leaf odu-ts-number {
-        type uint16;
+        type string;
         description 
           "The index of server ODUk channel";
       }
@@ -153,7 +158,7 @@
       }
       
       leaf odu-ts-number {
-        type uint16;
+        type string;
         description 
           "The index of server ODUk channel"; 
       }
