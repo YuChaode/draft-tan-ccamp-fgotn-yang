@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-20T00:50:13.191216+00:00",
+  "timestamp": "2025-12-04T00:52:46.801237+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -693,9 +693,9 @@
       "labels": [
         "wait-sub-issues"
       ],
-      "body": "Prepare some JSON examples of the fgOTN topology model\n\nReference network:\n\n<img width=\"554\" height=\"282\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6b85ced4-62d7-4525-b822-538cf774f438\" />\n\nWhere:\n- node NE1, NE2, and NE4 support fgOTN switching, node NE3 does not support fgOTN\n- all the links are OTU4 links\n- on the link between NE1 and NE2 there is only one ODU1 server layer tunnel\n- on the link between NE2 and NE4 there are two ODU0 server layer tunnels\n- between NE1 and NE4 an ODU1 server layer tunnel is setup (through the NE1-NE3-NE4)\n",
+      "body": "Prepare some JSON examples of the fgOTN topology model\n\nReference network:\n\n<img width=\"554\" height=\"282\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6b85ced4-62d7-4525-b822-538cf774f438\" />\n\nWhere:\n- node NE1, NE2, and NE4 support fgOTN switching, node NE3 does not support fgOTN\n- all the links are OTU2 links\n- on the link between NE1 and NE2 there is only one ODU1 server layer tunnel\n- on the link between NE2 and NE4 there are two ODU0 server layer tunnels\n- between NE1 and NE4 an ODU1 server layer tunnel is setup (through the NE1-NE3-NE4)\n",
       "createdAt": "2025-11-19T13:47:48Z",
-      "updatedAt": "2025-11-19T13:54:50Z",
+      "updatedAt": "2025-12-02T12:55:44Z",
       "closedAt": null,
       "comments": []
     },
@@ -1280,6 +1280,58 @@
           "updatedAt": "2025-09-11T16:56:02Z"
         }
       ],
+      "reviews": []
+    },
+    {
+      "number": 33,
+      "id": "PR_kwDOMSanvs622Jmh",
+      "title": "update the fgotn yang model",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/33",
+      "state": "OPEN",
+      "author": "tanyanxia",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-12-03T14:24:37Z",
+      "updatedAt": "2025-12-03T14:24:37Z",
+      "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "67e40184b93d76194065d1ebab72d8d288f0f934",
+      "headRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "tanyx11",
+      "headRefOid": "eec3f90e23c6f959479ae584f71343146dc2a647",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 34,
+      "id": "PR_kwDOMSanvs622Or6",
+      "title": "Initial JSON example for fgOTN topology",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/34",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-12-03T14:30:48Z",
+      "updatedAt": "2025-12-03T14:32:04Z",
+      "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "67e40184b93d76194065d1ebab72d8d288f0f934",
+      "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "json-topology",
+      "headRefOid": "86dd45c1558a3154de262a1e1c500adef5a32403",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
       "reviews": []
     }
   ]
