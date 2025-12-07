@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-04T00:52:46.801237+00:00",
+  "timestamp": "2025-12-07T00:58:18.460907+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -419,7 +419,7 @@
       ],
       "body": "Check how the fgOTN topology and tunnel models can work re-using the existing ODUk switching and LSP encoding types for fgOTN and without defining new ODU type for fgODUflex\n",
       "createdAt": "2025-06-18T07:38:28Z",
-      "updatedAt": "2025-11-19T14:44:37Z",
+      "updatedAt": "2025-12-04T10:29:31Z",
       "closedAt": null,
       "comments": [
         {
@@ -428,6 +428,13 @@
           "body": "**2025-11-19 Call**\n\nWithout defining new ODU, switching and LSP encoding types for fgOTN, there is a need to define something else to identify fgOTN tunnels.\n\nSince the OTN tunnel is still work-in-progress, one solution could be to define a new odu-tunnel-type base (with ODUflex, ODU0, ODU1, ODU2, ODU2e, ODU3, ODU4) to be used only in the OTN tunnel model (instead of the odu-type as currently defined), to identify whether the OTN tunnel is an e.g., ODU0, ODU1 tunnel.\n\nNote: for the issues of re-suing the odu-type for fgOTN, see: https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/13#issuecomment-3552982291\n\nA new odu-tunnel-type can then be defined to identify whether the OTN tunnel is an fgOTN tunnels\n\nOLD\n\n```\n  augment /te:te/te:globals/te:named-path-constraints\n            /te:named-path-constraint/te:te-bandwidth/te:technology:\n    +--:(otn)\n       +--rw otn-bandwidth\n          +--rw odu-type?                     identityref    // base odu-type (ODUflex, ODU0, ODU1, ..., ODU4)\n          +--rw (oduflex-type)?\n             ...\n\n```\n\nNEW\n\n```\n  augment /te:te/te:globals/te:named-path-constraints\n            /te:named-path-constraint/te:te-bandwidth/te:technology:\n    +--:(otn)\n       +--rw otn-bandwidth\n          +--rw odu-type?                     identityref    // base odu-tunnel-type (ODUflex, ODU0, ODU1, ..., ODU4, fgODUflex)\n          +--rw (oduflex-type)?\n             ...\n```\n\n- [ ] @tanyanxia check whether this approach is ok for supporting fgOTN tunnels",
           "createdAt": "2025-11-19T14:36:37Z",
           "updatedAt": "2025-11-19T14:44:37Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The solution does not work because the OTN path bandwidth is defined in layer1-types which is in RFC Editor Queue:\n\n```\n  grouping otn-path-bandwidth:\n    +-- otn-bandwidth\n       +-- odu-type?                     identityref\n       +-- (oduflex-type)?                // when odu-type is ODUflex/ODUflex-resizable\n          ...\n```\n\nTherefore it seems that for supporting fgOTN tunnel, a new odu-type for fgODUflex needs to be defined\n\nAn alternative solution could be not to use the xxx grouping for fgOTN tunnel bandwidth and define a new case:\n\n```\n  augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology:\n    +--:(fg-otn)\n       +--rw fgotn-bandwidth?   uint16\n```\n",
+          "createdAt": "2025-12-04T10:18:31Z",
+          "updatedAt": "2025-12-04T10:29:31Z"
         }
       ]
     },
