@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-07T00:58:18.460907+00:00",
+  "timestamp": "2025-12-16T00:54:54.554873+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -1301,7 +1301,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-12-03T14:24:37Z",
-      "updatedAt": "2025-12-03T14:24:37Z",
+      "updatedAt": "2025-12-15T13:32:57Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "67e40184b93d76194065d1ebab72d8d288f0f934",
@@ -1313,7 +1313,73 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs7VRLH1",
+          "commit": {
+            "abbreviatedOid": "eec3f90"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-12-15T13:00:26Z",
+          "updatedAt": "2025-12-15T13:04:35Z",
+          "comments": [
+            {
+              "originalPosition": 44,
+              "body": "It might be useful to add a pattern to the string, definition\r\n\r\nSee for example the following definition in [draft-ietf-ccamp-layer1-types](https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-layer1-types):\r\n\r\n```\r\n      leaf ts-list {\r\n        type string {\r\n            pattern \"([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?\"\r\n                  + \"(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)\";\r\n          }\r\n        description\r\n          \"A list of available Tributary Slots (TS) ranging\r\n          between 1 and 4095. If multiple values or\r\n          ranges are given, they all MUST be disjoint\r\n          and MUST be in ascending order.\r\n          For example 1-20,25,50-1000.\";\r\n        reference\r\n          \"RFC 7139: GMPLS Signaling Extensions for Control\r\n          of Evolving G.709 Optical Transport Networks\";\r\n      }\r\n```\r\n\r\nMaybe we can define a new data type and re-use this here as well as in the fgts-reserved and fgts-unreserved:\r\n\r\n```\r\n      typedef ts-list {\r\n        type string {\r\n            pattern \"([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?\"\r\n                  + \"(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)\";\r\n          }\r\n        description\r\n          \"A list of Tributary Slots (TS) ranging between 1 and 4095.\r\n\r\n           If multiple values or ranges are given, they all MUST be\r\n           disjoint and MUST be in ascending order.\r\n           \r\n           For example 1-20,25,50-1000.\";\r\n        reference\r\n          \"RFC 7139: GMPLS Signaling Extensions for Control\r\n          of Evolving G.709 Optical Transport Networks\";\r\n      }\r\n```\r\n",
+              "createdAt": "2025-12-15T13:00:26Z",
+              "updatedAt": "2025-12-15T13:04:35Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "See the comment above about adding a pattern to the string or defining a common data type for ts-list",
+              "createdAt": "2025-12-15T13:00:58Z",
+              "updatedAt": "2025-12-15T13:04:35Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "I am wondering whether the augment target above is correct:\r\n\r\n```\r\n  augment \"/nw:networks/tet:te/tet:templates/tet:link-template\"+ \r\n          \"/tet:te-link-attributes/tet:label-restrictions\" +\r\n          \"/tet:label-restriction/otnt:otn-label-range\" {\r\n```\r\n\r\nI am wondering whether it should be:\r\n\r\n```\r\n  augment \"/nw:networks/nw:network/nt:link/tet:te\" + \r\n          \"/tet:te-link-attributes/tet:label-restrictions\" +\r\n          \"/tet:label-restriction/otnt:otn-label-range\" {\r\n```\r\n",
+              "createdAt": "2025-12-15T13:04:22Z",
+              "updatedAt": "2025-12-15T13:04:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs7VRyB5",
+          "commit": {
+            "abbreviatedOid": "eec3f90"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-12-15T13:30:14Z",
+          "updatedAt": "2025-12-15T13:30:14Z",
+          "comments": [
+            {
+              "originalPosition": 34,
+              "body": "Line too long and typo (unsreserved ):\r\n\r\n```suggestion\r\n        \"The unreserved bandwidth of fgOTN before the server ODUk\r\n         is set up\";\r\n```",
+              "createdAt": "2025-12-15T13:30:14Z",
+              "updatedAt": "2025-12-15T13:30:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs7VR0k9",
+          "commit": {
+            "abbreviatedOid": "eec3f90"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Need to run pyang -f",
+          "createdAt": "2025-12-15T13:32:57Z",
+          "updatedAt": "2025-12-15T13:32:57Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 34,
