@@ -110,7 +110,8 @@
     leaf fgotn-bandwidth {
       type uint16;
       description 
-        "The unsreserved bandwidth of fgOTN before the server ODUk is set up";
+        "The unreserved bandwidth of fgOTN before the server ODUk
+         is set up";
     }
     list fgotnlist {
       key "odu-type odu-ts-number";
