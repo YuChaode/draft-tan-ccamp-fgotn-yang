@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-18T00:51:16.436257+00:00",
+  "timestamp": "2026-01-01T01:01:35.727937+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -264,7 +264,7 @@
       "labels": [],
       "body": "The original motivation is to describe the requirement of multi-layers path, but it is coupled with protection scenario. Some cleanup is needed for the \"Multi-layer Path Splicing Scenario of fgOTN\" section.",
       "createdAt": "2025-04-08T06:51:00Z",
-      "updatedAt": "2025-07-03T21:52:42Z",
+      "updatedAt": "2025-12-31T08:41:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -277,9 +277,9 @@
         {
           "author": "italobusi",
           "authorAssociation": "COLLABORATOR",
-          "body": "- [ ] Review the text in section 2.1 and section 2.2 of draft-tan-ccamp-fgotn-yang-04",
+          "body": "- [x] Review the text in section 2.1 and section 2.2 of draft-tan-ccamp-fgotn-yang-04",
           "createdAt": "2025-07-03T21:52:42Z",
-          "updatedAt": "2025-07-03T21:52:42Z"
+          "updatedAt": "2025-12-31T08:41:28Z"
         }
       ]
     },
@@ -1482,6 +1482,32 @@
           "updatedAt": "2025-12-17T14:30:44Z"
         }
       ],
+      "reviews": []
+    },
+    {
+      "number": 35,
+      "id": "PR_kwDOMSanvs67Ff9l",
+      "title": "Update draft-tan-ccamp-fgotn-yang.md",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/35",
+      "state": "OPEN",
+      "author": "tanyanxia",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Update the appendix hitless resizing process description.\r\nUpdate the section 3 description.",
+      "createdAt": "2025-12-31T09:50:38Z",
+      "updatedAt": "2025-12-31T09:50:39Z",
+      "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "67e40184b93d76194065d1ebab72d8d288f0f934",
+      "headRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "tanyanxia-patch-1",
+      "headRefOid": "209a8a5d74bf7a94b1e45c09be9b6737931fb11a",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
       "reviews": []
     }
   ]
