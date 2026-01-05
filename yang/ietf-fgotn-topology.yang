@@ -86,7 +86,24 @@
       "RFC XXXX: YANG Data Models for fine grain Optical Transport
                  Network";
   }
-  
+
+  typedef ts-list {
+    type string {
+        pattern "([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?"
+                 + "(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)";
+    }
+    description
+        "A list of Tributary Slots (TS) ranging between 1 and 4095.
+
+        If multiple values or ranges are given, they all MUST be
+        disjoint and MUST be in ascending order.
+           
+        For example 1-20,25,50-1000.";
+    reference
+        "RFC 7139: GMPLS Signaling Extensions for Control
+        of Evolving G.709 Optical Transport Networks";
+  }
+
   augment "/nw:networks/nw:network/nt:link/tet:te" + 
           "/tet:te-link-attributes/tet:max-link-bandwidth" + 
           "/tet:te-bandwidth/otnt:otn-bandwidth" {
@@ -127,7 +144,7 @@
       }
       
       leaf odu-ts-number {
-        type string;
+        type fgotnt:ts-list;
         description 
           "The index of server ODUk channel";
       }
@@ -140,7 +157,7 @@
     }
   }
   
-  augment "/nw:networks/tet:te/tet:templates/tet:link-template"+ 
+  augment "/nw:networks/nw:network/nt:link/tet:te"+ 
           "/tet:te-link-attributes/tet:label-restrictions" +
           "/tet:label-restriction/otnt:otn-label-range" {
     description
@@ -159,19 +176,19 @@
       }
       
       leaf odu-ts-number {
-        type string;
+        type fgotnt:ts-list;
         description 
           "The index of server ODUk channel"; 
       }
       
       leaf fgts-reserved {
-        type string;
+        type fgotnt:ts-list;
         description 
           "The reserved fgOTN timeslot in this server ODUk";
       }
       
       leaf fgts-unreserved {
-        type string;
+        type fgotnt:ts-list;
         description 
           "The unreserved fgOTN timeslot in this server ODUk";
       }
