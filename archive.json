@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-01T01:01:35.727937+00:00",
+  "timestamp": "2026-01-06T00:56:00.267051+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -1310,13 +1310,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-12-03T14:24:37Z",
-      "updatedAt": "2025-12-17T14:28:07Z",
+      "updatedAt": "2026-01-05T09:01:24Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "67e40184b93d76194065d1ebab72d8d288f0f934",
       "headRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "headRefName": "tanyx11",
-      "headRefOid": "f77b1f0af5f3ed4ddaf35d6e89d2cb056d77a2e4",
+      "headRefOid": "64ab12793194acb7b0acf44f31a163366a79e899",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -1402,9 +1402,9 @@
           "comments": [
             {
               "originalPosition": 44,
-              "body": "**2025-121-17 Call**\r\n\r\nOk to add a new typedef\r\n\r\n- [ ] @tanyanxia: update the YANG model with the new typedef",
+              "body": "**2025-121-17 Call**\r\n\r\nOk to add a new typedef\r\n\r\n- [x] @tanyanxia: update the YANG model with the new typedef",
               "createdAt": "2025-12-17T14:23:12Z",
-              "updatedAt": "2025-12-17T14:23:12Z"
+              "updatedAt": "2026-01-05T07:58:09Z"
             }
           ]
         },
@@ -1422,9 +1422,9 @@
           "comments": [
             {
               "originalPosition": 53,
-              "body": "**2025-121-17 Call**\r\n\r\n- [ ] @tanyanxia update the augment statement",
+              "body": "**2025-121-17 Call**\r\n\r\n- [x] @tanyanxia update the augment statement",
               "createdAt": "2025-12-17T14:26:06Z",
-              "updatedAt": "2025-12-17T14:26:06Z"
+              "updatedAt": "2026-01-05T08:55:58Z"
             }
           ]
         },
@@ -1442,9 +1442,9 @@
           "comments": [
             {
               "originalPosition": 53,
-              "body": "**2025-121-17 Call**\r\n\r\n- [ ] @tanyanxia update the datatype as discussed above",
+              "body": "**2025-121-17 Call**\r\n\r\n- [x] @tanyanxia update the datatype as discussed above",
               "createdAt": "2025-12-17T14:26:32Z",
-              "updatedAt": "2025-12-17T14:26:32Z"
+              "updatedAt": "2026-01-05T08:39:32Z"
             }
           ]
         }
@@ -1489,21 +1489,21 @@
       "id": "PR_kwDOMSanvs67Ff9l",
       "title": "Update draft-tan-ccamp-fgotn-yang.md",
       "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/35",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tanyanxia",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Update the appendix hitless resizing process description.\r\nUpdate the section 3 description.",
       "createdAt": "2025-12-31T09:50:38Z",
-      "updatedAt": "2025-12-31T09:50:39Z",
+      "updatedAt": "2026-01-05T09:02:16Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "67e40184b93d76194065d1ebab72d8d288f0f934",
       "headRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "headRefName": "tanyanxia-patch-1",
       "headRefOid": "209a8a5d74bf7a94b1e45c09be9b6737931fb11a",
-      "closedAt": null,
+      "closedAt": "2026-01-05T09:02:16Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
