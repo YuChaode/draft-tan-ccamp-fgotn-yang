@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-06T00:56:00.267051+00:00",
+  "timestamp": "2026-01-08T00:56:17.587709+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -1274,7 +1274,7 @@
       "labels": [],
       "body": "Proposed text changes to section 2: fix #9 ",
       "createdAt": "2025-09-11T16:55:47Z",
-      "updatedAt": "2025-09-18T08:03:12Z",
+      "updatedAt": "2026-01-06T03:37:20Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "63d31a59563ac0f27de85fb95a74672a82ffb424",
@@ -1294,7 +1294,21 @@
           "updatedAt": "2025-09-11T16:56:02Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs7YUZmY",
+          "commit": {
+            "abbreviatedOid": "09f9fab"
+          },
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-01-06T03:37:20Z",
+          "updatedAt": "2026-01-06T03:37:20Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 33,
@@ -1310,7 +1324,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-12-03T14:24:37Z",
-      "updatedAt": "2026-01-05T09:01:24Z",
+      "updatedAt": "2026-01-07T17:22:28Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "67e40184b93d76194065d1ebab72d8d288f0f934",
@@ -1445,6 +1459,44 @@
               "body": "**2025-121-17 Call**\r\n\r\n- [x] @tanyanxia update the datatype as discussed above",
               "createdAt": "2025-12-17T14:26:32Z",
               "updatedAt": "2026-01-05T08:39:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs7Yt4Kj",
+          "commit": {
+            "abbreviatedOid": "64ab127"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "I am fine with the latest changes to the YANG model\r\n\r\nI have some comments on the latest changes to the text",
+          "createdAt": "2026-01-07T17:13:53Z",
+          "updatedAt": "2026-01-07T17:22:28Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "No need to change: this is the version of kramdown. The version of the draft is automatically updated when the I-D is submitted\r\n\r\n```suggestion\r\nv: 3\r\n```",
+              "createdAt": "2026-01-07T17:13:54Z",
+              "updatedAt": "2026-01-07T17:22:06Z"
+            },
+            {
+              "originalPosition": 40,
+              "body": "Mark G.709 as a reference:\r\n\r\n```suggestion\r\nStep 3: Node 1 to node 6 will modify their configuration in the forward direction through data plane node by node. The detail of this process can reference to Annex O.2 of [ITU-T_G.709].\r\n```",
+              "createdAt": "2026-01-07T17:18:26Z",
+              "updatedAt": "2026-01-07T17:22:06Z"
+            },
+            {
+              "originalPosition": 26,
+              "body": "Acknowledgments should be at the end after all the appendices\r\n\r\n```suggestion\r\n```",
+              "createdAt": "2026-01-07T17:20:58Z",
+              "updatedAt": "2026-01-07T17:22:06Z"
+            },
+            {
+              "originalPosition": 52,
+              "body": "See comment https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/33#discussion_r2669349632 above:\r\n\r\n```suggestion\r\nDuring the whole process, all domain controllers, including the intermediate domain Controller 2, need to report the notifications of topology and tunnel resource changes to the MDSC.\r\n\r\n{: numbered=\"false\"}\r\n\r\n# Acknowledgments\r\n\r\n```",
+              "createdAt": "2026-01-07T17:21:32Z",
+              "updatedAt": "2026-01-07T17:22:46Z"
             }
           ]
         }
