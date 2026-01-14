@@ -21,3 +21,5 @@ draft-tan-ccamp-fgotn-yang.xml
 package-lock.json
 report.xml
 !requirements.txt
+*.bash
+pretty/
