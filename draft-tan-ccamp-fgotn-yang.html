@@ -13,25 +13,24 @@
 <meta content="
        This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1Gbit/s client signals in transport network. 
     " name="description">
-<meta content="xml2rfc 3.30.2" name="generator">
+<meta content="xml2rfc 3.31.0" name="generator">
 <meta content="next generation" name="keyword">
 <meta content="unicorn" name="keyword">
 <meta content="sparkling distributed ledger" name="keyword">
 <meta content="draft-tan-ccamp-fgotn-yang-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.2
-    Python 3.12.11
+  xml2rfc 3.31.0
+    Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
-    intervaltree 3.1.0
+    intervaltree 3.2.1
     Jinja2 3.1.6
-    lxml 5.3.1
-    platformdirs 4.4.0
+    lxml 6.0.2
+    platformdirs 4.5.1
     pycountry 24.6.1
-    PyYAML 6.0.2
+    PyYAML 6.0.3
     requests 2.32.5
-    setuptools 80.9.0
-    wcwidth 0.2.13
+    wcwidth 0.2.14
 -->
 <link href="draft-tan-ccamp-fgotn-yang.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1050,11 +1049,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Fine grain OTN YANG</td>
-<td class="right">September 2025</td>
+<td class="right">January 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tan, et al.</td>
-<td class="center">Expires 22 March 2026</td>
+<td class="center">Expires 18 July 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tan-ccamp-fgotn-yang-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-09-18" class="published">18 September 2025</time>
+<time datetime="2026-01-14" class="published">14 January 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-03-22">22 March 2026</time></dd>
+<dd class="expires"><time datetime="2026-07-18">18 July 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1138,7 +1137,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 22 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 18 July 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1147,7 +1146,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2025 IETF Trust and the persons identified as the
+            Copyright (c) 2026 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1268,10 +1267,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-multi-domain-fgotn-hitless-" class="internal xref">Multi-domain fgOTN Hitless Resizing Process</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-appendix-a-multi-domain-fgo" class="internal xref">Appendix A. Multi-domain fgOTN Hitless Resizing Process</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
             <p id="section-toc.1-1.16.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
@@ -1569,7 +1568,16 @@ All link bandwidth information that supports fgOTN should be reported to MDSC by
       <h2 id="name-yang-data-model-for-fine-gr">
 <a href="#section-3" class="section-number selfRef">3. </a><a href="#name-yang-data-model-for-fine-gr" class="section-name selfRef">YANG Data Model for fine grain Optical Transport Network Overview</a>
       </h2>
-<p id="section-3-1">In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to OTN topology and OTN tunnel YANG model. The attributes related to fgOTN are augments from OTN topology data model, and fgOTN topology is not treated as a separate hierarchy. The fgOTN tunnel is defined as a separate tunnel hierarchy, and the fgOTN tunnels need to be pre-set and created before the service provisioning process.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-1">In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to OTN topology and OTN tunnel YANG model, as defined in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span> and <span>[<a href="#I-D.ietf-ccamp-otn-tunnel-model" class="cite xref">I-D.ietf-ccamp-otn-tunnel-model</a>]</span>.<a href="#section-3-1" class="pilcrow">¶</a></p>
+<p id="section-3-2">As defined in Annex M of <span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span>, fgOTN is defining a new path layer network which complements the existing OTN. Therefore:<a href="#section-3-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3-3.1">
+          <p id="section-3-3.1.1">A single network topology instance is used to report both OTN and fgOTN topology information: fgOTN technology-specific attributes are therefore defined in the fgOTN topology model as augmentations of the OTN topology model, but without defining a new network type for fgOTN.<a href="#section-3-3.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="section-3-3.2">
+          <p id="section-3-3.2.1">The OTN tunnel model can be used to setup either an OTN or an fgOTN tunnel: fgOTN technology-specific attributes are therefore defined in the fgOTN tunnel model as augmentations of the OTN tunnel model, which are applicable only when the OTN tunnel is an fgOTN tunnel.<a href="#section-3-3.2.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
 </section>
 </div>
 <div id="yang-data-model-for-fgotn-topology">
@@ -1751,21 +1759,22 @@ module: ietf-fgotn-topology
 
   augment /nw:networks/nw:network/nt:link/tet:te
             /tet:te-link-attributes/tet:max-link-bandwidth
-            /tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist:
+            /tet:te-bandwidth/otnt:otn-bandwidth:
     +--rw fgotn-bandwidth?   uint16
   augment /nw:networks/nw:network/nt:link/tet:te
             /tet:te-link-attributes/tet:unreserved-bandwidth
             /tet:te-bandwidth/otnt:otn-bandwidth:
+    +--rw fgotn-bandwidth?   uint16
     +--rw fgotnlist* [odu-type odu-ts-number]
        +--rw odu-type           identityref
-       +--rw odu-ts-number      uint16
+       +--rw odu-ts-number      string
        +--rw fgotn-bandwidth?   uint16
   augment /nw:networks/tet:te/tet:templates/tet:link-template
             /tet:te-link-attributes/tet:label-restrictions
             /tet:label-restriction/otnt:otn-label-range:
     +--rw fgts-range* [odu-type odu-ts-number]
        +--rw odu-type           identityref
-       +--rw odu-ts-number      uint16
+       +--rw odu-ts-number      string
        +--rw fgts-reserved?     string
        +--rw fgts-unreserved?   string
 </pre>
@@ -1838,7 +1847,7 @@ module: ietf-fgotn-topology
         Yanlei Zheng (zhengyanlei@chinaunicom.cn);
         Italo Busi (italo.busi@huawei.com);
         Chaode Yu (yuchaode@huawei.com);
-        Xing Zhao (zhaoxing@caict.ac.cn);
+                Xing Zhao (zhaoxing@caict.ac.cn);
     ";
 
   description
@@ -1865,7 +1874,7 @@ module: ietf-fgotn-topology
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2025-06-18 {
+  revision 2025-11-26 {
     description
       "initial version";
     reference
@@ -1873,9 +1882,26 @@ module: ietf-fgotn-topology
                  Network";
   }
 
+  typedef ts-list {
+    type string {
+        pattern "([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?"
+                 + "(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)";
+    }
+    description
+        "A list of Tributary Slots (TS) ranging between 1 and 4095.
+
+        If multiple values or ranges are given, they all MUST be
+        disjoint and MUST be in ascending order.
+
+        For example 1-20,25,50-1000.";
+    reference
+        "RFC 7139: GMPLS Signaling Extensions for Control
+        of Evolving G.709 Optical Transport Networks";
+  }
+
   augment "/nw:networks/nw:network/nt:link/tet:te" +
           "/tet:te-link-attributes/tet:max-link-bandwidth" +
-          "/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist" {
+          "/tet:te-bandwidth/otnt:otn-bandwidth" {
     description
       "specific augmentation of fgOTN link on maximum link
       bandwidth";
@@ -1893,6 +1919,12 @@ module: ietf-fgotn-topology
     description
       "specific augmentation of fgOTN link on unreserved link
       bandwidth";
+    leaf fgotn-bandwidth {
+      type uint16;
+      description
+        "The unreserved bandwidth of fgOTN before the server ODUk
+         is set up";
+    }
     list fgotnlist {
       key "odu-type odu-ts-number";
       description
@@ -1907,7 +1939,7 @@ module: ietf-fgotn-topology
       }
 
       leaf odu-ts-number {
-        type uint16;
+        type fgotnt:ts-list;
         description
           "The index of server ODUk channel";
       }
@@ -1920,7 +1952,7 @@ module: ietf-fgotn-topology
     }
   }
 
-  augment "/nw:networks/tet:te/tet:templates/tet:link-template"+
+  augment "/nw:networks/nw:network/nt:link/tet:te"+
           "/tet:te-link-attributes/tet:label-restrictions" +
           "/tet:label-restriction/otnt:otn-label-range" {
     description
@@ -1939,19 +1971,19 @@ module: ietf-fgotn-topology
       }
 
       leaf odu-ts-number {
-        type uint16;
+        type fgotnt:ts-list;
         description
           "The index of server ODUk channel";
       }
 
       leaf fgts-reserved {
-        type string;
+        type fgotnt:ts-list;
         description
           "The reserved fgOTN timeslot in this server ODUk";
       }
 
       leaf fgts-unreserved {
-        type string;
+        type fgotnt:ts-list;
         description
           "The unreserved fgOTN timeslot in this server ODUk";
       }
@@ -2234,11 +2266,11 @@ module ietf-fgotn-tunnel {
 <dd class="break"></dd>
 <dt id="I-D.ietf-ccamp-otn-tunnel-model">[I-D.ietf-ccamp-otn-tunnel-model]</dt>
         <dd>
-<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">Y. Xu</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network (OTN) Tunnels and Label Switched Paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-23</span>, <time datetime="2025-06-04" class="refDate">4 June 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-23">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-23</a>&gt;</span>. </dd>
+<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">Y. Xu</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network (OTN) Tunnels and Label Switched Paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-24</span>, <time datetime="2025-12-01" class="refDate">1 December 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-24">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-24</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-yang-te">[I-D.ietf-teas-yang-te]</dt>
         <dd>
-<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Gandhi, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Beeram, V. P.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths and Interfaces"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-yang-te-38</span>, <time datetime="2025-05-29" class="refDate">29 May 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-38">https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-38</a>&gt;</span>. </dd>
+<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Gandhi, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Beeram, V. P.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths, and Interfaces"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-yang-te-40</span>, <time datetime="2025-11-02" class="refDate">2 November 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-40">https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-40</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="ITU-T_G.709">[ITU-T_G.709]</dt>
         <dd>
@@ -2283,7 +2315,7 @@ module ietf-fgotn-tunnel {
 <dl class="references">
 <dt id="I-D.ietf-teas-rfc8776-update">[I-D.ietf-teas-rfc8776-update]</dt>
         <dd>
-<span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Guo, A.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"Common YANG Data Types for Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc8776-update-18</span>, <time datetime="2025-08-29" class="refDate">29 August 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-18">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-18</a>&gt;</span>. </dd>
+<span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Guo, A.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"Common YANG Data Types for Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc8776-update-20</span>, <time datetime="2025-12-19" class="refDate">19 December 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-20">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-20</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8345">[RFC8345]</dt>
         <dd>
@@ -2298,25 +2330,26 @@ module ietf-fgotn-tunnel {
 </div>
 </section>
 </div>
-<div id="acknowledgments">
+<div id="multi-domain-fgotn-hitless-resizing-process">
 <section id="appendix-A">
-      <h2 id="name-acknowledgments">
-<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
-    </h2>
+      <h2 id="name-multi-domain-fgotn-hitless-">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-multi-domain-fgotn-hitless-" class="section-name selfRef">Multi-domain fgOTN Hitless Resizing Process</a>
+      </h2>
+<p id="appendix-A-1">The process of multi-domain fgOTN hitless resizing include six steps. Both the source and destination controllers should report the hitless bandwidth adjustment status to the MDSC coordinator. To be noted that, the resizing process is divided into two directions, and the resizing is considered successful when both directions have been adjusted.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">Step 1: The MDSC coordinator sends an resizing command to the source node (Node1) via Controller 1.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3">Step 2: Controller 1 will report a bandwidth adjustment starting status notification, e.g. ietf-te-types:lsp-path-modifying, to the MDSC.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">Step 3: Node 1 to node 6 will modify their configuration in the forward direction through data plane node by node. The detail of this process can reference to Annex O.2 of <span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span>.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-5">Step 4: After the resizing from node1 to node6 was completed, Controller 1 will report an ending status notification, e.g. ietf-te-types:lsp-path-modified, to MDSC.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+<p id="appendix-A-6">Step 5: At the same time, the reverse direction bandwidth resizing will be triggered auotmatically by the data plane in node 6. Controller 3 needs to report an bandwidth adjustment starting status notification, ietf-te-types:lsp-path-modifying, to the MDSC.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+<p id="appendix-A-7">Step 6: After the reverse direction (Node 6 to Node 1) resizing is completed, Controller 3 will report an ending status notification, ietf-te-types:lsp-path-modified, to MDSC.<a href="#appendix-A-7" class="pilcrow">¶</a></p>
+<p id="appendix-A-8">During the whole process, all domain controllers, including the intermediate domain Controller 2, need to report the notifications of topology and tunnel resource changes to the MDSC.<a href="#appendix-A-8" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="appendix-a-multi-domain-fgotn-hitless-resizing-process">
+<div id="acknowledgments">
 <section id="appendix-B">
-      <h2 id="name-appendix-a-multi-domain-fgo">
-<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-appendix-a-multi-domain-fgo" class="section-name selfRef">Appendix A. Multi-domain fgOTN Hitless Resizing Process</a>
-      </h2>
-<p id="appendix-B-1">The process of cross domain hitless resizing include six steps. Both the source and destination controllers should report the hitless bandwidth adjustment status to the MDSC coordinator.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
-<p id="appendix-B-2">Step 1: The MDSC coordinator sends an resizing command to the source node (Node1) via Controller 1. The command includes the target bandwidth and the fgODUflex service identifier.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
-<p id="appendix-B-3">Step 2: Controller 1 reports the bandwidth adjustment status ietf-te-types:lsp-path-modifying to the MDSC via notification.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
-<p id="appendix-B-4">Step 3: After the resizing in the direction from Node1 to Node6 was completed, Controller 1 reported ietf-te-types:lsp-path-modified to MDSC. This automatically triggered a reverse-direction resizing (Node6 to Node1).<a href="#appendix-B-4" class="pilcrow">¶</a></p>
-<p id="appendix-B-5">Step 4: Once the reverse resizing begins, Controller 3 reports the bandwidth adjustment status to the MDSC via notification.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
-<p id="appendix-B-6">Step 5: After the reverse direction  (Node 6 to Node 1) resizing is completed, Controller 3 reports ietf-te-types:lsp-path-modified to MDSC.<a href="#appendix-B-6" class="pilcrow">¶</a></p>
-<p id="appendix-B-7">Step 6: All domain controllers, including the intermediate domain Controller 2, report notifications of topology and tunnel resource changes to MDSC coordinator.<a href="#appendix-B-7" class="pilcrow">¶</a></p>
+      <h2 id="name-acknowledgments">
+<a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
+    </h2>
 </section>
 </div>
 <div id="contributors">
