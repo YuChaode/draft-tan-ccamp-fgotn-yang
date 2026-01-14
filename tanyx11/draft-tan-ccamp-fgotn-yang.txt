@@ -5,12 +5,12 @@
 Common Control and Measurement Plane                              Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 9 July 2026                                             I. Busi
+Expires: 18 July 2026                                            I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                          5 January 2026
+                                                         14 January 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 July 2026.
+   This Internet-Draft will expire on 18 July 2026.
 
 Copyright Notice
 
@@ -106,8 +106,8 @@ Table of Contents
    13. References
      13.1.  Normative References
      13.2.  Informative References
-   Appendix A.  Acknowledgments
-   Appendix B.  Multi-domain fgOTN Hitless Resizing Process
+   Appendix A.  Multi-domain fgOTN Hitless Resizing Process
+   Acknowledgments
    Contributors
    Authors' Addresses
 
@@ -1109,9 +1109,7 @@ Table of Contents
               DOI 10.17487/RFC8795, August 2020,
               <https://www.rfc-editor.org/rfc/rfc8795>.
 
-Appendix A.  Acknowledgments
-
-Appendix B.  Multi-domain fgOTN Hitless Resizing Process
+Appendix A.  Multi-domain fgOTN Hitless Resizing Process
 
    The process of multi-domain fgOTN hitless resizing include six steps.
    Both the source and destination controllers should report the hitless
@@ -1129,7 +1127,7 @@ Appendix B.  Multi-domain fgOTN Hitless Resizing Process
 
    Step 3: Node 1 to node 6 will modify their configuration in the
    forward direction through data plane node by node.  The detail of
-   this process can reference to Annex O.2 of ITU-T G.709.
+   this process can reference to Annex O.2 of [ITU-T_G.709].
 
    Step 4: After the resizing from node1 to node6 was completed,
    Controller 1 will report an ending status notification, e.g. ietf-te-
@@ -1147,6 +1145,8 @@ Appendix B.  Multi-domain fgOTN Hitless Resizing Process
    During the whole process, all domain controllers, including the
    intermediate domain Controller 2, need to report the notifications of
    topology and tunnel resource changes to the MDSC.
+
+Acknowledgments
 
 Contributors
 

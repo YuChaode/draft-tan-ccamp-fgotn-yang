@@ -1053,7 +1053,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tan, et al.</td>
-<td class="center">Expires 9 July 2026</td>
+<td class="center">Expires 18 July 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tan-ccamp-fgotn-yang-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-01-05" class="published">5 January 2026</time>
+<time datetime="2026-01-14" class="published">14 January 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-07-09">9 July 2026</time></dd>
+<dd class="expires"><time datetime="2026-07-18">18 July 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1137,7 +1137,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 9 July 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 18 July 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1267,10 +1267,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14">
-            <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.14.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-multi-domain-fgotn-hitless-" class="internal xref">Multi-domain fgOTN Hitless Resizing Process</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.15">
-            <p id="section-toc.1-1.15.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-multi-domain-fgotn-hitless-" class="internal xref">Multi-domain fgOTN Hitless Resizing Process</a></p>
+            <p id="section-toc.1-1.15.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
             <p id="section-toc.1-1.16.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
@@ -2330,26 +2330,26 @@ module ietf-fgotn-tunnel {
 </div>
 </section>
 </div>
-<div id="acknowledgments">
+<div id="multi-domain-fgotn-hitless-resizing-process">
 <section id="appendix-A">
-      <h2 id="name-acknowledgments">
-<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
-    </h2>
+      <h2 id="name-multi-domain-fgotn-hitless-">
+<a href="#appendix-A" class="section-number selfRef">Appendix A. </a><a href="#name-multi-domain-fgotn-hitless-" class="section-name selfRef">Multi-domain fgOTN Hitless Resizing Process</a>
+      </h2>
+<p id="appendix-A-1">The process of multi-domain fgOTN hitless resizing include six steps. Both the source and destination controllers should report the hitless bandwidth adjustment status to the MDSC coordinator. To be noted that, the resizing process is divided into two directions, and the resizing is considered successful when both directions have been adjusted.<a href="#appendix-A-1" class="pilcrow">¶</a></p>
+<p id="appendix-A-2">Step 1: The MDSC coordinator sends an resizing command to the source node (Node1) via Controller 1.<a href="#appendix-A-2" class="pilcrow">¶</a></p>
+<p id="appendix-A-3">Step 2: Controller 1 will report a bandwidth adjustment starting status notification, e.g. ietf-te-types:lsp-path-modifying, to the MDSC.<a href="#appendix-A-3" class="pilcrow">¶</a></p>
+<p id="appendix-A-4">Step 3: Node 1 to node 6 will modify their configuration in the forward direction through data plane node by node. The detail of this process can reference to Annex O.2 of <span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span>.<a href="#appendix-A-4" class="pilcrow">¶</a></p>
+<p id="appendix-A-5">Step 4: After the resizing from node1 to node6 was completed, Controller 1 will report an ending status notification, e.g. ietf-te-types:lsp-path-modified, to MDSC.<a href="#appendix-A-5" class="pilcrow">¶</a></p>
+<p id="appendix-A-6">Step 5: At the same time, the reverse direction bandwidth resizing will be triggered auotmatically by the data plane in node 6. Controller 3 needs to report an bandwidth adjustment starting status notification, ietf-te-types:lsp-path-modifying, to the MDSC.<a href="#appendix-A-6" class="pilcrow">¶</a></p>
+<p id="appendix-A-7">Step 6: After the reverse direction (Node 6 to Node 1) resizing is completed, Controller 3 will report an ending status notification, ietf-te-types:lsp-path-modified, to MDSC.<a href="#appendix-A-7" class="pilcrow">¶</a></p>
+<p id="appendix-A-8">During the whole process, all domain controllers, including the intermediate domain Controller 2, need to report the notifications of topology and tunnel resource changes to the MDSC.<a href="#appendix-A-8" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="multi-domain-fgotn-hitless-resizing-process">
+<div id="acknowledgments">
 <section id="appendix-B">
-      <h2 id="name-multi-domain-fgotn-hitless-">
-<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-multi-domain-fgotn-hitless-" class="section-name selfRef">Multi-domain fgOTN Hitless Resizing Process</a>
-      </h2>
-<p id="appendix-B-1">The process of multi-domain fgOTN hitless resizing include six steps. Both the source and destination controllers should report the hitless bandwidth adjustment status to the MDSC coordinator. To be noted that, the resizing process is divided into two directions, and the resizing is considered successful when both directions have been adjusted.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
-<p id="appendix-B-2">Step 1: The MDSC coordinator sends an resizing command to the source node (Node1) via Controller 1.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
-<p id="appendix-B-3">Step 2: Controller 1 will report a bandwidth adjustment starting status notification, e.g. ietf-te-types:lsp-path-modifying, to the MDSC.<a href="#appendix-B-3" class="pilcrow">¶</a></p>
-<p id="appendix-B-4">Step 3: Node 1 to node 6 will modify their configuration in the forward direction through data plane node by node. The detail of this process can reference to Annex O.2 of ITU-T G.709.<a href="#appendix-B-4" class="pilcrow">¶</a></p>
-<p id="appendix-B-5">Step 4: After the resizing from node1 to node6 was completed, Controller 1 will report an ending status notification, e.g. ietf-te-types:lsp-path-modified, to MDSC.<a href="#appendix-B-5" class="pilcrow">¶</a></p>
-<p id="appendix-B-6">Step 5: At the same time, the reverse direction bandwidth resizing will be triggered auotmatically by the data plane in node 6. Controller 3 needs to report an bandwidth adjustment starting status notification, ietf-te-types:lsp-path-modifying, to the MDSC.<a href="#appendix-B-6" class="pilcrow">¶</a></p>
-<p id="appendix-B-7">Step 6: After the reverse direction (Node 6 to Node 1) resizing is completed, Controller 3 will report an ending status notification, ietf-te-types:lsp-path-modified, to MDSC.<a href="#appendix-B-7" class="pilcrow">¶</a></p>
-<p id="appendix-B-8">During the whole process, all domain controllers, including the intermediate domain Controller 2, need to report the notifications of topology and tunnel resource changes to the MDSC.<a href="#appendix-B-8" class="pilcrow">¶</a></p>
+      <h2 id="name-acknowledgments">
+<a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
+    </h2>
 </section>
 </div>
 <div id="contributors">
