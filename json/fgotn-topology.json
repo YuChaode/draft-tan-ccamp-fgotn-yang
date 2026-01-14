@@ -1382,7 +1382,7 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "odu-ts-number": "2",
-                            "fgotn-bandwidth": 2500
+                            "fgotn-bandwidth": 1250
                           }
                         ]
                       }
@@ -1493,7 +1493,7 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "odu-ts-number": "2",
-                            "fgotn-bandwidth": 2500
+                            "fgotn-bandwidth": 1250
                           }
                         ]
                       }
