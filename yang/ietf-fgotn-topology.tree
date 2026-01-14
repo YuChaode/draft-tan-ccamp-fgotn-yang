@@ -10,13 +10,13 @@ module: ietf-fgotn-topology
     +--rw fgotn-bandwidth?   uint16
     +--rw fgotnlist* [odu-type odu-ts-number]
        +--rw odu-type           identityref
-       +--rw odu-ts-number      string
+       +--rw odu-ts-number      fgotnt:ts-list
        +--rw fgotn-bandwidth?   uint16
-  augment /nw:networks/tet:te/tet:templates/tet:link-template
+  augment /nw:networks/nw:network/nt:link/tet:te
             /tet:te-link-attributes/tet:label-restrictions
             /tet:label-restriction/otnt:otn-label-range:
     +--rw fgts-range* [odu-type odu-ts-number]
        +--rw odu-type           identityref
-       +--rw odu-ts-number      string
-       +--rw fgts-reserved?     string
-       +--rw fgts-unreserved?   string
+       +--rw odu-ts-number      fgotnt:ts-list
+       +--rw fgts-reserved?     fgotnt:ts-list
+       +--rw fgts-unreserved?   fgotnt:ts-list
