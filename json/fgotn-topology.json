@@ -9,8 +9,8 @@
           }
         },
         "ietf-te-topology:te-topology-identifier": {
-          "client-id": "2",
-          "provider-id": "1",
+          "client-id": 2,
+          "provider-id": 1,
           "topology-id": "otn-topology-example-1"
         },
         "ietf-te-topology:te": {},
@@ -33,24 +33,35 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "RkY="
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -118,24 +129,35 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "RkY="
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -203,24 +225,35 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "RkY="
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -288,24 +321,35 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "RkY="
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -371,24 +415,35 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "RkY="
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -456,24 +511,35 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "RkY="
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -543,24 +609,35 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "RkY="
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -628,24 +705,35 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "RkY="
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -700,16 +788,15 @@
             "ietf-te-topology:te-node-id": "0.9.9.1",
             "ietf-te-topology:te": {
               "te-node-attributes": {
-                "name": "Node NE1",
-                "node-ip": "0.9.9.1"
-              },
+                "name": "Node NE1"
+              }
             },
             "ietf-network-topology:termination-point": [
             {
                 "tp-id": "example:NE1-1",
                 "ietf-te-topology:te-tp-id": 1,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": true,
+                  "ietf-otn-topology:client-svc": {},
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -723,7 +810,6 @@
                 "tp-id": "example:NE1-2",
                 "ietf-te-topology:te-tp-id": 2,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -737,7 +823,6 @@
                 "tp-id": "example:NE1-3",
                 "ietf-te-topology:te-tp-id": 3,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -754,16 +839,14 @@
             "ietf-te-topology:te-node-id": "0.9.9.2",
             "ietf-te-topology:te": {
               "te-node-attributes": {
-                "name": "Node NE2",
-                "node-ip": "0.9.9.2"
-              },
+                "name": "Node NE2"
+              }
             },
             "ietf-network-topology:termination-point": [
               {
                 "tp-id": "example:NE2-1",
                 "ietf-te-topology:te-tp-id": 1,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -777,14 +860,13 @@
                 "tp-id": "example:NE2-2",
                 "ietf-te-topology:te-tp-id": 2,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
                       "switching-capability": "ietf-te-types:switching-otn"
                     }
                   ],
-                  "name": "Interface 2 of Node NE2",
+                  "name": "Interface 2 of Node NE2"
                 }
               }
             ]
@@ -794,16 +876,14 @@
             "ietf-te-topology:te-node-id": "0.9.9.3",
             "ietf-te-topology:te": {
               "te-node-attributes": {
-                "name": "Node NE3",
-                "node-ip": "0.9.9.3"
-              },
+                "name": "Node NE3"
+              }
             },
             "ietf-network-topology:termination-point": [
               {
                 "tp-id": "example:NE3-1",
                 "ietf-te-topology:te-tp-id": 1,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -817,7 +897,6 @@
                 "tp-id": "example:NE3-2",
                 "ietf-te-topology:te-tp-id": 2,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -834,30 +913,28 @@
             "ietf-te-topology:te-node-id": "0.9.9.4",
             "ietf-te-topology:te": {
               "te-node-attributes": {
-                "name": "Node NE4",
-                "node-ip": "0.9.9.4"
-              },
+                "name": "Node NE4"
+              }
             },
             "ietf-network-topology:termination-point": [
             {
                 "tp-id": "example:NE4-1",
                 "ietf-te-topology:te-tp-id": 1,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": true,
+                  "ietf-otn-topology:client-svc": {},
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
                       "switching-capability": "ietf-te-types:switching-otn"
                     }
                   ],
-                  "name": "Interface 1 of Node NE4",
+                  "name": "Interface 1 of Node NE4"
                 }
             },   
             {
                 "tp-id": "example:NE4-2",
                 "ietf-te-topology:te-tp-id": 2,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -871,7 +948,6 @@
                 "tp-id": "example:NE4-3",
                 "ietf-te-topology:te-tp-id": 3,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -893,8 +969,8 @@
           }
         },
         "ietf-te-topology:te-topology-identifier": {
-          "client-id": "2",
-          "provider-id": "1",
+          "client-id": 2,
+          "provider-id": 1,
           "topology-id": "otn-topology-example-1"
         },
         "ietf-te-topology:te": {},
@@ -917,32 +993,42 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "M2Y=",
-                    "ietf-fgotn-topology:fgts-range": [
-                      {
-                        "odu-type": "ietf-layer1-types:ODU1",
-                        "odu-ts-number": "1-2",
-                        "fgts-reserved": null,
-                        "fgts-unreserved": "1-238"
-                      }
-                    ]
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot",
+                        "ietf-fgotn-topology:fgts-range": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "odu-ts-number": "1-2",
+                            "fgts-unreserved": "1-238"
+                          }
+                        ]
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "3f"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -1017,32 +1103,42 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "M2Y=",
-                    "ietf-fgotn-topology:fgts-range": [
-                      {
-                        "odu-type": "ietf-layer1-types:ODU1",
-                        "odu-ts-number": "1-2",
-                        "fgts-reserved": null,
-                        "fgts-unreserved": "1-238"
-                      }
-                    ]
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot",
+                        "ietf-fgotn-topology:fgts-range": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "odu-ts-number": "1-2",
+                            "fgts-unreserved": "1-238"
+                          }
+                        ]
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "3f"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -1117,32 +1213,42 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "MUY=",
-                    "ietf-fgotn-topology:fgts-range": [
-                      {
-                        "odu-type": "ietf-layer1-types:ODU1",
-                        "odu-ts-number": "1-2",
-                        "fgts-reserved": null,
-                        "fgts-unreserved": "1-238"
-                      }
-                    ]
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot",
+                        "ietf-fgotn-topology:fgts-range": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "odu-ts-number": "1-2",
+                            "fgts-unreserved": "1-238"
+                          }
+                        ]
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "3f"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -1217,24 +1323,35 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "MUY="
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "3f"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -1300,38 +1417,47 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "M2Y=",
-                    "ietf-fgotn-topology:fgts-range": [
-                      {
-                        "odu-type": "ietf-layer1-types:ODU0",
-                        "odu-ts-number": 1,
-                        "fgts-reserved": null,
-                        "fgts-unreserved": "1-119"
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot",
+                        "ietf-fgotn-topology:fgts-range": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "odu-ts-number": "1",
+                            "fgts-unreserved": "1-119"
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "odu-ts-number": "2",
+                            "fgts-unreserved": "1-119"
+                          }
+                        ]
                       },
-                      {
-                        "odu-type": "ietf-layer1-types:ODU0",
-                        "odu-ts-number": 2,
-                        "fgts-reserved": null,
-                        "fgts-unreserved": "1-119"
-                      }
-                    ]
-                  }
-                ],
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "3f"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -1411,38 +1537,47 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "M2Y=",
-                    "ietf-fgotn-topology:fgts-range": [
-                      {
-                        "odu-type": "ietf-layer1-types:ODU0",
-                        "odu-ts-number": "1",
-                        "fgts-reserved": null,
-                        "fgts-unreserved": "1-119"
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot",
+                        "ietf-fgotn-topology:fgts-range": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "odu-ts-number": "1",
+                            "fgts-unreserved": "1-119"
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "odu-ts-number": "2",
+                            "fgts-unreserved": "1-119"
+                          }
+                        ]
                       },
-                      {
-                        "odu-type": "ietf-layer1-types:ODU0",
-                        "odu-ts-number": "2",
-                        "fgts-reserved": null,
-                        "fgts-unreserved": "1-119"
-                      }
-                    ]
-                  }
-                ],
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "3f"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -1524,32 +1659,42 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "MUY=",
-                    "ietf-fgotn-topology:fgts-range": [
-                      {
-                        "odu-type": "ietf-layer1-types:ODU1",
-                        "odu-ts-number": "1-2",
-                        "fgts-reserved": null,
-                        "fgts-unreserved": "1-238"
-                      }
-                    ]
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot",
+                        "ietf-fgotn-topology:fgts-range": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "odu-ts-number": "1-2",
+                            "fgts-unreserved": "1-238"
+                          }
+                        ]
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "3f"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -1624,24 +1769,35 @@
                     "switching-capability": "ietf-te-types:switching-otn"
                   }
                 ],
-                "label-restriction": [
-                  {
-                    "inclusive-exclusive": "inclusive",
-                    "index": 1,
-                    "label-end": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 8
-                      }
-                    },
-                    "label-start": {
-                      "te-label": {
-                        "ietf-otn-topology:ts": 1
-                      }
-                    },
-                    "label-step": 1,
-                    "range-bitmap": "MUY="
-                  }
-                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "3f"
+                    }
+                  ]
+                },
                 "max-link-bandwidth": {
                   "te-bandwidth": {
                     "ietf-otn-topology:otn-bandwidth": {
@@ -1696,16 +1852,15 @@
             "ietf-te-topology:te-node-id": "0.9.9.1",
             "ietf-te-topology:te": {
               "te-node-attributes": {
-                "name": "Node NE1",
-                "node-ip": "0.9.9.1"
-              },
+                "name": "Node NE1"
+              }
             },
             "ietf-network-topology:termination-point": [
             {
                 "tp-id": "example:NE1-1",
                 "ietf-te-topology:te-tp-id": 1,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": true,
+                  "ietf-otn-topology:client-svc": {},
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -1719,7 +1874,6 @@
                 "tp-id": "example:NE1-2",
                 "ietf-te-topology:te-tp-id": 2,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -1733,7 +1887,6 @@
                 "tp-id": "example:NE1-3",
                 "ietf-te-topology:te-tp-id": 3,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -1750,16 +1903,14 @@
             "ietf-te-topology:te-node-id": "0.9.9.2",
             "ietf-te-topology:te": {
               "te-node-attributes": {
-                "name": "Node NE2",
-                "node-ip": "0.9.9.2"
-              },
+                "name": "Node NE2"
+              }
             },
             "ietf-network-topology:termination-point": [
               {
                 "tp-id": "example:NE2-1",
                 "ietf-te-topology:te-tp-id": 1,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -1773,14 +1924,13 @@
                 "tp-id": "example:NE2-2",
                 "ietf-te-topology:te-tp-id": 2,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
                       "switching-capability": "ietf-te-types:switching-otn"
                     }
                   ],
-                  "name": "Interface 2 of Node NE2",
+                  "name": "Interface 2 of Node NE2"
                 }
               }
             ]
@@ -1790,16 +1940,14 @@
             "ietf-te-topology:te-node-id": "0.9.9.3",
             "ietf-te-topology:te": {
               "te-node-attributes": {
-                "name": "Node NE3",
-                "node-ip": "0.9.9.3"
-              },
+                "name": "Node NE3"
+              }
             },
             "ietf-network-topology:termination-point": [
               {
                 "tp-id": "example:NE3-1",
                 "ietf-te-topology:te-tp-id": 1,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -1813,7 +1961,6 @@
                 "tp-id": "example:NE3-2",
                 "ietf-te-topology:te-tp-id": 2,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -1830,30 +1977,28 @@
             "ietf-te-topology:te-node-id": "0.9.9.4",
             "ietf-te-topology:te": {
               "te-node-attributes": {
-                "name": "Node NE4",
-                "node-ip": "0.9.9.4"
-              },
+                "name": "Node NE4"
+              }
             },
             "ietf-network-topology:termination-point": [
             {
                 "tp-id": "example:NE4-1",
                 "ietf-te-topology:te-tp-id": 1,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": true,
+                  "ietf-otn-topology:client-svc": {},
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
                       "switching-capability": "ietf-te-types:switching-otn"
                     }
                   ],
-                  "name": "Interface 1 of Node NE4",
+                  "name": "Interface 1 of Node NE4"
                 }
             },   
             {
                 "tp-id": "example:NE4-2",
                 "ietf-te-topology:te-tp-id": 2,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
@@ -1867,7 +2012,6 @@
                 "tp-id": "example:NE4-3",
                 "ietf-te-topology:te-tp-id": 3,
                 "ietf-te-topology:te": {
-                  "ietf-otn-topology:client-facing": false,
                   "interface-switching-capability": [
                     {
                       "encoding": "ietf-te-types:lsp-encoding-oduk",
