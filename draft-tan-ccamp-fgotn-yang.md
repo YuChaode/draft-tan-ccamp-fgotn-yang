@@ -8,7 +8,7 @@ submissiontype: IETF  # also: "independent", "editorial", "IAB", or "IRTF"
 number:
 date:
 consensus: true
-v: 5
+v: 3
 area: "Routing"
 workgroup: "Common Control and Measurement Plane"
 keyword:
@@ -446,7 +446,6 @@ sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2025-06-18.yang"}
 
 --- back
 
-# Acknowledgments
 
 # Multi-domain fgOTN Hitless Resizing Process
 
@@ -456,7 +455,7 @@ Step 1: The MDSC coordinator sends an resizing command to the source node (Node1
 
 Step 2: Controller 1 will report a bandwidth adjustment starting status notification, e.g. ietf-te-types:lsp-path-modifying, to the MDSC.
 
-Step 3: Node 1 to node 6 will modify their configuration in the forward direction through data plane node by node. The detail of this process can reference to Annex O.2 of ITU-T G.709.
+Step 3: Node 1 to node 6 will modify their configuration in the forward direction through data plane node by node. The detail of this process can reference to Annex O.2 of [ITU-T_G.709].
 
 Step 4: After the resizing from node1 to node6 was completed, Controller 1 will report an ending status notification, e.g. ietf-te-types:lsp-path-modified, to MDSC.
 
@@ -465,4 +464,9 @@ Step 5: At the same time, the reverse direction bandwidth resizing will be trigg
 Step 6: After the reverse direction (Node 6 to Node 1) resizing is completed, Controller 3 will report an ending status notification, ietf-te-types:lsp-path-modified, to MDSC.
 
 During the whole process, all domain controllers, including the intermediate domain Controller 2, need to report the notifications of topology and tunnel resource changes to the MDSC.
+
+{: numbered="false"}
+
+# Acknowledgments
+
 
