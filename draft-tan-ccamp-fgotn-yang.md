@@ -264,7 +264,13 @@ Both single domain and multi-domain hitless resizing should be supported. For mu
 
 # YANG Data Model for fine grain Optical Transport Network Overview
 
-In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to OTN topology and OTN tunnel YANG model. The attributes related to fgOTN are augments from OTN topology data model, and fgOTN topology is not treated as a separate hierarchy. The fgOTN tunnel is defined as a separate tunnel hierarchy, and the fgOTN tunnels need to be pre-set and created before the service provisioning process.
+In order to provide fgOTN capabilities, this document defines two extension YANG data models augmenting to OTN topology and OTN tunnel YANG model, as defined in [I-D.ietf-ccamp-otn-topo-yang] and [I-D.ietf-ccamp-otn-tunnel-model].
+
+As defined in Annex M of [ITU-T_G.709], fgOTN is defining a new path layer network which complements the existing OTN. Therefore:
+
+* A single network topology instance is used to report both OTN and fgOTN topology information: fgOTN technology-specific attributes are therefore defined in the fgOTN topology model as augmentations of the OTN topology model, but without defining a new network type for fgOTN.
+
+* The OTN tunnel model can be used to setup either an OTN or an fgOTN tunnel: fgOTN technology-specific attributes are therefore defined in the fgOTN tunnel model as augmentations of the OTN tunnel model, which are applicable only when the OTN tunnel is an fgOTN tunnel.
 
 # YANG Data Model for fgOTN Topology
 
@@ -440,21 +446,27 @@ sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2025-06-18.yang"}
 
 --- back
 
+
+# Multi-domain fgOTN Hitless Resizing Process
+
+The process of multi-domain fgOTN hitless resizing include six steps. Both the source and destination controllers should report the hitless bandwidth adjustment status to the MDSC coordinator. To be noted that, the resizing process is divided into two directions, and the resizing is considered successful when both directions have been adjusted.
+
+Step 1: The MDSC coordinator sends an resizing command to the source node (Node1) via Controller 1.
+
+Step 2: Controller 1 will report a bandwidth adjustment starting status notification, e.g. ietf-te-types:lsp-path-modifying, to the MDSC.
+
+Step 3: Node 1 to node 6 will modify their configuration in the forward direction through data plane node by node. The detail of this process can reference to Annex O.2 of [ITU-T_G.709].
+
+Step 4: After the resizing from node1 to node6 was completed, Controller 1 will report an ending status notification, e.g. ietf-te-types:lsp-path-modified, to MDSC.
+
+Step 5: At the same time, the reverse direction bandwidth resizing will be triggered auotmatically by the data plane in node 6. Controller 3 needs to report an bandwidth adjustment starting status notification, ietf-te-types:lsp-path-modifying, to the MDSC.
+
+Step 6: After the reverse direction (Node 6 to Node 1) resizing is completed, Controller 3 will report an ending status notification, ietf-te-types:lsp-path-modified, to MDSC.
+
+During the whole process, all domain controllers, including the intermediate domain Controller 2, need to report the notifications of topology and tunnel resource changes to the MDSC.
+
+{: numbered="false"}
+
 # Acknowledgments
 
-# Appendix A. Multi-domain fgOTN Hitless Resizing Process
-
-The process of cross domain hitless resizing include six steps. Both the source and destination controllers should report the hitless bandwidth adjustment status to the MDSC coordinator.
-
-Step 1: The MDSC coordinator sends an resizing command to the source node (Node1) via Controller 1. The command includes the target bandwidth and the fgODUflex service identifier.
-
-Step 2: Controller 1 reports the bandwidth adjustment status ietf-te-types:lsp-path-modifying to the MDSC via notification.
-
-Step 3: After the resizing in the direction from Node1 to Node6 was completed, Controller 1 reported ietf-te-types:lsp-path-modified to MDSC. This automatically triggered a reverse-direction resizing (Node6 to Node1).
-
-Step 4: Once the reverse resizing begins, Controller 3 reports the bandwidth adjustment status to the MDSC via notification.
-
-Step 5: After the reverse direction  (Node 6 to Node 1) resizing is completed, Controller 3 reports ietf-te-types:lsp-path-modified to MDSC.
-
-Step 6: All domain controllers, including the intermediate domain Controller 2, report notifications of topology and tunnel resource changes to MDSC coordinator.
 
