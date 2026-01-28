@@ -1023,6 +1023,7 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
                           "odu-ts-number": "1-2",
+                          "fgts-reserved": "",
                           "fgts-unreserved": "1-238"
                         }
                       ]
@@ -1133,6 +1134,7 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
                           "odu-ts-number": "1-2",
+                          "fgts-reserved": "",
                           "fgts-unreserved": "1-238"
                         }
                       ]
@@ -1243,6 +1245,7 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
                           "odu-ts-number": "1-2",
+                          "fgts-reserved": "",
                           "fgts-unreserved": "1-238"
                         }
                       ]
@@ -1447,11 +1450,13 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "odu-ts-number": "1",
+                          "fgts-reserved": "",
                           "fgts-unreserved": "1-119"
                         },
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "odu-ts-number": "2",
+                          "fgts-reserved": "",
                           "fgts-unreserved": "1-119"
                         }
                       ]
@@ -1567,11 +1572,13 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "odu-ts-number": "1",
+                          "fgts-reserved": "",
                           "fgts-unreserved": "1-119"
                         },
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "odu-ts-number": "2",
+                          "fgts-reserved": "",
                           "fgts-unreserved": "1-119"
                         }
                       ]
@@ -1689,6 +1696,7 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
                           "odu-ts-number": "1-2",
+                          "fgts-reserved": "",
                           "fgts-unreserved": "1-238"
                         }
                       ]
