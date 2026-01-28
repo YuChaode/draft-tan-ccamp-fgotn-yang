@@ -14,7 +14,7 @@ module: ietf-fgotn-topology
        +--rw fgotn-bandwidth?   uint16
   augment /nw:networks/nw:network/nt:link/tet:te
             /tet:te-link-attributes/tet:label-restrictions
-            /tet:label-restriction/otnt:otn-label-range:
+            /tet:label-restriction:
     +--rw fgts-range* [odu-type odu-ts-number]
        +--rw odu-type           identityref
        +--rw odu-ts-number      fgotnt:ts-list

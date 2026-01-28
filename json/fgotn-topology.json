@@ -41,17 +41,17 @@
                       "ietf-otn-topology:otn-label-range": {
                         "range-type": "trib-slot"
                       },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
-                      },
                       "label-start": {
                         "te-label": {
                           "ietf-otn-topology:otn-label": {
                             "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
                           }
                         }
                       },
@@ -137,17 +137,17 @@
                       "ietf-otn-topology:otn-label-range": {
                         "range-type": "trib-slot"
                       },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
-                      },
                       "label-start": {
                         "te-label": {
                           "ietf-otn-topology:otn-label": {
                             "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
                           }
                         }
                       },
@@ -233,17 +233,17 @@
                       "ietf-otn-topology:otn-label-range": {
                         "range-type": "trib-slot"
                       },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
-                      },
                       "label-start": {
                         "te-label": {
                           "ietf-otn-topology:otn-label": {
                             "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
                           }
                         }
                       },
@@ -329,17 +329,17 @@
                       "ietf-otn-topology:otn-label-range": {
                         "range-type": "trib-slot"
                       },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
-                      },
                       "label-start": {
                         "te-label": {
                           "ietf-otn-topology:otn-label": {
                             "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
                           }
                         }
                       },
@@ -423,17 +423,17 @@
                       "ietf-otn-topology:otn-label-range": {
                         "range-type": "trib-slot"
                       },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
-                      },
                       "label-start": {
                         "te-label": {
                           "ietf-otn-topology:otn-label": {
                             "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
                           }
                         }
                       },
@@ -519,17 +519,17 @@
                       "ietf-otn-topology:otn-label-range": {
                         "range-type": "trib-slot"
                       },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
-                      },
                       "label-start": {
                         "te-label": {
                           "ietf-otn-topology:otn-label": {
                             "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
                           }
                         }
                       },
@@ -617,17 +617,17 @@
                       "ietf-otn-topology:otn-label-range": {
                         "range-type": "trib-slot"
                       },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
-                      },
                       "label-start": {
                         "te-label": {
                           "ietf-otn-topology:otn-label": {
                             "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
                           }
                         }
                       },
@@ -713,17 +713,17 @@
                       "ietf-otn-topology:otn-label-range": {
                         "range-type": "trib-slot"
                       },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
-                      },
                       "label-start": {
                         "te-label": {
                           "ietf-otn-topology:otn-label": {
                             "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
                           }
                         }
                       },
@@ -999,21 +999,7 @@
                       "index": 1,
                       "restriction": "inclusive",
                       "ietf-otn-topology:otn-label-range": {
-                        "range-type": "trib-slot",
-                        "ietf-fgotn-topology:fgts-range": [
-                          {
-                            "odu-type": "ietf-layer1-types:ODU1",
-                            "odu-ts-number": "1-2",
-                            "fgts-unreserved": "1-238"
-                          }
-                        ]
-                      },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
+                        "range-type": "trib-slot"
                       },
                       "label-start": {
                         "te-label": {
@@ -1022,10 +1008,24 @@
                           }
                         }
                       },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc"
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-unreserved": "1-238"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1109,21 +1109,7 @@
                       "index": 1,
                       "restriction": "inclusive",
                       "ietf-otn-topology:otn-label-range": {
-                        "range-type": "trib-slot",
-                        "ietf-fgotn-topology:fgts-range": [
-                          {
-                            "odu-type": "ietf-layer1-types:ODU1",
-                            "odu-ts-number": "1-2",
-                            "fgts-unreserved": "1-238"
-                          }
-                        ]
-                      },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
+                        "range-type": "trib-slot"
                       },
                       "label-start": {
                         "te-label": {
@@ -1132,10 +1118,24 @@
                           }
                         }
                       },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc"
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-unreserved": "1-238"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1219,21 +1219,7 @@
                       "index": 1,
                       "restriction": "inclusive",
                       "ietf-otn-topology:otn-label-range": {
-                        "range-type": "trib-slot",
-                        "ietf-fgotn-topology:fgts-range": [
-                          {
-                            "odu-type": "ietf-layer1-types:ODU1",
-                            "odu-ts-number": "1-2",
-                            "fgts-unreserved": "1-238"
-                          }
-                        ]
-                      },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
+                        "range-type": "trib-slot"
                       },
                       "label-start": {
                         "te-label": {
@@ -1242,10 +1228,24 @@
                           }
                         }
                       },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc"
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-unreserved": "1-238"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1331,17 +1331,17 @@
                       "ietf-otn-topology:otn-label-range": {
                         "range-type": "trib-slot"
                       },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
-                      },
                       "label-start": {
                         "te-label": {
                           "ietf-otn-topology:otn-label": {
                             "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
                           }
                         }
                       },
@@ -1423,26 +1423,7 @@
                       "index": 1,
                       "restriction": "inclusive",
                       "ietf-otn-topology:otn-label-range": {
-                        "range-type": "trib-slot",
-                        "ietf-fgotn-topology:fgts-range": [
-                          {
-                            "odu-type": "ietf-layer1-types:ODU0",
-                            "odu-ts-number": "1",
-                            "fgts-unreserved": "1-119"
-                          },
-                          {
-                            "odu-type": "ietf-layer1-types:ODU0",
-                            "odu-ts-number": "2",
-                            "fgts-unreserved": "1-119"
-                          }
-                        ]
-                      },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
+                        "range-type": "trib-slot"
                       },
                       "label-start": {
                         "te-label": {
@@ -1451,10 +1432,29 @@
                           }
                         }
                       },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc"
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "1",
+                          "fgts-unreserved": "1-119"
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "2",
+                          "fgts-unreserved": "1-119"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1543,26 +1543,7 @@
                       "index": 1,
                       "restriction": "inclusive",
                       "ietf-otn-topology:otn-label-range": {
-                        "range-type": "trib-slot",
-                        "ietf-fgotn-topology:fgts-range": [
-                          {
-                            "odu-type": "ietf-layer1-types:ODU0",
-                            "odu-ts-number": "1",
-                            "fgts-unreserved": "1-119"
-                          },
-                          {
-                            "odu-type": "ietf-layer1-types:ODU0",
-                            "odu-ts-number": "2",
-                            "fgts-unreserved": "1-119"
-                          }
-                        ]
-                      },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
+                        "range-type": "trib-slot"
                       },
                       "label-start": {
                         "te-label": {
@@ -1571,10 +1552,29 @@
                           }
                         }
                       },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc"
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "1",
+                          "fgts-unreserved": "1-119"
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "2",
+                          "fgts-unreserved": "1-119"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1665,21 +1665,7 @@
                       "index": 1,
                       "restriction": "inclusive",
                       "ietf-otn-topology:otn-label-range": {
-                        "range-type": "trib-slot",
-                        "ietf-fgotn-topology:fgts-range": [
-                          {
-                            "odu-type": "ietf-layer1-types:ODU1",
-                            "odu-ts-number": "1-2",
-                            "fgts-unreserved": "1-238"
-                          }
-                        ]
-                      },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
+                        "range-type": "trib-slot"
                       },
                       "label-start": {
                         "te-label": {
@@ -1688,10 +1674,24 @@
                           }
                         }
                       },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc"
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-unreserved": "1-238"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -1777,17 +1777,17 @@
                       "ietf-otn-topology:otn-label-range": {
                         "range-type": "trib-slot"
                       },
-                      "label-end": {
-                        "te-label": {
-                          "ietf-otn-topology:otn-label": {
-                            "ts": 8
-                          }
-                        }
-                      },
                       "label-start": {
                         "te-label": {
                           "ietf-otn-topology:otn-label": {
                             "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
                           }
                         }
                       },

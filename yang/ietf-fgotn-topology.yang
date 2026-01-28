@@ -79,7 +79,7 @@ module ietf-fgotn-topology {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-01-14 {
+  revision 2026-01-28 {
     description
       "initial version";
     reference
@@ -157,7 +157,7 @@ module ietf-fgotn-topology {
 
   augment "/nw:networks/nw:network/nt:link/tet:te"
         + "/tet:te-link-attributes/tet:label-restrictions"
-        + "/tet:label-restriction/otnt:otn-label-range" {
+        + "/tet:label-restriction" {
     description
       "specific augmentation of fgOTN label";
     list fgts-range {
