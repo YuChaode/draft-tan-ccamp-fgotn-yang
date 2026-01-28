@@ -112,6 +112,7 @@ module ietf-fgotn-topology {
        bandwidth";
     leaf fgotn-bandwidth {
       type uint16;
+      units "megabits per second";
       description
         "It is used to indicate how much of the bandwidth has been
          allocated for the usage of fgOTN.";
@@ -126,6 +127,7 @@ module ietf-fgotn-topology {
        bandwidth";
     leaf fgotn-bandwidth {
       type uint16;
+      units "megabits per second";
       description
         "The unreserved bandwidth of fgOTN before the server ODUk
          is set up";
@@ -149,6 +151,7 @@ module ietf-fgotn-topology {
       }
       leaf fgotn-bandwidth {
         type uint16;
+        units "megabits per second";
         description
           "The unreserved bandwidth of fgOTN in this server ODUk";
       }
