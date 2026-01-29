@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-15T00:54:10.862515+00:00",
+  "timestamp": "2026-01-29T01:05:18.079527+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -419,12 +419,12 @@
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
-        "tanyanxia"
+        "italobusi"
       ],
       "labels": [],
       "body": "Check how the fgOTN topology and tunnel models can work re-using the existing ODUk switching and LSP encoding types for fgOTN and without defining new ODU type for fgODUflex\n",
       "createdAt": "2025-06-18T07:38:28Z",
-      "updatedAt": "2026-01-14T14:48:21Z",
+      "updatedAt": "2026-01-28T15:11:55Z",
       "closedAt": null,
       "comments": [
         {
@@ -447,6 +447,13 @@
           "body": "There are two options:\n\n1) define a new odu-type for fgODUflex and change the model as discussed in https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/13#issuecomment-3665718172\n\n2) define the fgotn-bandwidth for fgOTN tunnels/paths/LSPs as:\n\n```\n  augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology:\n    +--:(fg-otn)\n       +--rw fgotn-bandwidth?   uint16\n```\n- [ ] @tanyanxia check which option above is preferred\n",
           "createdAt": "2026-01-14T14:48:16Z",
           "updatedAt": "2026-01-14T14:48:16Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Propose a draft PR to show how the YANG code needs to be changed for option 1 and then further discuss these two options:\n\n> 1. define a new odu-type for fgODUflex and change the model as discussed in [Implications for defining new ODU type for fgOTN\u00a0#13 (comment)](https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/13#issuecomment-3665718172)\n> 2. define the fgotn-bandwidth for fgOTN tunnels/paths/LSPs as:\n> \n> ```\n>   augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology:\n>     +--:(fg-otn)\n>        +--rw fgotn-bandwidth?   uint16\n> ```\n> \n",
+          "createdAt": "2026-01-28T15:11:47Z",
+          "updatedAt": "2026-01-28T15:11:47Z"
         }
       ]
     },
@@ -459,14 +466,14 @@
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
-        "tanyanxia"
+        "italobusi"
       ],
       "labels": [
         "agreed"
       ],
       "body": "The I-D text mentions that the fgotn-bandwidth is expressed in Mbps but there is no units statement in YANG\n\nMoreover, Mbps is sometimes ambiguous (megabits or megabytes), so it is better to expand. Following RFC8776-bis convention, we can add the following statement in YANG:\n\n```\n   units \"megabits per second\";\n```\n\nIn alternative, we can use the bandwidth-mbps data type defined in RFC8776-bis\n",
       "createdAt": "2025-07-17T08:35:17Z",
-      "updatedAt": "2026-01-14T14:37:28Z",
+      "updatedAt": "2026-01-28T18:11:33Z",
       "closedAt": null,
       "comments": [
         {
@@ -849,6 +856,24 @@
       "body": "Prepare a JSON topology example for step 3: an fgOTN tunnel is setup\n\nSee reference network in issue #29 \n\nNote: wait for resolution of issue #31 ",
       "createdAt": "2025-11-19T14:00:03Z",
       "updatedAt": "2025-11-19T14:00:03Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 37,
+      "id": "I_kwDOMSanvs7maiCM",
+      "title": "Send mail to CCAMP WG with a brief summary of the changes done in draft-tan-ccamp-fgotn-yang-05",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/issues/37",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-01-28T14:24:54Z",
+      "updatedAt": "2026-01-28T14:24:54Z",
       "closedAt": null,
       "comments": []
     }
@@ -1753,20 +1778,28 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "- Validated JSON examples in #34 ",
+      "body": "- Validated JSON examples in #34 : fix #30, fix #31\r\n- Added measurement unit for fgotn-bandwidth: fix #17 \r\n",
       "createdAt": "2026-01-14T20:09:24Z",
-      "updatedAt": "2026-01-14T21:07:08Z",
+      "updatedAt": "2026-01-28T18:25:07Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "09138d4a00685251d5bbeaebb93c09ad89a59a68",
       "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
       "headRefName": "json-topology-02",
-      "headRefOid": "38583d22d441b1881636a77929bc761b3cd4c7bb",
+      "headRefOid": "616df696310951f2e297d34364bbf2ab2443d896",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "**2026-01-28 call**\r\n\r\nChange the YANG model to:\r\n1. move the fgts-range outside the otn-label-range container\r\n2. change the pattern of the ts-list to allow an empty string to represent the case where there are no reserved or unreserved labels\r\n3. update as per issue #17 \r\n\r\nUpdate the JSON code in line with the YANG updates",
+          "createdAt": "2026-01-28T15:06:09Z",
+          "updatedAt": "2026-01-28T15:06:09Z"
+        }
+      ],
       "reviews": []
     }
   ]
