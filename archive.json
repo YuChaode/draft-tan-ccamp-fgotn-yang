@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-29T01:05:18.079527+00:00",
+  "timestamp": "2026-02-01T01:16:30.813719+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -868,14 +868,23 @@
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
+        "italobusi",
         "tanyanxia"
       ],
       "labels": [],
       "body": "",
       "createdAt": "2026-01-28T14:24:54Z",
-      "updatedAt": "2026-01-28T14:24:54Z",
+      "updatedAt": "2026-01-30T02:36:38Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "tanyanxia",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I brief summary the changes of the new -05 version.\n1.The text of section 3 in the -05 version is changed back to the text in the -03 version.\n2.In the max-link-bandwidth structure of fgOTN, we move the fgotn-bandwidth outside the odulist container.\n3.Add a typedef ts-list in ietf-fgotn-topology to describe the string. \n4.Add leaf fgotn-bandwidth under the unreserved-bandwidth structure to description the unreserved bandwidth of fgOTN before the server ODUk is set up.\n5.Change the unit of odu-ts-number from unit16 to string.\n6.Change the label-restriction path from \" /nw:networks/tet:te/tet:templates/tet:link-template\" to \"/nw:networks/nw:network/nt:link/tet:te\".\n7.Updated description of the multi-domain fgOTN hitless resizing process in appendix A.\n8.Editorial updates.",
+          "createdAt": "2026-01-30T02:36:38Z",
+          "updatedAt": "2026-01-30T02:36:38Z"
+        }
+      ]
     }
   ],
   "pulls": [
