@@ -79,7 +79,7 @@ module ietf-fgotn-topology {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-01-14 {
+  revision 2026-01-28 {
     description
       "initial version";
     reference
@@ -90,7 +90,7 @@ module ietf-fgotn-topology {
   typedef ts-list {
     type string {
       pattern '([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?'
-            + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)';
+            + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)?';
     }
     description
       "A list of Tributary Slots (TS) ranging between 1 and 4095.
@@ -112,6 +112,7 @@ module ietf-fgotn-topology {
        bandwidth";
     leaf fgotn-bandwidth {
       type uint16;
+      units "megabits per second";
       description
         "It is used to indicate how much of the bandwidth has been
          allocated for the usage of fgOTN.";
@@ -126,6 +127,7 @@ module ietf-fgotn-topology {
        bandwidth";
     leaf fgotn-bandwidth {
       type uint16;
+      units "megabits per second";
       description
         "The unreserved bandwidth of fgOTN before the server ODUk
          is set up";
@@ -149,6 +151,7 @@ module ietf-fgotn-topology {
       }
       leaf fgotn-bandwidth {
         type uint16;
+        units "megabits per second";
         description
           "The unreserved bandwidth of fgOTN in this server ODUk";
       }
@@ -157,7 +160,7 @@ module ietf-fgotn-topology {
 
   augment "/nw:networks/nw:network/nt:link/tet:te"
         + "/tet:te-link-attributes/tet:label-restrictions"
-        + "/tet:label-restriction/otnt:otn-label-range" {
+        + "/tet:label-restriction" {
     description
       "specific augmentation of fgOTN label";
     list fgts-range {

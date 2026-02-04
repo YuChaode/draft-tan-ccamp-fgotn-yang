@@ -412,7 +412,7 @@ artwork-name="ietf-fgotn-topology.tree"}
 {::include ./yang/ietf-fgotn-topology.yang}
 ~~~~
 {: #fgotn-topology-yang title="fgOTN topology YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2025-06-18.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2026-01-28.yang"}
 
 
 # YANG Tree for fgOTN tunnel
