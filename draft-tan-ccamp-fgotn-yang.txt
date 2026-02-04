@@ -5,12 +5,12 @@
 Common Control and Measurement Plane                              Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 18 July 2026                                            I. Busi
+Expires: 8 August 2026                                           I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                         14 January 2026
+                                                         4 February 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 July 2026.
+   This Internet-Draft will expire on 8 August 2026.
 
 Copyright Notice
 
@@ -588,7 +588,7 @@ Table of Contents
           +--rw fgotn-bandwidth?   uint16
      augment /nw:networks/nw:network/nt:link/tet:te
                /tet:te-link-attributes/tet:label-restrictions
-               /tet:label-restriction/otnt:otn-label-range:
+               /tet:label-restriction:
        +--rw fgts-range* [odu-type odu-ts-number]
           +--rw odu-type           identityref
           +--rw odu-ts-number      fgotnt:ts-list
@@ -599,7 +599,7 @@ Table of Contents
 
 7.  YANG Data Model for fgOTN topology
 
-   <CODE BEGINS> file "ietf-fgotn-topology@2025-06-18.yang"
+   <CODE BEGINS> file "ietf-fgotn-topology@2026-01-28.yang"
    module ietf-fgotn-topology {
      yang-version 1.1;
      namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-topology";
@@ -681,7 +681,7 @@ Table of Contents
      // RFC Ed.: update the date below with the date of RFC publication
      // and remove this note.
 
-     revision 2026-01-14 {
+     revision 2026-01-28 {
        description
          "initial version";
        reference
@@ -692,7 +692,7 @@ Table of Contents
      typedef ts-list {
        type string {
          pattern '([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?'
-               + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)';
+               + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)?';
        }
        description
          "A list of Tributary Slots (TS) ranging between 1 and 4095.
@@ -714,6 +714,7 @@ Table of Contents
           bandwidth";
        leaf fgotn-bandwidth {
          type uint16;
+         units "megabits per second";
          description
            "It is used to indicate how much of the bandwidth has been
             allocated for the usage of fgOTN.";
@@ -728,6 +729,7 @@ Table of Contents
           bandwidth";
        leaf fgotn-bandwidth {
          type uint16;
+         units "megabits per second";
          description
            "The unreserved bandwidth of fgOTN before the server ODUk
             is set up";
@@ -751,6 +753,7 @@ Table of Contents
          }
          leaf fgotn-bandwidth {
            type uint16;
+           units "megabits per second";
            description
              "The unreserved bandwidth of fgOTN in this server ODUk";
          }
@@ -759,7 +762,7 @@ Table of Contents
 
      augment "/nw:networks/nw:network/nt:link/tet:te"
            + "/tet:te-link-attributes/tet:label-restrictions"
-           + "/tet:label-restriction/otnt:otn-label-range" {
+           + "/tet:label-restriction" {
        description
          "specific augmentation of fgOTN label";
        list fgts-range {
@@ -1041,9 +1044,9 @@ Table of Contents
               Saad, T., Gandhi, R., Liu, X., Beeram, V. P., and I.
               Bryskin, "A YANG Data Model for Traffic Engineering
               Tunnels, Label Switched Paths, and Interfaces", Work in
-              Progress, Internet-Draft, draft-ietf-teas-yang-te-40, 2
-              November 2025, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-teas-yang-te-40>.
+              Progress, Internet-Draft, draft-ietf-teas-yang-te-41, 20
+              January 2026, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-teas-yang-te-41>.
 
    [ITU-T_G.709]
               International Telecommunication Union, "Interfaces for the
@@ -1089,9 +1092,9 @@ Table of Contents
               Busi, I., Guo, A., Liu, X., Saad, T., and I. Bryskin,
               "Common YANG Data Types for Traffic Engineering", Work in
               Progress, Internet-Draft, draft-ietf-teas-rfc8776-update-
-              20, 19 December 2025,
+              21, 23 January 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-teas-
-              rfc8776-update-20>.
+              rfc8776-update-21>.
 
    [RFC8345]  Clemm, A., Medved, J., Varga, R., Bahadur, N.,
               Ananthakrishnan, H., and X. Liu, "A YANG Data Model for

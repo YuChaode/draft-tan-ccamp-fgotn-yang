@@ -30,7 +30,7 @@
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.32.5
-    wcwidth 0.2.14
+    wcwidth 0.3.0
 -->
 <link href="draft-tan-ccamp-fgotn-yang.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -571,6 +571,7 @@ aside, blockquote {
 }
 blockquote {
   margin: 1em 0;
+  border-left: 2px var(--pilcrow-strong) solid;
 }
 cite {
   display: block;
@@ -641,7 +642,7 @@ a.pilcrow {
   }
 }
 @media not print {
-  :hover > a.pilcrow {
+  :hover > a.pilcrow, a.pilcrow:focus {
     opacity: 1;
   }
   a.pilcrow[href]:hover {
@@ -1049,11 +1050,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Fine grain OTN YANG</td>
-<td class="right">January 2026</td>
+<td class="right">February 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tan, et al.</td>
-<td class="center">Expires 18 July 2026</td>
+<td class="center">Expires 8 August 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1067,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tan-ccamp-fgotn-yang-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-01-14" class="published">14 January 2026</time>
+<time datetime="2026-02-04" class="published">4 February 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-07-18">18 July 2026</time></dd>
+<dd class="expires"><time datetime="2026-08-08">8 August 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1137,7 +1138,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 18 July 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1771,7 +1772,7 @@ module: ietf-fgotn-topology
        +--rw fgotn-bandwidth?   uint16
   augment /nw:networks/nw:network/nt:link/tet:te
             /tet:te-link-attributes/tet:label-restrictions
-            /tet:label-restriction/otnt:otn-label-range:
+            /tet:label-restriction:
     +--rw fgts-range* [odu-type odu-ts-number]
        +--rw odu-type           identityref
        +--rw odu-ts-number      fgotnt:ts-list
@@ -1791,7 +1792,7 @@ module: ietf-fgotn-topology
 <span id="name-fgotn-topology-yang-module"></span><div id="fgotn-topology-yang">
 <figure id="figure-7">
         <div class="breakable lang-yang sourcecode" id="section-7-1.1">
-<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-topology@2025-06-18.yang"
+<pre>&lt;CODE BEGINS&gt; file "ietf-fgotn-topology@2026-01-28.yang"
 
 module ietf-fgotn-topology {
   yang-version 1.1;
@@ -1874,7 +1875,7 @@ module ietf-fgotn-topology {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-01-14 {
+  revision 2026-01-28 {
     description
       "initial version";
     reference
@@ -1885,7 +1886,7 @@ module ietf-fgotn-topology {
   typedef ts-list {
     type string {
       pattern '([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?'
-            + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)';
+            + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)?';
     }
     description
       "A list of Tributary Slots (TS) ranging between 1 and 4095.
@@ -1907,6 +1908,7 @@ module ietf-fgotn-topology {
        bandwidth";
     leaf fgotn-bandwidth {
       type uint16;
+      units "megabits per second";
       description
         "It is used to indicate how much of the bandwidth has been
          allocated for the usage of fgOTN.";
@@ -1921,6 +1923,7 @@ module ietf-fgotn-topology {
        bandwidth";
     leaf fgotn-bandwidth {
       type uint16;
+      units "megabits per second";
       description
         "The unreserved bandwidth of fgOTN before the server ODUk
          is set up";
@@ -1944,6 +1947,7 @@ module ietf-fgotn-topology {
       }
       leaf fgotn-bandwidth {
         type uint16;
+        units "megabits per second";
         description
           "The unreserved bandwidth of fgOTN in this server ODUk";
       }
@@ -1952,7 +1956,7 @@ module ietf-fgotn-topology {
 
   augment "/nw:networks/nw:network/nt:link/tet:te"
         + "/tet:te-link-attributes/tet:label-restrictions"
-        + "/tet:label-restriction/otnt:otn-label-range" {
+        + "/tet:label-restriction" {
     description
       "specific augmentation of fgOTN label";
     list fgts-range {
@@ -2265,7 +2269,7 @@ module ietf-fgotn-tunnel {
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-yang-te">[I-D.ietf-teas-yang-te]</dt>
         <dd>
-<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Gandhi, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Beeram, V. P.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths, and Interfaces"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-yang-te-40</span>, <time datetime="2025-11-02" class="refDate">2 November 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-40">https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-40</a>&gt;</span>. </dd>
+<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Gandhi, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Beeram, V. P.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths, and Interfaces"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-yang-te-41</span>, <time datetime="2026-01-20" class="refDate">20 January 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-41">https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-41</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="ITU-T_G.709">[ITU-T_G.709]</dt>
         <dd>
@@ -2310,7 +2314,7 @@ module ietf-fgotn-tunnel {
 <dl class="references">
 <dt id="I-D.ietf-teas-rfc8776-update">[I-D.ietf-teas-rfc8776-update]</dt>
         <dd>
-<span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Guo, A.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"Common YANG Data Types for Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc8776-update-20</span>, <time datetime="2025-12-19" class="refDate">19 December 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-20">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-20</a>&gt;</span>. </dd>
+<span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Guo, A.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"Common YANG Data Types for Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc8776-update-21</span>, <time datetime="2026-01-23" class="refDate">23 January 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-21">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-21</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8345">[RFC8345]</dt>
         <dd>
