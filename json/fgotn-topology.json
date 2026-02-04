@@ -1018,7 +1018,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc",
+                      "range-bitmap": "3f",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -1129,7 +1129,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc",
+                      "range-bitmap": "3f",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -1240,7 +1240,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc",
+                      "range-bitmap": "3f",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -1351,7 +1351,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc"
+                      "range-bitmap": "3f"
                     }
                   ]
                 },
@@ -1445,7 +1445,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc",
+                      "range-bitmap": "3f",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
@@ -1567,7 +1567,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc",
+                      "range-bitmap": "3f",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
@@ -1691,7 +1691,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc",
+                      "range-bitmap": "3f",
                       "ietf-fgotn-topology:fgts-range": [
                         {
                           "odu-type": "ietf-layer1-types:ODU1",
@@ -1802,7 +1802,7 @@
                       "label-step": {
                         "generic": 1
                       },
-                      "range-bitmap": "fc"
+                      "range-bitmap": "3f"
                     }
                   ]
                 },
