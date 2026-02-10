@@ -1,0 +1,24 @@
+module: ietf-fgotn-types
+
+  augment /nw:networks/nw:network/nw:node/nt:termination-point
+            /tet:te:
+    +--rw supported-fgotn-tp?   boolean
+  augment /nw:networks/nw:network/nt:link/tet:te
+            /tet:te-link-attributes/tet:max-link-bandwidth
+            /tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist:
+    +--rw fgotn-bandwidth?   string
+  augment /nw:networks/nw:network/nt:link/tet:te
+            /tet:te-link-attributes/tet:unreserved-bandwidth
+            /tet:te-bandwidth/otnt:otn-bandwidth:
+    +--rw fgotnlist* [odu-type odu-ts-number]
+       +--rw odu-type           identityref
+       +--rw odu-ts-number      string
+       +--rw fgotn-bandwidth?   string
+  augment /nw:networks/tet:te/tet:templates/tet:link-template
+            /tet:te-link-attributes/tet:label-restrictions
+            /tet:label-restriction/otnt:otn-label-range:
+    +--rw fgts-range* [odu-type odu-ts-number]
+       +--rw odu-type           identityref
+       +--rw odu-ts-number      string
+       +--rw fgts-reserved?     string
+       +--rw fgts-unreserved?   string
