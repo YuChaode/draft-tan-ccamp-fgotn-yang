@@ -5,12 +5,12 @@
 Common Control and Measurement Plane                              Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 14 August 2026                                          I. Busi
+Expires: 15 August 2026                                          I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                        10 February 2026
+                                                        11 February 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 August 2026.
+   This Internet-Draft will expire on 15 August 2026.
 
 Copyright Notice
 
@@ -355,9 +355,9 @@ Table of Contents
    triggered for adjustment.
 
    Both single domain and multi-domain hitless resizing should be
-   supported.  For multi-domain hitless resizing scenario, both the
-   source controller and the destination controller should report the
-   bandwidth adjustment status to the MDSC coordinator upon completion.
+   supported.  For single domain and multi-domain hitless resizing
+   scenario, the source controller alone report the bandwidth adjustment
+   status to the MDSC coordinator upon completion.
 
                                         +----------+
                   ----------------------|   MDSC   |---------------------
@@ -1116,36 +1116,36 @@ Table of Contents
 
 Appendix A.  Multi-domain fgOTN Hitless Resizing Process
 
-   The process of multi-domain fgOTN hitless resizing include six steps.
-   Both the source and destination controllers should report the hitless
-   bandwidth adjustment status to the MDSC coordinator.  To be noted
-   that, the resizing process is divided into two directions, and the
-   resizing is considered successful when both directions have been
-   adjusted.
+   The process of multi-domain fgOTN hitless resizing include five
+   steps.  The source controller alone report the hitless bandwidth
+   adjustment status to the MDSC coordinator.  To be noted that, the
+   resizing process is divided into two directions, and the resizing is
+   considered successful when both directions have been adjusted.
 
    Step 1: The MDSC coordinator sends an resizing command to the source
    node (Node1) via Controller 1.
 
    Step 2: Controller 1 will report a bandwidth adjustment starting
-   status notification, e.g. ietf-te-types:lsp-path-modifying, to the
-   MDSC.
+   status notification, e.g. ietf-te-types:lsp-bandwidth-modifying, to
+   the MDSC.
 
    Step 3: Node 1 to node 6 will modify their configuration in the
    forward direction through data plane node by node.  The detail of
    this process can reference to Annex O.2 of [ITU-T_G.709].
 
-   Step 4: After the resizing from node1 to node6 was completed,
-   Controller 1 will report an ending status notification, e.g. ietf-te-
-   types:lsp-path-modified, to MDSC.
-
-   Step 5: At the same time, the reverse direction bandwidth resizing
+   Step 4: At the same time, the reverse direction bandwidth resizing
    will be triggered auotmatically by the data plane in node 6.
    Controller 3 needs to report an bandwidth adjustment starting status
-   notification, ietf-te-types:lsp-path-modifying, to the MDSC.
+   notification, ietf-te-types:lsp-bandwidth-modifying, to the MDSC.
 
-   Step 6: After the reverse direction (Node 6 to Node 1) resizing is
-   completed, Controller 3 will report an ending status notification,
-   ietf-te-types:lsp-path-modified, to MDSC.
+   Step 5: After the reverse direction (Node 6 to Node 1) resizing is
+   completed, Controller 1 will report an ending status notification,
+   ietf-te-types:lsp-bandwidth-modified-ok, to the MDSC.
+
+   If the hitless resizing fails, the source controller (i.e.,
+   Controller 1) needs to report an bandwidth adjustment failure status
+   notification, ietf-te-types:lsp-bandwidth-modify-failed, to the MDSC
+   coordinator.
 
    During the whole process, all domain controllers, including the
    intermediate domain Controller 2, need to report the notifications of
