@@ -106,7 +106,7 @@ module ietf-fgotn-topology {
 
   augment "/nw:networks/nw:network/nt:link/tet:te"
         + "/tet:te-link-attributes/tet:max-link-bandwidth"
-        + "/tet:te-bandwidth/otnt:otn-bandwidth" {
+        + "/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist" {
     description
       "specific augmentation of fgOTN link on maximum link
        bandwidth";
@@ -115,13 +115,13 @@ module ietf-fgotn-topology {
       units "megabits per second";
       description
         "It is used to indicate how much of the bandwidth has been
-         allocated for the usage of fgOTN.";
+         allocated for the usage of fgOTN when odu-type is fgODUflex.";
     }
   }
 
   augment "/nw:networks/nw:network/nt:link/tet:te"
         + "/tet:te-link-attributes/tet:unreserved-bandwidth"
-        + "/tet:te-bandwidth/otnt:otn-bandwidth" {
+        + "/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist" {
     description
       "specific augmentation of fgOTN link on unreserved link
        bandwidth";
@@ -132,6 +132,13 @@ module ietf-fgotn-topology {
         "The unreserved bandwidth of fgOTN before the server ODUk
          is set up";
     }
+
+  augment "/nw:networks/nw:network/nt:link/tet:te"
+        + "/tet:te-link-attributes/tet:unreserved-bandwidth"
+        + "/tet:te-bandwidth/otnt:otn-bandwidth" {
+    description
+      "specific augmentation of fgOTN link on unreserved link
+       bandwidth";
     list fgotnlist {
       key "odu-type odu-ts-number";
       description
