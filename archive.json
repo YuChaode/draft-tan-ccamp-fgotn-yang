@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-05T01:06:06.868218+00:00",
+  "timestamp": "2026-02-12T01:09:59.579518+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -1486,7 +1486,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-12-03T14:24:37Z",
-      "updatedAt": "2026-01-14T14:08:21Z",
+      "updatedAt": "2026-02-10T08:19:33Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "67e40184b93d76194065d1ebab72d8d288f0f934",
@@ -1807,7 +1807,7 @@
       "labels": [],
       "body": "Update the appendix hitless resizing process description.\r\nUpdate the section 3 description.",
       "createdAt": "2025-12-31T09:50:38Z",
-      "updatedAt": "2026-01-05T09:02:16Z",
+      "updatedAt": "2026-02-10T08:18:56Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "67e40184b93d76194065d1ebab72d8d288f0f934",
@@ -1885,6 +1885,95 @@
               "body": "In China Unicom's enterprise standards Base64 encryption is required, so we provided \"RkY=\" initially.",
               "createdAt": "2026-02-04T08:27:54Z",
               "updatedAt": "2026-02-04T08:46:24Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 38,
+      "id": "PR_kwDOMSanvs7CsQM6",
+      "title": "Update the ietf-fgotn-topology module and add a new ietf-fgotn-types YANG module",
+      "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/38",
+      "state": "OPEN",
+      "author": "tanyanxia",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "1.Define a new odu-type for fgODUflex in a new ietf-fgotn-types YANG module.\r\n2.Change maximum and available bandwidth definitions.",
+      "createdAt": "2026-02-10T09:46:05Z",
+      "updatedAt": "2026-02-12T01:02:28Z",
+      "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "213964550ad0d1ad4aad2c5d750c0dcf3b3b080a",
+      "headRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
+      "headRefName": "tanyx11",
+      "headRefOid": "d492fde7cc5dcad86d0ffa626f4b18d9823afcbd",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOMSanvs7hyq-F",
+          "commit": {
+            "abbreviatedOid": "d492fde"
+          },
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "See review comments on the YANG models\n\nThere are also some changes in the md file not related to the scope of this PR: please check\n\nAfter we have finalized the YANG model, it would be better to recompile the YANG model and align the JSON examples before merging",
+          "createdAt": "2026-02-12T00:32:18Z",
+          "updatedAt": "2026-02-12T01:02:28Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\n  prefix \"fgotn-types\";\n```",
+              "createdAt": "2026-02-12T00:32:18Z",
+              "updatedAt": "2026-02-12T01:02:28Z"
+            },
+            {
+              "originalPosition": 32,
+              "body": "This YANG module is not extending the OTN topology model but defining common types for fgOTN\n\nMoreover, based on the recent guidelines, there is no more need to indicate compliancy with NMDA\n\n\n```suggestion\n    \"This module contains a collection of YANG data types considered\n     generally useful for fine grain Optical Transport Network\n     (fgOTN) networks.\n```",
+              "createdAt": "2026-02-12T00:40:58Z",
+              "updatedAt": "2026-02-12T01:02:28Z"
+            },
+            {
+              "originalPosition": 51,
+              "body": "This model is not using BCP 14 key words, so no need to add this information\n\n```suggestion\n     the RFC itself for full legal notices.\";\n```",
+              "createdAt": "2026-02-12T00:41:58Z",
+              "updatedAt": "2026-02-12T01:02:28Z"
+            },
+            {
+              "originalPosition": 69,
+              "body": "Editorial: I would capitalize ODU as in ITU-T documents and align with the convention in L1-types:\n\n\n```suggestion\n         \"fgODUflex type (flexible bit rate, resizable).\";\n```",
+              "createdAt": "2026-02-12T00:46:18Z",
+              "updatedAt": "2026-02-12T01:02:28Z"
+            },
+            {
+              "originalPosition": 14,
+              "body": "The when statement can be defined using YANG language (see comment above):\n\n```suggestion\n         allocated for the usage of fgOTN.\";\n```",
+              "createdAt": "2026-02-12T00:52:45Z",
+              "updatedAt": "2026-02-12T01:02:28Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "The when statement can be defined using YANG language:\n\n```suggestion\n      type uint16;\n      when 'derived-from-or-self(../otnt:odu-type,'\n         + '\"fgotn-types:fgODUflex\")' {\n        description\n          \"Applicable when odu-type is fgODUflex.\";\n      }\n```\n",
+              "createdAt": "2026-02-12T00:54:52Z",
+              "updatedAt": "2026-02-12T01:02:28Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "Need to import the new ietf-fgotn-types YANG module:\n\n```suggestion\n  import ietf-fgotn-types {\n    prefix fgotnt-types;\n    reference\n      \"RFC XXXX: YANG Data Models for fine grain Optical Transport\n       Network\";\n  }\n\n```",
+              "createdAt": "2026-02-12T00:56:50Z",
+              "updatedAt": "2026-02-12T01:02:28Z"
+            },
+            {
+              "originalPosition": 1,
+              "body": "Also here we need a when statement indicating that it is applicable only to fgODUflex:\n\n```suggestion\n      type uint16;\n      when 'derived-from-or-self(../otnt:odu-type,'\n         + '\"fgotn-types:fgODUflex\")' {\n        description\n          \"Applicable when odu-type is fgODUflex.\";\n      }\n```\n",
+              "createdAt": "2026-02-12T00:58:49Z",
+              "updatedAt": "2026-02-12T01:02:28Z"
             }
           ]
         }
