@@ -24,6 +24,12 @@ module ietf-fgotn-topology {
     reference
       "RFC YYYY: A YANG Data Model for Layer 1 Types";
   }
+  import ietf-fgotn-types {
+    prefix fgotn-types;
+    reference
+      "RFC XXXX: YANG Data Models for fine grain Optical Transport
+       Network";
+  }
 
   /* Note: The RFC Editor will replace YYYY with the number assigned
      to the RFC once draft-ietf-ccamp-layer1-types becomes an RFC.*/
@@ -106,11 +112,16 @@ module ietf-fgotn-topology {
 
   augment "/nw:networks/nw:network/nt:link/tet:te"
         + "/tet:te-link-attributes/tet:max-link-bandwidth"
-        + "/tet:te-bandwidth/otnt:otn-bandwidth" {
+        + "/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist" {
     description
       "specific augmentation of fgOTN link on maximum link
        bandwidth";
     leaf fgotn-bandwidth {
+      when 'derived-from-or-self(../otnt:odu-type,'
+         + '"fgotn-types:fgODUflex")' {
+        description
+          "Applicable when odu-type is fgODUflex.";
+      }
       type uint16;
       units "megabits per second";
       description
@@ -121,17 +132,30 @@ module ietf-fgotn-topology {
 
   augment "/nw:networks/nw:network/nt:link/tet:te"
         + "/tet:te-link-attributes/tet:unreserved-bandwidth"
-        + "/tet:te-bandwidth/otnt:otn-bandwidth" {
+        + "/tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist" {
     description
       "specific augmentation of fgOTN link on unreserved link
        bandwidth";
     leaf fgotn-bandwidth {
+      when 'derived-from-or-self(../otnt:odu-type,'
+         + '"fgotn-types:fgODUflex")' {
+        description
+          "Applicable when odu-type is fgODUflex.";
+      }
       type uint16;
       units "megabits per second";
       description
         "The unreserved bandwidth of fgOTN before the server ODUk
          is set up";
     }
+  }
+
+  augment "/nw:networks/nw:network/nt:link/tet:te"
+        + "/tet:te-link-attributes/tet:unreserved-bandwidth"
+        + "/tet:te-bandwidth/otnt:otn-bandwidth" {
+    description
+      "specific augmentation of fgOTN link on unreserved link
+       bandwidth";
     list fgotnlist {
       key "odu-type odu-ts-number";
       description
