@@ -171,7 +171,7 @@
   font-weight: 400;
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
 @font-face {
   font-family: 'Oxygen Mono';
@@ -179,7 +179,8 @@
   font-weight: 400;
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 }
 
 @font-face {
@@ -1054,7 +1055,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tan, et al.</td>
-<td class="center">Expires 15 August 2026</td>
+<td class="center">Expires 29 August 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1068,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-tan-ccamp-fgotn-yang-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-02-11" class="published">11 February 2026</time>
+<time datetime="2026-02-25" class="published">25 February 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-08-15">15 August 2026</time></dd>
+<dd class="expires"><time datetime="2026-08-29">29 August 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1138,7 +1139,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 15 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 29 August 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1820,6 +1821,12 @@ module ietf-fgotn-topology {
     reference
       "RFC YYYY: A YANG Data Model for Layer 1 Types";
   }
+  import ietf-fgotn-types {
+    prefix fgotnt-types;
+    reference
+      "RFC XXXX: YANG Data Models for fine grain Optical Transport
+       Network";
+  }
 
   /* Note: The RFC Editor will replace YYYY with the number assigned
      to the RFC once draft-ietf-ccamp-layer1-types becomes an RFC.*/
@@ -1908,10 +1915,15 @@ module ietf-fgotn-topology {
        bandwidth";
     leaf fgotn-bandwidth {
       type uint16;
+      when 'derived-from-or-self(../otnt:odu-type,'
+         + '"fgotn-types:fgODUflex")' {
+        description
+          "Applicable when odu-type is fgODUflex.";
+      }
       units "megabits per second";
       description
         "It is used to indicate how much of the bandwidth has been
-         allocated for the usage of fgOTN when odu-type is fgODUflex.";
+         allocated for the usage of fgOTN.";
     }
   }
 
@@ -1923,6 +1935,11 @@ module ietf-fgotn-topology {
        bandwidth";
     leaf fgotn-bandwidth {
       type uint16;
+      when 'derived-from-or-self(../otnt:odu-type,'
+         + '"fgotn-types:fgODUflex")' {
+        description
+          "Applicable when odu-type is fgODUflex.";
+      }
       units "megabits per second";
       description
         "The unreserved bandwidth of fgOTN before the server ODUk
@@ -2276,7 +2293,7 @@ module ietf-fgotn-tunnel {
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-yang-te">[I-D.ietf-teas-yang-te]</dt>
         <dd>
-<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Gandhi, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Beeram, V. P.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths, and Interfaces"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-yang-te-41</span>, <time datetime="2026-01-20" class="refDate">20 January 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-41">https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-41</a>&gt;</span>. </dd>
+<span class="refAuthor">Saad, T.</span>, <span class="refAuthor">Gandhi, R.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Beeram, V. P.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"A YANG Data Model for Traffic Engineering Tunnels, Label Switched Paths, and Interfaces"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-yang-te-42</span>, <time datetime="2026-02-24" class="refDate">24 February 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-42">https://datatracker.ietf.org/doc/html/draft-ietf-teas-yang-te-42</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="ITU-T_G.709">[ITU-T_G.709]</dt>
         <dd>
@@ -2321,7 +2338,7 @@ module ietf-fgotn-tunnel {
 <dl class="references">
 <dt id="I-D.ietf-teas-rfc8776-update">[I-D.ietf-teas-rfc8776-update]</dt>
         <dd>
-<span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Guo, A.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"Common YANG Data Types for Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc8776-update-21</span>, <time datetime="2026-01-23" class="refDate">23 January 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-21">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-21</a>&gt;</span>. </dd>
+<span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Guo, A.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"Common YANG Data Types for Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc8776-update-22</span>, <time datetime="2026-02-18" class="refDate">18 February 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-22">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-22</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC8345">[RFC8345]</dt>
         <dd>
