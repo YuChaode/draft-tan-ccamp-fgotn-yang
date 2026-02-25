@@ -2,7 +2,7 @@
   yang-version 1.1;
 
   namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-types";
-  prefix "fgotnt-types";
+  prefix "fgotn-types";
 
   import ietf-layer1-types {
     prefix "l1-types";
@@ -26,10 +26,9 @@
     ";
 
   description
-    "This module defines a YANG data model for fgOTN-specific
-     extension based on existing network topology models. The model
-     fully conforms to the Network Management Datastore Architecture
-     (NMDA).
+    "This module contains a collection of YANG data types considered
+     generally useful for fine grain Optical Transport Network
+     (fgOTN) networks.
 
      Copyright (c) 2026 IETF Trust and the persons
      identified as authors of the code.  All rights reserved.
@@ -42,13 +41,7 @@
      (https://trustee.ietf.org/license-info).
 
      This version of this YANG module is part of RFC XXXX; see
-     the RFC itself for full legal notices.
-
-     The key words 'MUST', 'MUST NOT', 'REQUIRED', 'SHALL', 'SHALL
-     NOT', 'SHOULD', 'SHOULD NOT', 'RECOMMENDED', 'NOT RECOMMENDED',
-     'MAY', and 'OPTIONAL' in this document are to be interpreted as
-     described in BCP 14 (RFC 2119) (RFC 8174) when, and only when,
-     they appear in all capitals, as shown here.";
+     the RFC itself for full legal notices.";
 
   // RFC Ed.: replace XXXX with actual RFC number and remove this
   // note.
@@ -66,7 +59,7 @@
   identity fgoduflex {
       base l1-types:odu-type;
 	  description
-         "fgoduflex type.";
+         "fgODUflex type (fine grain flexible bit rate, resizable).";
   }
   
 }
