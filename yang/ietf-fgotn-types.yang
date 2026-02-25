@@ -1,11 +1,10 @@
- module ietf-fgotn-types {
+module ietf-fgotn-types {
   yang-version 1.1;
-
   namespace "urn:ietf:params:xml:ns:yang:ietf-fgotn-types";
-  prefix "fgotn-types";
+  prefix fgotn-types;
 
   import ietf-layer1-types {
-    prefix "l1-types";
+    prefix l1-types;
     reference
       "This module defines Layer 1 YANG types.";
   }
@@ -22,9 +21,8 @@
         Yanlei Zheng (zhengyanlei@chinaunicom.cn);
         Italo Busi (italo.busi@huawei.com);
         Chaode Yu (yuchaode@huawei.com);
-	    Xing Zhao (zhaoxing@caict.ac.cn);
+        Xing Zhao (zhaoxing@caict.ac.cn);
     ";
-
   description
     "This module contains a collection of YANG data types considered
      generally useful for fine grain Optical Transport Network
@@ -55,11 +53,10 @@
       "RFC XXXX: YANG Data Models for fine grain Optical Transport
                  Network";
   }
-  
-  identity fgoduflex {
-      base l1-types:odu-type;
-	  description
-         "fgODUflex type (fine grain flexible bit rate, resizable).";
+
+  identity fgODUflex {
+    base l1-types:odu-type;
+    description
+      "fgODUflex type (fine grain flexible bit rate, resizable).";
   }
-  
 }

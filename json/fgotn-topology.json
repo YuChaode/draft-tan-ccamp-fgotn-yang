@@ -77,9 +77,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -100,9 +103,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 2500
                           }
-                        ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                        ]
                       }
                     }
                   }
@@ -173,9 +179,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -196,9 +205,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 2500
                           }
-                        ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                        ]
                       }
                     }
                   }
@@ -269,9 +281,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -292,9 +307,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 2500
                           }
-                        ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                        ]
                       }
                     }
                   }
@@ -459,9 +477,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -482,9 +503,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 2500
                           }
-                        ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                        ]
                       }
                     }
                   }
@@ -555,9 +579,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -578,9 +605,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 2500
                           }
-                        ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                        ]
                       }
                     }
                   }
@@ -653,9 +683,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -676,9 +709,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 2500
                           }
-                        ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                        ]
                       }
                     }
                   }
@@ -1045,9 +1081,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -1068,9 +1107,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 0
                           }
                         ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 0,
                         "ietf-fgotn-topology:fgotnlist": [
                           {
                             "odu-type": "ietf-layer1-types:ODU1",
@@ -1156,9 +1198,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -1179,9 +1224,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 0
                           }
                         ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 0,
                         "ietf-fgotn-topology:fgotnlist": [
                           {
                             "odu-type": "ietf-layer1-types:ODU1",
@@ -1267,9 +1315,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -1290,9 +1341,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 0
                           }
                         ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 0,
                         "ietf-fgotn-topology:fgotnlist": [
                           {
                             "odu-type": "ietf-layer1-types:ODU1",
@@ -1478,9 +1532,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -1501,9 +1558,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 0
                           }
                         ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 0,
                         "ietf-fgotn-topology:fgotnlist": [
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
@@ -1600,9 +1660,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -1623,9 +1686,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 0
                           }
                         ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 0,
                         "ietf-fgotn-topology:fgotnlist": [
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
@@ -1718,9 +1784,12 @@
                         {
                           "odu-type": "ietf-layer1-types:ODU0",
                           "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "ietf-fgotn-topology:fgotn-bandwidth": 2500
                         }
-                      ],
-                      "ietf-fgotn-topology:fgotn-bandwidth": 2500
+                      ]
                     }
                   }
                 },
@@ -1741,9 +1810,12 @@
                           {
                             "odu-type": "ietf-layer1-types:ODU0",
                             "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "ietf-fgotn-topology:fgotn-bandwidth": 0
                           }
                         ],
-                        "ietf-fgotn-topology:fgotn-bandwidth": 0,
                         "ietf-fgotn-topology:fgotnlist": [
                           {
                             "odu-type": "ietf-layer1-types:ODU1",
