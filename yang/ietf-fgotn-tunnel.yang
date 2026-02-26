@@ -24,6 +24,13 @@ module ietf-fgotn-tunnel {
      to the RFC once draft-ietf-ccamp-otn-tunnel-model becomes
      an RFC.*/
 
+  import ietf-fgotn-types {
+    prefix fgotn-types;
+    reference
+      "RFC XXXX: YANG Data Models for fine grain Optical Transport
+       Network";
+  }
+
   organization
     "Internet Engineering Task Force (IETF) CCAMP WG";
   contact
@@ -34,6 +41,7 @@ module ietf-fgotn-tunnel {
         Italo Busi (italo.busi@huawei.com);
         Chaode Yu (yuchaode@huawei.com);
         Xing Zhao (zhaoxing@caict.ac.cn);
+        Zelin Wang (wangzl172@chinaunicom.cn)
     ";
 
   description
@@ -60,7 +68,7 @@ module ietf-fgotn-tunnel {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2025-06-18 {
+  revision 2026-02-26 {
     description
       "initial version";
     reference
@@ -73,6 +81,11 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN tunnel on bandwidth structure";
     leaf fgoduflex-bandwidth {
+      when 'derived-from-or-self(../otn-tnl:odu-type,'
+         + '"fgotn-types:fgODUflex")' {
+        description
+          "Applicable when odu-type is fgODUflex.";
+      }
       type string;
       description 
         "Augment TE bandwidth of the fgOTN tunnel";
