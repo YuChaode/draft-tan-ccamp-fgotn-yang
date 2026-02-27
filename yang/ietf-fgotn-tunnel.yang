@@ -11,6 +11,13 @@ module ietf-fgotn-tunnel {
       "RFC KKKK: A YANG Data Model for Traffic Engineering Tunnels,
                  Label Switched Paths and Interfaces";
   }
+
+  import ietf-fgotn-types {
+    prefix fgotn-types;
+    reference
+      "RFC XXXX: YANG Data Models for fine grain Optical Transport
+       Network";
+  }
   
   /* Note: The RFC Editor will replace KKKK with the number assigned
      to the RFC once draft-ietf-teas-yang-te becomes an RFC.*/
@@ -69,10 +76,15 @@ module ietf-fgotn-tunnel {
   }  
 
   augment "/te:te/te:tunnels/te:tunnel/"
-        + "te:te-bandwidth/te:technology/otn-tnl:otn" {
+        + "te:te-bandwidth/te:technology/otn-tnl:otn/otn-tnl:otn-bandwidth" {
     description
       "augmentation of fgOTN tunnel on bandwidth structure";
     leaf fgoduflex-bandwidth {
+      when 'derived-from-or-self(../otn-tnl:odu-type,'
+         + '"fgotn-types:fgODUflex")' {
+        description
+          "Applicable when odu-type is fgODUflex.";
+      }
       type string;
       description 
         "Augment TE bandwidth of the fgOTN tunnel";
