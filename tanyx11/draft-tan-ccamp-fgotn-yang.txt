@@ -5,12 +5,12 @@
 Common Control and Measurement Plane                              Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 30 August 2026                                          I. Busi
+Expires: 31 August 2026                                          I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                        26 February 2026
+                                                        27 February 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 August 2026.
+   This Internet-Draft will expire on 31 August 2026.
 
 Copyright Notice
 
@@ -915,7 +915,6 @@ Table of Contents
            Italo Busi (italo.busi@huawei.com);
            Chaode Yu (yuchaode@huawei.com);
            Xing Zhao (zhaoxing@caict.ac.cn);
-           Zelin Wang (wangzl172@chinaunicom.cn)
        ";
 
      description
