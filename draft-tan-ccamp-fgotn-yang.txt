@@ -5,12 +5,12 @@
 Common Control and Measurement Plane                              Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 29 August 2026                                          I. Busi
+Expires: 31 August 2026                                          I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                        25 February 2026
+                                                        27 February 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -57,7 +57,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 August 2026.
+   This Internet-Draft will expire on 31 August 2026.
 
 Copyright Notice
 
@@ -886,6 +886,13 @@ Table of Contents
                     Label Switched Paths and Interfaces";
      }
 
+     import ietf-fgotn-types {
+       prefix fgotn-types;
+       reference
+         "RFC XXXX: YANG Data Models for fine grain Optical Transport
+          Network";
+     }
+
      /* Note: The RFC Editor will replace KKKK with the number assigned
         to the RFC once draft-ietf-teas-yang-te becomes an RFC.*/
 
@@ -943,10 +950,15 @@ Table of Contents
      }
 
      augment "/te:te/te:tunnels/te:tunnel/"
-           + "te:te-bandwidth/te:technology/otn-tnl:otn" {
+           + "te:te-bandwidth/te:technology/otn-tnl:otn/otn-tnl:otn-bandwidth" {
        description
          "augmentation of fgOTN tunnel on bandwidth structure";
        leaf fgoduflex-bandwidth {
+         when 'derived-from-or-self(../otn-tnl:odu-type,'
+            + '"fgotn-types:fgODUflex")' {
+           description
+             "Applicable when odu-type is fgODUflex.";
+         }
          type string;
          description
            "Augment TE bandwidth of the fgOTN tunnel";
