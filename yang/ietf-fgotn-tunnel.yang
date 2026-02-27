@@ -41,7 +41,6 @@ module ietf-fgotn-tunnel {
         Italo Busi (italo.busi@huawei.com);
         Chaode Yu (yuchaode@huawei.com);
         Xing Zhao (zhaoxing@caict.ac.cn);
-        Zelin Wang (wangzl172@chinaunicom.cn)
     ";
 
   description
