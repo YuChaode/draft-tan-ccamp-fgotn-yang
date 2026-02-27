@@ -76,7 +76,7 @@ module ietf-fgotn-tunnel {
   }  
 
   augment "/te:te/te:tunnels/te:tunnel/"
-        + "te:te-bandwidth/te:technology/otn-tnl:otn" {
+        + "te:te-bandwidth/te:technology/otn-tnl:otn/otn-tnl:otn-bandwidth" {
     description
       "augmentation of fgOTN tunnel on bandwidth structure";
     leaf fgoduflex-bandwidth {
