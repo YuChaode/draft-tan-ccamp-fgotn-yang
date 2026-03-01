@@ -1,7 +1,7 @@
 module: ietf-fgotn-tunnel
 
   augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
-            /otn-tnl:otn:
+            /otn-tnl:otn/otn-tnl:otn-bandwidth:
     +--rw fgoduflex-bandwidth?   string
   augment /te:te/te:tunnels/te:tunnel/te:primary-paths
             /te:primary-path/te:explicit-route-objects

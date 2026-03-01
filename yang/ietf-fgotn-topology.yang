@@ -85,7 +85,7 @@ module ietf-fgotn-topology {
   // RFC Ed.: update the date below with the date of RFC publication
   // and remove this note.
 
-  revision 2026-01-28 {
+  revision 2026-02-27 {
     description
       "initial version";
     reference

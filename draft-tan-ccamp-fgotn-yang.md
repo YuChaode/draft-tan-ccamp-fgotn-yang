@@ -57,10 +57,17 @@ author:
   country: China
 
 contributor:
-  -
-    name: Chen Li
-    org: Fiberhome Telecommunication Technologies Co.,LTD
-    email: lich@fiberhome.com
+-
+  ins: Z. Wang
+  name: Zelin Wang
+  organization: China Unicom
+  email: wangzl172@chinaunicom.cn
+  city: Beijing
+  country: China
+-
+  name: Chen Li
+  org: Fiberhome Telecommunication Technologies Co.,LTD
+  email: lich@fiberhome.com
 
 normative:
   ITU-T_G.709:
@@ -339,7 +346,7 @@ The model augments the label-restriction list with fgOTN technology-specific lab
 ~~~~ ascii-art
 augment /nw:networks/tet:te/tet:templates/tet:link-template
         /tet:te-link-attributes/tet:label-restrictions
-        /tet:label-restriction/otnt:otn-label-range:
+        /tet:label-restriction:
    +--rw fgts-range* [odu-type odu-ts-number]
       +--rw odu-type           identityref
       +--rw odu-ts-number?     uint16
@@ -384,7 +391,7 @@ The model augment TE bandwidth information of fgOTN tunnel.
 
 ~~~~ ascii-art
 augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
-        /otn-tnl:otn:
+        /otn-tnl:otn/otn-tnl:otn-bandwidth:
    +--rw fgoduflex-bandwidth?   string
 ~~~~
 
@@ -394,6 +401,14 @@ The string value fgoduflex-bandwidth is used to indicate the bandwidth of this f
 
 The module augments TE label-hop for the explicit route objects included or excluded by the path computation of the primary-paths and secondary-paths using the fgts-numbers. The fgts-numbers is used to specify fgTS information on inter-domain ports of the routing path. When specifying the fgotn time slot in the routing constraint information, the ODU time slot must also be specified. We also augment the TE label-hop for the record route of the LSP using the fgts-numbers.
 
+# YANG Data Model for fgOTN types
+
+~~~~ yang
+{::include yang/ietf-fgotn-types.yang}
+~~~~
+{: #fgotn-types-yang title="fgOTN types YANG module"
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-types@2026-02-27.yang"}
+
 {:#fgotn-tree}
 
 # YANG Tree for fgOTN topology
@@ -401,7 +416,7 @@ The module augments TE label-hop for the explicit route objects included or excl
 {{fig-fgotn-topo-tree}} below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-topology" ({{fgotn-topology-yang}}).
 
 ~~~~ ascii-art
-{::include ./yang/ietf-fgotn-topology.tree}
+{::include-fold yang/ietf-fgotn-topology.tree}
 ~~~~
 {: #fig-fgotn-topo-tree title=fgOTN topology YANG tree diagram"
 artwork-name="ietf-fgotn-topology.tree"}
@@ -409,18 +424,17 @@ artwork-name="ietf-fgotn-topology.tree"}
 # YANG Data Model for fgOTN topology
 
 ~~~~ yang
-{::include ./yang/ietf-fgotn-topology.yang}
+{::include yang/ietf-fgotn-topology.yang}
 ~~~~
 {: #fgotn-topology-yang title="fgOTN topology YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2026-01-28.yang"}
-
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2026-02-27.yang"}
 
 # YANG Tree for fgOTN tunnel
 
 {{fig-fgotn-tunnel-tree}} below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" ({{fgotn-tunnel-yang}}).
 
 ~~~~ ascii-art
-{::include ./yang/ietf-fgotn-tunnel.tree}
+{::include-fold yang/ietf-fgotn-tunnel.tree}
 ~~~~
 {: #fig-fgotn-tunnel-tree title=fgOTN tunnel YANG tree diagram"
 artwork-name="ietf-fgotn-tunnel.tree"}
@@ -428,10 +442,10 @@ artwork-name="ietf-fgotn-tunnel.tree"}
 # YANG Data Model for fgOTN tunnel
 
 ~~~~ yang
-{::include ./yang/ietf-fgotn-tunnel.yang}
+{::include yang/ietf-fgotn-tunnel.yang}
 ~~~~
 {: #fgotn-tunnel-yang title="fgOTN tunnel YANG module"
-sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2025-06-18.yang"}
+sourcecode-markers="true" sourcecode-name="ietf-fgotn-tunnel@2026-02-27.yang"}
 
 # Manageability Considerations
 
@@ -468,5 +482,3 @@ During the whole process, all domain controllers, including the intermediate dom
 {: numbered="false"}
 
 # Acknowledgments
-
-
