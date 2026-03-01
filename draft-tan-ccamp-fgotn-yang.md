@@ -346,7 +346,7 @@ The model augments the label-restriction list with fgOTN technology-specific lab
 ~~~~ ascii-art
 augment /nw:networks/tet:te/tet:templates/tet:link-template
         /tet:te-link-attributes/tet:label-restrictions
-        /tet:label-restriction/otnt:otn-label-range:
+        /tet:label-restriction:
    +--rw fgts-range* [odu-type odu-ts-number]
       +--rw odu-type           identityref
       +--rw odu-ts-number?     uint16
@@ -391,7 +391,7 @@ The model augment TE bandwidth information of fgOTN tunnel.
 
 ~~~~ ascii-art
 augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
-        /otn-tnl:otn:
+        /otn-tnl:otn/otn-tnl:otn-bandwidth:
    +--rw fgoduflex-bandwidth?   string
 ~~~~
 
