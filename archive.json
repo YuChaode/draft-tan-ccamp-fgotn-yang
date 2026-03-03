@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-03-01T01:15:19.751924+00:00",
+  "timestamp": "2026-03-03T01:09:32.217910+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -2069,7 +2069,7 @@
       "id": "PR_kwDOMSanvs7G3DMJ",
       "title": "Clean up before submission for IETF 125",
       "url": "https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/40",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "italobusi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -2078,17 +2078,19 @@
       "labels": [],
       "body": "1. Compiled YANG modules\r\n2. Updated YANG module date\r\n3. Added ietf-fgotn-types to the draft\r\n4. Added Zelin Wang as contributor",
       "createdAt": "2026-02-27T15:56:07Z",
-      "updatedAt": "2026-02-28T03:27:25Z",
+      "updatedAt": "2026-03-01T16:09:55Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "37a9ec9801726aa04e38fc284aa417f10527c690",
       "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
       "headRefName": "ietf-125",
-      "headRefOid": "c2d8e8fbf9ea0c429e7857988be97496051f1032",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "5bf8b89d7193c8f3c6955e38fddd039444a66ce8",
+      "closedAt": "2026-03-01T16:09:55Z",
+      "mergedAt": "2026-03-01T16:09:55Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "2ad47a8c4fdf2af1195b8fbbd41c808ac670d4fe"
+      },
       "comments": [],
       "reviews": [
         {
