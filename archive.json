@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-03-03T01:09:32.217910+00:00",
+  "timestamp": "2026-04-09T01:09:39.676129+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -2048,7 +2048,7 @@
       "labels": [],
       "body": "Import ietf-fgotn-types YANG module, moved fgoduflex-bandwidth under the otn-bandwidth container, and add a when statement making it applicable only when the odu-type is fgODUflex.",
       "createdAt": "2026-02-27T03:48:41Z",
-      "updatedAt": "2026-02-27T14:02:28Z",
+      "updatedAt": "2026-04-08T08:37:45Z",
       "baseRepository": "YuChaode/draft-tan-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "cb53af5df8b376b452814959f33e014114ffd291",
