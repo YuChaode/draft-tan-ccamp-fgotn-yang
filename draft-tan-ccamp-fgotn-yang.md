@@ -98,7 +98,7 @@ Optical Transport Networks (OTN) is a mainstream layer 1 technology for the tran
 
 In the latest version of OTN, ITU-T G.709/Y.1331 Edition 6.5 {{ITU-T_G.709}}, the fine grain OTN (fgOTN) is introduced for the efficient transmission of low rate client signals (e.g., sub-1G).
 
-This document presents the control interface requirements of fgOTN, and defines two YANG data models for fgOTN topology and fgOTN tunnel. The topology model can capture topological and resource-related information pertaining to fgOTN. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels and Label Switched Paths (LSPs).
+This document presents the control interface requirements of fgOTN, and defines three YANG data models for fgOTN topology, fgOTN tunnel and fgOTN types. The topology model can capture topological and resource-related information pertaining to fgOTN. The fgOTN tunnel YANG data model defined in this document is used for the provisioning and management of fgOTN Traffic Engineering (TE) tunnels and Label Switched Paths (LSPs). The types model contains a collection of YANG data types considered generally useful for fgOTN networks.
 
 Furthermore, this document also imports the generic Layer 1 types defined in {{?I-D.ietf-ccamp-layer1-types}}.
 
@@ -240,7 +240,9 @@ The range of fgOTN service's Bandwidth on Demand (BoD) cannot exceed its server 
 
 The client needs to know how many bandwidth of a link is allocated for fgOTN. When performs hitless resizing, the client sends the fgODUflex identifier and the target bandwidth to the source node controller. After receiving the network management configuration information, the source node triggers the bandwidth adjustment. During the hitless bandwidth adjustment process, it is necessary to reserve or mark the corresponding bandwidth resources first, and then trigger the the bandwidth adjustment actions.
 
-Another point to note is that when performing bidirectional hitless resizing for fgODUflex service, the adjustment should be initiated by the client side to a single network management system. Specifically, the adjustment is first performed in the Node 1 to Node 6 direction, and then the reverse direction (Node 6 to Node 1) is automatically triggered for adjustment.
+Another point to note is that when performing bidirectional hitless resizing for fgODUflex service, the adjustment should be initiated by the client side to a single network management system. Specifically, the adjustment is first performed in the Node 1 to Node 6 direction, and then the reverse direction (Node 6 to Node 1) is automatically triggered for adjustment. For bidirectional hitless resizing, the adjustment shall be regarded as successful only when both directions are completed. If only one direction succeeds while the other fails, the controller may issue a command to perform forced bandwidth adjustment to ensure consistent status in both directions (which may be hit-impairing).
+
+When 1+1 protection is configured for fgODUflex, if hitless bandwidth adjustment is performed on fgODUflex, both the working path and the protection path shall initiate the adjustment protocol and signaling transmission. Each node shall check the signaling delivered by both the working path and the protection path simultaneously during state processing.
 
 Both single domain and multi-domain hitless resizing should be supported. For single domain and multi-domain hitless resizing scenario, the source controller alone report the bandwidth adjustment status to the MDSC coordinator upon completion.
 
@@ -277,7 +279,9 @@ As defined in Annex M of [ITU-T_G.709], fgOTN is defining a new path layer netwo
 
 * A single network topology instance is used to report both OTN and fgOTN topology information: fgOTN technology-specific attributes are therefore defined in the fgOTN topology model as augmentations of the OTN topology model, but without defining a new network type for fgOTN.
 
-* The OTN tunnel model can be used to setup either an OTN or an fgOTN tunnel: fgOTN technology-specific attributes are therefore defined in the fgOTN tunnel model as augmentations of the OTN tunnel model, which are applicable only when the OTN tunnel is an fgOTN tunnel.
+* The OTN tunnel model can be used to setup either an OTN or an fgOTN tunnel: fgOTN technology-specific attributes are therefore defined in the fgOTN tunnel model as augmentations of the OTN tunnel model, which are applicable only when the OTN tunnel is an fgODUflex tunnel.
+
+In other words, the same switching-capability and encoding types can be used for ODUk and fgODUflex and therefore that there is a need to define additional parameters to identify fgODUflex tunnels. This document define a new ietf-fgotn-types YANG module to define the fgOTN-related types. In order to identify the fgODUflex tunnel, a new identity fgODUflex based on the odu-type in {{?I-D.ietf-ccamp-layer1-types}} is defined in ietf-fgotn-types YANG module.
 
 # YANG Data Model for fgOTN Topology
 
@@ -315,11 +319,11 @@ Common types, identities and groupings defined in {{?I-D.ietf-ccamp-layer1-types
 ~~~~
 {: #fig-fgotn-topology-relationship title="Relationship between fgOTN topology and OTN topology model"}
 
-The entities, TE attributes and OTN attributes, such as nodes, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information. At the same time, it is necessary to extend the encoding and switching-capability enumeration values in {{?I-D.ietf-teas-rfc8776-update}} to identify that the current Tunnel Termination Point (TTP) is a termination point of an fgOTN tunnel.
+The entities, TE attributes and OTN attributes, such as nodes, termination points and links, are still applicable for describing an fgOTN topology and the model presented in this document only specifies technology-specific attributes/information. The fgOTN-specific attributes including the fgTS, can be used to represent the bandwidth and label information.
 
 ## Bandwidth Augmentation
 
-Based on the OTN topology model, we augment the bandwidth information of fgOTN, including the max-link-bandwidth and unreserved-bandwidth. The augmented parameter fgotn-bandwidth is used to indicate how much of the bandwidth has been allocated for the usage of fgOTN. For example, if 2 ODU0s are allocated to support fgOTN switching switching, the fgotn-bandwidth is 2500, and the unit is Mbps.
+Based on the OTN topology model, this document augment the bandwidth information of fgOTN, including the max-link-bandwidth and unreserved-bandwidth. The augmented parameter fgotn-bandwidth is used to indicate how much of the bandwidth has been allocated for the usage of fgOTN. For example, if 2 ODU0s are allocated to support fgOTN switching, the fgotn-bandwidth is 2500, and the unit is megabits per second.
 
 ~~~~ ascii-art
 augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
@@ -328,7 +332,16 @@ augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
    +--rw fgotn-bandwidth?   uint16
 ~~~~
 
-The augmented fgotnlist structure is used to describe the unreserved TE bandwidth of fgOTN in the server ODUk. The odu-ts-number is used to indicate the index of server ODUk channel.
+The augmented parameter fgotn-bandwidth is used to indicate the unreserved bandwidth of fgOTN before the server ODUk is set up.
+
+~~~~ ascii-art
+augment /nw:networks/nw:network/nt:link/tet:te
+            /tet:te-link-attributes/tet:unreserved-bandwidth
+            /tet:te-bandwidth/otnt:otn-bandwidth/otnt:odulist:
+    +--rw fgotn-bandwidth?   uint16
+~~~~
+
+The augmented fgotnlist structure is used to describe the unreserved TE bandwidth of fgOTN in the server ODUk. The odu-ts-number indicates the specific timeslot of the server layer ODUk channel, and fgotn-bandwidth indicates the unreserved bandwidth of fgOTN in this server layer ODUk.
 
 ~~~~ ascii-art
 augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
@@ -336,7 +349,7 @@ augment /nw:networks/nw:network/nt:link/tet:te/tet:te-link-attributes
           /otnt:otn-bandwidth:
    +--rw fgotnlist* [odu-type odu-ts-number]
       +--rw odu-type           identityref
-      +--rw odu-ts-number?     uint16
+      +--rw odu-ts-number?     fgotnt:ts-list
       +--rw fgotn-bandwidth?   uint16
 ~~~~
 
@@ -349,12 +362,12 @@ augment /nw:networks/tet:te/tet:templates/tet:link-template
         /tet:label-restriction:
    +--rw fgts-range* [odu-type odu-ts-number]
       +--rw odu-type           identityref
-      +--rw odu-ts-number?     uint16
-      +--rw fgts-reserved?     string
-      +--rw fgts-unreserved?   string
+      +--rw odu-ts-number?     fgotnt:ts-list
+      +--rw fgts-reserved?     fgotnt:ts-list
+      +--rw fgts-unreserved?   fgotnt:ts-list
 ~~~~
 
-The fgts-range list is used to describe the availability of fgOTN timeslot in the server ODUk, including the fgts-reserved and fgts-unreserved. The odu-ts-number is used to indicate the index of server ODUk channel.
+The fgts-range list is used to describe the availability of fgOTN timeslot in the server ODUk, including the fgts-reserved and fgts-unreserved. The odu-ts-number indicates the specific timeslot of the server ODUk channel.
 
 # YANG Data Model for fgOTN Tunnel
 
@@ -383,7 +396,7 @@ This document aims to describe the data model for fgOTN tunnel. The fgOTN tunnel
 
 It's also worth noting that the fgOTN tunnel provisioning is usually based on the fgOTN topology. Therefore the fgOTN tunnel model is usually used together with fgOTN topology model specified in this document. The OTN tunnel model also imports a few type modules, including ietf-layer1-types and ietf-te-types.
 
-A new identity based on odu-type should be defined for fgODUflex in an updated version of {{?I-D.ietf-ccamp-layer1-types}} to indicate the bandwidth of fgotn tunnel.
+A new identity based on odu-type should be defined for fgODUflex in this document to identify the fgODUflex tunnel.
 
 ## Bandwidth Augmentation
 
@@ -399,7 +412,7 @@ The string value fgoduflex-bandwidth is used to indicate the bandwidth of this f
 
 ## Label Augmentation
 
-The module augments TE label-hop for the explicit route objects included or excluded by the path computation of the primary-paths and secondary-paths using the fgts-numbers. The fgts-numbers is used to specify fgTS information on inter-domain ports of the routing path. When specifying the fgotn time slot in the routing constraint information, the ODU time slot must also be specified. We also augment the TE label-hop for the record route of the LSP using the fgts-numbers.
+The module augments TE label-hop for the explicit route objects included or excluded by the path computation of the primary-paths and secondary-paths using the fgts-numbers. The fgts-numbers is used to specific fgTS information on inter-domain ports of the routing path. When specifying the fgotn time slot in the routing constraint information, the ODU time slot must also be specified. The module also augment the TE label-hop for the record route of the LSP using the fgts-numbers.
 
 # YANG Data Model for fgOTN types
 
