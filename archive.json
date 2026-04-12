@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-04-09T01:09:39.676129+00:00",
+  "timestamp": "2026-04-12T01:24:21.305549+00:00",
   "repo": "YuChaode/draft-tan-ccamp-fgotn-yang",
   "labels": [
     {
@@ -662,9 +662,17 @@
       ],
       "body": "Describe the issue when running fgOTN over ODUCn Links",
       "createdAt": "2025-09-03T07:29:24Z",
-      "updatedAt": "2025-11-19T13:43:56Z",
+      "updatedAt": "2026-04-09T12:52:48Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "**2026-03-14 Side Meeting**\n\nWhat is already supported by OTN topology model:\n\n- ODUk over OTUk (no multiplexing)\n- ODUj over ODUk over OTUk (single-stage multiplexing with 1.25G or 2.5G TSG)\n- ODUk over ODUCn (single-stage multiplexing with 5G TSG)\n\nWhat is not yet supported by OTN topology model:\n\n- fgOTN over ODUj over ODUk over OTUk (two-stage multiplexing with 10M OPUj TSG over 1.25G or 2.5G ODUk TSG)\n\n\te.g., fgOTN over ODU0 over ODU4\n\n- ODUj over ODUk over ODUCn (two-stage multiplexing with 1.25G or 2.5G OPUk TSG over 5G OPUCn TSG)\n\n\te.g., ODU0 over ODU2 over ODUC4\n\n- fgOTN over ODUj over ODUk over ODUCn (three-stage multiplexing with 10M OPUj TSG over 1.25G or 2.5G OPUk TSG over 5G OPUCn TSG)\n\n\te.g., fgOTN over ODU0 over ODU2 over ODUC4\n",
+          "createdAt": "2026-04-09T12:52:48Z",
+          "updatedAt": "2026-04-09T12:52:48Z"
+        }
+      ]
     },
     {
       "number": 24,
