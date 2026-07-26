@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-23T01:45:24.495243+00:00",
+  "timestamp": "2026-07-26T01:44:00.666869+00:00",
   "repo": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
   "labels": [
     {
@@ -194,7 +194,7 @@
       "id": "I_kwDOMSanvs6xi9Gh",
       "title": "Switching and LSP encoding types for fgOTN",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/7",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -205,8 +205,8 @@
       ],
       "body": "Need to discuss whether the same switching and LSP encoding types can be used for ODUk and fgODUflex and therefore only a new odu-type value shall be defined for fgODUflex.\n\nThe text describing the fgOTN topology and tunnel models can be updated accordingly.\n\n_Originally posted by @italobusi in https://github.com/YuChaode/draft-tan-ccamp-fgotn-yang/pull/3#discussion_r2025703759_\n            ",
       "createdAt": "2025-04-08T06:26:55Z",
-      "updatedAt": "2026-07-15T12:34:41Z",
-      "closedAt": null,
+      "updatedAt": "2026-07-23T17:22:00Z",
+      "closedAt": "2026-07-23T17:22:00Z",
       "comments": [
         {
           "author": "italobusi",
@@ -916,7 +916,7 @@
       "id": "I_kwDOMSanvs7ZIcer",
       "title": "JSON examples for fgOTN topology: step 3",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/32",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -925,8 +925,8 @@
       "labels": [],
       "body": "Prepare a JSON topology example for step 3: an fgOTN tunnel is setup\n\nSee reference network in issue #29 \n\nNote: wait for resolution of issue #31 ",
       "createdAt": "2025-11-19T14:00:03Z",
-      "updatedAt": "2026-07-15T12:30:30Z",
-      "closedAt": null,
+      "updatedAt": "2026-07-23T17:22:01Z",
+      "closedAt": "2026-07-23T17:22:01Z",
       "comments": [
         {
           "author": "italobusi",
@@ -1028,7 +1028,7 @@
       "id": "I_kwDOMSanvs8AAAABDikrJQ",
       "title": "Add Aihua as contributor",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/43",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -1037,8 +1037,8 @@
       "labels": [],
       "body": "",
       "createdAt": "2026-05-27T13:07:54Z",
-      "updatedAt": "2026-05-27T13:07:54Z",
-      "closedAt": null,
+      "updatedAt": "2026-07-23T17:22:01Z",
+      "closedAt": "2026-07-23T17:22:01Z",
       "comments": []
     },
     {
@@ -1585,21 +1585,21 @@
       "id": "PR_kwDOMSanvs6oFNdQ",
       "title": "Proposed text changes to section 2",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/23",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Proposed text changes to section 2: fix #9 ",
       "createdAt": "2025-09-11T16:55:47Z",
-      "updatedAt": "2026-06-24T13:33:53Z",
+      "updatedAt": "2026-07-23T17:24:51Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "develop",
       "baseRefOid": "2ad47a8c4fdf2af1195b8fbbd41c808ac670d4fe",
       "headRepository": "italobusi/draft-tan-ccamp-fgotn-yang",
       "headRefName": "ml-scenarios",
       "headRefOid": "f5de45397185b0355e7c57aa22c4af4a45a8fd69",
-      "closedAt": null,
+      "closedAt": "2026-07-23T17:24:51Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -2243,24 +2243,26 @@
       "id": "PR_kwDOMSanvs7na73O",
       "title": "Update fgotn-topology.json",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/44",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "tanyanxia",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Update the JSON example: Under 100G\r\nStep1: No server layer ODUk are setup\r\nStep2: One ODU1 server layer tunnel has been setup to carry fgOTN traffic between NE1 and NE2; Two ODU0 server layer tunnel has been setup to carry fgOTN traffic between NE2 and NE4",
       "createdAt": "2026-06-17T10:15:27Z",
-      "updatedAt": "2026-07-22T21:55:48Z",
+      "updatedAt": "2026-07-23T17:21:59Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
-      "baseRefName": "develop",
-      "baseRefOid": "2ad47a8c4fdf2af1195b8fbbd41c808ac670d4fe",
+      "baseRefName": "main",
+      "baseRefOid": "a51b32832d90cf615146454fba93c9ab982847df",
       "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "headRefName": "tanyx11",
-      "headRefOid": "66d3dd20db228e2db6d00bef4886924ffad8575e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "8ff67e635567b30ba912f81b0829b728f8bc530b",
+      "closedAt": "2026-07-23T17:21:59Z",
+      "mergedAt": "2026-07-23T17:21:59Z",
+      "mergedBy": "italobusi",
+      "mergeCommit": {
+        "oid": "ab9df8afd05000db7cbd158fee4f2eafbac6ee9a"
+      },
       "comments": [],
       "reviews": [
         {
@@ -2430,8 +2432,87 @@
               "updatedAt": "2026-07-22T19:53:55Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABHArEog",
+          "commit": {
+            "abbreviatedOid": "268f6e3"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-07-23T15:06:31Z",
+          "updatedAt": "2026-07-23T15:06:31Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "Agreed to change to 'fc'\r\n\r\nNeed to do a global change in the JSON code",
+              "createdAt": "2026-07-23T15:06:31Z",
+              "updatedAt": "2026-07-23T15:06:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABHArgtw",
+          "commit": {
+            "abbreviatedOid": "268f6e3"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-07-23T15:07:21Z",
+          "updatedAt": "2026-07-23T15:07:22Z",
+          "comments": [
+            {
+              "originalPosition": 1,
+              "body": "Agreed to change to 'fc'\r\n\r\nNeed to do a global change in the JSON code",
+              "createdAt": "2026-07-23T15:07:22Z",
+              "updatedAt": "2026-07-23T15:07:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOMSanvs8AAAABHBbxDg",
+          "commit": {
+            "abbreviatedOid": "8ff67e6"
+          },
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-07-23T16:39:52Z",
+          "updatedAt": "2026-07-23T16:39:52Z",
+          "comments": []
         }
       ]
+    },
+    {
+      "number": 47,
+      "id": "PR_kwDOMSanvs71wX88",
+      "title": "Included JSON examples in the draft",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/47",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Included JSON examples in the draft: fix #41 \r\nCleaned up kramdown syntax for sourcecode elements\r\n",
+      "createdAt": "2026-07-24T08:14:36Z",
+      "updatedAt": "2026-07-24T08:14:43Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "ab9df8afd05000db7cbd158fee4f2eafbac6ee9a",
+      "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "headRefName": "json-example",
+      "headRefOid": "82758428a65fbc3b573d71553e4b3ccbcc10e905",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
