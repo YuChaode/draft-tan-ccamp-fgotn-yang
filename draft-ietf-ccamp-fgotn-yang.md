@@ -507,7 +507,7 @@ The topology examples, show how the topology changes in three different steps:
     - one ODU1 server layer tunnel between NE1 and NE4 (through the NE1-NE3-NE4 path)
 1. The following fgOTN tunnels are setup in the network:
   - a 20M protected fgOTN tunnel between NE1 and NE4 with:
-    - a workting path setup throgh the NE1-NE2 ODU1 tunnel and the NE2-NE4 ODU0 tunnel;
+    - a workting path setup through the NE1-NE2 ODU1 tunnel and the NE2-NE4 ODU0 tunnel;
     - a protectin path setup through the NE1-NE3-NE4 ODU1 tunnel;
   - an 20M unprotected fgOTN tunnel throught the same NE2-NE4 ODU0 tunnel used by the other fgOTN tunnel.
 
