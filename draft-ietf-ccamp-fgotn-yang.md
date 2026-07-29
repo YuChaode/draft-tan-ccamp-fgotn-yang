@@ -182,27 +182,27 @@ In this example, some small bandwidth fgOTN service are aggregated by the access
 The allocation of TS to support fgOTN switching maybe different in access ring and metro ring.
 All link bandwidth information that supports fgOTN should be reported to MDSC by the PNC controller. E.g. there could be three ODU0 allocated in the access ring while there could be two ODU2 are allocated in the metro ring to support fgOTN switching. In this example, the server layer ODUk tunnel for fgOTN tunnel from node A to node E is ODU0, and the server layer tunnel from node E to node G is ODU2. The server layer tunnel for fgOTN tunnel will include one ODU0 tunnel and one ODU2 tunnel.
 
-~~~~ ascii-art
+~~~~ aasvg
 
       +-----+
-      |  A  | \                                 |
-      +-----+  \            Domain 1            |      Domain 2
-         |      \                               |
-         |  10G  \                              |
-         |        \                             |
-      +-----+       +-----+         +-----+     |     +-----+
-      |  B  | \     |  E  |---------|  G  |-----------|  I  |---------
-      +-----+  \  / +-----+         +-----+           +-----+
-                \/    |      100G      |                 |    100G
-                /\    |                |                 |
-      +-----+  /  \ +-----+         +-----+           +-----+
-      |  C  | /     |  F  |---------|  H  |-----------|  J  |---------
-      +-----+       +-----+         +-----+           +-----+
-         |         /
-         |  10G   /
-         |       /
-      +-----+   /
-      |  D  |  /
+      |  A  +---+                              |
+      +--+--+    \            Domain 1         |      Domain 2
+         |        \                            |
+         |  10G    \                           |
+         |          \                          |
+      +--+--+        +-----+        +-----+    |   +-----+
+      |  B  +-+    +-+  E  +--------+  G  +--------+  I  +---------
+      +-----+  \  /  +--+--+        +--+--+        +--+--+
+                \/      |     100G     |              |      100G
+                /\      |              |              |
+      +-----+  /  \  +--+--+        +--+--+        +--+--+
+      |  C  +-+    +-+  F  +--------+  H  +--------+  J  +---------
+      +--+--+        +-----+        +-----+        +-----+
+         |          /
+         |  10G    /
+         |        /
+      +--+--+    /
+      |  D  +---+
       +-----+
 
 ~~~~
@@ -214,19 +214,19 @@ Some operators that would like to provide the paths when there could be differen
 
 In {{fig-service}}, assuming that the server layer ODUk tunnel for the fgOTN primary tunnel from node f1 to node f2 is ODU0, the server layer tunnel from node f2 to node f3 is ODU2, and the server layer tunnel from node f3 to node f4 is ODU1. Assuming the server layer ODUk tunnel for the fgOTN secondary tunnel from node f1 to node f2 is ODU2. We need to setup four server layer ODUk tunnels before setting up an fgODUflex tunnel with a primary path and a secondary path to provide protection. To support multi-layer path splicing, we should make some extension on the dependency tunnel structure or on the path element, such as extending the working roles and index of the tunnels.
 
-~~~~ ascii-art
+~~~~ aasvg
                    +-----+            +-----+
-               ----|  f2 |------------|  f3 |----
+               +---+  f2 +------------+  f3 +---+
               /    +-----+            +-----+    \
-             / ----------primary-path------------ \
+             / +-------- primary-path ----------+ \
             / /                                  \ \
-         +-----+                                +-----+
+         +-+-+-+                                +-+-+-+
          |  f1 |                                |  f4 |
-         +-----+                                +-----+
+         +-+-+-+                                +-+-+-+
             \ \                                  / /
-             \ ---------secondary-path----------- /
+             \ +------- secondary-path ---------+ /
               \    +------+          +------+    /
-               ----| N-f5 |----------| N-f6 |----
+               +---+ N-f5 +----------+ N-f6 +---+
                    +------+          +------+
 ~~~~
 {: #fig-service multi-layer path splicing scenario title="Multi-layer Path Splicing Scenario of fgOTN"}
@@ -245,24 +245,24 @@ When 1+1 protection is configured for fgODUflex, if hitless bandwidth adjustment
 
 Both single domain and multi-domain hitless resizing should be supported. For single domain and multi-domain hitless resizing scenario, the source controller alone report the bandwidth adjustment status to the MDSC coordinator upon completion.
 
-~~~~ ascii-art
+~~~~ aasvg
 
                                  +----------+
-                  ---------------|   MDSC   |--------------
+                  +--------------+   MDSC   +-------------+
                  /               |          |              \
-                /                +----------+               \
+                /                +----+-----+               \
                /                      |                      \
               /                       |                       \
-        +------------+          +------------+          +------------+
+        +----+-------+          +-----+------+          +-----+------+
         | Controller |          | Controller |          | Controller |
         |     1      |          |     2      |          |     3      |
         +------------+          +------------+          +------------+
 
                                  End-to-end fgOTN service
-   <----------------------------------------------------------------------->
+    <--------------------------------------------------------------------->
    +------+     +------+     +------+     +------+     +------+     +------+
-   | node |-----| node |-----| node |-----| node |-----| node |-----| node |
-   |  1   |-----|  2   |-----|  3   |-----|  4   |-----|  5   |-----|  6   |
+   | node +-----+ node +-----+ node +-----+ node +-----+ node +-----+ node |
+   |  1   +-----+  2   +-----+  3   +-----+  4   +-----+  5   +-----+  6   |
    +------+     +------+  |  +------+     +------+   | +------+     +------+
     source                |                          |          destination
           Domain 1        |         Domain 2         |       Domain 3
@@ -292,7 +292,7 @@ Common types, identities and groupings defined in {{?I-D.ietf-ccamp-layer1-types
 
 {{?RFC8345}} defines an abstract (generic, or base) YANG data model for network/service topologies and inventories, and provides the fundamental model for {{?RFC8795}}. OTN topology module in {{?I-D.ietf-ccamp-otn-topo-yang}} augments from the TE topology YANG model defined in {{?RFC8795}}. {{fig-fgotn-topology-relationship}} shows the augmentation relationship.
 
-~~~~ ascii-art
+~~~~ aasvg
     +--------------+      +-----------------------+
     | ietf-network |      | ietf-network-topology |
     +--------------+      +-----------------------+
@@ -300,13 +300,13 @@ Common types, identities and groupings defined in {{?I-D.ietf-ccamp-layer1-types
                 |_____   _____|
                       | |
                       | | Augments
-             +-------------------+
+             +--------+-+--------+
              | ietf-te-topology  |
              +-------------------+
                        ^
                        | Augments
                        |
-             +-------------------+
+             +---------+---------+
              | ietf-otn-topology |
              +-------------------+
                        ^
@@ -324,25 +324,25 @@ The entities, TE attributes and OTN attributes, such as nodes, termination point
 
 Building upon the OTN topology model, the odu-list structure within the OTN topology YANG module is leveraged to represent the maximum link bandwidth and unreserved bandwidth for fgOTN. As an illustration, if an OTU2 port supports fgOTN, fgOTN is enabled across the entire port. In this case, the odu-type shall be set to ietf-fgotn-types:fgODUflex, with the associated number equal to 952. When a portion of fgts on the port is occupied, the value of maximum link bandwidth remains unchanged, while the number representing available bandwidth decreases accordingly.
 
-~~~~ ascii-art
-"ietf-otn-topology:odulist": [{
-   "odu-type": "ietf-fgotn-types:fgODUflex",
-   "number": 952
-}]
+~~~~ json
+  "ietf-otn-topology:odulist": [{
+    "odu-type": "ietf-fgotn-types:fgODUflex",
+    "number": 952
+  }]
 ~~~~
 
 ## Label Augmentation
 The model augments the label-restriction list with fgOTN technology-specific label information using the otn-label-range-info grouping defined in {{?I-D.ietf-ccamp-layer1-types}}.
 
-~~~~ ascii-art
-augment /nw:networks/tet:te/tet:templates/tet:link-template
-        /tet:te-link-attributes/tet:label-restrictions
-        /tet:label-restriction:
-   +--rw fgts-range* [odu-type odu-ts-number]
-      +--rw odu-type           identityref
-      +--rw odu-ts-number?     fgotnt:ts-list
-      +--rw fgts-reserved?     fgotnt:ts-list
-      +--rw fgts-unreserved?   fgotnt:ts-list
+~~~~ yangtree
+  augment /nw:networks/tet:te/tet:templates/tet:link-template
+          /tet:te-link-attributes/tet:label-restrictions
+          /tet:label-restriction:
+    +--rw fgts-range* [odu-type odu-ts-number]
+        +--rw odu-type           identityref
+        +--rw odu-ts-number?     fgotnt:ts-list
+        +--rw fgts-reserved?     fgotnt:ts-list
+        +--rw fgts-unreserved?   fgotnt:ts-list
 ~~~~
 
 The fgts-range list is used to describe the availability of fgOTN timeslot in the server ODUk, including the fgts-reserved and fgts-unreserved. The odu-ts-number is used to indicate the index of server ODUk channel.
@@ -353,14 +353,14 @@ The fgts-range list is used to describe the availability of fgOTN timeslot in th
 
 This document aims to describe the data model for fgOTN tunnel. The fgOTN tunnel model augments to OTN tunnel {{?I-D.ietf-ccamp-otn-tunnel-model}} with fgOTN-specific parameters, including the bandwidth information and label information. {{fig-fgotn-tunnel-relationship}} shows the augmentation relationship.
 
-~~~~ ascii-art
+~~~~ aasvg
                 +------------------+
                 |      ietf-te     |
                 +------------------+
                           ^
                           | Augments
                           |
-                +-----------------+
+                +---------+-------+
                 | ietf-otn-tunnel |
                 +-----------------+
                           ^
@@ -380,10 +380,10 @@ A new identity based on odu-type should be defined in fgotn-types yang module to
 
 The model augment TE bandwidth information of fgOTN tunnel.
 
-~~~~ ascii-art
-augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
-        /otn-tnl:otn/otn-tnl:otn-bandwidth:
-   +--rw fgoduflex-bandwidth?   string
+~~~~ yangtree
+  augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
+          /otn-tnl:otn/otn-tnl:otn-bandwidth:
+    +--rw fgoduflex-bandwidth?   string
 ~~~~
 
 The string value fgoduflex-bandwidth is used to indicate the bandwidth of this fgOTN tunnel.
@@ -406,7 +406,7 @@ sourcecode-markers="true" sourcecode-name="ietf-fgotn-types@2026-02-27.yang"}
 
 {{fig-fgotn-topo-tree}} below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-topology" ({{fgotn-topology-yang}}).
 
-~~~~ ascii-art
+~~~~ yangtree
 {::include-fold yang/ietf-fgotn-topology.tree}
 ~~~~
 {: #fig-fgotn-topo-tree title=fgOTN topology YANG tree diagram"
@@ -424,7 +424,7 @@ sourcecode-markers="true" sourcecode-name="ietf-fgotn-topology@2026-07-23.yang"}
 
 {{fig-fgotn-tunnel-tree}} below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" ({{fgotn-tunnel-yang}}).
 
-~~~~ ascii-art
+~~~~ yangtree
 {::include-fold yang/ietf-fgotn-tunnel.tree}
 ~~~~
 {: #fig-fgotn-tunnel-tree title=fgOTN tunnel YANG tree diagram"
@@ -469,6 +469,51 @@ Step 5: After the reverse direction (Node 6 to Node 1) resizing is completed, Co
 If the hitless resizing fails, the source controller (i.e., Controller 1) needs to report an bandwidth adjustment failure status notification, ietf-te-types:lsp-bandwidth-modify-failed, to the MDSC coordinator.
 
 During the whole process, all domain controllers, including the intermediate domain Controller 2, need to report the notifications of topology and tunnel resource changes to the MDSC.
+
+# JSON Examples
+
+This appendix contains an example of an instance data tree in JSON
+encoding {{?RFC7951}}.
+
+The example instantiates the "ietf-fgotn-topology" model for the OTN
+topology depicted in {{fig-example}} below.
+
+~~~~ aasvg
+                   (1) +-------+ (2)
+          +------------+  NE2  +---------------+
+          |            +-------+               |
+          |(2)                              (2)|
+  (1) +---+---+                            +---+---+ (1)
+  ----+  NE1  |                            |  NE4  +----
+      +---+---+                            +---+---+
+          |(3)                              (3)|
+          |            +-------+               |
+          +------------+  NE3  +---------------+
+                   (1) +-------+ (2)
+~~~~
+{: #fig-example title="Example of fgOTN topology"}
+
+In this network example:
+
+- nodes NE1, NE2, and NE4 support fgOTN switching, while node NE3 does not support fgOTN;
+- all the links are OTU2 links
+
+The topology examples, show how the topology changes in three different steps:
+
+1. No OTN or fgOTN tunnels are setup in the network;
+1. The following ODUk tunnels are setup as server layer tunnels to support fgOTN tunnels:
+  - an ODU1 tunnel between NE1 and NE2;
+    - two ODU0 server layer tunnels between NE2 and NE4;
+    - one ODU1 server layer tunnel between NE1 and NE4 (through the NE1-NE3-NE4 path)
+1. The following fgOTN tunnels are setup in the network:
+  - a 20M protected fgOTN tunnel between NE1 and NE4 with:
+    - a workting path setup through the NE1-NE2 ODU1 tunnel and the NE2-NE4 ODU0 tunnel;
+    - a protectin path setup through the NE1-NE3-NE4 ODU1 tunnel;
+  - an 20M unprotected fgOTN tunnel throught the same NE2-NE4 ODU0 tunnel used by the other fgOTN tunnel.
+
+~~~~ json
+{::include-fold json/fgotn-topology.json}
+~~~~
 
 {: numbered="false"}
 
