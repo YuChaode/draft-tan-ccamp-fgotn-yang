@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-30T01:19:16.160108+00:00",
+  "timestamp": "2026-08-02T01:43:30.767645+00:00",
   "repo": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
   "labels": [
     {
@@ -842,18 +842,24 @@
       "id": "I_kwDOMSanvs7ZIQoZ",
       "title": "JSON examples for fgOTN topology",
       "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/29",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [],
-      "labels": [
-        "close-sub-issues"
-      ],
+      "labels": [],
       "body": "Prepare some JSON examples of the fgOTN topology model\n\nReference network:\n\n<img width=\"554\" height=\"282\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/6b85ced4-62d7-4525-b822-538cf774f438\" />\n\nWhere:\n- node NE1, NE2, and NE4 support fgOTN switching, node NE3 does not support fgOTN\n- all the links are OTU2 links\n- on the link between NE1 and NE2 there is only one ODU1 server layer tunnel\n- on the link between NE2 and NE4 there are two ODU0 server layer tunnels\n- between NE1 and NE4 an ODU1 server layer tunnel is setup (through the NE1-NE3-NE4)\n",
       "createdAt": "2025-11-19T13:47:48Z",
-      "updatedAt": "2026-02-27T17:48:30Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-07-30T09:48:27Z",
+      "closedAt": "2026-07-30T09:48:27Z",
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "All the sub-issues have been closed",
+          "createdAt": "2026-07-30T09:48:27Z",
+          "updatedAt": "2026-07-30T09:48:27Z"
+        }
+      ]
     },
     {
       "number": 30,
@@ -1097,10 +1103,13 @@
       "assignees": [
         "tanyanxia"
       ],
-      "labels": [],
+      "labels": [
+        "bug",
+        "documentation"
+      ],
       "body": "> Hi chairs,\n> \n> Thanks for this adoption poll.\n> \n> Yes, the WG should have a document on this topic. And, yes, this draft is a\n> good starting point. Please adopt it.\n> \n> Cheers,\n> \n> Adrian\n> \n> ===\n> \n> Attention that is needed (*after* adoption).\n> \n> Some problems with line lengths in Figure 3. This is easily fixed.\n> \n\n[Authors] We will fix the line lengths of Figure 3 in the next draft update\n\nSee: #49 \n\n> ---\n> \n> Obviously, the empty sections (11, 12, 13) need work.\n> \n\n[Authors] We are tracking these as open issues in github with the target to complete these sections before WG LC\n\n> ---\n> \n> The Abstract could us a short sentence to say what fine grain optical\n> transport networks are.\n> \n\n[Authors] We would propose the following NEW abstract:\n\n```\n   Fine grain Optical Transport Network (fgOTN) is a data plane\n   technology, specified in ITU-T Recommendation G.709/Y.1331 (2020)\n   Amd. 3, which complements existing OTN by providing bandwidth\n   efficient support for sub-1Gbit/s services.\n  \n   This document defines YANG data models to describe the topology and\n   tunnel information of an fgOTN network.\n```\n\n- [ ] Update the abstract as proposed\n\n> ---\n> \n> In 1.1, can you add references for fgTS and fgODUflex?\n> \n\n[Authors]\n\nOLD\n\n```\n   Some of the key terms used in this document are listed as follow.\n```\n\nNEW\n\n```\n   The following terms are defined in [ITU-T_G.709] and in\n   [ITU-T_G.709.20] and are not redefined here:\n```\n\n[\\Authors]\n\n- [ ] Update the text in section 1.1 as proposed\n\n> ---\n> \n> Section 1.4 enthusiastically repeats section 1.2.\n> \n\n[Authors] Fixed in draft-ietf-ccamp-fgotn-yang-01\n\n> ---\n> \n> Section 1.6 overlaps with section 1.3\n> \n\n[Authors] Fixed in draft-ietf-ccamp-fgotn-yang-01\n\n> ---\n> \n> Watch out for \"OTN network\". The N in OTN already means network.\n> \n\n[Authors]\n\nThere has been a similar comment from Dhruv on the OTN Tunnel model: https://mailarchive.ietf.org/arch/msg/ccamp/yIz26ZDNZN_Jg-ou9mcq26pNXYw/\n\nWhile you are correct regarding the literal acronym, 'OTN' in this document is treated as a proper noun, in line with standard practice in ITU-T (e.g., ITU-T G.709) and other IETF documents (e.g., RFC 7138).\n\nTherefore we would propose to keep the terms \"OTN network\" and, for consistency, also the term \"fgOTN network\".\n\n[\\Authors]\n\n> ---\n> \n> I'm pretty sure that the pattern in ts-list is wrong, but my brain is\n> sitting outside sipping mojitos at the moment, and won't help me sort it\n> out.\n\n[Authors]\n\nThe current regular expression pattern does not fully align with the node description because it fails to 1) enforce the 1-4095 range: The current pattern accepts values up to 9999, making out-of-range inputs syntactically valid and 2) enforce sorting rules: It cannot programmatically verify that the values are disjoint and listed in strictly ascending order.\n\nWhile the regular expression can be updated to strictly enforce the numeric range, standard YANG syntactic constraints cannot evaluate relative mathematical logic like disjointness or ascending order. Enforcing these sequential rules relies entirely on compliance with the text in the description statement.\n\nSince updating the regex pattern to restrict the range makes the expression significantly more complex and less readable and considering that 1) the backend application must already parse the string to validate the sorting and disjointness constraints and 2) that the maximum value of 4095 is defined for consistency with the length of the TPN field in RFC7139, although the actual maximum value depends on the type of the server layer OPU and TSG, we would prefer to rely on the description statement to govern the numeric range as well. This keeps the YANG model clean and maintainable while centralizing all numerical logic within the backend implementation.\n\n[\\Authors]\n\n> ---\n> \n>  \n> \n> I think that the \"augments\" relationship defines the need for a normative\n> reference. Further, this is a transitive relationship.\n> \n> So, because the model in this draft augments ietf-otn-topology,\n> I-D.ietf-ccamp-otn-topo-yang is a normative relationship.\n> \n> And, because ietf-otn-topology augments, ietf-te-topology, RFC8795 should be\n> a normative reference.\n> \n> And, because ietf-te-topology augments ietf-network and\n> ietf-network-topology, RFC8345 should be a normative reference.\n> \n\n[Authors] We will fix the normative references in the next draft update\n\n- [ ] Fix normative references\n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/jkLVyWvkKtZD1wJ_TGSuZRAx8NU/",
       "createdAt": "2026-07-29T22:44:09Z",
-      "updatedAt": "2026-07-29T23:16:42Z",
+      "updatedAt": "2026-07-30T10:25:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -1123,10 +1132,12 @@
       "assignees": [
         "tanyanxia"
       ],
-      "labels": [],
+      "labels": [
+        "bug"
+      ],
       "body": "NEW\n\n```\n                                 +----------+\n                  +--------------+   MDSC   +-------------+\n                 /               |          |              \\\n                /                +----+-----+               \\\n               /                      |                      \\\n              /                       |                       \\\n        +----+-------+          +-----+------+          +-----+------+\n        | Controller |          | Controller |          | Controller |\n        |     1      |          |     2      |          |     3      |\n        +------------+          +------------+          +------------+\n\n                                 End-to-end fgOTN service\n   <------------------------------------------------------------------>\n  +------+    +------+     +------+    +------+     +------+    +------+\n  | node +----+ node +-----+ node +----+ node +-----+ node +----+ node |\n  |  1   +----+  2   +-----+  3   +----+  4   +-----+  5   +----+  6   |\n  +------+    +------+  |  +------+    +------+  |  +------+    +------+\n  source                |                        |           destination\n        Domain 1        |         Domain 2       |       Domain 3\n                        |                        |\n\n```",
       "createdAt": "2026-07-29T22:45:57Z",
-      "updatedAt": "2026-07-29T22:45:57Z",
+      "updatedAt": "2026-07-30T10:24:47Z",
       "closedAt": null,
       "comments": []
     },
@@ -1193,15 +1204,14 @@
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
-        "italobusi",
         "tanyanxia"
       ],
       "labels": [
         "documentation"
       ],
-      "body": "> Hi WG, and authors. \n> \n> I support adoption of draft-tan-ccamp-fgotn-yang. \n> \n> >From an industry perspective, fgOTN is clearly gathering pace and part of\n> OTN technology stack so it makes sense to progress the work in CCAMP. \n> \n> The draft addresses a useful YANG-based management and control need for\n> topology/resource reporting and tunnel provisioning. \n> \n> Overall, the modeling direction is appropriate: the draft builds on the\n> existing CCAMP/TEAS OTN topology and tunnel work, rather than introducing a\n> separate framework, which is great. \n> \n> The draft has more than enough technical substance for WG adoption, but\n> there are several threads that will need attention, assuming the WG adopts\n> the work. These include:\n> \n> - Ensuring alignment with the latest CCAMP/TEAS base YANG model revisions.\n> \n\n- [ ] @italobusi check alignment\n\n> - Bandwidth and timeslot-related attributes: some leaves are currently plain\n> string, easy to have incompatible implementations. Maybe use explicit\n> typedefs, numeric ranges/units based on current industry agreement to help\n> interoperability\n> \n\n[Authors]\n\nWe will change the type of the `fgoduflex-bandwidth` leaf from string to uint8 (range 1..119) to represent the the multiplier of 10Mbit/s (as per definition in Table M.3 of ITU-T G.709)\n\nWe will split the current `ts-list` data type into two data types:\n- one data type (`ts-list`) which does not allow empty strings\n- another data type (`ts-list-or-empty`) which allows an empty string\n\nThe former `ts-list` data type will be used for the label hops in the tunnel model and the `ts-list-or-empty` will be used reserved/available ranges in the topology model.\n\n[/Authors]\n\n- [ ] Update type and description of the `fgoduflex-bandwidth` leaf as proposed above\n- [ ] Update the `ts-list` data type and the associated leafs as proposed above\n\n> - Clarification of config versus operational state: we just need to be clear\n> about which data is configuration and which data is operational. For\n> example, available bandwidth and reserved timeslots is that really\n> configuration (current rw nodes), or is it operational.\n> \n\n[Author] They are defined as RW in order to support the customized topologies use cases for consistency with RFC8795.\n\n> - Usual expansion/detail in/of Manageability, Security, and IANA\n> considerations.\n> \n\n[Authors] We are tracking these as open issues in github with the target to complete these sections before WG LC\n\n> \n> BR, Dan.  \n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/CApuyikZmOC1QoFFD0ZXqxS4ElM/",
+      "body": "> Hi WG, and authors. \n> \n> I support adoption of draft-tan-ccamp-fgotn-yang. \n> \n> >From an industry perspective, fgOTN is clearly gathering pace and part of\n> OTN technology stack so it makes sense to progress the work in CCAMP. \n> \n> The draft addresses a useful YANG-based management and control need for\n> topology/resource reporting and tunnel provisioning. \n> \n> Overall, the modeling direction is appropriate: the draft builds on the\n> existing CCAMP/TEAS OTN topology and tunnel work, rather than introducing a\n> separate framework, which is great. \n> \n> The draft has more than enough technical substance for WG adoption, but\n> there are several threads that will need attention, assuming the WG adopts\n> the work. These include:\n> \n> - Ensuring alignment with the latest CCAMP/TEAS base YANG model revisions.\n> \n\n[Author] We think that this draft is already aligned with the latest CCAMP/TEAS base YANG model revisions and plan to keep alignment with any future updates to those models.\n\n- [x] @italobusi check alignment\n\n> - Bandwidth and timeslot-related attributes: some leaves are currently plain\n> string, easy to have incompatible implementations. Maybe use explicit\n> typedefs, numeric ranges/units based on current industry agreement to help\n> interoperability\n> \n\n[Authors]\n\nWe will change the type of the `fgoduflex-bandwidth` leaf from string to uint8 (range 1..119) to represent the the multiplier of 10Mbit/s (as per definition in Table M.3 of ITU-T G.709)\n\nWe will split the current `ts-list` data type into two data types:\n- one data type (`ts-list`) which does not allow empty strings\n- another data type (`ts-list-or-empty`) which allows an empty string\n\nThe former `ts-list` data type will be used for the label hops in the tunnel model and the `ts-list-or-empty` will be used reserved/available ranges in the topology model.\n\n[/Authors]\n\n- [ ] Update type and description of the `fgoduflex-bandwidth` leaf as proposed above\n- [ ] Update the `ts-list` data type and the associated leafs as proposed above\n\n> - Clarification of config versus operational state: we just need to be clear\n> about which data is configuration and which data is operational. For\n> example, available bandwidth and reserved timeslots is that really\n> configuration (current rw nodes), or is it operational.\n> \n\n[Author] They are defined as RW in order to support the customized topologies use cases for consistency with RFC8795.\n\n> - Usual expansion/detail in/of Manageability, Security, and IANA\n> considerations.\n> \n\n[Authors] We are tracking these as open issues in github with the target to complete these sections before WG LC\n\n> \n> BR, Dan.  \n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/CApuyikZmOC1QoFFD0ZXqxS4ElM/",
       "createdAt": "2026-07-29T23:14:16Z",
-      "updatedAt": "2026-07-29T23:14:43Z",
+      "updatedAt": "2026-07-30T10:24:24Z",
       "closedAt": null,
       "comments": []
     }
