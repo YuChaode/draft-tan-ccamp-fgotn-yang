@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-02T01:43:30.767645+00:00",
+  "timestamp": "2026-08-27T05:35:34.524310+00:00",
   "repo": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
   "labels": [
     {
@@ -2379,7 +2379,7 @@
       "labels": [],
       "body": "Update the JSON example: Under 100G\r\nStep1: No server layer ODUk are setup\r\nStep2: One ODU1 server layer tunnel has been setup to carry fgOTN traffic between NE1 and NE2; Two ODU0 server layer tunnel has been setup to carry fgOTN traffic between NE2 and NE4",
       "createdAt": "2026-06-17T10:15:27Z",
-      "updatedAt": "2026-07-23T17:21:59Z",
+      "updatedAt": "2026-08-27T03:39:43Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "a51b32832d90cf615146454fba93c9ab982847df",
