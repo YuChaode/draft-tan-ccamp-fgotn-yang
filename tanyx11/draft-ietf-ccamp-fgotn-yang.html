@@ -11,7 +11,8 @@
 <meta content="Chaode Yu" name="author">
 <meta content="Xing Zhao" name="author">
 <meta content="
-       This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1Gbit/s client signals in transport network. 
+       Fine grain Optical Transport Network (fgOTN) is a data plane technology, specified in ITU-T Recommendation G.709/Y.1331 (2020) Amd. 3, which complements existing OTN by providing bandwidth efficient support for sub-1Gbit/s services. 
+       This document defines YANG data models to describe the topology and tunnel information of an fgOTN network. 
     " name="description">
 <meta content="xml2rfc 3.34.0" name="generator">
 <meta content="next generation" name="keyword">
@@ -20,14 +21,14 @@
 <meta content="draft-ietf-ccamp-fgotn-yang-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.34.0
-    Python 3.14.5
+    Python 3.14.7
     ConfigArgParse 1.7.5
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.10.1
+    platformdirs 4.11.3
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
@@ -67,7 +68,6 @@
   src: local('Lora Italic'), local('Lora-Italic'), url('https://martinthomson.github.io/rfc-css/fonts/lora-italic-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-024F, U+0259, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20CF, U+2113, U+2C60-2C7F, U+A720-A7FF;
 }
-
 @font-face {
   font-family: 'Lora';
   font-style: italic;
@@ -116,7 +116,6 @@
   src: local('Lora Regular'), local('Lora-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/lora-regular-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
-
 @font-face {
   font-family: 'Lora';
   font-style: normal;
@@ -181,7 +180,6 @@
   font-display: swap;
   src: local('Oxygen Mono'), local('OxygenMono-Regular'), url('https://martinthomson.github.io/rfc-css/fonts/oxygenmono-regular-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
 }
 
 @font-face {
@@ -1050,11 +1048,11 @@ svg {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">Fine grain OTN YANG</td>
-<td class="right">July 2026</td>
+<td class="right">August 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Tan, et al.</td>
-<td class="center">Expires 24 January 2027</td>
+<td class="center">Expires 1 March 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1067,12 +1065,12 @@ svg {
 <dd class="internet-draft">draft-ietf-ccamp-fgotn-yang-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-07-23" class="published">23 July 2026</time>
+<time datetime="2026-08-28" class="published">28 August 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-01-24">24 January 2027</time></dd>
+<dd class="expires"><time datetime="2027-03-01">1 March 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1101,7 +1099,8 @@ svg {
 <h1 id="title">YANG Data Models for fine grain Optical Transport Network</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
-<p id="section-abstract-1">This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1Gbit/s client signals in transport network.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-1">Fine grain Optical Transport Network (fgOTN) is a data plane technology, specified in ITU-T Recommendation G.709/Y.1331 (2020) Amd. 3, which complements existing OTN by providing bandwidth efficient support for sub-1Gbit/s services.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">This document defines YANG data models to describe the topology and tunnel information of an fgOTN network.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-about-this-document">
@@ -1138,7 +1137,7 @@ svg {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 24 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 1 March 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1268,13 +1267,16 @@ svg {
             <p id="section-toc.1-1.15.1"><a href="#appendix-A" class="auto internal xref">Appendix A</a>.  <a href="#name-multi-domain-fgotn-hitless-" class="internal xref">Multi-domain fgOTN Hitless Resizing Process</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.16">
-            <p id="section-toc.1-1.16.1"><a href="#appendix-B" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
+            <p id="section-toc.1-1.16.1"><a href="#appendix-B" class="auto internal xref">Appendix B</a>.  <a href="#name-json-examples" class="internal xref">JSON Examples</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.17">
-            <p id="section-toc.1-1.17.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+            <p id="section-toc.1-1.17.1"><a href="#appendix-C" class="auto internal xref"></a><a href="#name-acknowledgments" class="internal xref">Acknowledgments</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.18">
-            <p id="section-toc.1-1.18.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
+            <p id="section-toc.1-1.18.1"><a href="#appendix-D" class="auto internal xref"></a><a href="#name-contributors" class="internal xref">Contributors</a></p>
+</li>
+          <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.19">
+            <p id="section-toc.1-1.19.1"><a href="#appendix-E" class="auto internal xref"></a><a href="#name-authors-addresses" class="internal xref">Authors' Addresses</a></p>
 </li>
         </ul>
 </nav>
@@ -1295,7 +1297,7 @@ svg {
         <h3 id="name-terminology-and-notations">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-terminology-and-notations" class="section-name selfRef">Terminology and Notations</a>
         </h3>
-<p id="section-1.1-1">Some of the key terms used in this document are listed as follow.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+<p id="section-1.1-1">The following terms are defined in <span>[<a href="#ITU-T_G.709" class="cite xref">ITU-T_G.709</a>]</span> and in <span>[<a href="#ITU-T_G.709.20" class="cite xref">ITU-T_G.709.20</a>]</span> and are not redefined here:<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <ul class="normal">
 <li class="normal" id="section-1.1-2.1">
             <p id="section-1.1-2.1.1">fgTS: fine grain Tributary Slot.<a href="#section-1.1-2.1.1" class="pilcrow">¶</a></p>
@@ -1440,30 +1442,93 @@ The allocation of TS to support fgOTN switching maybe different in access ring a
 All link bandwidth information that supports fgOTN should be reported to MDSC by the PNC controller. E.g. there could be three ODU0 allocated in the access ring while there could be two ODU2 are allocated in the metro ring to support fgOTN switching. In this example, the server layer ODUk tunnel for fgOTN tunnel from node A to node E is ODU0, and the server layer tunnel from node E to node G is ODU2. The server layer tunnel for fgOTN tunnel will include one ODU0 tunnel and one ODU2 tunnel.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 <span id="name-the-scenario-to-retrieve-se"></span><div id="fig-multiplexing">
 <figure id="figure-1">
-          <div class="alignLeft art-ascii-art art-text artwork" id="section-2.1-2.1">
-<pre>
-      +-----+
-      |  A  | \                                 |
-      +-----+  \            Domain 1            |      Domain 2
-         |      \                               |
-         |  10G  \                              |
-         |        \                             |
-      +-----+       +-----+         +-----+     |     +-----+
-      |  B  | \     |  E  |---------|  G  |-----------|  I  |---------
-      +-----+  \  / +-----+         +-----+           +-----+
-                \/    |      100G      |                 |    100G
-                /\    |                |                 |
-      +-----+  /  \ +-----+         +-----+           +-----+
-      |  C  | /     |  F  |---------|  H  |-----------|  J  |---------
-      +-----+       +-----+         +-----+           +-----+
-         |         /
-         |  10G   /
-         |       /
-      +-----+   /
-      |  D  |  /
-      +-----+
-
-</pre>
+          <div id="section-2.1-2.1">
+            <div class="alignLeft art-svg artwork" id="section-2.1-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="384" width="496" viewBox="0 0 496 384" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,32 L 8,64" fill="none" stroke="black"></path>
+                <path d="M 8,128 L 8,160" fill="none" stroke="black"></path>
+                <path d="M 8,208 L 8,240" fill="none" stroke="black"></path>
+                <path d="M 8,304 L 8,336" fill="none" stroke="black"></path>
+                <path d="M 32,64 L 32,128" fill="none" stroke="black"></path>
+                <path d="M 32,240 L 32,304" fill="none" stroke="black"></path>
+                <path d="M 56,32 L 56,64" fill="none" stroke="black"></path>
+                <path d="M 56,128 L 56,160" fill="none" stroke="black"></path>
+                <path d="M 56,208 L 56,240" fill="none" stroke="black"></path>
+                <path d="M 56,304 L 56,336" fill="none" stroke="black"></path>
+                <path d="M 128,128 L 128,160" fill="none" stroke="black"></path>
+                <path d="M 128,208 L 128,240" fill="none" stroke="black"></path>
+                <path d="M 152,160 L 152,208" fill="none" stroke="black"></path>
+                <path d="M 176,128 L 176,160" fill="none" stroke="black"></path>
+                <path d="M 176,208 L 176,240" fill="none" stroke="black"></path>
+                <path d="M 248,128 L 248,160" fill="none" stroke="black"></path>
+                <path d="M 248,208 L 248,240" fill="none" stroke="black"></path>
+                <path d="M 272,160 L 272,208" fill="none" stroke="black"></path>
+                <path d="M 296,128 L 296,160" fill="none" stroke="black"></path>
+                <path d="M 296,208 L 296,240" fill="none" stroke="black"></path>
+                <path d="M 336,48 L 336,136" fill="none" stroke="black"></path>
+                <path d="M 368,128 L 368,160" fill="none" stroke="black"></path>
+                <path d="M 368,208 L 368,240" fill="none" stroke="black"></path>
+                <path d="M 392,160 L 392,208" fill="none" stroke="black"></path>
+                <path d="M 416,128 L 416,160" fill="none" stroke="black"></path>
+                <path d="M 416,208 L 416,240" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 56,32" fill="none" stroke="black"></path>
+                <path d="M 56,48 L 88,48" fill="none" stroke="black"></path>
+                <path d="M 8,64 L 56,64" fill="none" stroke="black"></path>
+                <path d="M 8,128 L 56,128" fill="none" stroke="black"></path>
+                <path d="M 128,128 L 176,128" fill="none" stroke="black"></path>
+                <path d="M 248,128 L 296,128" fill="none" stroke="black"></path>
+                <path d="M 368,128 L 416,128" fill="none" stroke="black"></path>
+                <path d="M 56,144 L 72,144" fill="none" stroke="black"></path>
+                <path d="M 112,144 L 128,144" fill="none" stroke="black"></path>
+                <path d="M 176,144 L 248,144" fill="none" stroke="black"></path>
+                <path d="M 296,144 L 368,144" fill="none" stroke="black"></path>
+                <path d="M 416,144 L 488,144" fill="none" stroke="black"></path>
+                <path d="M 8,160 L 56,160" fill="none" stroke="black"></path>
+                <path d="M 128,160 L 176,160" fill="none" stroke="black"></path>
+                <path d="M 248,160 L 296,160" fill="none" stroke="black"></path>
+                <path d="M 368,160 L 416,160" fill="none" stroke="black"></path>
+                <path d="M 8,208 L 56,208" fill="none" stroke="black"></path>
+                <path d="M 128,208 L 176,208" fill="none" stroke="black"></path>
+                <path d="M 248,208 L 296,208" fill="none" stroke="black"></path>
+                <path d="M 368,208 L 416,208" fill="none" stroke="black"></path>
+                <path d="M 56,224 L 72,224" fill="none" stroke="black"></path>
+                <path d="M 112,224 L 128,224" fill="none" stroke="black"></path>
+                <path d="M 176,224 L 248,224" fill="none" stroke="black"></path>
+                <path d="M 296,224 L 368,224" fill="none" stroke="black"></path>
+                <path d="M 416,224 L 488,224" fill="none" stroke="black"></path>
+                <path d="M 8,240 L 56,240" fill="none" stroke="black"></path>
+                <path d="M 128,240 L 176,240" fill="none" stroke="black"></path>
+                <path d="M 248,240 L 296,240" fill="none" stroke="black"></path>
+                <path d="M 368,240 L 416,240" fill="none" stroke="black"></path>
+                <path d="M 8,304 L 56,304" fill="none" stroke="black"></path>
+                <path d="M 56,320 L 88,320" fill="none" stroke="black"></path>
+                <path d="M 8,336 L 56,336" fill="none" stroke="black"></path>
+                <path d="M 72,144 L 112,224" fill="none" stroke="black"></path>
+                <path d="M 88,48 L 128,128" fill="none" stroke="black"></path>
+                <path d="M 72,224 L 112,144" fill="none" stroke="black"></path>
+                <path d="M 88,320 L 128,240" fill="none" stroke="black"></path>
+                <g class="text">
+                  <text x="32" y="52">A</text>
+                  <text x="220" y="68">Domain</text>
+                  <text x="256" y="68">1</text>
+                  <text x="412" y="68">Domain</text>
+                  <text x="448" y="68">2</text>
+                  <text x="64" y="100">10G</text>
+                  <text x="32" y="148">B</text>
+                  <text x="152" y="148">E</text>
+                  <text x="272" y="148">G</text>
+                  <text x="392" y="148">I</text>
+                  <text x="212" y="180">100G</text>
+                  <text x="460" y="180">100G</text>
+                  <text x="32" y="228">C</text>
+                  <text x="152" y="228">F</text>
+                  <text x="272" y="228">H</text>
+                  <text x="392" y="228">J</text>
+                  <text x="64" y="276">10G</text>
+                  <text x="32" y="324">D</text>
+                </g>
+              </svg><a href="#section-2.1-2.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
 <a href="#name-the-scenario-to-retrieve-se" class="selfRef">The Scenario to Retrieve Server Tunnels</a>
@@ -1480,22 +1545,63 @@ All link bandwidth information that supports fgOTN should be reported to MDSC by
 <p id="section-2.2-2">In <a href="#fig-service" class="auto internal xref">Figure 2</a>, assuming that the server layer ODUk tunnel for the fgOTN primary tunnel from node f1 to node f2 is ODU0, the server layer tunnel from node f2 to node f3 is ODU2, and the server layer tunnel from node f3 to node f4 is ODU1. Assuming the server layer ODUk tunnel for the fgOTN secondary tunnel from node f1 to node f2 is ODU2. We need to setup four server layer ODUk tunnels before setting up an fgODUflex tunnel with a primary path and a secondary path to provide protection. To support multi-layer path splicing, we should make some extension on the dependency tunnel structure or on the path element, such as extending the working roles and index of the tunnels.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
 <span id="name-multi-layer-path-splicing-sc"></span><div id="fig-service">
 <figure id="figure-2">
-          <div class="alignLeft art-ascii-art art-text artwork" id="section-2.2-3.1">
-<pre>
-                   +-----+            +-----+
-               ----|  f2 |------------|  f3 |----
-              /    +-----+            +-----+    \
-             / ----------primary-path------------ \
-            / /                                  \ \
-         +-----+                                +-----+
-         |  f1 |                                |  f4 |
-         +-----+                                +-----+
-            \ \                                  / /
-             \ ---------secondary-path----------- /
-              \    +------+          +------+    /
-               ----| N-f5 |----------| N-f6 |----
-                   +------+          +------+
-</pre>
+          <div id="section-2.2-3.1">
+            <div class="alignLeft art-svg artwork" id="section-2.2-3.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="256" width="376" viewBox="0 0 376 256" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,112 L 8,144" fill="none" stroke="black"></path>
+                <path d="M 56,112 L 56,144" fill="none" stroke="black"></path>
+                <path d="M 88,32 L 88,64" fill="none" stroke="black"></path>
+                <path d="M 88,192 L 88,224" fill="none" stroke="black"></path>
+                <path d="M 136,32 L 136,64" fill="none" stroke="black"></path>
+                <path d="M 144,192 L 144,224" fill="none" stroke="black"></path>
+                <path d="M 232,192 L 232,224" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 240,64" fill="none" stroke="black"></path>
+                <path d="M 288,32 L 288,64" fill="none" stroke="black"></path>
+                <path d="M 288,192 L 288,224" fill="none" stroke="black"></path>
+                <path d="M 320,112 L 320,144" fill="none" stroke="black"></path>
+                <path d="M 368,112 L 368,144" fill="none" stroke="black"></path>
+                <path d="M 88,32 L 136,32" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 288,32" fill="none" stroke="black"></path>
+                <path d="M 56,48 L 88,48" fill="none" stroke="black"></path>
+                <path d="M 136,48 L 240,48" fill="none" stroke="black"></path>
+                <path d="M 288,48 L 320,48" fill="none" stroke="black"></path>
+                <path d="M 88,64 L 136,64" fill="none" stroke="black"></path>
+                <path d="M 240,64 L 288,64" fill="none" stroke="black"></path>
+                <path d="M 56,80 L 120,80" fill="none" stroke="black"></path>
+                <path d="M 240,80 L 320,80" fill="none" stroke="black"></path>
+                <path d="M 8,112 L 56,112" fill="none" stroke="black"></path>
+                <path d="M 320,112 L 368,112" fill="none" stroke="black"></path>
+                <path d="M 8,144 L 56,144" fill="none" stroke="black"></path>
+                <path d="M 320,144 L 368,144" fill="none" stroke="black"></path>
+                <path d="M 56,176 L 112,176" fill="none" stroke="black"></path>
+                <path d="M 248,176 L 320,176" fill="none" stroke="black"></path>
+                <path d="M 88,192 L 144,192" fill="none" stroke="black"></path>
+                <path d="M 232,192 L 288,192" fill="none" stroke="black"></path>
+                <path d="M 56,208 L 88,208" fill="none" stroke="black"></path>
+                <path d="M 144,208 L 232,208" fill="none" stroke="black"></path>
+                <path d="M 288,208 L 320,208" fill="none" stroke="black"></path>
+                <path d="M 88,224 L 144,224" fill="none" stroke="black"></path>
+                <path d="M 232,224 L 288,224" fill="none" stroke="black"></path>
+                <path d="M 24,144 L 56,208" fill="none" stroke="black"></path>
+                <path d="M 40,144 L 56,176" fill="none" stroke="black"></path>
+                <path d="M 320,80 L 336,112" fill="none" stroke="black"></path>
+                <path d="M 320,48 L 352,112" fill="none" stroke="black"></path>
+                <path d="M 24,112 L 56,48" fill="none" stroke="black"></path>
+                <path d="M 40,112 L 56,80" fill="none" stroke="black"></path>
+                <path d="M 320,176 L 336,144" fill="none" stroke="black"></path>
+                <path d="M 320,208 L 352,144" fill="none" stroke="black"></path>
+                <g class="text">
+                  <text x="116" y="52">f2</text>
+                  <text x="268" y="52">f3</text>
+                  <text x="180" y="84">primary-path</text>
+                  <text x="36" y="132">f1</text>
+                  <text x="348" y="132">f4</text>
+                  <text x="180" y="180">secondary-path</text>
+                  <text x="116" y="212">N-f5</text>
+                  <text x="260" y="212">N-f6</text>
+                </g>
+              </svg><a href="#section-2.2-3.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-2" class="selfRef">Figure 2</a>:
 <a href="#name-multi-layer-path-splicing-sc" class="selfRef">Multi-layer Path Splicing Scenario of fgOTN</a>
@@ -1516,29 +1622,103 @@ All link bandwidth information that supports fgOTN should be reported to MDSC by
 <p id="section-2.3-6">Both single domain and multi-domain hitless resizing should be supported. For single domain and multi-domain hitless resizing scenario, the source controller alone report the bandwidth adjustment status to the MDSC coordinator upon completion.<a href="#section-2.3-6" class="pilcrow">¶</a></p>
 <span id="name-hitless-resizing-scenario-o"></span><div id="fig-hitless">
 <figure id="figure-3">
-          <div class="alignLeft art-ascii-art art-text artwork" id="section-2.3-7.1">
-<pre>
-                                 +----------+
-                  ---------------|   MDSC   |--------------
-                 /               |          |              \
-                /                +----------+               \
-               /                      |                      \
-              /                       |                       \
-        +------------+          +------------+          +------------+
-        | Controller |          | Controller |          | Controller |
-        |     1      |          |     2      |          |     3      |
-        +------------+          +------------+          +------------+
-
-                                 End-to-end fgOTN service
-   &lt;-----------------------------------------------------------------------&gt;
-   +------+     +------+     +------+     +------+     +------+     +------+
-   | node |-----| node |-----| node |-----| node |-----| node |-----| node |
-   |  1   |-----|  2   |-----|  3   |-----|  4   |-----|  5   |-----|  6   |
-   +------+     +------+  |  +------+     +------+   | +------+     +------+
-    source                |                          |          destination
-          Domain 1        |         Domain 2         |       Domain 3
-                          |                          |
-</pre>
+          <div id="section-2.3-7.1">
+            <div class="alignLeft art-svg artwork" id="section-2.3-7.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="384" width="568" viewBox="0 0 568 384" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,240 L 8,288" fill="none" stroke="black"></path>
+                <path d="M 40,128 L 40,176" fill="none" stroke="black"></path>
+                <path d="M 64,240 L 64,288" fill="none" stroke="black"></path>
+                <path d="M 104,240 L 104,288" fill="none" stroke="black"></path>
+                <path d="M 144,128 L 144,176" fill="none" stroke="black"></path>
+                <path d="M 160,240 L 160,288" fill="none" stroke="black"></path>
+                <path d="M 184,280 L 184,336" fill="none" stroke="black"></path>
+                <path d="M 208,240 L 208,288" fill="none" stroke="black"></path>
+                <path d="M 232,128 L 232,176" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 240,80" fill="none" stroke="black"></path>
+                <path d="M 264,240 L 264,288" fill="none" stroke="black"></path>
+                <path d="M 280,80 L 280,128" fill="none" stroke="black"></path>
+                <path d="M 304,240 L 304,288" fill="none" stroke="black"></path>
+                <path d="M 328,32 L 328,80" fill="none" stroke="black"></path>
+                <path d="M 336,128 L 336,176" fill="none" stroke="black"></path>
+                <path d="M 360,240 L 360,288" fill="none" stroke="black"></path>
+                <path d="M 384,280 L 384,336" fill="none" stroke="black"></path>
+                <path d="M 408,240 L 408,288" fill="none" stroke="black"></path>
+                <path d="M 424,128 L 424,176" fill="none" stroke="black"></path>
+                <path d="M 464,240 L 464,288" fill="none" stroke="black"></path>
+                <path d="M 504,240 L 504,288" fill="none" stroke="black"></path>
+                <path d="M 528,128 L 528,176" fill="none" stroke="black"></path>
+                <path d="M 560,240 L 560,288" fill="none" stroke="black"></path>
+                <path d="M 240,32 L 328,32" fill="none" stroke="black"></path>
+                <path d="M 120,48 L 240,48" fill="none" stroke="black"></path>
+                <path d="M 328,48 L 440,48" fill="none" stroke="black"></path>
+                <path d="M 240,80 L 328,80" fill="none" stroke="black"></path>
+                <path d="M 40,128 L 144,128" fill="none" stroke="black"></path>
+                <path d="M 232,128 L 336,128" fill="none" stroke="black"></path>
+                <path d="M 424,128 L 528,128" fill="none" stroke="black"></path>
+                <path d="M 40,176 L 144,176" fill="none" stroke="black"></path>
+                <path d="M 232,176 L 336,176" fill="none" stroke="black"></path>
+                <path d="M 424,176 L 528,176" fill="none" stroke="black"></path>
+                <path d="M 16,224 L 552,224" fill="none" stroke="black"></path>
+                <path d="M 8,240 L 64,240" fill="none" stroke="black"></path>
+                <path d="M 104,240 L 160,240" fill="none" stroke="black"></path>
+                <path d="M 208,240 L 264,240" fill="none" stroke="black"></path>
+                <path d="M 304,240 L 360,240" fill="none" stroke="black"></path>
+                <path d="M 408,240 L 464,240" fill="none" stroke="black"></path>
+                <path d="M 504,240 L 560,240" fill="none" stroke="black"></path>
+                <path d="M 64,256 L 104,256" fill="none" stroke="black"></path>
+                <path d="M 160,256 L 208,256" fill="none" stroke="black"></path>
+                <path d="M 264,256 L 304,256" fill="none" stroke="black"></path>
+                <path d="M 360,256 L 408,256" fill="none" stroke="black"></path>
+                <path d="M 464,256 L 504,256" fill="none" stroke="black"></path>
+                <path d="M 64,272 L 104,272" fill="none" stroke="black"></path>
+                <path d="M 160,272 L 208,272" fill="none" stroke="black"></path>
+                <path d="M 264,272 L 304,272" fill="none" stroke="black"></path>
+                <path d="M 360,272 L 408,272" fill="none" stroke="black"></path>
+                <path d="M 464,272 L 504,272" fill="none" stroke="black"></path>
+                <path d="M 8,288 L 64,288" fill="none" stroke="black"></path>
+                <path d="M 104,288 L 160,288" fill="none" stroke="black"></path>
+                <path d="M 208,288 L 264,288" fill="none" stroke="black"></path>
+                <path d="M 304,288 L 360,288" fill="none" stroke="black"></path>
+                <path d="M 408,288 L 464,288" fill="none" stroke="black"></path>
+                <path d="M 504,288 L 560,288" fill="none" stroke="black"></path>
+                <path d="M 440,48 L 476,120" fill="none" stroke="black"></path>
+                <path d="M 80,128 L 120,48" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="560,224 548,218.4 548,229.6" fill="black" transform="rotate(0,552,224)"></polygon>
+                <polygon class="arrowhead" points="24,224 12,218.4 12,229.6" fill="black" transform="rotate(180,16,224)"></polygon>
+                <g class="text">
+                  <text x="284" y="52">MDSC</text>
+                  <text x="92" y="148">Controller</text>
+                  <text x="284" y="148">Controller</text>
+                  <text x="476" y="148">Controller</text>
+                  <text x="88" y="164">1</text>
+                  <text x="280" y="164">2</text>
+                  <text x="472" y="164">3</text>
+                  <text x="212" y="212">End-to-end</text>
+                  <text x="280" y="212">fgOTN</text>
+                  <text x="336" y="212">service</text>
+                  <text x="36" y="260">node</text>
+                  <text x="132" y="260">node</text>
+                  <text x="236" y="260">node</text>
+                  <text x="332" y="260">node</text>
+                  <text x="436" y="260">node</text>
+                  <text x="532" y="260">node</text>
+                  <text x="32" y="276">1</text>
+                  <text x="128" y="276">2</text>
+                  <text x="232" y="276">3</text>
+                  <text x="328" y="276">4</text>
+                  <text x="432" y="276">5</text>
+                  <text x="528" y="276">6</text>
+                  <text x="28" y="308">source</text>
+                  <text x="520" y="308">destination</text>
+                  <text x="76" y="324">Domain</text>
+                  <text x="112" y="324">1</text>
+                  <text x="284" y="324">Domain</text>
+                  <text x="320" y="324">2</text>
+                  <text x="468" y="324">Domain</text>
+                  <text x="504" y="324">3</text>
+                </g>
+              </svg><a href="#section-2.3-7.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-3" class="selfRef">Figure 3</a>:
 <a href="#name-hitless-resizing-scenario-o" class="selfRef">Hitless Resizing Scenario of fgOTN</a>
@@ -1581,31 +1761,53 @@ All link bandwidth information that supports fgOTN should be reported to MDSC by
 <p id="section-4.1-3"><span>[<a href="#RFC8345" class="cite xref">RFC8345</a>]</span> defines an abstract (generic, or base) YANG data model for network/service topologies and inventories, and provides the fundamental model for <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. OTN topology module in <span>[<a href="#I-D.ietf-ccamp-otn-topo-yang" class="cite xref">I-D.ietf-ccamp-otn-topo-yang</a>]</span> augments from the TE topology YANG model defined in <span>[<a href="#RFC8795" class="cite xref">RFC8795</a>]</span>. <a href="#fig-fgotn-topology-relationship" class="auto internal xref">Figure 4</a> shows the augmentation relationship.<a href="#section-4.1-3" class="pilcrow">¶</a></p>
 <span id="name-relationship-between-fgotn-"></span><div id="fig-fgotn-topology-relationship">
 <figure id="figure-4">
-          <div class="alignLeft art-ascii-art art-text artwork" id="section-4.1-4.1">
-<pre>
-    +--------------+      +-----------------------+
-    | ietf-network |      | ietf-network-topology |
-    +--------------+      +-----------------------+
-                ^             ^
-                |_____   _____|
-                      | |
-                      | | Augments
-             +-------------------+
-             | ietf-te-topology  |
-             +-------------------+
-                       ^
-                       | Augments
-                       |
-             +-------------------+
-             | ietf-otn-topology |
-             +-------------------+
-                       ^
-                       | Augments
-                       |
-            +----------+----------+
-            | ietf-fgotn-topology |
-            +---------------------+
-</pre>
+          <div id="section-4.1-4.1">
+            <div class="alignLeft art-svg artwork" id="section-4.1-4.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="400" width="384" viewBox="0 0 384 400" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,32 L 8,64" fill="none" stroke="black"></path>
+                <path d="M 72,336 L 72,368" fill="none" stroke="black"></path>
+                <path d="M 80,144 L 80,176" fill="none" stroke="black"></path>
+                <path d="M 80,240 L 80,272" fill="none" stroke="black"></path>
+                <path d="M 104,72 L 104,104" fill="none" stroke="black"></path>
+                <path d="M 128,32 L 128,64" fill="none" stroke="black"></path>
+                <path d="M 152,104 L 152,144" fill="none" stroke="black"></path>
+                <path d="M 160,184 L 160,240" fill="none" stroke="black"></path>
+                <path d="M 160,280 L 160,336" fill="none" stroke="black"></path>
+                <path d="M 168,104 L 168,144" fill="none" stroke="black"></path>
+                <path d="M 184,32 L 184,64" fill="none" stroke="black"></path>
+                <path d="M 216,72 L 216,104" fill="none" stroke="black"></path>
+                <path d="M 240,144 L 240,176" fill="none" stroke="black"></path>
+                <path d="M 240,240 L 240,272" fill="none" stroke="black"></path>
+                <path d="M 248,336 L 248,368" fill="none" stroke="black"></path>
+                <path d="M 376,32 L 376,64" fill="none" stroke="black"></path>
+                <path d="M 8,32 L 128,32" fill="none" stroke="black"></path>
+                <path d="M 184,32 L 376,32" fill="none" stroke="black"></path>
+                <path d="M 8,64 L 128,64" fill="none" stroke="black"></path>
+                <path d="M 184,64 L 376,64" fill="none" stroke="black"></path>
+                <path d="M 80,144 L 240,144" fill="none" stroke="black"></path>
+                <path d="M 80,176 L 240,176" fill="none" stroke="black"></path>
+                <path d="M 80,240 L 240,240" fill="none" stroke="black"></path>
+                <path d="M 80,272 L 240,272" fill="none" stroke="black"></path>
+                <path d="M 72,336 L 248,336" fill="none" stroke="black"></path>
+                <path d="M 72,368 L 248,368" fill="none" stroke="black"></path>
+                <path d="M 104,104 L 152,104" fill="none" stroke="black"></path>
+                <path d="M 168,104 L 216,104" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="224,72 212,66.4 212,77.6" fill="black" transform="rotate(270,216,72)"></polygon>
+                <polygon class="arrowhead" points="168,280 156,274.4 156,285.6" fill="black" transform="rotate(270,160,280)"></polygon>
+                <polygon class="arrowhead" points="168,184 156,178.4 156,189.6" fill="black" transform="rotate(270,160,184)"></polygon>
+                <polygon class="arrowhead" points="112,72 100,66.4 100,77.6" fill="black" transform="rotate(270,104,72)"></polygon>
+                <g class="text">
+                  <text x="68" y="52">ietf-network</text>
+                  <text x="280" y="52">ietf-network-topology</text>
+                  <text x="212" y="132">Augments</text>
+                  <text x="156" y="164">ietf-te-topology</text>
+                  <text x="204" y="212">Augments</text>
+                  <text x="160" y="260">ietf-otn-topology</text>
+                  <text x="204" y="308">Augments</text>
+                  <text x="160" y="356">ietf-fgotn-topology</text>
+                </g>
+              </svg><a href="#section-4.1-4.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
 <a href="#name-relationship-between-fgotn-" class="selfRef">Relationship between fgOTN topology and OTN topology model</a>
@@ -1620,12 +1822,12 @@ All link bandwidth information that supports fgOTN should be reported to MDSC by
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-bandwidth-augmentation" class="section-name selfRef">Bandwidth Augmentation</a>
         </h3>
 <p id="section-4.2-1">Building upon the OTN topology model, the odu-list structure within the OTN topology YANG module is leveraged to represent the maximum link bandwidth and unreserved bandwidth for fgOTN. As an illustration, if an OTU2 port supports fgOTN, fgOTN is enabled across the entire port. In this case, the odu-type shall be set to ietf-fgotn-types:fgODUflex, with the associated number equal to 952. When a portion of fgts on the port is occupied, the value of maximum link bandwidth remains unchanged, while the number representing available bandwidth decreases accordingly.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="section-4.2-2">
+<div class="lang-json sourcecode" id="section-4.2-2">
 <pre>
-"ietf-otn-topology:odulist": [{
-   "odu-type": "ietf-fgotn-types:fgODUflex",
-   "number": 952
-}]
+  "ietf-otn-topology:odulist": [{
+    "odu-type": "ietf-fgotn-types:fgODUflex",
+    "number": 952
+  }]
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
 </section>
@@ -1636,16 +1838,16 @@ All link bandwidth information that supports fgOTN should be reported to MDSC by
 <a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-label-augmentation" class="section-name selfRef">Label Augmentation</a>
         </h3>
 <p id="section-4.3-1">The model augments the label-restriction list with fgOTN technology-specific label information using the otn-label-range-info grouping defined in <span>[<a href="#I-D.ietf-ccamp-layer1-types" class="cite xref">I-D.ietf-ccamp-layer1-types</a>]</span>.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="section-4.3-2">
+<div class="lang-yangtree sourcecode" id="section-4.3-2">
 <pre>
-augment /nw:networks/tet:te/tet:templates/tet:link-template
-        /tet:te-link-attributes/tet:label-restrictions
-        /tet:label-restriction:
-   +--rw fgts-range* [odu-type odu-ts-number]
-      +--rw odu-type           identityref
-      +--rw odu-ts-number?     fgotnt:ts-list
-      +--rw fgts-reserved?     fgotnt:ts-list
-      +--rw fgts-unreserved?   fgotnt:ts-list
+  augment /nw:networks/tet:te/tet:templates/tet:link-template
+          /tet:te-link-attributes/tet:label-restrictions
+          /tet:label-restriction:
+    +--rw fgts-range* [odu-type odu-ts-number]
+        +--rw odu-type           identityref
+        +--rw odu-ts-number?     fgotnt:ts-list
+        +--rw fgts-reserved?     fgotnt:ts-list
+        +--rw fgts-unreserved?   fgotnt:ts-list
 </pre><a href="#section-4.3-2" class="pilcrow">¶</a>
 </div>
 <p id="section-4.3-3">The fgts-range list is used to describe the availability of fgOTN timeslot in the server ODUk, including the fgts-reserved and fgts-unreserved. The odu-ts-number is used to indicate the index of server ODUk channel.<a href="#section-4.3-3" class="pilcrow">¶</a></p>
@@ -1666,24 +1868,34 @@ augment /nw:networks/tet:te/tet:templates/tet:link-template
 <p id="section-5.1-1">This document aims to describe the data model for fgOTN tunnel. The fgOTN tunnel model augments to OTN tunnel <span>[<a href="#I-D.ietf-ccamp-otn-tunnel-model" class="cite xref">I-D.ietf-ccamp-otn-tunnel-model</a>]</span> with fgOTN-specific parameters, including the bandwidth information and label information. <a href="#fig-fgotn-tunnel-relationship" class="auto internal xref">Figure 5</a> shows the augmentation relationship.<a href="#section-5.1-1" class="pilcrow">¶</a></p>
 <span id="name-relationship-between-fgotn-a"></span><div id="fig-fgotn-tunnel-relationship">
 <figure id="figure-5">
-          <div class="alignLeft art-ascii-art art-text artwork" id="section-5.1-2.1">
-<pre>
-                +------------------+
-                |      ietf-te     |
-                +------------------+
-                          ^
-                          | Augments
-                          |
-                +-----------------+
-                | ietf-otn-tunnel |
-                +-----------------+
-                          ^
-                          | Augments
-                          |
-               +----------+--------+
-               | ietf-fgotn-tunnel |
-               +-------------------+
-</pre>
+          <div id="section-5.1-2.1">
+            <div class="alignLeft art-svg artwork" id="section-5.1-2.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="288" width="176" viewBox="0 0 176 288" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+                <path d="M 8,224 L 8,256" fill="none" stroke="black"></path>
+                <path d="M 16,32 L 16,64" fill="none" stroke="black"></path>
+                <path d="M 16,128 L 16,160" fill="none" stroke="black"></path>
+                <path d="M 96,72 L 96,128" fill="none" stroke="black"></path>
+                <path d="M 96,168 L 96,224" fill="none" stroke="black"></path>
+                <path d="M 160,128 L 160,160" fill="none" stroke="black"></path>
+                <path d="M 168,32 L 168,64" fill="none" stroke="black"></path>
+                <path d="M 168,224 L 168,256" fill="none" stroke="black"></path>
+                <path d="M 16,32 L 168,32" fill="none" stroke="black"></path>
+                <path d="M 16,64 L 168,64" fill="none" stroke="black"></path>
+                <path d="M 16,128 L 160,128" fill="none" stroke="black"></path>
+                <path d="M 16,160 L 160,160" fill="none" stroke="black"></path>
+                <path d="M 8,224 L 168,224" fill="none" stroke="black"></path>
+                <path d="M 8,256 L 168,256" fill="none" stroke="black"></path>
+                <polygon class="arrowhead" points="104,168 92,162.4 92,173.6" fill="black" transform="rotate(270,96,168)"></polygon>
+                <polygon class="arrowhead" points="104,72 92,66.4 92,77.6" fill="black" transform="rotate(270,96,72)"></polygon>
+                <g class="text">
+                  <text x="96" y="52">ietf-te</text>
+                  <text x="140" y="100">Augments</text>
+                  <text x="88" y="148">ietf-otn-tunnel</text>
+                  <text x="140" y="196">Augments</text>
+                  <text x="88" y="244">ietf-fgotn-tunnel</text>
+                </g>
+              </svg><a href="#section-5.1-2.1.1" class="pilcrow">¶</a>
+</div>
 </div>
 <figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
 <a href="#name-relationship-between-fgotn-a" class="selfRef">Relationship between fgOTN and OTN tunnel model</a>
@@ -1699,11 +1911,11 @@ augment /nw:networks/tet:te/tet:templates/tet:link-template
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-bandwidth-augmentation-2" class="section-name selfRef">Bandwidth Augmentation</a>
         </h3>
 <p id="section-5.2-1">The model augment TE bandwidth information of fgOTN tunnel.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
-<div class="alignLeft art-ascii-art art-text artwork" id="section-5.2-2">
+<div class="lang-yangtree sourcecode" id="section-5.2-2">
 <pre>
-augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
-        /otn-tnl:otn/otn-tnl:otn-bandwidth:
-   +--rw fgoduflex-bandwidth?   string
+  augment /te:te/te:tunnels/te:tunnel/te:te-bandwidth/te:technology
+          /otn-tnl:otn/otn-tnl:otn-bandwidth:
+    +--rw fgoduflex-bandwidth?   string
 </pre><a href="#section-5.2-2" class="pilcrow">¶</a>
 </div>
 <p id="section-5.2-3">The string value fgoduflex-bandwidth is used to indicate the bandwidth of this fgOTN tunnel.<a href="#section-5.2-3" class="pilcrow">¶</a></p>
@@ -1808,7 +2020,7 @@ module ietf-fgotn-types {
 <p id="section-7-1"><a href="#fig-fgotn-topo-tree" class="auto internal xref">Figure 7</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-topology" (<a href="#fgotn-topology-yang" class="auto internal xref">Figure 8</a>).<a href="#section-7-1" class="pilcrow">¶</a></p>
 <div id="fig-fgotn-topo-tree">
 <figure id="figure-7">
-        <div class="alignLeft art-ascii-art art-text artwork" id="section-7-2.1">
+        <div class="lang-yangtree sourcecode" id="section-7-2.1">
 <pre>
 module: ietf-fgotn-topology
 
@@ -1998,7 +2210,7 @@ module ietf-fgotn-topology {
 <p id="section-9-1"><a href="#fig-fgotn-tunnel-tree" class="auto internal xref">Figure 9</a> below shows the tree diagram of the YANG data model defined in module "ietf-fgotn-tunnel" (<a href="#fgotn-tunnel-yang" class="auto internal xref">Figure 10</a>).<a href="#section-9-1" class="pilcrow">¶</a></p>
 <div id="fig-fgotn-tunnel-tree">
 <figure id="figure-9">
-        <div class="alignLeft art-ascii-art art-text artwork" id="section-9-2.1">
+        <div class="lang-yangtree sourcecode" id="section-9-2.1">
 <pre>
 module: ietf-fgotn-tunnel
 
@@ -2267,7 +2479,7 @@ module ietf-fgotn-tunnel {
 <dd class="break"></dd>
 <dt id="I-D.ietf-ccamp-otn-tunnel-model">[I-D.ietf-ccamp-otn-tunnel-model]</dt>
         <dd>
-<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">Y. Xu</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network (OTN) Tunnels and Label Switched Paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-25</span>, <time datetime="2026-05-27" class="refDate">27 May 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-25">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-25</a>&gt;</span>. </dd>
+<span class="refAuthor">Zheng, H.</span>, <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Belotti, S.</span>, <span class="refAuthor">Lopez, V.</span>, and <span class="refAuthor">Y. Xu</span>, <span class="refTitle">"A YANG Data Model for Optical Transport Network (OTN) Tunnels and Label Switched Paths"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-ccamp-otn-tunnel-model-26</span>, <time datetime="2026-08-13" class="refDate">13 August 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-26">https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-otn-tunnel-model-26</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-teas-yang-te">[I-D.ietf-teas-yang-te]</dt>
         <dd>
@@ -2318,6 +2530,10 @@ module ietf-fgotn-tunnel {
         <dd>
 <span class="refAuthor">Busi, I.</span>, <span class="refAuthor">Guo, A.</span>, <span class="refAuthor">Liu, X.</span>, <span class="refAuthor">Saad, T.</span>, and <span class="refAuthor">I. Bryskin</span>, <span class="refTitle">"Common YANG Data Types for Traffic Engineering"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-teas-rfc8776-update-24</span>, <time datetime="2026-06-12" class="refDate">12 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-24">https://datatracker.ietf.org/doc/html/draft-ietf-teas-rfc8776-update-24</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC7951">[RFC7951]</dt>
+        <dd>
+<span class="refAuthor">Lhotka, L.</span>, <span class="refTitle">"JSON Encoding of Data Modeled with YANG"</span>, <span class="seriesInfo">RFC 7951</span>, <span class="seriesInfo">DOI 10.17487/RFC7951</span>, <time datetime="2016-08" class="refDate">August 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc7951">https://www.rfc-editor.org/rfc/rfc7951</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC8345">[RFC8345]</dt>
         <dd>
 <span class="refAuthor">Clemm, A.</span>, <span class="refAuthor">Medved, J.</span>, <span class="refAuthor">Varga, R.</span>, <span class="refAuthor">Bahadur, N.</span>, <span class="refAuthor">Ananthakrishnan, H.</span>, and <span class="refAuthor">X. Liu</span>, <span class="refTitle">"A YANG Data Model for Network Topologies"</span>, <span class="seriesInfo">RFC 8345</span>, <span class="seriesInfo">DOI 10.17487/RFC8345</span>, <time datetime="2018-03" class="refDate">March 2018</time>, <span>&lt;<a href="https://www.rfc-editor.org/rfc/rfc8345">https://www.rfc-editor.org/rfc/rfc8345</a>&gt;</span>. </dd>
@@ -2346,15 +2562,3318 @@ module ietf-fgotn-tunnel {
 <p id="appendix-A-8">During the whole process, all domain controllers, including the intermediate domain Controller 2, need to report the notifications of topology and tunnel resource changes to the MDSC.<a href="#appendix-A-8" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="acknowledgments">
+<div id="json-examples">
 <section id="appendix-B">
+      <h2 id="name-json-examples">
+<a href="#appendix-B" class="section-number selfRef">Appendix B. </a><a href="#name-json-examples" class="section-name selfRef">JSON Examples</a>
+      </h2>
+<p id="appendix-B-1">This appendix contains an example of an instance data tree in JSON
+encoding <span>[<a href="#RFC7951" class="cite xref">RFC7951</a>]</span>.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
+<p id="appendix-B-2">The example instantiates the "ietf-fgotn-topology" model for the OTN
+topology depicted in <a href="#fig-example" class="auto internal xref">Figure 11</a> below.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
+<span id="name-example-of-fgotn-topology"></span><div id="fig-example">
+<figure id="figure-11">
+        <div id="appendix-B-3.1">
+          <div class="alignLeft art-svg artwork" id="appendix-B-3.1.1">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="224" width="440" viewBox="0 0 440 224" class="diagram" text-anchor="middle" font-family="monospace" font-size="13px" stroke-linecap="round">
+              <path d="M 40,96 L 40,128" fill="none" stroke="black"></path>
+              <path d="M 72,48 L 72,96" fill="none" stroke="black"></path>
+              <path d="M 72,128 L 72,176" fill="none" stroke="black"></path>
+              <path d="M 104,96 L 104,128" fill="none" stroke="black"></path>
+              <path d="M 176,32 L 176,64" fill="none" stroke="black"></path>
+              <path d="M 176,160 L 176,192" fill="none" stroke="black"></path>
+              <path d="M 240,32 L 240,64" fill="none" stroke="black"></path>
+              <path d="M 240,160 L 240,192" fill="none" stroke="black"></path>
+              <path d="M 336,96 L 336,128" fill="none" stroke="black"></path>
+              <path d="M 368,48 L 368,96" fill="none" stroke="black"></path>
+              <path d="M 368,128 L 368,176" fill="none" stroke="black"></path>
+              <path d="M 400,96 L 400,128" fill="none" stroke="black"></path>
+              <path d="M 176,32 L 240,32" fill="none" stroke="black"></path>
+              <path d="M 72,48 L 176,48" fill="none" stroke="black"></path>
+              <path d="M 240,48 L 368,48" fill="none" stroke="black"></path>
+              <path d="M 176,64 L 240,64" fill="none" stroke="black"></path>
+              <path d="M 40,96 L 104,96" fill="none" stroke="black"></path>
+              <path d="M 336,96 L 400,96" fill="none" stroke="black"></path>
+              <path d="M 8,112 L 40,112" fill="none" stroke="black"></path>
+              <path d="M 400,112 L 432,112" fill="none" stroke="black"></path>
+              <path d="M 40,128 L 104,128" fill="none" stroke="black"></path>
+              <path d="M 336,128 L 400,128" fill="none" stroke="black"></path>
+              <path d="M 176,160 L 240,160" fill="none" stroke="black"></path>
+              <path d="M 72,176 L 176,176" fill="none" stroke="black"></path>
+              <path d="M 240,176 L 368,176" fill="none" stroke="black"></path>
+              <path d="M 176,192 L 240,192" fill="none" stroke="black"></path>
+              <g class="text">
+                <text x="152" y="36">(1)</text>
+                <text x="264" y="36">(2)</text>
+                <text x="208" y="52">NE2</text>
+                <text x="88" y="84">(2)</text>
+                <text x="352" y="84">(2)</text>
+                <text x="16" y="100">(1)</text>
+                <text x="424" y="100">(1)</text>
+                <text x="72" y="116">NE1</text>
+                <text x="368" y="116">NE4</text>
+                <text x="88" y="148">(3)</text>
+                <text x="352" y="148">(3)</text>
+                <text x="208" y="180">NE3</text>
+                <text x="152" y="196">(1)</text>
+                <text x="264" y="196">(2)</text>
+              </g>
+            </svg><a href="#appendix-B-3.1.1" class="pilcrow">¶</a>
+</div>
+</div>
+<figcaption><a href="#figure-11" class="selfRef">Figure 11</a>:
+<a href="#name-example-of-fgotn-topology" class="selfRef">Example of fgOTN topology</a>
+        </figcaption></figure>
+</div>
+<p id="appendix-B-4">In this network example:<a href="#appendix-B-4" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-5.1">
+          <p id="appendix-B-5.1.1">nodes NE1, NE2, and NE4 support fgOTN switching, while node NE3 does not support fgOTN;<a href="#appendix-B-5.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li class="normal" id="appendix-B-5.2">
+          <p id="appendix-B-5.2.1">all the links are OTU2 links<a href="#appendix-B-5.2.1" class="pilcrow">¶</a></p>
+</li>
+      </ul>
+<p id="appendix-B-6">The topology examples, show how the topology changes in three different steps:<a href="#appendix-B-6" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="normal type-1" id="appendix-B-7">
+<li id="appendix-B-7.1">
+          <p id="appendix-B-7.1.1">No OTN or fgOTN tunnels are setup in the network;<a href="#appendix-B-7.1.1" class="pilcrow">¶</a></p>
+</li>
+        <li id="appendix-B-7.2">
+          <p id="appendix-B-7.2.1">The following ODUk tunnels are setup as server layer tunnels to support fgOTN tunnels:
+  - an ODU1 tunnel between NE1 and NE2;<a href="#appendix-B-7.2.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-7.2.2.1">
+              <p id="appendix-B-7.2.2.1.1">two ODU0 server layer tunnels between NE2 and NE4;<a href="#appendix-B-7.2.2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-B-7.2.2.2">
+              <p id="appendix-B-7.2.2.2.1">one ODU1 server layer tunnel between NE1 and NE4 (through the NE1-NE3-NE4 path)<a href="#appendix-B-7.2.2.2.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+</li>
+        <li id="appendix-B-7.3">
+          <p id="appendix-B-7.3.1">The following fgOTN tunnels are setup in the network:
+  - a 20M protected fgOTN tunnel between NE1 and NE4 with:<a href="#appendix-B-7.3.1" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="appendix-B-7.3.2.1">
+              <p id="appendix-B-7.3.2.1.1">a workting path setup through the NE1-NE2 ODU1 tunnel and the NE2-NE4 ODU0 tunnel;<a href="#appendix-B-7.3.2.1.1" class="pilcrow">¶</a></p>
+</li>
+            <li class="normal" id="appendix-B-7.3.2.2">
+              <p id="appendix-B-7.3.2.2.1">a protectin path setup through the NE1-NE3-NE4 ODU1 tunnel;
+      - an 20M unprotected fgOTN tunnel throught the same NE2-NE4 ODU0 tunnel used by the other fgOTN tunnel.<a href="#appendix-B-7.3.2.2.1" class="pilcrow">¶</a></p>
+</li>
+          </ul>
+</li>
+      </ol>
+<div class="breakable lang-json sourcecode" id="appendix-B-8">
+<pre>
+=============== NOTE: '\' line wrapping per RFC 8792 ================
+
+{
+  "ietf-network:networks": {
+    "network": [
+      {
+        "network-id": "example:otn-topology-example-1",
+        "network-types": {
+          "ietf-te-topology:te-topology": {
+            "ietf-otn-topology:otn-topology": {}
+          }
+        },
+        "ietf-te-topology:te-topology-identifier": {
+          "client-id": 2,
+          "provider-id": 1,
+          "topology-id": "otn-topology-example-1"
+        },
+        "ietf-te-topology:te": {},
+        "ietf-network-topology:link": [
+          {
+            "link-id": "example:link/NE1-2/NE2-1",
+            "source": {
+              "source-node": "NE1",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE2",
+              "dest-tp": "1"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 1
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 4
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE2 (\
+                                                  forward direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE2-1/NE1-2",
+            "source": {
+              "source-node": "NE2",
+              "source-tp": "1"
+            },
+            "destination": {
+              "dest-node": "NE1",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 1
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 4
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE2 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE1-3/NE3-1",
+            "source": {
+              "source-node": "NE1",
+              "source-tp": "3"
+            },
+            "destination": {
+              "dest-node": "NE3",
+              "dest-tp": "1"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 1
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 4
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE3 (\
+                                                  forward direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE3-1/NE1-3",
+            "source": {
+              "source-node": "NE3",
+              "source-tp": "1"
+            },
+            "destination": {
+              "dest-node": "NE1",
+              "dest-tp": "3"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 1
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 4
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 8
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE3 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE4-2/NE2-2",
+            "source": {
+              "source-node": "NE4",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE2",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 1
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 4
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE2 and Node NE4 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE2-2/NE4-2",
+            "source": {
+              "source-node": "NE2",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE4",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 1
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 4
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE2 and Node NE4 (\
+                                                  forward direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE4-3/NE3-2",
+            "source": {
+              "source-node": "NE4",
+              "source-tp": "3"
+            },
+            "destination": {
+              "dest-node": "NE3",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "oper-status": "up",
+              "te-link-attributes": {
+                "admin-status": "up",
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 1
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 4
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 8
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE3 and Node NE4 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE3-2/NE4-3",
+            "source": {
+              "source-node": "NE3",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE4",
+              "dest-tp": "3"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "ff"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 1
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 4
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 8
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE3 and Node NE4 (\
+                                                  forward direction)"
+              }
+            }
+          }
+        ],
+        "node": [
+          {
+            "node-id": "example:NE1",
+            "ietf-te-topology:te-node-id": "192.0.0.1",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE1"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+            {
+                "tp-id": "example:NE1-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "ietf-otn-topology:client-svc": {},
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE1"
+                }
+            },
+            {
+                "tp-id": "example:NE1-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE1"
+                }
+              },
+              {
+                "tp-id": "example:NE1-3",
+                "ietf-te-topology:te-tp-id": 3,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 3 of Node NE1"
+                }
+              }
+            ]
+          },
+          {
+            "node-id": "example:NE2",
+            "ietf-te-topology:te-node-id": "192.0.0.2",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE2"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+              {
+                "tp-id": "example:NE2-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE2"
+                }
+              },
+              {
+                "tp-id": "example:NE2-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE2"
+                }
+              }
+            ]
+          },
+          {
+            "node-id": "example:NE3",
+            "ietf-te-topology:te-node-id": "192.0.0.3",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE3"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+              {
+                "tp-id": "example:NE3-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE3"
+                }
+              },
+              {
+                "tp-id": "example:NE3-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE3"
+                }
+              }
+            ]
+          },
+          {
+            "node-id": "example:NE4",
+            "ietf-te-topology:te-node-id": "192.0.0.4",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE4"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+            {
+                "tp-id": "example:NE4-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "ietf-otn-topology:client-svc": {},
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE4"
+                }
+            },
+            {
+                "tp-id": "example:NE4-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE4"
+                }
+              },
+              {
+                "tp-id": "example:NE4-3",
+                "ietf-te-topology:te-tp-id": 3,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 3 of Node NE4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "network-id": "example:otn-topology-example-2",
+        "network-types": {
+          "ietf-te-topology:te-topology": {
+            "ietf-otn-topology:otn-topology": {}
+          }
+        },
+        "ietf-te-topology:te-topology-identifier": {
+          "client-id": 2,
+          "provider-id": 1,
+          "topology-id": "otn-topology-example-2"
+        },
+        "ietf-te-topology:te": {},
+        "ietf-network-topology:link": [
+          {
+            "link-id": "example:link/NE1-2/NE2-1",
+            "source": {
+              "source-node": "NE1",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE2",
+              "dest-tp": "1"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-reserved": "",
+                          "fgts-unreserved": "1-238"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE2 (\
+                                                  forward direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE2-1/NE1-2",
+            "source": {
+              "source-node": "NE2",
+              "source-tp": "1"
+            },
+            "destination": {
+              "dest-node": "NE1",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-reserved": "",
+                          "fgts-unreserved": "1-238"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE2 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE1-3/NE3-1",
+            "source": {
+              "source-node": "NE1",
+              "source-tp": "3"
+            },
+            "destination": {
+              "dest-node": "NE3",
+              "dest-tp": "1"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-reserved": "",
+                          "fgts-unreserved": "1-238"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE3 (\
+                                                  forward direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE3-1/NE1-3",
+            "source": {
+              "source-node": "NE3",
+              "source-tp": "1"
+            },
+            "destination": {
+              "dest-node": "NE1",
+              "dest-tp": "3"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE3 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE4-2/NE2-2",
+            "source": {
+              "source-node": "NE4",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE2",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "1",
+                          "fgts-reserved": "",
+                          "fgts-unreserved": "1-119"
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "2",
+                          "fgts-reserved": "",
+                          "fgts-unreserved": "1-119"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE2 and Node NE4 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE2-2/NE4-2",
+            "source": {
+              "source-node": "NE2",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE4",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "1",
+                          "fgts-reserved": "",
+                          "fgts-unreserved": "1-119"
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "2",
+                          "fgts-reserved": "",
+                          "fgts-unreserved": "1-119"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE2 and Node NE4 (\
+                                                  forward direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE4-3/NE3-2",
+            "source": {
+              "source-node": "NE4",
+              "source-tp": "3"
+            },
+            "destination": {
+              "dest-node": "NE3",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "oper-status": "up",
+              "te-link-attributes": {
+                "admin-status": "up",
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-reserved": "",
+                          "fgts-unreserved": "1-238"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE3 and Node NE4 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE3-2/NE4-3",
+            "source": {
+              "source-node": "NE3",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE4",
+              "dest-tp": "3"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE3 and Node NE4 (\
+                                                  forward direction)"
+              }
+            }
+          }
+        ],
+        "node": [
+          {
+            "node-id": "example:NE1",
+            "ietf-te-topology:te-node-id": "192.0.0.1",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE1"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+            {
+                "tp-id": "example:NE1-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "ietf-otn-topology:client-svc": {},
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE1"
+                }
+            },
+            {
+                "tp-id": "example:NE1-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE1"
+                }
+              },
+              {
+                "tp-id": "example:NE1-3",
+                "ietf-te-topology:te-tp-id": 3,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 3 of Node NE1"
+                }
+              }
+            ]
+          },
+          {
+            "node-id": "example:NE2",
+            "ietf-te-topology:te-node-id": "192.0.0.2",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE2"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+              {
+                "tp-id": "example:NE2-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE2"
+                }
+              },
+              {
+                "tp-id": "example:NE2-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE2"
+                }
+              }
+            ]
+          },
+          {
+            "node-id": "example:NE3",
+            "ietf-te-topology:te-node-id": "192.0.0.3",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE3"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+              {
+                "tp-id": "example:NE3-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE3"
+                }
+              },
+              {
+                "tp-id": "example:NE3-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE3"
+                }
+              }
+            ]
+          },
+          {
+            "node-id": "example:NE4",
+            "ietf-te-topology:te-node-id": "192.0.0.4",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE4"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+            {
+                "tp-id": "example:NE4-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "ietf-otn-topology:client-svc": {},
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE4"
+                }
+            },
+            {
+                "tp-id": "example:NE4-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE4"
+                }
+              },
+              {
+                "tp-id": "example:NE4-3",
+                "ietf-te-topology:te-tp-id": 3,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 3 of Node NE4"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "network-id": "example:otn-topology-example-3",
+        "network-types": {
+          "ietf-te-topology:te-topology": {
+            "ietf-otn-topology:otn-topology": {}
+          }
+        },
+        "ietf-te-topology:te-topology-identifier": {
+          "client-id": 2,
+          "provider-id": 1,
+          "topology-id": "otn-topology-example-3"
+        },
+        "ietf-te-topology:te": {},
+        "ietf-network-topology:link": [
+          {
+            "link-id": "example:link/NE1-2/NE2-1",
+            "source": {
+              "source-node": "NE1",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE2",
+              "dest-tp": "1"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-reserved": "1-2",
+                          "fgts-unreserved": "3-238"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 950
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE2 (\
+                                                  forward direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE2-1/NE1-2",
+            "source": {
+              "source-node": "NE2",
+              "source-tp": "1"
+            },
+            "destination": {
+              "dest-node": "NE1",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-reserved": "1-2",
+                          "fgts-unreserved": "3-238"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 950
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE2 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE1-3/NE3-1",
+            "source": {
+              "source-node": "NE1",
+              "source-tp": "3"
+            },
+            "destination": {
+              "dest-node": "NE3",
+              "dest-tp": "1"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-reserved": "4-5",
+                          "fgts-unreserved": "1-3,6-238"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE3 (\
+                                                  forward direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE3-1/NE1-3",
+            "source": {
+              "source-node": "NE3",
+              "source-tp": "1"
+            },
+            "destination": {
+              "dest-node": "NE1",
+              "dest-tp": "3"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE1 and Node NE3 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE4-2/NE2-2",
+            "source": {
+              "source-node": "NE4",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE2",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "1",
+                          "fgts-reserved": "2-4,20",
+                          "fgts-unreserved": "1,5-19,21-119"
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "2",
+                          "fgts-reserved": "",
+                          "fgts-unreserved": "1-119"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 948
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE2 and Node NE4 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE2-2/NE4-2",
+            "source": {
+              "source-node": "NE2",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE4",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "1",
+                          "fgts-reserved": "2-4,20",
+                          "fgts-unreserved": "1,5-19,21-119"
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "odu-ts-number": "2",
+                          "fgts-reserved": "",
+                          "fgts-unreserved": "1-119"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 948
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE2 and Node NE4 (\
+                                                  forward direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE4-3/NE3-2",
+            "source": {
+              "source-node": "NE4",
+              "source-tp": "3"
+            },
+            "destination": {
+              "dest-node": "NE3",
+              "dest-tp": "2"
+            },
+            "ietf-te-topology:te": {
+              "oper-status": "up",
+              "te-link-attributes": {
+                "admin-status": "up",
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc",
+                      "ietf-fgotn-topology:fgts-range": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "odu-ts-number": "1-2",
+                          "fgts-reserved": "4-5",
+                          "fgts-unreserved": "1-3,6-238"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        },
+                        {
+                          "odu-type": "ietf-fgotn-types:fgODUflex",
+                          "number": 952
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          },
+                          {
+                            "odu-type": "ietf-fgotn-types:fgODUflex",
+                            "number": 952
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE3 and Node NE4 (\
+                                                  reverse direction)"
+              }
+            }
+          },
+          {
+            "link-id": "example:link/NE3-2/NE4-3",
+            "source": {
+              "source-node": "NE3",
+              "source-tp": "2"
+            },
+            "destination": {
+              "dest-node": "NE4",
+              "dest-tp": "3"
+            },
+            "ietf-te-topology:te": {
+              "te-link-attributes": {
+                "interface-switching-capability": [
+                  {
+                    "encoding": "ietf-te-types:lsp-encoding-oduk",
+                    "switching-capability": "ietf-te-types:switching\
+                                                                -otn"
+                  }
+                ],
+                "label-restrictions": {
+                  "label-restriction": [
+                    {
+                      "index": 1,
+                      "restriction": "inclusive",
+                      "ietf-otn-topology:otn-label-range": {
+                        "range-type": "trib-slot"
+                      },
+                      "label-start": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 1
+                          }
+                        }
+                      },
+                      "label-end": {
+                        "te-label": {
+                          "ietf-otn-topology:otn-label": {
+                            "ts": 8
+                          }
+                        }
+                      },
+                      "label-step": {
+                        "generic": 1
+                      },
+                      "range-bitmap": "fc"
+                    }
+                  ]
+                },
+                "max-link-bandwidth": {
+                  "te-bandwidth": {
+                    "ietf-otn-topology:otn-bandwidth": {
+                      "odulist": [
+                        {
+                          "odu-type": "ietf-layer1-types:ODU2",
+                          "number": 1
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU1",
+                          "number": 4
+                        },
+                        {
+                          "odu-type": "ietf-layer1-types:ODU0",
+                          "number": 8
+                        }
+                      ]
+                    }
+                  }
+                },
+                "unreserved-bandwidth": [
+                  {
+                    "priority": 7,
+                    "te-bandwidth": {
+                      "ietf-otn-topology:otn-bandwidth": {
+                        "odulist": [
+                          {
+                            "odu-type": "ietf-layer1-types:ODU2",
+                            "number": 0
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU1",
+                            "number": 3
+                          },
+                          {
+                            "odu-type": "ietf-layer1-types:ODU0",
+                            "number": 6
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ],
+                "name": "Link between Node NE3 and Node NE4 (\
+                                                  forward direction)"
+              }
+            }
+          }
+        ],
+        "node": [
+          {
+            "node-id": "example:NE1",
+            "ietf-te-topology:te-node-id": "192.0.0.1",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE1"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+            {
+                "tp-id": "example:NE1-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "ietf-otn-topology:client-svc": {},
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE1"
+                }
+            },
+            {
+                "tp-id": "example:NE1-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE1"
+                }
+              },
+              {
+                "tp-id": "example:NE1-3",
+                "ietf-te-topology:te-tp-id": 3,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 3 of Node NE1"
+                }
+              }
+            ]
+          },
+          {
+            "node-id": "example:NE2",
+            "ietf-te-topology:te-node-id": "192.0.0.2",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE2"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+              {
+                "tp-id": "example:NE2-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE2"
+                }
+              },
+              {
+                "tp-id": "example:NE2-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE2"
+                }
+              }
+            ]
+          },
+          {
+            "node-id": "example:NE3",
+            "ietf-te-topology:te-node-id": "192.0.0.3",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE3"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+              {
+                "tp-id": "example:NE3-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE3"
+                }
+              },
+              {
+                "tp-id": "example:NE3-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE3"
+                }
+              }
+            ]
+          },
+          {
+            "node-id": "example:NE4",
+            "ietf-te-topology:te-node-id": "192.0.0.4",
+            "ietf-te-topology:te": {
+              "te-node-attributes": {
+                "name": "Node NE4"
+              }
+            },
+            "ietf-network-topology:termination-point": [
+            {
+                "tp-id": "example:NE4-1",
+                "ietf-te-topology:te-tp-id": 1,
+                "ietf-te-topology:te": {
+                  "ietf-otn-topology:client-svc": {},
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 1 of Node NE4"
+                }
+            },
+            {
+                "tp-id": "example:NE4-2",
+                "ietf-te-topology:te-tp-id": 2,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 2 of Node NE4"
+                }
+              },
+              {
+                "tp-id": "example:NE4-3",
+                "ietf-te-topology:te-tp-id": 3,
+                "ietf-te-topology:te": {
+                  "interface-switching-capability": [
+                    {
+                      "encoding": "ietf-te-types:lsp-encoding-oduk",
+                      "switching-capability": "ietf-te-types:\
+                                                       switching-otn"
+                    }
+                  ],
+                  "name": "Interface 3 of Node NE4"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
+</pre><a href="#appendix-B-8" class="pilcrow">¶</a>
+</div>
+</section>
+</div>
+<div id="acknowledgments">
+<section id="appendix-C">
       <h2 id="name-acknowledgments">
 <a href="#name-acknowledgments" class="section-name selfRef">Acknowledgments</a>
     </h2>
 </section>
 </div>
 <div id="contributors">
-<section id="appendix-C">
+<section id="appendix-D">
       <h2 id="name-contributors">
 <a href="#name-contributors" class="section-name selfRef">Contributors</a>
       </h2>
@@ -2387,7 +5906,7 @@ module ietf-fgotn-tunnel {
 </section>
 </div>
 <div id="authors-addresses">
-<section id="appendix-D">
+<section id="appendix-E">
       <h2 id="name-authors-addresses">
 <a href="#name-authors-addresses" class="section-name selfRef">Authors' Addresses</a>
       </h2>
