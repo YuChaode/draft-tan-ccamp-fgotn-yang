@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-27T05:35:34.524310+00:00",
+  "timestamp": "2026-08-30T02:13:33.523108+00:00",
   "repo": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
   "labels": [
     {
@@ -278,7 +278,7 @@
       "labels": [],
       "body": "The original motivation is to describe the requirement of multi-layers path, but it is coupled with protection scenario. Some cleanup is needed for the \"Multi-layer Path Splicing Scenario of fgOTN\" section.",
       "createdAt": "2025-04-08T06:51:00Z",
-      "updatedAt": "2025-12-31T08:41:28Z",
+      "updatedAt": "2026-08-28T03:21:18Z",
       "closedAt": null,
       "comments": [
         {
@@ -291,9 +291,9 @@
         {
           "author": "italobusi",
           "authorAssociation": "MEMBER",
-          "body": "- [x] Review the text in section 2.1 and section 2.2 of draft-tan-ccamp-fgotn-yang-04",
+          "body": "- [ ] Review the text in section 2.1 and section 2.2 of draft-tan-ccamp-fgotn-yang-04",
           "createdAt": "2025-07-03T21:52:42Z",
-          "updatedAt": "2025-12-31T08:41:28Z"
+          "updatedAt": "2026-08-28T03:21:18Z"
         }
       ]
     },
@@ -1107,9 +1107,9 @@
         "bug",
         "documentation"
       ],
-      "body": "> Hi chairs,\n> \n> Thanks for this adoption poll.\n> \n> Yes, the WG should have a document on this topic. And, yes, this draft is a\n> good starting point. Please adopt it.\n> \n> Cheers,\n> \n> Adrian\n> \n> ===\n> \n> Attention that is needed (*after* adoption).\n> \n> Some problems with line lengths in Figure 3. This is easily fixed.\n> \n\n[Authors] We will fix the line lengths of Figure 3 in the next draft update\n\nSee: #49 \n\n> ---\n> \n> Obviously, the empty sections (11, 12, 13) need work.\n> \n\n[Authors] We are tracking these as open issues in github with the target to complete these sections before WG LC\n\n> ---\n> \n> The Abstract could us a short sentence to say what fine grain optical\n> transport networks are.\n> \n\n[Authors] We would propose the following NEW abstract:\n\n```\n   Fine grain Optical Transport Network (fgOTN) is a data plane\n   technology, specified in ITU-T Recommendation G.709/Y.1331 (2020)\n   Amd. 3, which complements existing OTN by providing bandwidth\n   efficient support for sub-1Gbit/s services.\n  \n   This document defines YANG data models to describe the topology and\n   tunnel information of an fgOTN network.\n```\n\n- [ ] Update the abstract as proposed\n\n> ---\n> \n> In 1.1, can you add references for fgTS and fgODUflex?\n> \n\n[Authors]\n\nOLD\n\n```\n   Some of the key terms used in this document are listed as follow.\n```\n\nNEW\n\n```\n   The following terms are defined in [ITU-T_G.709] and in\n   [ITU-T_G.709.20] and are not redefined here:\n```\n\n[\\Authors]\n\n- [ ] Update the text in section 1.1 as proposed\n\n> ---\n> \n> Section 1.4 enthusiastically repeats section 1.2.\n> \n\n[Authors] Fixed in draft-ietf-ccamp-fgotn-yang-01\n\n> ---\n> \n> Section 1.6 overlaps with section 1.3\n> \n\n[Authors] Fixed in draft-ietf-ccamp-fgotn-yang-01\n\n> ---\n> \n> Watch out for \"OTN network\". The N in OTN already means network.\n> \n\n[Authors]\n\nThere has been a similar comment from Dhruv on the OTN Tunnel model: https://mailarchive.ietf.org/arch/msg/ccamp/yIz26ZDNZN_Jg-ou9mcq26pNXYw/\n\nWhile you are correct regarding the literal acronym, 'OTN' in this document is treated as a proper noun, in line with standard practice in ITU-T (e.g., ITU-T G.709) and other IETF documents (e.g., RFC 7138).\n\nTherefore we would propose to keep the terms \"OTN network\" and, for consistency, also the term \"fgOTN network\".\n\n[\\Authors]\n\n> ---\n> \n> I'm pretty sure that the pattern in ts-list is wrong, but my brain is\n> sitting outside sipping mojitos at the moment, and won't help me sort it\n> out.\n\n[Authors]\n\nThe current regular expression pattern does not fully align with the node description because it fails to 1) enforce the 1-4095 range: The current pattern accepts values up to 9999, making out-of-range inputs syntactically valid and 2) enforce sorting rules: It cannot programmatically verify that the values are disjoint and listed in strictly ascending order.\n\nWhile the regular expression can be updated to strictly enforce the numeric range, standard YANG syntactic constraints cannot evaluate relative mathematical logic like disjointness or ascending order. Enforcing these sequential rules relies entirely on compliance with the text in the description statement.\n\nSince updating the regex pattern to restrict the range makes the expression significantly more complex and less readable and considering that 1) the backend application must already parse the string to validate the sorting and disjointness constraints and 2) that the maximum value of 4095 is defined for consistency with the length of the TPN field in RFC7139, although the actual maximum value depends on the type of the server layer OPU and TSG, we would prefer to rely on the description statement to govern the numeric range as well. This keeps the YANG model clean and maintainable while centralizing all numerical logic within the backend implementation.\n\n[\\Authors]\n\n> ---\n> \n>  \n> \n> I think that the \"augments\" relationship defines the need for a normative\n> reference. Further, this is a transitive relationship.\n> \n> So, because the model in this draft augments ietf-otn-topology,\n> I-D.ietf-ccamp-otn-topo-yang is a normative relationship.\n> \n> And, because ietf-otn-topology augments, ietf-te-topology, RFC8795 should be\n> a normative reference.\n> \n> And, because ietf-te-topology augments ietf-network and\n> ietf-network-topology, RFC8345 should be a normative reference.\n> \n\n[Authors] We will fix the normative references in the next draft update\n\n- [ ] Fix normative references\n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/jkLVyWvkKtZD1wJ_TGSuZRAx8NU/",
+      "body": "> Hi chairs,\n> \n> Thanks for this adoption poll.\n> \n> Yes, the WG should have a document on this topic. And, yes, this draft is a\n> good starting point. Please adopt it.\n> \n> Cheers,\n> \n> Adrian\n> \n> ===\n> \n> Attention that is needed (*after* adoption).\n> \n> Some problems with line lengths in Figure 3. This is easily fixed.\n> \n\n[Authors] We will fix the line lengths of Figure 3 in the next draft update\n\nSee: #49 \n\n> ---\n> \n> Obviously, the empty sections (11, 12, 13) need work.\n> \n\n[Authors] We are tracking these as open issues in github with the target to complete these sections before WG LC\n\n> ---\n> \n> The Abstract could us a short sentence to say what fine grain optical\n> transport networks are.\n> \n\n[Authors] We would propose the following NEW abstract:\n\n```\n   Fine grain Optical Transport Network (fgOTN) is a data plane\n   technology, specified in ITU-T Recommendation G.709/Y.1331 (2020)\n   Amd. 3, which complements existing OTN by providing bandwidth\n   efficient support for sub-1Gbit/s services.\n  \n   This document defines YANG data models to describe the topology and\n   tunnel information of an fgOTN network.\n```\n\n- [x] Update the abstract as proposed\n\n> ---\n> \n> In 1.1, can you add references for fgTS and fgODUflex?\n> \n\n[Authors]\n\nOLD\n\n```\n   Some of the key terms used in this document are listed as follow.\n```\n\nNEW\n\n```\n   The following terms are defined in [ITU-T_G.709] and in\n   [ITU-T_G.709.20] and are not redefined here:\n```\n\n[\\Authors]\n\n- [x] Update the text in section 1.1 as proposed\n\n> ---\n> \n> Section 1.4 enthusiastically repeats section 1.2.\n> \n\n[Authors] Fixed in draft-ietf-ccamp-fgotn-yang-01\n\n> ---\n> \n> Section 1.6 overlaps with section 1.3\n> \n\n[Authors] Fixed in draft-ietf-ccamp-fgotn-yang-01\n\n> ---\n> \n> Watch out for \"OTN network\". The N in OTN already means network.\n> \n\n[Authors]\n\nThere has been a similar comment from Dhruv on the OTN Tunnel model: https://mailarchive.ietf.org/arch/msg/ccamp/yIz26ZDNZN_Jg-ou9mcq26pNXYw/\n\nWhile you are correct regarding the literal acronym, 'OTN' in this document is treated as a proper noun, in line with standard practice in ITU-T (e.g., ITU-T G.709) and other IETF documents (e.g., RFC 7138).\n\nTherefore we would propose to keep the terms \"OTN network\" and, for consistency, also the term \"fgOTN network\".\n\n[\\Authors]\n\n> ---\n> \n> I'm pretty sure that the pattern in ts-list is wrong, but my brain is\n> sitting outside sipping mojitos at the moment, and won't help me sort it\n> out.\n\n[Authors]\n\nThe current regular expression pattern does not fully align with the node description because it fails to 1) enforce the 1-4095 range: The current pattern accepts values up to 9999, making out-of-range inputs syntactically valid and 2) enforce sorting rules: It cannot programmatically verify that the values are disjoint and listed in strictly ascending order.\n\nWhile the regular expression can be updated to strictly enforce the numeric range, standard YANG syntactic constraints cannot evaluate relative mathematical logic like disjointness or ascending order. Enforcing these sequential rules relies entirely on compliance with the text in the description statement.\n\nSince updating the regex pattern to restrict the range makes the expression significantly more complex and less readable and considering that 1) the backend application must already parse the string to validate the sorting and disjointness constraints and 2) that the maximum value of 4095 is defined for consistency with the length of the TPN field in RFC7139, although the actual maximum value depends on the type of the server layer OPU and TSG, we would prefer to rely on the description statement to govern the numeric range as well. This keeps the YANG model clean and maintainable while centralizing all numerical logic within the backend implementation.\n\n[\\Authors]\n\n> ---\n> \n>  \n> \n> I think that the \"augments\" relationship defines the need for a normative\n> reference. Further, this is a transitive relationship.\n> \n> So, because the model in this draft augments ietf-otn-topology,\n> I-D.ietf-ccamp-otn-topo-yang is a normative relationship.\n> \n> And, because ietf-otn-topology augments, ietf-te-topology, RFC8795 should be\n> a normative reference.\n> \n> And, because ietf-te-topology augments ietf-network and\n> ietf-network-topology, RFC8345 should be a normative reference.\n> \n\n[Authors] We will fix the normative references in the next draft update\n\n- [ ] Fix normative references\n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/jkLVyWvkKtZD1wJ_TGSuZRAx8NU/",
       "createdAt": "2026-07-29T22:44:09Z",
-      "updatedAt": "2026-07-30T10:25:00Z",
+      "updatedAt": "2026-08-27T08:56:39Z",
       "closedAt": null,
       "comments": [
         {
@@ -2684,6 +2684,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 54,
+      "id": "PR_kwDOMSanvs8AAAABBSfohg",
+      "title": "Update draft-ietf-ccamp-fgotn-yang.md",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/pull/54",
+      "state": "OPEN",
+      "author": "tanyanxia",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Update draft according to Adrain's comments.\r\nI did not fix the normative references issue because I am not sure how to fix the normative references on github. ",
+      "createdAt": "2026-08-28T03:16:33Z",
+      "updatedAt": "2026-08-28T03:18:22Z",
+      "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "baseRefName": "main",
+      "baseRefOid": "2dddcffcbce222ff48ab52036549db08415a85db",
+      "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
+      "headRefName": "tanyx11",
+      "headRefOid": "6334b6f4bd1b54ee7b3cba237a8e3533028c7dfd",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
