@@ -5,12 +5,12 @@
 CCAMP Working Group                                               Y. Tan
 Internet-Draft                                                  Y. Zheng
 Intended status: Standards Track                            China Unicom
-Expires: 1 March 2027                                            I. Busi
+Expires: 6 March 2027                                            I. Busi
                                                                    C. Yu
                                                      Huawei Technologies
                                                                  X. Zhao
                                                                    CAICT
-                                                          28 August 2026
+                                                        2 September 2026
 
 
        YANG Data Models for fine grain Optical Transport Network
@@ -58,7 +58,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 1 March 2027.
+   This Internet-Draft will expire on 6 March 2027.
 
 Copyright Notice
 
@@ -928,6 +928,23 @@ Table of Contents
                     Network";
      }
 
+     typedef ts-list {
+       type string {
+         pattern '([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?'
+               + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)?';
+       }
+       description
+         "A list of Tributary Slots (TS) ranging between 1 and 4095.
+
+          If multiple values or ranges are given, they all MUST be
+          disjoint and MUST be in ascending order.
+
+          For example 1-20,25,50-1000.";
+       reference
+         "RFC 7139: GMPLS Signaling Extensions for Control
+                    of Evolving G.709 Optical Transport Networks";
+     }
+
      augment "/te:te/te:tunnels/te:tunnel/"
            + "te:te-bandwidth/te:technology/"
            + "otn-tnl:otn/otn-tnl:otn-bandwidth" {
@@ -939,9 +956,11 @@ Table of Contents
            description
              "Applicable when odu-type is fgODUflex.";
          }
-         type string;
+         type uint8{
+               range "1 .. 119";
+           };
          description
-           "Augment TE bandwidth of the fgOTN tunnel";
+           "Augment TE bandwidth of the fgOTN tunnel, it represent themultiplier of 10Mbit/s (as per definition in Table M.3 of ITU-T G.709)";
        }
      }
 
@@ -954,7 +973,7 @@ Table of Contents
        description
          "augmentation of fgOTN label";
        leaf fgts-numbers {
-         type string;
+         type fgotn-tnl:ts-list;
          description
            "Augment fgOTN timeslot information of this label hop";
        }
@@ -969,7 +988,7 @@ Table of Contents
        description
          "augmentation of fgOTN label";
        leaf fgts-numbers {
-         type string;
+         type fgotn-tnl:ts-list;
          description
            "Augment fgOTN timeslot information of this label hop";
        }
@@ -983,7 +1002,7 @@ Table of Contents
        description
          "augmentation of fgOTN label";
        leaf fgts-numbers {
-         type string;
+         type fgotn-tnl:ts-list;
          description
            "fgOTN timeslot information of this label hop";
        }
@@ -997,7 +1016,7 @@ Table of Contents
        description
          "augmentation of fgOTN label";
        leaf fgts-numbers {
-         type string;
+         type fgotn-tnl:ts-list;
          description
            "fgOTN timeslot information of this label hop";
        }
@@ -1010,7 +1029,7 @@ Table of Contents
        description
          "augmentation of fgOTN label";
        leaf fgts-numbers {
-         type string;
+         type fgotn-tnl:ts-list;
          description
            "fgOTN timeslot information of this label hop";
        }
