@@ -93,7 +93,9 @@ normative:
 informative:
 
 --- abstract
-This document defines YANG data models to describe the topology and tunnel information of a fine grain Optical Transport Network. The YANG data models defined in this document are designed to meet the requirements for efficient transmission of sub-1Gbit/s client signals in transport network.
+Fine grain Optical Transport Network (fgOTN) is a data plane technology, specified in ITU-T Recommendation G.709/Y.1331 (2020) Amd. 3, which complements existing OTN by providing bandwidth efficient support for sub-1Gbit/s services.
+
+This document defines YANG data models to describe the topology and tunnel information of an fgOTN network.
 
 --- middle
 
@@ -111,7 +113,7 @@ The YANG data models defined in this document conform to the Network Management 
 
 ## Terminology and Notations
 
-Some of the key terms used in this document are listed as follow.
+The following terms are defined in [ITU-T_G.709] and in [ITU-T_G.709.20] and are not redefined here:
 
   *  fgTS: fine grain Tributary Slot.
 
@@ -247,26 +249,27 @@ Both single domain and multi-domain hitless resizing should be supported. For si
 
 ~~~~ aasvg
 
-                                 +----------+
-                  +--------------+   MDSC   +-------------+
-                 /               |          |              \
-                /                +----+-----+               \
-               /                      |                      \
-              /                       |                       \
-        +----+-------+          +-----+------+          +-----+------+
-        | Controller |          | Controller |          | Controller |
-        |     1      |          |     2      |          |     3      |
-        +------------+          +------------+          +------------+
+                               +----------+
+                +--------------+   MDSC   +-------------+
+               /               |          |              \
+              /                +----+-----+               \
+             /                      |                      \
+            /                       |                       \
+      +----+-------+          +-----+------+          +-----+------+
+      | Controller |          | Controller |          | Controller |
+      |     1      |          |     2      |          |     3      |
+      +------------+          +------------+          +------------+
 
-                                 End-to-end fgOTN service
-    <--------------------------------------------------------------------->
-   +------+     +------+     +------+     +------+     +------+     +------+
-   | node +-----+ node +-----+ node +-----+ node +-----+ node +-----+ node |
-   |  1   +-----+  2   +-----+  3   +-----+  4   +-----+  5   +-----+  6   |
-   +------+     +------+  |  +------+     +------+   | +------+     +------+
-    source                |                          |          destination
-          Domain 1        |         Domain 2         |       Domain 3
-                          |                          |
+                       End-to-end fgOTN service
+   <------------------------------------------------------------------>
+  +------+    +------+     +------+    +------+     +------+    +------+
+  | node +----+ node +-----+ node +----+ node +-----+ node +----+ node |
+  |  1   +----+  2   +-----+  3   +----+  4   +-----+  5   +----+  6   |
+  +------+    +------+  |  +------+    +------+  |  +------+    +------+
+  source                |                        |           destination
+        Domain 1        |         Domain 2       |       Domain 3
+                        |                        |
+
 ~~~~
 {: #fig-hitless resizing scenario title="Hitless Resizing Scenario of fgOTN"}
 
