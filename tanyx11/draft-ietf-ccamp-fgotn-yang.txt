@@ -748,7 +748,7 @@ Table of Contents
                     Network";
      }
 
-     typedef ts-list {
+     typedef ts-list-or-empty {
        type string {
          pattern '([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?'
                + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)?';
@@ -787,17 +787,17 @@ Table of Contents
              "The granularity of server ODUk";
          }
          leaf odu-ts-number {
-           type fgotnt:ts-list;
+           type fgotnt:ts-list-or-empty;
            description
              "The index of server ODUk channel";
          }
          leaf fgts-reserved {
-           type fgotnt:ts-list;
+           type fgotnt:ts-list-or-empty;
            description
              "The reserved fgOTN timeslot in this server ODUk";
          }
          leaf fgts-unreserved {
-           type fgotnt:ts-list;
+           type fgotnt:ts-list-or-empty;
            description
              "The unreserved fgOTN timeslot in this server ODUk";
          }
