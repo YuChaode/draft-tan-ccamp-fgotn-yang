@@ -72,6 +72,23 @@ module ietf-fgotn-tunnel {
                  Network";
   }
 
+  typedef ts-list {
+    type string {
+      pattern '([1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?'
+            + '(,[1-9][0-9]{0,3}(-[1-9][0-9]{0,3})?)*)?';
+    }
+    description
+      "A list of Tributary Slots (TS) ranging between 1 and 4095.
+
+       If multiple values or ranges are given, they all MUST be
+       disjoint and MUST be in ascending order.
+
+       For example 1-20,25,50-1000.";
+    reference
+      "RFC 7139: GMPLS Signaling Extensions for Control
+                 of Evolving G.709 Optical Transport Networks";
+  }
+
   augment "/te:te/te:tunnels/te:tunnel/"
         + "te:te-bandwidth/te:technology/"
         + "otn-tnl:otn/otn-tnl:otn-bandwidth" {
@@ -83,9 +100,11 @@ module ietf-fgotn-tunnel {
         description
           "Applicable when odu-type is fgODUflex.";
       }
-      type string;
+      type uint8{
+            range "1 .. 119";
+        };
       description
-        "Augment TE bandwidth of the fgOTN tunnel";
+        "Augment TE bandwidth of the fgOTN tunnel, it represent themultiplier of 10Mbit/s (as per definition in Table M.3 of ITU-T G.709)";
     }
   }
 
@@ -98,7 +117,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-tnl:ts-list;
       description
         "Augment fgOTN timeslot information of this label hop";
     }
@@ -113,7 +132,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-tnl:ts-list;
       description
         "Augment fgOTN timeslot information of this label hop";
     }
@@ -127,7 +146,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-tnl:ts-list;
       description
         "fgOTN timeslot information of this label hop";
     }
@@ -141,7 +160,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-tnl:ts-list;
       description
         "fgOTN timeslot information of this label hop";
     }
@@ -154,7 +173,7 @@ module ietf-fgotn-tunnel {
     description
       "augmentation of fgOTN label";
     leaf fgts-numbers {
-      type string;
+      type fgotn-tnl:ts-list;
       description
         "fgOTN timeslot information of this label hop";
     }
