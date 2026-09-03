@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-30T02:13:33.523108+00:00",
+  "timestamp": "2026-09-03T01:55:50.739740+00:00",
   "repo": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
   "labels": [
     {
@@ -72,6 +72,11 @@
       "name": "close-sub-issues",
       "description": "",
       "color": "c2e0c6"
+    },
+    {
+      "name": "future-revision",
+      "description": "",
+      "color": "D2E372"
     }
   ],
   "issues": [
@@ -155,10 +160,12 @@
       "author": "YuChaode",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "wait-sub-issues"
+      ],
       "body": "It is suggested to have a deep analysis on the scenarios on hitless resizing, taking account of the interactions between data plane and control plane protocols.\nFor single domain service, the solution seems simpler, but it is worthwhile having some description.\nFor inter-domain service, it is worthwhile to investigate in detail.",
       "createdAt": "2025-03-12T08:49:21Z",
-      "updatedAt": "2025-03-12T08:49:21Z",
+      "updatedAt": "2026-09-02T12:38:25Z",
       "closedAt": null,
       "comments": []
     },
@@ -278,7 +285,7 @@
       "labels": [],
       "body": "The original motivation is to describe the requirement of multi-layers path, but it is coupled with protection scenario. Some cleanup is needed for the \"Multi-layer Path Splicing Scenario of fgOTN\" section.",
       "createdAt": "2025-04-08T06:51:00Z",
-      "updatedAt": "2026-08-28T03:21:18Z",
+      "updatedAt": "2026-09-02T12:46:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -294,6 +301,13 @@
           "body": "- [ ] Review the text in section 2.1 and section 2.2 of draft-tan-ccamp-fgotn-yang-04",
           "createdAt": "2025-07-03T21:52:42Z",
           "updatedAt": "2026-08-28T03:21:18Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-02 Bi-weekly Call**\n\n- [ ] See: https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/9#issuecomment-3033776457\n- [ ] See #11 \n- [ ] Open a new PR to apply to changes in PR #23 to the `main` branch\n",
+          "createdAt": "2026-09-02T12:46:28Z",
+          "updatedAt": "2026-09-02T12:46:28Z"
         }
       ]
     },
@@ -305,13 +319,23 @@
       "state": "OPEN",
       "author": "YuChaode",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "italobusi"
+      ],
       "labels": [],
       "body": "On the meeting 20250430, we discussed the scenario of inter-domain fgOTN service bandwidth modification. We have a concern on the scenario that there could be a failure on the single direction while it is successful on the other direction. There should be some rollback on the device perspective and the orchestrator needs to send a bandiwidth modification to change it back.\nwe suggested to solidate it at first on our draft, and write a contribution to ITU-T SG15 Q11 & Q14, to check whether our solution is acceptable in ITU-T. So that we can have a same understanding on this scenario.",
       "createdAt": "2025-04-30T07:45:02Z",
-      "updatedAt": "2025-04-30T07:45:02Z",
+      "updatedAt": "2026-09-02T12:40:36Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-02 Bi-weekly Call**\n\nCheck offline with Q11/15 about the ITU-T viewpoint on this issue",
+          "createdAt": "2026-09-02T12:40:32Z",
+          "updatedAt": "2026-09-02T12:40:32Z"
+        }
+      ]
     },
     {
       "number": 11,
@@ -321,11 +345,13 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "italobusi"
+      ],
       "labels": [],
       "body": "There is some overlapping between the content of section 2.1 (Retrieve Server Tunnels Scenario of fgOTN) and the content of section 2.2 (Multi-layer Path Splicing Scenario of fgOTN)\n\nNeed to consider some restructuring of the content between these two sections (e.g., merging the two scenarios)\n",
       "createdAt": "2025-06-18T06:20:37Z",
-      "updatedAt": "2025-09-18T08:02:44Z",
+      "updatedAt": "2026-09-02T12:46:58Z",
       "closedAt": null,
       "comments": [
         {
@@ -604,15 +630,12 @@
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
-        "italobusi",
-        "YuChaode"
+        "italobusi"
       ],
-      "labels": [
-        "wait"
-      ],
+      "labels": [],
       "body": "The current text assumes that controller 1 reports when the resizing procedure in the forward direction is completed and controller 3 reports when the resizing procedure in the reverse direction is completed\n\nNeed to check whether it is possible for controller 1 to report when the resizing procedure in both directions is completed",
       "createdAt": "2025-09-03T07:11:31Z",
-      "updatedAt": "2026-02-04T14:14:17Z",
+      "updatedAt": "2026-09-02T12:34:53Z",
       "closedAt": null,
       "comments": [
         {
@@ -621,6 +644,13 @@
           "body": "It is worth being more clear and explicit about what conditions are reported by the controllers\n\nThe conditions when the source or sink node starts and exits the unidirectional resizing protocol are defined in annex O of ITU-T G.709 (see for example Figure O.2 and Figure O.2)\n\nIn case of bidirectional connections, two independent resizing protocols need to run in the forward and reverse direction.\n\nNode 1 is the source node for the resizing protocol in the forward direction and the sink node for the resizing protocol in the reverse direction. After it exits both resizing protocols in the forward and in the reverse direction, it can report to controller 1 that the bidirectional resizing procedure has been terminated.\n",
           "createdAt": "2025-09-17T09:33:24Z",
           "updatedAt": "2025-09-17T09:33:24Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-02 Bi-weekly Call**\n\n- [ ] Check whether the text in Appendix A of [draft-ietf-ccamp-fgotn-yang-01](https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-fgotn-yang-01) is sufficient to close this issue",
+          "createdAt": "2026-09-02T12:34:53Z",
+          "updatedAt": "2026-09-02T12:34:53Z"
         }
       ]
     },
@@ -633,14 +663,12 @@
       "author": "italobusi",
       "authorAssociation": "MEMBER",
       "assignees": [
-        "tanyanxia"
+        "italobusi"
       ],
-      "labels": [
-        "wait"
-      ],
+      "labels": [],
       "body": "Needs to analyze failure scenarios during hitless resizing: how they are detected and reported to the MDSC?",
       "createdAt": "2025-09-03T07:12:40Z",
-      "updatedAt": "2026-02-04T14:14:59Z",
+      "updatedAt": "2026-09-02T12:36:24Z",
       "closedAt": null,
       "comments": [
         {
@@ -649,6 +677,13 @@
           "body": "**2026-02-04 fgOTN call**\n\nWait for resolution of #20 ",
           "createdAt": "2026-02-04T14:14:53Z",
           "updatedAt": "2026-02-04T14:14:53Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-02 Bi-weekly Call**\n\n- [ ] Check whether the text in Section 2.3 of [draft-ietf-ccamp-fgotn-yang-01](https://datatracker.ietf.org/doc/html/draft-ietf-ccamp-fgotn-yang-01) is sufficient to close this issue",
+          "createdAt": "2026-09-02T12:35:40Z",
+          "updatedAt": "2026-09-02T12:36:24Z"
         }
       ]
     },
@@ -662,11 +697,11 @@
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [
-        "wait-sub-issues"
+        "future-revision"
       ],
       "body": "Describe the issue when running fgOTN over ODUCn Links",
       "createdAt": "2025-09-03T07:29:24Z",
-      "updatedAt": "2026-04-09T12:52:48Z",
+      "updatedAt": "2026-09-02T12:57:14Z",
       "closedAt": null,
       "comments": [
         {
@@ -675,6 +710,13 @@
           "body": "**2026-03-14 Side Meeting**\n\nWhat is already supported by OTN topology model:\n\n- ODUk over OTUk (no multiplexing)\n- ODUj over ODUk over OTUk (single-stage multiplexing with 1.25G or 2.5G TSG)\n- ODUk over ODUCn (single-stage multiplexing with 5G TSG)\n\nWhat is not yet supported by OTN topology model:\n\n- fgOTN over ODUj over ODUk over OTUk (two-stage multiplexing with 10M OPUj TSG over 1.25G or 2.5G ODUk TSG)\n\n\te.g., fgOTN over ODU0 over ODU4\n\n- ODUj over ODUk over ODUCn (two-stage multiplexing with 1.25G or 2.5G OPUk TSG over 5G OPUCn TSG)\n\n\te.g., ODU0 over ODU2 over ODUC4\n\n- fgOTN over ODUj over ODUk over ODUCn (three-stage multiplexing with 10M OPUj TSG over 1.25G or 2.5G OPUk TSG over 5G OPUCn TSG)\n\n\te.g., fgOTN over ODU0 over ODU2 over ODUC4\n",
           "createdAt": "2026-04-09T12:52:48Z",
           "updatedAt": "2026-04-09T12:52:48Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-02 Bi-weekly Call**\n\nSteps:\n\n1. Publish the v1 of the OTN topology and tunnel models as they are (with no support of B100G OTN)\n2. Publish the v1 of the fgOTN topology and tunnel models with no support of B100G OTN \n3. Start one or two -bis drafts to develop the v2 of the OTN topology and tunnel models (adding support for B100G OTN)\n4. Start one -bis draft to develop the v2 of the fgOTN topology and tunnel models to augment the v2 of the OTN topology and tunnel models for fgOTN over B100G OTN\n\nSteps 1 and 2 can be done in parallel. Step 3 can be started as soon as step 1 is completed and in parallel with step 2. Step 4 can be started as soon as step 2 is completed and in parallel with step 3.\n\nTherefore these issues are outside the scope of this draft and to be considered for a future v2 of the YANG data model",
+          "createdAt": "2026-09-02T12:30:04Z",
+          "updatedAt": "2026-09-02T12:54:29Z"
         }
       ]
     },
@@ -791,23 +833,28 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
-      "assignees": [
-        "tanyanxia"
-      ],
+      "assignees": [],
       "labels": [
-        "agreed"
+        "future-revision"
       ],
       "body": "Check how the definition of the unreserved-bandwidth can be updated for fgOTN over ODUCn links.\n\nNote: pending resolution of how the unreserved-bandwidth is defined for ODUCn links.\n",
       "createdAt": "2025-11-19T13:40:30Z",
-      "updatedAt": "2026-07-15T12:32:32Z",
+      "updatedAt": "2026-09-02T12:58:48Z",
       "closedAt": null,
       "comments": [
         {
           "author": "italobusi",
           "authorAssociation": "MEMBER",
-          "body": "**2026-06-17 Bi-weekly Call**\n\n**max-link-bandwidth:** Delete leaf fgotn-bandwidth.\n\n```\n\"ietf-otn-topology:odulist\": [{\n   \"odu-type\": \"ietf-layer1-types\",    \"ietf-fgotn-types:fgODUflex\"\n   \"number\": {number}    119*8   952\n}]\n```\n\n**unreserved-bandwidth:** Delete leaf fgotn-bandwidth and ietf-fgotn-topology:fgotnlist structure, and use the odulist structure to describe the available bandwidth of fgOTN.\n\n```\n\"ietf-otn-topology:odulist\": [{\n   \"odu-type\": \"ietf-layer1-types\",     \"ietf-fgotn-types:fgODUflex\"\n   \"number\": {number}     119*8     952\n}]\n```\n\nWhy: If an OTU2 port supports fgOTN, the entire port fully enables fgOTN. It does not adopt the planning idea in previous models where only one or two ODU0 time slots are planned to support fgOTN\n\n- [x] Update the YANG model",
+          "body": "**2026-06-17 Bi-weekly Call**\n\n**max-link-bandwidth:** Delete leaf fgotn-bandwidth.\n\n```\n\"ietf-otn-topology:odulist\": [{\n   \"odu-type\": \"ietf-fgotn-types:fgODUflex\"\n   \"number\": {number}    119*8   952\n}]\n```\n\n**unreserved-bandwidth:** Delete leaf fgotn-bandwidth and ietf-fgotn-topology:fgotnlist structure, and use the odulist structure to describe the available bandwidth of fgOTN.\n\n```\n\"ietf-otn-topology:odulist\": [{\n   \"odu-type\": \"ietf-fgotn-types:fgODUflex\"\n   \"number\": {number}     119*8     952\n}]\n```\n\nWhy: If an OTU2 port supports fgOTN, the entire port fully enables fgOTN. It does not adopt the planning idea in previous models where only one or two ODU0 time slots are planned to support fgOTN\n\n- [x] Update the YANG model",
           "createdAt": "2026-06-24T13:22:35Z",
-          "updatedAt": "2026-07-15T12:32:32Z"
+          "updatedAt": "2026-09-02T12:22:32Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-02 Bi-weekly Call**\n\nThese changes are applicable to both below 100G and B100G. No additional changes are needed for the B100G scenarios.",
+          "createdAt": "2026-09-02T12:27:57Z",
+          "updatedAt": "2026-09-02T12:27:57Z"
         }
       ]
     },
@@ -819,13 +866,13 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
-      "assignees": [
-        "tanyanxia"
+      "assignees": [],
+      "labels": [
+        "future-revision"
       ],
-      "labels": [],
       "body": "Check how the definition of the otn-label-range can be updated for fgOTN over ODUCn links.\n\nNote: pending resolution of how the otn-label-range is defined for ODUCn links.\n",
       "createdAt": "2025-11-19T13:41:45Z",
-      "updatedAt": "2026-06-24T13:18:37Z",
+      "updatedAt": "2026-09-02T12:58:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -834,6 +881,13 @@
           "body": "**2026-06-17 Bi-weekly Call**\n\n100G scenario--Remains unchanged:\n\n```\n  augment /nw:networks/nw:network/nt:link/tet:te\n            /tet:te-link-attributes/tet:label-restrictions\n            /tet:label-restriction:\n    +--rw fgts-range* [odu-type odu-ts-number]\n       +--rw odu-type           identityref\n       +--rw odu-ts-number      fgotnt:ts-list\n       +--rw fgts-reserved?     fgotnt:ts-list\n       +--rw fgts-unreserved?   fgotnt:ts-list\n```\n\nBeyond 100G scenario-Add a new structure:\n\n```\n\"ietf-otn-topology:oducn-ts-list\": [\n   {\n      \"index\":{index},    key\n      \"highlevel-odu-type\": {highlevel-odu-type},    key\n      \"highlevel-occupied-ts-number\": {highlevel-occupied-ts-number},\n      \"ts-number-reserved\": {ts-number-reserved},\n      \"ts-number-unreserved\": {ts-number-unreserved},\n      \"fgts-reserved\": {fgts-reserved},\n      \"fgts-unreserved\": {fgts-unreserved}\n   }\n]\n```\n\n- [ ] Need to provide a description of how the index is used and of its syntax (e.g.,1, 1.1, 1.2) ",
           "createdAt": "2026-06-24T13:17:29Z",
           "updatedAt": "2026-06-24T13:18:23Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-02 Bi-weekly Call**\n\nSee: https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/22#issuecomment-5509544267",
+          "createdAt": "2026-09-02T12:31:02Z",
+          "updatedAt": "2026-09-02T12:31:02Z"
         }
       ]
     },
@@ -1011,13 +1065,15 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "italobusi"
+      ],
       "labels": [
-        "need-discussion"
+        "agreed"
       ],
       "body": "The complete OTN label hop would be:\n \n```\n          +--rw otn-tnl:otn-label\n             +--rw otn-tnl:tpn?              otn-tpn\n             +--rw otn-tnl:tsg?              identityref\n             +--rw otn-tnl:ts-list?          string\n             +--rw fgotn-tnl:fgts-numbers?   string\n``` \n\nMy doubt is whether we cannot reuse the existing ts-list with a new 10M tsg to be defined in the ietf-fgotn-types model.\n",
       "createdAt": "2026-02-27T16:34:44Z",
-      "updatedAt": "2026-06-24T13:31:10Z",
+      "updatedAt": "2026-09-02T13:46:39Z",
       "closedAt": null,
       "comments": [
         {
@@ -1026,6 +1082,13 @@
           "body": "To be discussed considering also issue #22 ",
           "createdAt": "2026-02-27T16:35:06Z",
           "updatedAt": "2026-02-27T16:35:06Z"
+        },
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-02 Call**\n\nThe use of `ts-list` is and of `fgts-numbers` is mutually exclusive\n\nWe can add a must statement to ensure that the `ts-list` and the 'tsg' attributes are not instantiated when the `fgts-numbers` is instantiated.\n",
+          "createdAt": "2026-09-02T13:46:31Z",
+          "updatedAt": "2026-09-02T13:46:31Z"
         }
       ]
     },
@@ -1057,13 +1120,21 @@
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [
-        "need-discussion"
+        "future-revision"
       ],
       "body": "Need to add the following attribute to the OTN label hop to report the multi-stage labels:\n\n```\nietf-otn-tunnel:ts-mapping-path\": {ietf-otn-tunnel:ts-mapping-path},       string\n```\nThe ts-mapping-path indicates the timeslot number mapping path used on the port, which is used to indicate the timeslots occupied by each level of mapping during multi-level mapping in cross-domain scenarios. The receiving timeslots at the local end must be consistent with the transmitting timeslots at the peer end.\n\nExample: An ODU2 occupies timeslots 1 to 8 with 1.25G granularity of ODU4, and is further mapped to timeslots 1 to 20 with 5G granularity of ODUCN. The ts-mapping-path is \"ODUCN:1-20/ODU4:1-8\".\n\nOpen issues: \n- Define this attribute (pattern and, if possible, regular expression)\n- Provide some examples of the different use cases\n",
       "createdAt": "2026-06-24T13:30:42Z",
-      "updatedAt": "2026-06-24T13:30:42Z",
+      "updatedAt": "2026-09-02T13:37:25Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-02 Call**\n\nThis is only needed for B100G OTN and not for fgOTN",
+          "createdAt": "2026-09-02T13:37:19Z",
+          "updatedAt": "2026-09-02T13:37:19Z"
+        }
+      ]
     },
     {
       "number": 46,
@@ -1149,13 +1220,15 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "tanyanxia"
+      ],
       "labels": [
         "documentation"
       ],
       "body": "",
       "createdAt": "2026-07-29T22:48:05Z",
-      "updatedAt": "2026-07-29T22:48:05Z",
+      "updatedAt": "2026-09-02T13:49:44Z",
       "closedAt": null,
       "comments": []
     },
@@ -1167,15 +1240,25 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "italobusi"
+      ],
       "labels": [
         "documentation"
       ],
       "body": "",
       "createdAt": "2026-07-29T22:48:26Z",
-      "updatedAt": "2026-07-29T22:48:26Z",
+      "updatedAt": "2026-09-02T13:50:37Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "italobusi",
+          "authorAssociation": "MEMBER",
+          "body": "**2026-09-02 Call**\n\nStart a PR with the template to be used as an input for further discussion\n",
+          "createdAt": "2026-09-02T13:50:34Z",
+          "updatedAt": "2026-09-02T13:50:34Z"
+        }
+      ]
     },
     {
       "number": 52,
@@ -1185,13 +1268,15 @@
       "state": "OPEN",
       "author": "italobusi",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "italobusi"
+      ],
       "labels": [
         "documentation"
       ],
       "body": "",
       "createdAt": "2026-07-29T22:48:46Z",
-      "updatedAt": "2026-07-29T22:48:46Z",
+      "updatedAt": "2026-09-02T13:49:52Z",
       "closedAt": null,
       "comments": []
     },
@@ -1209,9 +1294,29 @@
       "labels": [
         "documentation"
       ],
-      "body": "> Hi WG, and authors. \n> \n> I support adoption of draft-tan-ccamp-fgotn-yang. \n> \n> >From an industry perspective, fgOTN is clearly gathering pace and part of\n> OTN technology stack so it makes sense to progress the work in CCAMP. \n> \n> The draft addresses a useful YANG-based management and control need for\n> topology/resource reporting and tunnel provisioning. \n> \n> Overall, the modeling direction is appropriate: the draft builds on the\n> existing CCAMP/TEAS OTN topology and tunnel work, rather than introducing a\n> separate framework, which is great. \n> \n> The draft has more than enough technical substance for WG adoption, but\n> there are several threads that will need attention, assuming the WG adopts\n> the work. These include:\n> \n> - Ensuring alignment with the latest CCAMP/TEAS base YANG model revisions.\n> \n\n[Author] We think that this draft is already aligned with the latest CCAMP/TEAS base YANG model revisions and plan to keep alignment with any future updates to those models.\n\n- [x] @italobusi check alignment\n\n> - Bandwidth and timeslot-related attributes: some leaves are currently plain\n> string, easy to have incompatible implementations. Maybe use explicit\n> typedefs, numeric ranges/units based on current industry agreement to help\n> interoperability\n> \n\n[Authors]\n\nWe will change the type of the `fgoduflex-bandwidth` leaf from string to uint8 (range 1..119) to represent the the multiplier of 10Mbit/s (as per definition in Table M.3 of ITU-T G.709)\n\nWe will split the current `ts-list` data type into two data types:\n- one data type (`ts-list`) which does not allow empty strings\n- another data type (`ts-list-or-empty`) which allows an empty string\n\nThe former `ts-list` data type will be used for the label hops in the tunnel model and the `ts-list-or-empty` will be used reserved/available ranges in the topology model.\n\n[/Authors]\n\n- [ ] Update type and description of the `fgoduflex-bandwidth` leaf as proposed above\n- [ ] Update the `ts-list` data type and the associated leafs as proposed above\n\n> - Clarification of config versus operational state: we just need to be clear\n> about which data is configuration and which data is operational. For\n> example, available bandwidth and reserved timeslots is that really\n> configuration (current rw nodes), or is it operational.\n> \n\n[Author] They are defined as RW in order to support the customized topologies use cases for consistency with RFC8795.\n\n> - Usual expansion/detail in/of Manageability, Security, and IANA\n> considerations.\n> \n\n[Authors] We are tracking these as open issues in github with the target to complete these sections before WG LC\n\n> \n> BR, Dan.  \n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/CApuyikZmOC1QoFFD0ZXqxS4ElM/",
+      "body": "> Hi WG, and authors. \n> \n> I support adoption of draft-tan-ccamp-fgotn-yang. \n> \n> >From an industry perspective, fgOTN is clearly gathering pace and part of\n> OTN technology stack so it makes sense to progress the work in CCAMP. \n> \n> The draft addresses a useful YANG-based management and control need for\n> topology/resource reporting and tunnel provisioning. \n> \n> Overall, the modeling direction is appropriate: the draft builds on the\n> existing CCAMP/TEAS OTN topology and tunnel work, rather than introducing a\n> separate framework, which is great. \n> \n> The draft has more than enough technical substance for WG adoption, but\n> there are several threads that will need attention, assuming the WG adopts\n> the work. These include:\n> \n> - Ensuring alignment with the latest CCAMP/TEAS base YANG model revisions.\n> \n\n[Author] We think that this draft is already aligned with the latest CCAMP/TEAS base YANG model revisions and plan to keep alignment with any future updates to those models.\n\n- [x] @italobusi check alignment\n\n> - Bandwidth and timeslot-related attributes: some leaves are currently plain\n> string, easy to have incompatible implementations. Maybe use explicit\n> typedefs, numeric ranges/units based on current industry agreement to help\n> interoperability\n> \n\n[Authors]\n\nWe will change the type of the `fgoduflex-bandwidth` leaf from string to uint8 (range 1..119) to represent the the multiplier of 10Mbit/s (as per definition in Table M.3 of ITU-T G.709)\n\nWe will split the current `ts-list` data type into two data types:\n- one data type (`ts-list`) which does not allow empty strings\n- another data type (`ts-list-or-empty`) which allows an empty string\n\nThe former `ts-list` data type will be used for the label hops in the tunnel model and the `ts-list-or-empty` will be used reserved/available ranges in the topology model.\n\n[/Authors]\n\n- [x] Update type and description of the `fgoduflex-bandwidth` leaf as proposed above\n- [x] Update the `ts-list` data type and the associated leafs as proposed above\n\n> - Clarification of config versus operational state: we just need to be clear\n> about which data is configuration and which data is operational. For\n> example, available bandwidth and reserved timeslots is that really\n> configuration (current rw nodes), or is it operational.\n> \n\n[Author] They are defined as RW in order to support the customized topologies use cases for consistency with RFC8795.\n\n> - Usual expansion/detail in/of Manageability, Security, and IANA\n> considerations.\n> \n\n[Authors] We are tracking these as open issues in github with the target to complete these sections before WG LC\n\n> \n> BR, Dan.  \n\nSee: https://mailarchive.ietf.org/arch/msg/ccamp/CApuyikZmOC1QoFFD0ZXqxS4ElM/",
       "createdAt": "2026-07-29T23:14:16Z",
-      "updatedAt": "2026-07-30T10:24:24Z",
+      "updatedAt": "2026-09-02T12:16:17Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 55,
+      "id": "I_kwDOMSanvs8AAAABPWE-mg",
+      "title": "JSON examples for fgOTN tunnels",
+      "url": "https://github.com/ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang/issues/55",
+      "state": "OPEN",
+      "author": "italobusi",
+      "authorAssociation": "MEMBER",
+      "assignees": [
+        "tanyanxia"
+      ],
+      "labels": [
+        "enhancement"
+      ],
+      "body": "Create JSON examples for the fgOTN tunnels as described in Appendix B",
+      "createdAt": "2026-09-02T13:47:56Z",
+      "updatedAt": "2026-09-02T13:48:15Z",
       "closedAt": null,
       "comments": []
     }
@@ -2697,13 +2802,13 @@
       "labels": [],
       "body": "Update draft according to Adrain's comments.\r\nI did not fix the normative references issue because I am not sure how to fix the normative references on github. ",
       "createdAt": "2026-08-28T03:16:33Z",
-      "updatedAt": "2026-08-28T03:18:22Z",
+      "updatedAt": "2026-09-02T13:06:12Z",
       "baseRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "baseRefName": "main",
       "baseRefOid": "2dddcffcbce222ff48ab52036549db08415a85db",
       "headRepository": "ietf-ccamp-wg/draft-ietf-ccamp-fgotn-yang",
       "headRefName": "tanyx11",
-      "headRefOid": "6334b6f4bd1b54ee7b3cba237a8e3533028c7dfd",
+      "headRefOid": "4f8d7c419b2d2422857053f98bd42679c143501f",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
